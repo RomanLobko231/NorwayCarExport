@@ -3,8 +3,8 @@ import InfoCard from "../ui/InfoList";
 
 const Home = () => {
   return (
-    <div className="flex flex-col items-center justify-center pt-32 md:pt-40">
-      <h1 className="mx-6 text-center text-5xl font-normal text-medium-gray md:hidden">
+    <div className="flex flex-col items-center justify-center pt-28 md:pt-40">
+      <h1 className="mx-6 text-center text-4xl font-normal text-medium-gray md:hidden">
         Velkommen til{" "}
         <h5 className="inline-block bg-gradient-to-b from-gunmental to-swamp-light bg-clip-text font-bold text-transparent">
           stressfri handel

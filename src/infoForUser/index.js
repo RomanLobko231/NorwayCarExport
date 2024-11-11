@@ -4,7 +4,7 @@ export const stepsToStart = [
     info: "Først må du sende en søknad til oss der du fyller ut flere opplysninger, bl.a. bilens registrasjonr. og din personalia",
   },
   {
-    title: "Vent på godkjenning",
+    title: "Vent på et svar",
     info: "Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhandlere. Du får en melding fra oss når dette skjer",
   },
   {

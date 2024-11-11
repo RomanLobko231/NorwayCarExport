@@ -25,10 +25,10 @@ export default function Navbar() {
     <div className="fixed z-10 flex w-full justify-center">
       <Disclosure
         as="nav"
-        className="mx-6 my-3 flex w-full max-w-7xl flex-col items-center justify-center rounded-4xl border border-medium-gray bg-lighthouse/50 backdrop-blur"
+        className="mx-4 my-3 flex w-full max-w-7xl flex-col items-center justify-center rounded-4xl border border-medium-gray bg-lighthouse/50 backdrop-blur"
       >
         <div className="w-full max-w-7xl px-6 lg:px-8">
-          <div className="flex h-16 flex-row items-center justify-between">
+          <div className="flex h-12 flex-row items-center justify-between">
             <div className="flex flex-1 items-center justify-between sm:items-stretch">
               <div className="flex flex-shrink-0 items-center">
                 {/* <img alt="NCE logo" src="./ncepng.png" className="h-8 w-auto" /> */}
