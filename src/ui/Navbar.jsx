@@ -25,16 +25,18 @@ export default function Navbar() {
     <div className="fixed z-10 flex w-full justify-center">
       <Disclosure
         as="nav"
-        className="mx-4 my-3 flex w-full max-w-7xl flex-col items-center justify-center rounded-4xl border border-medium-gray bg-lighthouse/50 backdrop-blur"
+        className="mx-4 my-3 flex w-full max-w-7xl flex-col items-center justify-center rounded-lg border border-medium-gray bg-lighthouse/50 backdrop-blur"
       >
         <div className="w-full max-w-7xl px-6 lg:px-8">
-          <div className="flex h-12 flex-row items-center justify-between">
+          <div className="flex h-12 flex-row items-center justify-between md:h-14">
             <div className="flex flex-1 items-center justify-between sm:items-stretch">
               <div className="flex flex-shrink-0 items-center">
                 {/* <img alt="NCE logo" src="./ncepng.png" className="h-8 w-auto" /> */}
-                <p className="text-3xl font-black text-gunmental">NCE</p>
+                <p className="pb-1 text-3xl font-black text-medium-gray md:text-4xl">
+                  NCE
+                </p>
               </div>
-              <div className="hidden sm:ml-6 sm:block">
+              <div className="hidden py-1 sm:ml-6 sm:block">
                 <div className="flex space-x-3">
                   {navigation.map((item) => (
                     <Link
@@ -42,7 +44,7 @@ export default function Navbar() {
                       className={classNames(
                         item.current
                           ? "bg-gunmental text-lighthouse"
-                          : "text-gunmental hover:bg-gray-700 hover:text-lighthouse",
+                          : "text-gunmental hover:bg-gunmental hover:text-lighthouse",
                         "text-bases rounded-full px-4 pb-2 pt-1 text-xl font-semibold",
                       )}
                       to={item.href}
@@ -54,7 +56,7 @@ export default function Navbar() {
               </div>
             </div>
             <div className="flex items-center sm:hidden">
-              <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+              <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-medium-gray hover:text-gunmental">
                 <span className="absolute -inset-0.5" />
                 <span className="sr-only">Open main menu</span>
                 <Bars2Icon

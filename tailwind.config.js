@@ -10,7 +10,7 @@ module.exports = {
         gunmental: "#1c2628",
         swamp: "#34474B",
         "swamp-light": "#416858",
-        "distant-cloud": "#E5EAE6",
+        "distant-cloud": "#EFF2F0",
         mirage: "#001f3f",
         "medium-gray": "#333333",
         "light-gray": "#888888",

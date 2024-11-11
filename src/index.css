@@ -17,10 +17,14 @@
   }
 
   .buttonsh {
-    box-shadow: rgba(17, 51, 90, 0.4) 0px 4px 2px 0px;
+    box-shadow: rgba(17, 51, 90, 0.4) 0px 6px 3px 0px;
+  }
+
+  .button_shadow_click {
+    box-shadow: none;
   }
 
   .button_shadow_hover {
-    box-shadow: none;
+    box-shadow: rgba(17, 51, 90, 0.4) 0px 2px 2px 0px;
   }
 }

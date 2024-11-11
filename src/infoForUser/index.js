@@ -9,6 +9,6 @@ export const stepsToStart = [
   },
   {
     title: "Bilen er solgt!",
-    info: "Gratulerer! Når auksjonen er ferdig og forhandler er klar til kjør, tar vi kontakt med deg",
+    info: "Gratulerer! Når auksjonen er ferdig og forhandler er klar til kjøp, tar vi kontakt med deg",
   },
 ];
