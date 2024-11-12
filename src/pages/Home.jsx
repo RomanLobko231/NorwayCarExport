@@ -34,7 +34,7 @@ const Home = () => {
           onClick={() => {
             navigate("/sell");
           }}
-          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-full bg-gradient-to-br from-mirage to-swamp-light px-6 pb-5 pt-4 hover:from-mirage hover:to-gunmental md:space-x-3 md:px-7"
+          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-full bg-gradient-to-br from-mirage to-swamp-light px-6 pb-4 pt-4 hover:from-mirage hover:to-gunmental md:space-x-3 md:px-7 md:pb-5"
         >
           <span className="text-2xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-3xl">
             SELGE BIL
@@ -53,7 +53,7 @@ const Home = () => {
           onClick={() => {
             navigate("/buy");
           }}
-          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-full bg-cornsilk px-6 pb-5 pt-4 md:space-x-3 md:px-7"
+          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-full bg-cornsilk px-6 pb-4 pt-4 md:space-x-3 md:px-7 md:pb-5"
         >
           <span className="text-2xl font-semibold leading-4 text-gunmental md:text-3xl">
             KJØPE BIL
