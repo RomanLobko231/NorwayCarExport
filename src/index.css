@@ -17,7 +17,7 @@
   }
 
   .buttonsh {
-    box-shadow: rgba(17, 51, 90, 0.4) 0px 6px 3px 0px;
+    box-shadow: rgba(17, 51, 90, 0.4) 0px 4px 2px 0px;
   }
 
   .button_shadow_click {
@@ -25,6 +25,6 @@
   }
 
   .button_shadow_hover {
-    box-shadow: rgba(17, 51, 90, 0.4) 0px 2px 2px 0px;
+    box-shadow: rgba(17, 51, 90, 0.8) 0px 2px 1px 0px;
   }
 }
