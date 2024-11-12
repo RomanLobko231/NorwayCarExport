@@ -32,7 +32,7 @@ export default function Navbar() {
             <div className="flex flex-1 items-center justify-between sm:items-stretch">
               <div className="flex flex-shrink-0 items-center">
                 {/* <img alt="NCE logo" src="./ncepng.png" className="h-8 w-auto" /> */}
-                <p className="pb-1 text-3xl font-black text-medium-gray md:text-4xl">
+                <p className="text-3xl font-black text-medium-gray md:pb-1 md:text-4xl">
                   NCE
                 </p>
               </div>

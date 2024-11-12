@@ -29,12 +29,12 @@ const Home = () => {
       <p className="text-center text-2xl font-light text-light-gray">
         Vi gjør det enkelt for deg
       </p>
-      <div className="mt-2 flex flex-col items-center md:flex-row md:space-x-10">
+      <div className="mt-2 flex flex-col items-center pt-4 md:flex-row md:space-x-10">
         <button
           onClick={() => {
             navigate("/sell");
           }}
-          className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-4 flex flex-row items-center space-x-2 rounded-full bg-gradient-to-br from-mirage to-swamp-light px-6 pb-5 pt-4 hover:from-mirage hover:to-gunmental md:space-x-3 md:px-7"
+          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-full bg-gradient-to-br from-mirage to-swamp-light px-6 pb-5 pt-4 hover:from-mirage hover:to-gunmental md:space-x-3 md:px-7"
         >
           <span className="text-2xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-3xl">
             SELGE BIL
@@ -46,14 +46,14 @@ const Home = () => {
             className="h-5 w-5 md:h-6 md:w-6"
           />
         </button>
-        <span className="mt-4 text-center text-sm font-extralight text-light-gray md:text-base">
+        <span className="my-2 text-center text-sm font-extralight text-light-gray md:text-base">
           eller
         </span>
         <button
           onClick={() => {
             navigate("/buy");
           }}
-          className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-4 flex flex-row items-center space-x-2 rounded-full bg-cornsilk px-6 pb-5 pt-4 md:space-x-3 md:px-7"
+          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-full bg-cornsilk px-6 pb-5 pt-4 md:space-x-3 md:px-7"
         >
           <span className="text-2xl font-semibold leading-4 text-gunmental md:text-3xl">
             KJØPE BIL

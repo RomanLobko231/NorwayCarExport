@@ -7,7 +7,7 @@ const RegisterSeller = () => {
       <section className="mb-12 mt-6 flex w-full max-w-lg md:min-w-[400px]">
         <form class="flex w-full flex-col items-center">
           <section className="relative mx-auto mb-4 mt-4 w-full flex-col items-center rounded-xl border border-light-gray bg-distant-cloud p-6">
-            <div className="absolute left-6 top-6 flex h-[40px] min-w-[40px] items-center justify-center rounded-md bg-gradient-to-r from-mirage to-swamp-light pb-1 text-xl font-bold text-distant-cloud">
+            <div className="absolute left-6 top-6 flex h-[40px] min-w-[40px] items-center justify-center rounded-md bg-gradient-to-r from-mirage to-swamp-light text-xl font-bold text-distant-cloud md:pb-1">
               1
             </div>
             <h1 className="text-center text-2xl font-bold text-medium-gray md:text-3xl">
@@ -62,7 +62,7 @@ const RegisterSeller = () => {
             </div>
           </section>
           <section className="relative mx-auto mb-4 w-full flex-col items-center rounded-xl border border-light-gray bg-distant-cloud p-6">
-            <div className="absolute left-6 top-6 flex h-[40px] min-w-[40px] items-center justify-center rounded-md bg-gradient-to-r from-mirage to-swamp-light pb-1 text-xl font-bold text-distant-cloud">
+            <div className="absolute left-6 top-6 flex h-[40px] min-w-[40px] items-center justify-center rounded-md bg-gradient-to-r from-mirage to-swamp-light text-xl font-bold text-distant-cloud md:pb-1">
               2
             </div>
             <h1 className="text-center text-2xl font-bold text-medium-gray md:text-3xl">
@@ -88,7 +88,7 @@ const RegisterSeller = () => {
             </div>
           </section>
           <section className="relative mx-auto mb-4 w-full flex-col items-center rounded-xl border border-light-gray bg-distant-cloud p-6">
-            <div className="absolute left-6 top-6 flex h-[40px] min-w-[40px] items-center justify-center rounded-md bg-gradient-to-r from-mirage to-swamp-light pb-1 text-xl font-bold text-distant-cloud">
+            <div className="absolute left-6 top-6 flex h-[40px] min-w-[40px] items-center justify-center rounded-md bg-gradient-to-r from-mirage to-swamp-light text-xl font-bold text-distant-cloud md:pb-1">
               3
             </div>
             <h1 className="text-center text-2xl font-bold text-medium-gray md:text-3xl">
