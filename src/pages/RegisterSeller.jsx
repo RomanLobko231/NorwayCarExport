@@ -1,13 +1,13 @@
 const RegisterSeller = () => {
   return (
     <div className="mb:auto flex flex-col items-center justify-center px-4 pt-24 md:pt-32">
-      <h1 className="inline-block w-4/5 bg-gradient-to-b from-gunmental to-swamp-light bg-clip-text text-center text-2xl font-bold text-transparent md:text-3xl">
+      <h1 className="to-swamp-500 inline-block w-4/5 bg-gradient-to-b from-gunmental bg-clip-text text-center text-2xl font-bold text-transparent md:text-3xl">
         Vennligst fyll ut skjemaet
       </h1>
       <section className="mb-12 mt-6 flex w-full max-w-lg md:min-w-[400px]">
         <form className="flex w-full flex-col items-center">
           <section className="relative mx-auto mb-4 mt-4 w-full flex-col items-center rounded-xl border border-light-gray bg-distant-cloud p-6">
-            <div className="absolute left-6 top-6 flex h-[40px] min-w-[40px] items-center justify-center rounded-md bg-gradient-to-r from-mirage to-swamp-light text-xl font-bold text-distant-cloud md:pb-1">
+            <div className="to-swamp-500 absolute left-6 top-6 flex h-[40px] min-w-[40px] items-center justify-center rounded-md bg-gradient-to-r from-mirage text-xl font-bold text-distant-cloud md:pb-1">
               1
             </div>
             <h1 className="text-center text-2xl font-bold text-medium-gray md:text-3xl">
@@ -62,7 +62,7 @@ const RegisterSeller = () => {
             </div>
           </section>
           <section className="relative mx-auto mb-4 w-full flex-col items-center rounded-xl border border-light-gray bg-distant-cloud p-6">
-            <div className="absolute left-6 top-6 flex h-[40px] min-w-[40px] items-center justify-center rounded-md bg-gradient-to-r from-mirage to-swamp-light text-xl font-bold text-distant-cloud md:pb-1">
+            <div className="to-swamp-500 absolute left-6 top-6 flex h-[40px] min-w-[40px] items-center justify-center rounded-md bg-gradient-to-r from-mirage text-xl font-bold text-distant-cloud md:pb-1">
               2
             </div>
             <h1 className="text-center text-2xl font-bold text-medium-gray md:text-3xl">
@@ -88,7 +88,7 @@ const RegisterSeller = () => {
             </div>
           </section>
           <section className="relative mx-auto mb-4 w-full flex-col items-center rounded-xl border border-light-gray bg-distant-cloud p-6">
-            <div className="absolute left-6 top-6 flex h-[40px] min-w-[40px] items-center justify-center rounded-md bg-gradient-to-r from-mirage to-swamp-light text-xl font-bold text-distant-cloud md:pb-1">
+            <div className="to-swamp-500 absolute left-6 top-6 flex h-[40px] min-w-[40px] items-center justify-center rounded-md bg-gradient-to-r from-mirage text-xl font-bold text-distant-cloud md:pb-1">
               3
             </div>
             <h1 className="text-center text-2xl font-bold text-medium-gray md:text-3xl">
@@ -131,7 +131,7 @@ const RegisterSeller = () => {
           </section>
           <button
             type="submit"
-            className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-4 flex flex-row items-center space-x-2 rounded-full bg-gradient-to-br from-mirage to-swamp-light px-6 pb-4 pt-4 hover:from-mirage hover:to-gunmental md:space-x-3 md:px-7 md:pb-5"
+            className="buttonsh hover:button_shadow_hover active:button_shadow_click to-swamp-500 group mt-4 flex flex-row items-center space-x-2 rounded-full bg-gradient-to-br from-mirage px-6 pb-4 pt-4 hover:from-mirage hover:to-gunmental md:space-x-3 md:px-7 md:pb-5"
           >
             <span className="text-2xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-3xl">
               SEND SØKNAD

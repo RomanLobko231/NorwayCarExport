@@ -9,14 +9,14 @@ const Home = () => {
     <div className="flex flex-col items-center justify-center pt-28 md:pt-40">
       <h1 className="mx-6 text-center text-4xl font-normal text-medium-gray md:hidden">
         Velkommen til{" "}
-        <h5 className="inline-block bg-gradient-to-b from-gunmental to-swamp-light bg-clip-text font-bold text-transparent">
+        <h5 className="to-swamp-500 inline-block bg-gradient-to-b from-gunmental bg-clip-text font-bold text-transparent">
           stressfri handel
         </h5>{" "}
         for bilen din
       </h1>
       <h1 className="hidden w-4/5 text-center text-6xl font-normal text-medium-gray md:block">
         Velkommen til{" "}
-        <span className="inline-block bg-gradient-to-b from-gunmental to-swamp-light bg-clip-text font-bold text-transparent">
+        <span className="to-swamp-500 inline-block bg-gradient-to-b from-gunmental bg-clip-text font-bold text-transparent">
           stressfri handel
         </span>{" "}
         for bilen din
@@ -34,7 +34,7 @@ const Home = () => {
           onClick={() => {
             navigate("/sell");
           }}
-          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-full bg-gradient-to-br from-mirage to-swamp-light px-6 pb-4 pt-4 hover:from-mirage hover:to-gunmental md:space-x-3 md:px-7 md:pb-5"
+          className="buttonsh hover:button_shadow_hover active:button_shadow_click to-swamp-500 group flex flex-row items-center space-x-2 rounded-full bg-gradient-to-br from-mirage px-6 pb-4 pt-4 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-xl md:px-7 md:pb-5"
         >
           <span className="text-2xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-3xl">
             SELGE BIL
@@ -53,7 +53,7 @@ const Home = () => {
           onClick={() => {
             navigate("/buy");
           }}
-          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-full bg-cornsilk px-6 pb-4 pt-4 md:space-x-3 md:px-7 md:pb-5"
+          className="buttonsh hover:button_shadow_hover active:button_shadow_click border-swamp-300 group flex flex-row items-center space-x-2 rounded-full border bg-cornsilk px-6 pb-4 pt-4 md:space-x-3 md:rounded-xl md:px-7 md:pb-5"
         >
           <span className="text-2xl font-semibold leading-4 text-gunmental md:text-3xl">
             KJØPE BIL
