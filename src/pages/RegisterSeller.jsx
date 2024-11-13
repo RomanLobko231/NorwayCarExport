@@ -5,7 +5,7 @@ const RegisterSeller = () => {
         Vennligst fyll ut skjemaet
       </h1>
       <section className="mb-12 mt-6 flex w-full max-w-lg md:min-w-[400px]">
-        <form class="flex w-full flex-col items-center">
+        <form className="flex w-full flex-col items-center">
           <section className="relative mx-auto mb-4 mt-4 w-full flex-col items-center rounded-xl border border-light-gray bg-distant-cloud p-6">
             <div className="absolute left-6 top-6 flex h-[40px] min-w-[40px] items-center justify-center rounded-md bg-gradient-to-r from-mirage to-swamp-light text-xl font-bold text-distant-cloud md:pb-1">
               1
@@ -13,11 +13,11 @@ const RegisterSeller = () => {
             <h1 className="text-center text-2xl font-bold text-medium-gray md:text-3xl">
               PERSONALIA
             </h1>
-            <div class="mb-4 mt-8">
+            <div className="mb-4 mt-8">
               <input
                 type="text"
                 id="name"
-                class="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 text-base font-medium text-medium-gray md:text-lg"
+                className="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 text-base font-medium text-medium-gray md:text-lg"
                 placeholder="Fult Navn"
                 required
               />
@@ -26,7 +26,7 @@ const RegisterSeller = () => {
               <input
                 type="email"
                 id="email"
-                class="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 text-base font-medium text-medium-gray md:text-lg"
+                className="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 text-base font-medium text-medium-gray md:text-lg"
                 placeholder="Email"
                 required
               />
@@ -35,17 +35,17 @@ const RegisterSeller = () => {
               <input
                 type="number"
                 id="telephone"
-                class="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 text-base font-medium text-medium-gray md:text-lg"
+                className="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 text-base font-medium text-medium-gray md:text-lg"
                 placeholder="Mobilnummer"
                 required
               />
             </div>
             <div className="flex flex-row space-x-2">
-              <div class="mb-4">
+              <div className="mb-4">
                 <input
                   type="text"
                   id="place"
-                  class="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 text-base font-medium text-medium-gray md:text-lg"
+                  className="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 text-base font-medium text-medium-gray md:text-lg"
                   placeholder="Sted"
                   required
                 />
@@ -54,7 +54,7 @@ const RegisterSeller = () => {
                 <input
                   type="number"
                   id="post_num"
-                  class="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 text-base font-medium text-medium-gray md:text-lg"
+                  className="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 text-base font-medium text-medium-gray md:text-lg"
                   placeholder="Postnr."
                   required
                 />
@@ -68,20 +68,20 @@ const RegisterSeller = () => {
             <h1 className="text-center text-2xl font-bold text-medium-gray md:text-3xl">
               BIL INFO
             </h1>
-            <div class="mb-4 mt-8">
+            <div className="mb-4 mt-8">
               <input
                 type="text"
                 id="reg_num"
-                class="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 text-base font-medium text-medium-gray md:text-lg"
+                className="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 text-base font-medium text-medium-gray md:text-lg"
                 placeholder="Registrasjonsnr."
                 required
               />
             </div>
-            <div class="mb-4">
+            <div className="mb-4">
               <input
                 type="number"
                 id="kms"
-                class="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 text-base font-medium text-medium-gray md:text-lg"
+                className="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 text-base font-medium text-medium-gray md:text-lg"
                 placeholder="Kilometerstand"
                 required
               />
@@ -94,10 +94,10 @@ const RegisterSeller = () => {
             <h1 className="text-center text-2xl font-bold text-medium-gray md:text-3xl">
               ANNEN INFO
             </h1>
-            <div class="mb-4 mt-4">
+            <div className="mb-4 mt-4">
               <label
-                for="known_damages"
-                class="mb-2 block text-center text-lg font-semibold leading-5 text-medium-gray"
+                htmlFor="known_damages"
+                className="mb-2 block text-center text-lg font-semibold leading-5 text-medium-gray"
               >
                 Noen kjente skader? <br />
                 <span className="text-base font-normal text-light-gray">
@@ -107,14 +107,14 @@ const RegisterSeller = () => {
               <textarea
                 id="known_damages"
                 rows="4"
-                class="block w-full rounded-lg border border-medium-gray bg-white px-5 py-2.5 text-base font-medium text-medium-gray md:text-lg"
+                className="block w-full rounded-lg border border-medium-gray bg-white px-5 py-2.5 text-base font-medium text-medium-gray md:text-lg"
                 placeholder="Leave a comment..."
               ></textarea>
             </div>
             <div class="mb-4 mt-4">
               <label
-                for="previous_repairs"
-                class="mb-2 block text-center text-lg font-semibold leading-5 text-medium-gray"
+                htmlFor="previous_repairs"
+                className="mb-2 block text-center text-lg font-semibold leading-5 text-medium-gray"
               >
                 Forrige reparasjoner? <br />
                 <span className="text-base font-normal text-light-gray">
@@ -122,9 +122,9 @@ const RegisterSeller = () => {
                 </span>
               </label>
               <textarea
-                id="known_damages"
+                id="previous_repairs"
                 rows="4"
-                class="block w-full rounded-lg border border-medium-gray bg-white px-5 py-2.5 text-base font-medium text-medium-gray md:text-lg"
+                className="block w-full rounded-lg border border-medium-gray bg-white px-5 py-2.5 text-base font-medium text-medium-gray md:text-lg"
                 placeholder="Leave a comment..."
               ></textarea>
             </div>

@@ -8,7 +8,7 @@ import {
   XMarkIcon,
   ArrowDownRightIcon,
 } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const navigation = [
   { name: "For selgere", href: "#", current: false },
@@ -21,6 +21,8 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  const navigate = useNavigate();
+
   return (
     <div className="fixed z-10 flex w-full justify-center">
       <Disclosure
@@ -32,14 +34,18 @@ export default function Navbar() {
             <div className="flex flex-1 items-center justify-between sm:items-stretch">
               <div className="flex flex-shrink-0 items-center">
                 {/* <img alt="NCE logo" src="./ncepng.png" className="h-8 w-auto" /> */}
-                <p className="text-3xl font-black text-medium-gray md:pb-1 md:text-4xl">
+                <p
+                  onClick={() => navigate("/")}
+                  className="cursor-pointer text-3xl font-black text-medium-gray md:pb-1 md:text-4xl"
+                >
                   NCE
                 </p>
               </div>
               <div className="hidden py-1 sm:ml-6 sm:block">
                 <div className="flex space-x-3">
-                  {navigation.map((item) => (
+                  {navigation.map((item, index) => (
                     <Link
+                      key={index}
                       aria-current={item.current ? "page" : undefined}
                       className={classNames(
                         item.current
@@ -74,9 +80,9 @@ export default function Navbar() {
 
         <DisclosurePanel className="sm:hidden">
           <div className="w-full space-y-6 px-2 pb-9 pt-8">
-            {navigation.map((item) => (
+            {navigation.map((item, index) => (
               <DisclosureButton
-                key={item.name}
+                key={index}
                 as="a"
                 href={item.href}
                 aria-current={item.current ? "page" : undefined}

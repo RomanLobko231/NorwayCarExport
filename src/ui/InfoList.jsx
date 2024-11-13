@@ -4,7 +4,10 @@ const InfoList = () => {
   return (
     <div className="flex w-full max-w-7xl flex-col space-y-4 px-4 pt-8 md:flex-row md:space-x-4 md:space-y-0">
       {stepsToStart.map((step, index) => (
-        <div className="md:w-300 flex min-h-[160px] w-full flex-row rounded-lg border border-swamp-light bg-distant-cloud px-4 py-5">
+        <div
+          className="md:w-300 flex min-h-[160px] w-full flex-row rounded-lg border border-swamp-light bg-distant-cloud px-4 py-5"
+          key={index}
+        >
           <div className="flex h-[60px] min-w-[60px] items-center justify-center rounded-md bg-gradient-to-r from-mirage to-swamp-light text-5xl font-bold text-distant-cloud md:pb-1">
             {index + 1}
           </div>
