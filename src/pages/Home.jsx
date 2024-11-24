@@ -1,22 +1,27 @@
 import { useNavigate } from "react-router-dom";
 import InfoList from "../ui/InfoList";
 import InfoCard from "../ui/InfoList";
+import RegisterSellerModal from "../ui/RegisterSellerModal";
+import { useState } from "react";
+import RegisterBuyerModal from "../ui/RegisterBuyerModal";
 
 const Home = () => {
   const navigate = useNavigate();
+  const [sellerModalopen, setSellerModalOpen] = useState(false);
+  const [buyerModalopen, setBuyerModalOpen] = useState(false);
 
   return (
     <div className="flex flex-col items-center justify-center pt-28 md:pt-40">
       <h1 className="mx-6 text-center text-4xl font-normal text-medium-gray md:hidden">
         Velkommen til{" "}
-        <h5 className="to-swamp-500 inline-block bg-gradient-to-b from-gunmental bg-clip-text font-bold text-transparent">
+        <span className="inline-block bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text font-bold text-transparent">
           stressfri handel
-        </h5>{" "}
+        </span>{" "}
         for bilen din
       </h1>
       <h1 className="hidden w-4/5 text-center text-6xl font-normal text-medium-gray md:block">
         Velkommen til{" "}
-        <span className="to-swamp-500 inline-block bg-gradient-to-b from-gunmental bg-clip-text font-bold text-transparent">
+        <span className="inline-block bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text font-bold text-transparent">
           stressfri handel
         </span>{" "}
         for bilen din
@@ -32,9 +37,9 @@ const Home = () => {
       <div className="mt-2 flex flex-col items-center pt-4 md:flex-row md:space-x-10">
         <button
           onClick={() => {
-            navigate("/sell");
+            setSellerModalOpen(true);
           }}
-          className="buttonsh hover:button_shadow_hover active:button_shadow_click to-swamp-500 group flex flex-row items-center space-x-2 rounded-full bg-gradient-to-br from-mirage px-6 pb-4 pt-4 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-xl md:px-7 md:pb-5"
+          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-full bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-4 pt-4 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-xl md:px-7 md:pb-5"
         >
           <span className="text-2xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-3xl">
             SELGE BIL
@@ -51,9 +56,9 @@ const Home = () => {
         </span>
         <button
           onClick={() => {
-            navigate("/buy");
+            setBuyerModalOpen(true);
           }}
-          className="buttonsh hover:button_shadow_hover active:button_shadow_click border-swamp-300 group flex flex-row items-center space-x-2 rounded-full border bg-cornsilk px-6 pb-4 pt-4 md:space-x-3 md:rounded-xl md:px-7 md:pb-5"
+          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-full border border-swamp-300 bg-cornsilk px-6 pb-4 pt-4 md:space-x-3 md:rounded-xl md:px-7 md:pb-5"
         >
           <span className="text-2xl font-semibold leading-4 text-gunmental md:text-3xl">
             KJØPE BIL
@@ -90,6 +95,12 @@ const Home = () => {
       <h1 className="mt-10 w-4/5 text-center text-2xl font-light text-light-gray">
         Ingen tilgjengelige bud akkurat nå
       </h1>
+
+      <RegisterSellerModal
+        open={sellerModalopen}
+        setOpen={setSellerModalOpen}
+      />
+      <RegisterBuyerModal open={buyerModalopen} setOpen={setBuyerModalOpen} />
     </div>
   );
 };

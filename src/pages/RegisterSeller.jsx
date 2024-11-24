@@ -1,10 +1,10 @@
 const RegisterSeller = () => {
   return (
     <div className="mb:auto flex flex-col items-center justify-center px-4 pt-24 md:pt-32">
-      <h1 className="to-swamp-500 inline-block w-4/5 bg-gradient-to-b from-gunmental bg-clip-text text-center text-2xl font-bold text-transparent md:text-3xl">
+      <h1 className="inline-block w-4/5 bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text text-center text-2xl font-bold text-transparent md:text-3xl">
         Vennligst fyll ut skjemaet
       </h1>
-      <section className="mb-12 mt-6 flex w-full max-w-lg md:min-w-[400px]">
+      {/* <section className="mb-12 mt-6 flex w-full max-w-lg md:min-w-[400px]">
         <form className="flex w-full flex-col items-center">
           <section className="relative mx-auto mb-4 mt-4 w-full flex-col items-center rounded-xl border border-light-gray bg-distant-cloud p-6">
             <div className="to-swamp-500 absolute left-6 top-6 flex h-[40px] min-w-[40px] items-center justify-center rounded-md bg-gradient-to-r from-mirage text-xl font-bold text-distant-cloud md:pb-1">
@@ -144,7 +144,7 @@ const RegisterSeller = () => {
             />
           </button>
         </form>
-      </section>
+      </section> */}
     </div>
   );
 };

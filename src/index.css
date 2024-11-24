@@ -28,3 +28,9 @@
     box-shadow: rgba(17, 51, 90, 0.8) 0px 2px 1px 0px;
   }
 }
+
+@layer base {
+  html {
+    @apply !overflow-visible !p-0;
+  }
+}
