@@ -27,7 +27,7 @@ const Home = () => {
         for bilen din
       </h1>
       <img
-        className="gradv md:gradvh mt-8 max-h-[155px] w-full object-cover object-center md:max-h-[300px] lg:max-h-[340px]"
+        className="gradv md:gradvh mt-8 h-[155px] w-full object-cover object-center md:h-[300px] lg:h-[340px]"
         src="./carhero.jpg"
         alt=""
       />
