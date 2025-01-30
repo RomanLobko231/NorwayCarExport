@@ -6,7 +6,6 @@ import { useState } from "react";
 import RegisterBuyerModal from "../ui/RegisterBuyerModal";
 
 const Home = () => {
-  const navigate = useNavigate();
   const [sellerModalopen, setSellerModalOpen] = useState(false);
   const [buyerModalopen, setBuyerModalOpen] = useState(false);
 

@@ -6,6 +6,8 @@ import {
 } from "@headlessui/react";
 
 const RegisterBuyerModal = ({ open, setOpen }) => {
+  const submitRequest = () => {};
+
   return (
     <Dialog open={open} onClose={setOpen} className="relative z-10">
       <DialogBackdrop
@@ -22,7 +24,10 @@ const RegisterBuyerModal = ({ open, setOpen }) => {
             <h1 className="text-center text-2xl font-bold text-medium-gray md:text-3xl">
               Fyll ut skjemaet
             </h1>
-            <form className="flex w-full flex-col items-center md:px-2">
+            <form
+              className="flex w-full flex-col items-center md:px-2"
+              onSubmit={submitRequest}
+            >
               <div className="relative mb-4 mt-8 w-full">
                 <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-5">
                   <img

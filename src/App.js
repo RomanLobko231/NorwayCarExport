@@ -3,7 +3,6 @@ import "./App.css";
 import Navbar from "./ui/Navbar";
 import Home from "./pages/Home";
 import Footer from "./ui/Footer";
-import RegisterSeller from "./pages/RegisterSeller";
 import ScrollToTop from "./tools/ScrollToTop";
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} exact={true} />
             <Route path="*" element={<Home />} exact={true} />
-            <Route path="/sell" element={<RegisterSeller />} exact={true} />
           </Routes>
           <Footer />
         </div>
