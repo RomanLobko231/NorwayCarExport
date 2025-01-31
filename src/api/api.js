@@ -13,11 +13,11 @@ api.interceptors.response.use(
   },
   (error) => {
     const handledError = handleError(error);
-    return Promise.reject(handledError);
+    throw handledError.errorMessage;
   },
 );
 
-const handleError = (error) => {
+function handleError(error) {
   if (error.response) {
     const { statusCode, message, timestamp } = error.response?.data ?? {};
 
@@ -26,7 +26,7 @@ const handleError = (error) => {
     const resolvedTimestamp = timestamp ?? new Date().toISOString();
 
     return {
-      errorMessage: `Error ${resolvedStatusCode}: ${resolvedMessage}\nOccurred at: ${resolvedTimestamp}`,
+      errorMessage: resolvedMessage,
     };
   } else if (error.request) {
     return {
@@ -37,6 +37,6 @@ const handleError = (error) => {
       errorMessage: "An unexpected error occurred.",
     };
   }
-};
+}
 
 export default api;

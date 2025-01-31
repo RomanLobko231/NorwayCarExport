@@ -15,7 +15,7 @@ const RegisterSellerModal = ({ open, setOpen }) => {
     email: "",
     kilometers: "",
   });
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const postCarRequest = async (request) => {
@@ -23,11 +23,18 @@ const RegisterSellerModal = ({ open, setOpen }) => {
     setError(null);
     try {
       await ApiService.postCarRequest(request);
+      setFormData({
+        ownerName: "",
+        phoneNumber: "",
+        carRegistrationNumber: "",
+        email: "",
+        kilometers: "",
+      });
+      setOpen(false);
     } catch (error) {
       setError(error);
     } finally {
       setIsLoading(false);
-      setOpen(false);
     }
   };
 
@@ -154,6 +161,7 @@ const RegisterSellerModal = ({ open, setOpen }) => {
                   onChange={handleInputChange}
                 />
               </div>
+              {error && <p>{error}</p>}
               {isLoading ? (
                 <p>Loading..</p>
               ) : (
