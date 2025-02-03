@@ -39,7 +39,7 @@ const RegisterBuyerModal = ({ open, setOpen }) => {
                 <input
                   type="text"
                   id="name"
-                  class="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 ps-11 text-base font-medium text-medium-gray md:ps-14 md:text-lg"
+                  className="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 ps-11 text-base font-medium text-medium-gray md:ps-14 md:text-lg"
                   placeholder="Fullt Navn*"
                   required
                 />
@@ -104,13 +104,13 @@ const RegisterBuyerModal = ({ open, setOpen }) => {
                 <input
                   type="text"
                   id="Address"
-                  class="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 ps-11 text-base font-medium text-medium-gray md:ps-14 md:text-lg"
+                  className="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 ps-11 text-base font-medium text-medium-gray md:ps-14 md:text-lg"
                   placeholder="Addresse"
                 />
               </div>
               <button
                 type="submit"
-                className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-5 flex flex-row items-center space-x-2 rounded-full bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-4 pt-4 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-lg md:px-7 md:pb-4"
+                className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-5 flex flex-row items-center space-x-2 rounded-full bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-4 pt-4 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-lg md:px-7 md:pb-3 md:pt-3"
               >
                 <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
                   SEND SØKNAD

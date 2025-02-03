@@ -30,6 +30,9 @@
 }
 
 @layer base {
+  body {
+    background-color: #f7f8f8;
+  }
   html {
     @apply !overflow-visible !p-0;
   }

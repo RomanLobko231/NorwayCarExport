@@ -72,8 +72,8 @@ const RegisterSellerModal = ({ open, setOpen }) => {
               className="flex w-full flex-col items-center md:px-2"
               onSubmit={submitRequest}
             >
-              <div class="relative mb-4 mt-8 w-full">
-                <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-5">
+              <div className="relative mb-4 mt-8 w-full">
+                <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-5">
                   <img
                     src="../icons/person.png"
                     alt="Person icon"
@@ -84,14 +84,14 @@ const RegisterSellerModal = ({ open, setOpen }) => {
                   type="text"
                   id="ownerName"
                   value={formData.ownerName}
-                  class="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 ps-11 text-base font-medium text-medium-gray md:ps-14 md:text-lg"
+                  className="block w-full rounded-full border border-medium-gray bg-white px-5 py-2.5 ps-11 text-base font-medium text-medium-gray md:ps-14 md:text-lg"
                   placeholder="Fullt Navn*"
                   required
                   onChange={handleInputChange}
                 />
               </div>
-              <div class="relative mb-4 w-full">
-                <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-5">
+              <div className="relative mb-4 w-full">
+                <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-5">
                   <img
                     src="../icons/phone.png"
                     alt="Phone icon"
@@ -108,8 +108,8 @@ const RegisterSellerModal = ({ open, setOpen }) => {
                   onChange={handleInputChange}
                 />
               </div>
-              <div class="relative mb-4 w-full">
-                <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-5">
+              <div className="relative mb-4 w-full">
+                <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-5">
                   <img
                     src="../icons/email.png"
                     alt="Email icon"
@@ -125,8 +125,8 @@ const RegisterSellerModal = ({ open, setOpen }) => {
                   onChange={handleInputChange}
                 />
               </div>
-              <div class="relative mb-4 w-full">
-                <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-5">
+              <div className="relative mb-4 w-full">
+                <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-5">
                   <img
                     src="../icons/numbers.png"
                     alt="Numbers icon"
@@ -143,8 +143,8 @@ const RegisterSellerModal = ({ open, setOpen }) => {
                   onChange={handleInputChange}
                 />
               </div>
-              <div class="relative mb-4 w-full">
-                <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-5">
+              <div className="relative mb-4 w-full">
+                <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-5">
                   <img
                     src="../icons/numbers.png"
                     alt="Numbers icon"
@@ -167,7 +167,7 @@ const RegisterSellerModal = ({ open, setOpen }) => {
               ) : (
                 <button
                   type="submit"
-                  className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-5 flex flex-row items-center space-x-2 rounded-full bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-4 pt-4 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-lg md:px-7 md:pb-4"
+                  className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-5 flex flex-row items-center space-x-2 rounded-full bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-4 pt-4 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-lg md:px-7 md:pb-3 md:pt-3"
                 >
                   <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
                     SEND SØKNAD
