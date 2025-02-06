@@ -161,7 +161,7 @@ const RegisterSellerModal = ({ open, setOpen }) => {
                   onChange={handleInputChange}
                 />
               </div>
-              {error && <p>{error}</p>}
+              {error && <p>{error.message}</p>}
               {isLoading ? (
                 <p>Loading..</p>
               ) : (
