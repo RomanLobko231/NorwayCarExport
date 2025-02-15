@@ -8,12 +8,11 @@ import {
   XMarkIcon,
   ArrowDownRightIcon,
 } from "@heroicons/react/24/outline";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const navigation = [
-  { name: "For selgere", href: "#", current: false },
-  { name: "For kjøpere", href: "#", current: false },
-  { name: "Kontakt oss", href: "#", current: false },
+  { name: "Logg inn", href: "/login", current: false },
+  { name: "Registrer bruker", href: "/register", current: false },
 ];
 
 function classNames(...classes) {
@@ -22,6 +21,7 @@ function classNames(...classes) {
 
 export default function Navbar() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <div className="fixed z-10 flex w-full justify-center">
@@ -33,7 +33,11 @@ export default function Navbar() {
           <div className="flex h-12 flex-row items-center justify-between md:h-14">
             <div className="flex flex-1 items-center justify-between sm:items-stretch">
               <div className="flex flex-shrink-0 items-center">
-                {/* <img alt="NCE logo" src="./ncepng.png" className="h-8 w-auto" /> */}
+                <img
+                  alt="NCE logo"
+                  src="./nce_logo.png"
+                  className="mr-2 h-7 w-auto"
+                />
                 <p
                   onClick={() => navigate("/")}
                   className="cursor-pointer text-3xl font-black text-medium-gray md:pb-1 md:text-4xl"
@@ -43,21 +47,23 @@ export default function Navbar() {
               </div>
               <div className="hidden py-1 sm:ml-6 sm:block">
                 <div className="flex space-x-3">
-                  {navigation.map((item, index) => (
-                    <Link
-                      key={index}
-                      aria-current={item.current ? "page" : undefined}
-                      className={classNames(
-                        item.current
-                          ? "bg-gunmental text-lighthouse"
-                          : "text-gunmental hover:bg-gunmental hover:text-lighthouse",
-                        "text-bases rounded-full px-4 pb-2 pt-1 text-xl font-semibold",
-                      )}
-                      to={item.href}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
+                  {navigation.map((item, index) => {
+                    const isActive = location.pathname === item.href;
+
+                    return (
+                      <Link
+                        key={index}
+                        to={item.href}
+                        className={`${
+                          location.pathname === item.href
+                            ? "bg-swamp-100 border border-dashed text-gunmental"
+                            : "from-mirage to-swamp-500 text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse"
+                        } rounded-lg border-gunmental px-4 pb-2 pt-1 text-xl font-semibold`}
+                      >
+                        {item.name}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -86,12 +92,11 @@ export default function Navbar() {
                 as="a"
                 href={item.href}
                 aria-current={item.current ? "page" : undefined}
-                className={classNames(
-                  item.current
+                className={`${
+                  location.pathname === item.href
                     ? "bg-gunmental text-lighthouse"
-                    : "text-gunmental hover:bg-gray-700 hover:text-lighthouse",
-                  "block rounded-full px-4 pb-3 pt-2 text-center text-2xl font-semibold",
-                )}
+                    : "text-gunmental hover:bg-gunmental hover:text-lighthouse"
+                } text-bases rounded-full px-4 pb-2 pt-1 text-xl font-semibold`}
               >
                 {item.name}
               </DisclosureButton>

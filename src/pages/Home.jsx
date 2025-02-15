@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import InfoList from "../ui/InfoList";
 import InfoCard from "../ui/InfoList";
-import RegisterSellerModal from "../ui/RegisterSellerModal";
+import RegisterSellerModal from "../ui/seller/SellerModal";
 import { useState } from "react";
-import RegisterBuyerModal from "../ui/RegisterBuyerModal";
+import RegisterBuyerModal from "../ui/buyer/BuyerModal";
+import SellerModal from "../ui/seller/SellerModal";
+import BuyerModal from "../ui/buyer/BuyerModal";
 
 const Home = () => {
   const [sellerModalopen, setSellerModalOpen] = useState(false);
@@ -38,7 +40,7 @@ const Home = () => {
           onClick={() => {
             setSellerModalOpen(true);
           }}
-          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-full bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-4 pt-3 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-xl md:px-7 md:pb-4"
+          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-full bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-4 pt-3 duration-300 hover:-translate-y-1 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-xl md:px-7 md:pb-4"
         >
           <span className="text-2xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-3xl">
             SELGE BIL
@@ -57,9 +59,9 @@ const Home = () => {
           onClick={() => {
             setBuyerModalOpen(true);
           }}
-          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-full border border-swamp-300 bg-cornsilk px-6 pb-4 pt-3 md:space-x-3 md:rounded-xl md:px-7 md:pb-4"
+          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-full border border-swamp-300 bg-cornsilk px-6 pb-4 pt-3 duration-300 hover:-translate-y-1 md:space-x-3 md:rounded-xl md:px-7 md:pb-4"
         >
-          <span className="text-2xl font-semibold leading-4 text-gunmental md:text-3xl">
+          <span className="text-2xl font-semibold leading-4 text-medium-gray md:text-3xl">
             KJØPE BIL
           </span>
           <div className="h-[18px] border-l-2 border-solid border-gunmental md:h-[24px]"></div>
@@ -95,11 +97,8 @@ const Home = () => {
         Ingen tilgjengelige bud akkurat nå
       </h1>
 
-      <RegisterSellerModal
-        open={sellerModalopen}
-        setOpen={setSellerModalOpen}
-      />
-      <RegisterBuyerModal open={buyerModalopen} setOpen={setBuyerModalOpen} />
+      <SellerModal open={sellerModalopen} setOpen={setSellerModalOpen} />
+      <BuyerModal open={buyerModalopen} setOpen={setBuyerModalOpen} />
     </div>
   );
 };

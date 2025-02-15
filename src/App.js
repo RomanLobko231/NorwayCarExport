@@ -4,6 +4,7 @@ import Navbar from "./ui/Navbar";
 import Home from "./pages/Home";
 import Footer from "./ui/Footer";
 import ScrollToTop from "./tools/ScrollToTop";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} exact={true} />
         <Route path="*" element={<Home />} exact={true} />
+        <Route path="/register" element={<RegisterPage />} exact={true} />
       </Routes>
       <Footer />
     </BrowserRouter>

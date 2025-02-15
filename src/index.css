@@ -16,6 +16,18 @@
     mask-composite: intersect;
   }
 
+  .card_shadow {
+    box-shadow: rgba(17, 51, 90, 0.4) 0px 3px 3px 0px;
+  }
+
+  .card_shadow_hover {
+    box-shadow: rgba(32, 42, 53, 0.3) 0px 1px 2px 0px;
+  }
+
+  .card_shadow_click {
+    box-shadow: none;
+  }
+
   .buttonsh {
     box-shadow: rgba(17, 51, 90, 0.4) 0px 4px 2px 0px;
   }
@@ -32,6 +44,13 @@
 @layer base {
   body {
     background-color: #f7f8f8;
+    overflow-y: scroll;
+  }
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   html {
     @apply !overflow-visible !p-0;

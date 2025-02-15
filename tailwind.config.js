@@ -11,9 +11,11 @@ module.exports = {
         swamp: "#34474B",
         "swamp-500": "#416858",
         "swamp-300": "#a7beb3",
-        "distant-cloud": "#EFF2F0",
+        "swamp-100": "#EDF2EF",
+        "distant-cloud": "#F7F8F7",
         mirage: "#001f3f",
         "medium-gray": "#333333",
+        "medli-gray": "#666666",
         "light-gray": "#888888",
       },
       borderRadius: {
