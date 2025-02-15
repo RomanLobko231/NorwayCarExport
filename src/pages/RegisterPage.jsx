@@ -3,7 +3,7 @@ import RegisterSeller from "../ui/seller/RegisterSeller";
 
 const RegisterPage = () => {
   return (
-    <div className="flex w-full flex-col items-center pt-28 md:pt-28">
+    <div className="flex w-full flex-col items-center px-4 pt-28 md:px-0 md:pt-28">
       <h1 className="mb-7 text-center text-4xl font-semibold text-medium-gray">
         Hvem vil du registrere deg som?
       </h1>
