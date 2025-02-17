@@ -15,10 +15,6 @@ const navigation = [
   { name: "Registrer bruker", href: "/register", current: false },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -48,8 +44,6 @@ export default function Navbar() {
               <div className="hidden py-1 sm:ml-6 sm:block">
                 <div className="flex space-x-3">
                   {navigation.map((item, index) => {
-                    const isActive = location.pathname === item.href;
-
                     return (
                       <Link
                         key={index}
@@ -85,18 +79,17 @@ export default function Navbar() {
         </div>
 
         <DisclosurePanel className="sm:hidden">
-          <div className="w-full space-y-6 px-2 pb-9 pt-8">
+          <div className="flex w-full flex-col items-center space-y-6 px-2 pb-9 pt-8">
             {navigation.map((item, index) => (
               <DisclosureButton
                 key={index}
                 as="a"
                 href={item.href}
-                aria-current={item.current ? "page" : undefined}
                 className={`${
                   location.pathname === item.href
-                    ? "bg-gunmental text-lighthouse"
-                    : "text-gunmental hover:bg-gunmental hover:text-lighthouse"
-                } text-bases rounded-full px-4 pb-2 pt-1 text-xl font-semibold`}
+                    ? "bg-swamp-100 border border-dashed text-gunmental"
+                    : "from-mirage to-swamp-500 text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse"
+                } rounded-lg border-gunmental px-4 pb-2 pt-1 text-xl font-semibold`}
               >
                 {item.name}
               </DisclosureButton>

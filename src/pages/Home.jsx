@@ -40,7 +40,7 @@ const Home = () => {
           onClick={() => {
             setSellerModalOpen(true);
           }}
-          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-full bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-4 pt-3 duration-300 hover:-translate-y-1 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-xl md:px-7 md:pb-4"
+          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 duration-300 hover:-translate-y-1 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-xl md:px-7 md:pb-4"
         >
           <span className="text-2xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-3xl">
             SELGE BIL
@@ -59,7 +59,7 @@ const Home = () => {
           onClick={() => {
             setBuyerModalOpen(true);
           }}
-          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-full border border-swamp-300 bg-cornsilk px-6 pb-4 pt-3 duration-300 hover:-translate-y-1 md:space-x-3 md:rounded-xl md:px-7 md:pb-4"
+          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-lg border border-swamp-300 bg-cornsilk px-6 pb-3 pt-3 duration-300 hover:-translate-y-1 md:space-x-3 md:rounded-xl md:px-7 md:pb-4"
         >
           <span className="text-2xl font-semibold leading-4 text-medium-gray md:text-3xl">
             KJØPE BIL

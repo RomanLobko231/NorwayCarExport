@@ -11,7 +11,7 @@ const RegisterPage = () => {
         <div className="flex flex-col items-center">
           <img
             src="./icons/car_sold.png"
-            className="max-h-[150px] w-auto object-contain"
+            className="h-[150px] w-auto object-contain"
           />
           <p className="text-medli-gray mb-3 mt-5 text-center text-lg font-normal">
             Selg bilen din raskt og enkelt til pålitelige kjøpere
@@ -21,7 +21,7 @@ const RegisterPage = () => {
         <div className="flex flex-col items-center">
           <img
             src="./icons/auction.png"
-            className="max-h-[150px] w-auto object-contain"
+            className="h-[150px] w-auto object-contain"
           />
           <p className="text-medli-gray mb-3 mt-5 text-center text-lg font-normal">
             Få tilgang til eksklusive bilauksjoner og gode tilbud
