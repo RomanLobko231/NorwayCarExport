@@ -5,6 +5,7 @@ import ApiService from "../../api/ApiService";
 import TextInputField from "../input/TextInputField";
 import NumberInputField from "../input/NumberInputField";
 import {
+  MdClose,
   MdOutlineDirectionsCar,
   MdOutlineEmail,
   MdOutlinePerson2,
@@ -69,9 +70,17 @@ const SellerModal = ({ open, setOpen }) => {
             transition
             className="from-swamp-100 relative w-full max-w-lg transform overflow-hidden rounded-xl border border-light-gray bg-gradient-to-bl to-distant-cloud p-6 text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 md:min-w-[400px]"
           >
-            <h1 className="text-center text-2xl font-bold text-medium-gray md:text-3xl">
-              Fyll ut skjemaet
-            </h1>
+            <div className="mb-2 flex flex-row items-center justify-between md:px-2">
+              <h1 className="mb-1 whitespace-nowrap text-center text-2xl font-bold text-medium-gray md:text-3xl">
+                Fyll ut skjemaet
+              </h1>
+              <div class="mx-3 h-[1px] flex-grow bg-light-gray opacity-50"></div>
+              <MdClose
+                className="h-6 w-6 hover:opacity-25"
+                color="#333333"
+                onClick={() => setOpen(false)}
+              />
+            </div>
             <form
               className="flex w-full flex-col items-center md:px-2"
               onSubmit={submitRequest}
@@ -119,7 +128,7 @@ const SellerModal = ({ open, setOpen }) => {
               ) : (
                 <button
                   type="submit"
-                  className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-5 flex flex-row items-center space-x-2 rounded-full bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-4 pt-4 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-lg md:px-7 md:pb-3 md:pt-3"
+                  className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-lg md:px-7 md:pb-3 md:pt-3"
                 >
                   <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
                     SEND SØKNAD
