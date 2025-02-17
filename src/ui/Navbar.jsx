@@ -89,7 +89,7 @@ export default function Navbar() {
                   location.pathname === item.href
                     ? "bg-swamp-100 border border-dashed text-gunmental"
                     : "from-mirage to-swamp-500 text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse"
-                } rounded-lg border-gunmental px-4 pb-2 pt-1 text-xl font-semibold`}
+                } rounded-lg border-gunmental px-4 pb-1 pt-1 text-xl font-semibold`}
               >
                 {item.name}
               </DisclosureButton>

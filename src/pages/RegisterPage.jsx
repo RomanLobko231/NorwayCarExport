@@ -4,9 +4,12 @@ import RegisterSeller from "../ui/seller/RegisterSeller";
 const RegisterPage = () => {
   return (
     <div className="flex w-full flex-col items-center px-4 pt-28 md:px-0 md:pt-28">
-      <h1 className="mb-7 text-center text-4xl font-semibold text-medium-gray">
+      <h1 className="mb-3 text-center text-2xl font-semibold text-medium-gray md:mb-7 md:text-4xl">
         Hvem vil du registrere deg som?
       </h1>
+      <div class="scroll animate-down relative flex h-9 w-9 items-center justify-center rounded-full border-2 border-medium-gray">
+        <div class="absolute left-3 top-3 h-2 w-2 rotate-[-45deg] border-b-2 border-l-2 border-medium-gray"></div>
+      </div>
       <div className="mt-12 flex w-full flex-row flex-wrap items-baseline justify-center gap-9">
         <div className="flex flex-col items-center">
           <img

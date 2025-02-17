@@ -25,6 +25,16 @@ module.exports = {
       backgroundImage: {
         "hero-pattern": "url('../public/pngbg.png')",
       },
+      keyframes: {
+        down: {
+          "0%": { transform: "translateY(0)" },
+          "20%": { transform: "translateY(15px)" },
+          "40%": { transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        down: "down 1.5s infinite",
+      },
     },
   },
   plugins: [],
