@@ -74,7 +74,7 @@ const SellerModal = ({ open, setOpen }) => {
               <h1 className="mb-1 whitespace-nowrap text-center text-2xl font-bold text-medium-gray md:text-3xl">
                 Fyll ut skjemaet
               </h1>
-              <div class="mx-3 h-[1px] flex-grow bg-light-gray opacity-50"></div>
+              <div className="mx-3 h-[1px] flex-grow bg-light-gray opacity-50"></div>
               <MdClose
                 className="h-6 w-6 hover:opacity-25"
                 color="#333333"
@@ -102,6 +102,7 @@ const SellerModal = ({ open, setOpen }) => {
               <TextInputField
                 label="Epost"
                 name="email"
+                type="email"
                 icon={<MdOutlineEmail className="h-6 w-auto" color="#333" />}
                 initialValue={sellerData.email}
                 onChange={handleInputChange}

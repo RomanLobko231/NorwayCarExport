@@ -29,7 +29,7 @@ const Home = () => {
       </h1>
       <img
         className="gradv md:gradvh mt-8 h-[155px] w-full object-cover object-center md:h-[300px] lg:h-[340px]"
-        src="./carhero.jpg"
+        src="../carhero.jpg"
         alt=""
       />
       <p className="text-center text-2xl font-light text-light-gray">

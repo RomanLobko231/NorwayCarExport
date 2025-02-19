@@ -8,7 +8,10 @@ import {
   XMarkIcon,
   ArrowDownRightIcon,
 } from "@heroicons/react/24/outline";
+import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import BuyerModal from "./buyer/BuyerModal";
+import LoginModal from "./LoginModal";
 
 const navigation = [
   { name: "Logg inn", href: "/login", current: false },
@@ -18,6 +21,7 @@ const navigation = [
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [loginModalopen, setLoginModalOpen] = useState(false);
 
   return (
     <div className="fixed z-10 flex w-full justify-center">
@@ -31,7 +35,7 @@ export default function Navbar() {
               <div className="flex flex-shrink-0 items-center">
                 <img
                   alt="NCE logo"
-                  src="./nce_logo.png"
+                  src="../nce_logo.png"
                   className="mr-2 h-7 w-auto"
                 />
                 <p
@@ -43,21 +47,23 @@ export default function Navbar() {
               </div>
               <div className="hidden py-1 sm:ml-6 sm:block">
                 <div className="flex space-x-3">
-                  {navigation.map((item, index) => {
-                    return (
-                      <Link
-                        key={index}
-                        to={item.href}
-                        className={`${
-                          location.pathname === item.href
-                            ? "bg-swamp-100 border border-dashed text-gunmental"
-                            : "from-mirage to-swamp-500 text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse"
-                        } rounded-lg border-gunmental px-4 pb-2 pt-1 text-xl font-semibold`}
-                      >
-                        {item.name}
-                      </Link>
-                    );
-                  })}
+                  <Link
+                    to="/register"
+                    className={`${
+                      location.pathname === "/register"
+                        ? "bg-swamp-100 border border-dashed text-gunmental"
+                        : "from-mirage to-swamp-500 text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse"
+                    } rounded-lg border-gunmental px-4 pb-2 pt-1 text-xl font-semibold`}
+                  >
+                    Register bruker
+                  </Link>
+                  <div
+                    className={`cursor-pointer rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
+                    onClick={() => setLoginModalOpen(true)}
+                  >
+                    {" "}
+                    Logg inn
+                  </div>
                 </div>
               </div>
             </div>
@@ -100,6 +106,7 @@ export default function Navbar() {
           </div>
         </DisclosurePanel>
       </Disclosure>
+      <LoginModal open={loginModalopen} setOpen={setLoginModalOpen} />
     </div>
   );
 }

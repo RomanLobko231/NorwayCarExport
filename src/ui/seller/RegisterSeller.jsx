@@ -7,7 +7,9 @@ import {
   MdOutlinePassword,
   MdOutlinePerson2,
   MdOutlinePhone,
+  MdPassword,
 } from "react-icons/md";
+import PasswordInputField from "../input/PasswordInputField";
 
 const RegisterSeller = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -17,7 +19,7 @@ const RegisterSeller = () => {
     password: "",
     phoneNumber: "",
     name: "",
-    address: "???",
+    address: "",
   });
 
   useEffect(() => {
@@ -90,18 +92,18 @@ const RegisterSeller = () => {
           <TextInputField
             label="Epost"
             name="email"
+            type="email"
             icon={<MdOutlineEmail className="h-6 w-auto" />}
             initialValue={sellerData.email}
             onChange={handleInputChange}
           />
-          <TextInputField
+          {/* <PasswordInputField
             label="Passord"
             name="password"
-            type="password"
-            icon={<MdOutlinePassword className="h-6 w-auto" />}
+            icon={<MdPassword className="h-6 w-auto" color="#333" />}
             initialValue={sellerData.password}
             onChange={handleInputChange}
-          />
+          /> */}
           <TextInputField
             label="Adresse"
             name="address"

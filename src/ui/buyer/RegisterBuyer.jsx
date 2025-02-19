@@ -89,6 +89,7 @@ const RegisterBuyer = () => {
           <TextInputField
             label="Epost"
             name="email"
+            type="email"
             icon={<MdOutlineEmail className="h-6 w-auto" color="#333" />}
             initialValue={buyerData.email}
             onChange={handleInputChange}

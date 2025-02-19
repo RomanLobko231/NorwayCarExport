@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 const TextInputField = ({
   label,
   type,
@@ -24,9 +22,10 @@ const TextInputField = ({
           type={type ? type : "text"}
           id={label}
           name={name}
+          autoComplete={name}
           value={initialValue}
           onChange={onChange}
-          className="block w-full rounded-lg border border-medium-gray bg-white px-5 py-2.5 ps-11 text-base font-medium text-medium-gray disabled:text-light-gray md:ps-14 md:text-lg"
+          className="block w-full rounded-lg border border-medium-gray bg-white px-5 py-2.5 ps-14 text-base font-medium text-medium-gray disabled:text-light-gray md:text-lg"
           required
         />
       </div>

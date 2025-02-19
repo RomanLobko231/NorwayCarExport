@@ -7,13 +7,13 @@ const RegisterPage = () => {
       <h1 className="mb-3 text-center text-2xl font-semibold text-medium-gray md:mb-7 md:text-4xl">
         Hvem vil du registrere deg som?
       </h1>
-      <div class="scroll animate-down relative flex h-9 w-9 items-center justify-center rounded-full border-2 border-medium-gray">
-        <div class="absolute left-3 top-3 h-2 w-2 rotate-[-45deg] border-b-2 border-l-2 border-medium-gray"></div>
+      <div className="scroll animate-down relative flex h-9 w-9 items-center justify-center rounded-full border-2 border-medium-gray">
+        <div className="absolute left-3 top-3 h-2 w-2 rotate-[-45deg] border-b-2 border-l-2 border-medium-gray"></div>
       </div>
       <div className="mt-12 flex w-full flex-row flex-wrap items-baseline justify-center gap-9">
         <div className="flex flex-col items-center">
           <img
-            src="./icons/car_sold.png"
+            src="../icons/car_sold.png"
             className="h-[150px] w-auto object-contain"
           />
           <p className="text-medli-gray mb-3 mt-5 text-center text-lg font-normal">
@@ -23,7 +23,7 @@ const RegisterPage = () => {
         </div>
         <div className="flex flex-col items-center">
           <img
-            src="./icons/auction.png"
+            src="../icons/auction.png"
             className="h-[150px] w-auto object-contain"
           />
           <p className="text-medli-gray mb-3 mt-5 text-center text-lg font-normal">
