@@ -32,7 +32,7 @@ const SellerModal = ({ open, setOpen }) => {
       setSellerData({
         ownerName: "",
         phoneNumber: "",
-        carRegistrationNumber: "",
+        registrationNumber: "",
         email: "",
         kilometers: "",
       });
@@ -45,6 +45,7 @@ const SellerModal = ({ open, setOpen }) => {
   };
 
   const submitRequest = (e) => {
+    console.log(sellerData);
     e.preventDefault();
     postCarRequest(sellerData);
   };

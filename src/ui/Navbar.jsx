@@ -27,7 +27,7 @@ export default function Navbar() {
     <div className="fixed z-10 flex w-full justify-center">
       <Disclosure
         as="nav"
-        className="mx-4 my-3 flex w-full max-w-7xl flex-col items-center justify-center rounded-lg border border-medium-gray bg-lighthouse/50 backdrop-blur"
+        className="mx-4 my-3 flex w-full max-w-7xl flex-col items-center justify-center rounded-lg border border-medium-gray bg-gradient-to-bl from-lighthouse/50 to-slate-50/50 backdrop-blur"
       >
         <div className="w-full max-w-7xl px-6 lg:px-8">
           <div className="flex h-12 flex-row items-center justify-between md:h-14">
