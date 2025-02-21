@@ -86,20 +86,23 @@ export default function Navbar() {
 
         <DisclosurePanel className="sm:hidden">
           <div className="flex w-full flex-col items-center space-y-6 px-2 pb-9 pt-8">
-            {navigation.map((item, index) => (
-              <DisclosureButton
-                key={index}
-                as="a"
-                href={item.href}
-                className={`${
-                  location.pathname === item.href
-                    ? "bg-swamp-100 border border-dashed text-gunmental"
-                    : "from-mirage to-swamp-500 text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse"
-                } rounded-lg border-gunmental px-4 pb-1 pt-1 text-xl font-semibold`}
-              >
-                {item.name}
-              </DisclosureButton>
-            ))}
+            <Link
+              to="/register"
+              className={`${
+                location.pathname === "/register"
+                  ? "bg-swamp-100 border border-dashed text-gunmental"
+                  : "from-mirage to-swamp-500 text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse"
+              } rounded-lg border-gunmental px-4 pb-2 pt-1 text-xl font-semibold`}
+            >
+              Register bruker
+            </Link>
+            <div
+              className={`cursor-pointer rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
+              onClick={() => setLoginModalOpen(true)}
+            >
+              {" "}
+              Logg inn
+            </div>
             <p className="mt-10 text-center font-extralight text-gray-500">
               Vi gjør det enkelt for deg
             </p>
