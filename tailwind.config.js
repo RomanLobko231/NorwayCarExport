@@ -17,6 +17,7 @@ module.exports = {
         "medium-gray": "#333333",
         "medli-gray": "#666666",
         "light-gray": "#888888",
+        "danger-red": "#800000",
       },
       borderRadius: {
         "4xl": "2rem",

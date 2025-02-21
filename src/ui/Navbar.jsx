@@ -1,4 +1,5 @@
 import {
+  CloseButton,
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
@@ -86,8 +87,9 @@ export default function Navbar() {
 
         <DisclosurePanel className="sm:hidden">
           <div className="flex w-full flex-col items-center space-y-6 px-2 pb-9 pt-8">
-            <Link
-              to="/register"
+            <CloseButton
+              as={Link}
+              to={"/register"}
               className={`${
                 location.pathname === "/register"
                   ? "bg-swamp-100 border border-dashed text-gunmental"
@@ -95,14 +97,14 @@ export default function Navbar() {
               } rounded-lg border-gunmental px-4 pb-2 pt-1 text-xl font-semibold`}
             >
               Register bruker
-            </Link>
-            <div
-              className={`cursor-pointer rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
+            </CloseButton>
+            <CloseButton
+              as={Link}
               onClick={() => setLoginModalOpen(true)}
+              className={`cursor-pointer rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
             >
-              {" "}
               Logg inn
-            </div>
+            </CloseButton>
             <p className="mt-10 text-center font-extralight text-gray-500">
               Vi gjør det enkelt for deg
             </p>
