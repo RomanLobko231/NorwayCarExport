@@ -39,6 +39,14 @@
   .button_shadow_hover {
     box-shadow: rgba(17, 51, 90, 0.8) 0px 2px 1px 0px;
   }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    scrollbar-width: none;
+  }
 }
 
 @layer base {
