@@ -19,7 +19,7 @@ const CarCard = ({ carInfo, onDelete }) => {
       onClick={() => {
         navigate(`/car/${carInfo.id}`);
       }}
-      className="card_shadow hover:card_shadow_hover active:card_shadow_click flex max-h-[440px] w-[300px] cursor-pointer flex-col items-center rounded-md border border-light-gray bg-slate-50 p-3 duration-300 hover:-translate-y-1"
+      className="card_shadow hover:card_shadow_hover active:card_shadow_click flex w-[300px] cursor-pointer flex-col items-center rounded-md border border-light-gray bg-slate-50 p-3 duration-300 hover:-translate-y-1"
     >
       {carInfo.imagePaths[0] ? (
         <img

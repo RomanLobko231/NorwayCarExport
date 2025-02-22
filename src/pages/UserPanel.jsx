@@ -23,26 +23,6 @@ const cars = [
     kilometers: 12321,
     status: "Bid Placed",
   },
-  {
-    id: "dqqwwqdqw313dqwd",
-    make: "Chevrolet",
-    model: "Vance",
-    imagePaths: ["../car2.jpg", "s"],
-    registrationNumber: "HD23094",
-    nextEUControl: "2027-11-23",
-    kilometers: 789321,
-    status: "Sold",
-  },
-  {
-    id: "dqqwwqdqwdqwd",
-    make: "Dodge",
-    model: "Tycoon",
-    imagePaths: ["../car2.jpg", "s"],
-    registrationNumber: "HD23094",
-    nextEUControl: "2027-11-23",
-    kilometers: 789321,
-    status: "On Auction",
-  },
 ];
 
 const UserPanel = () => {
