@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {
+  MdEdit,
   MdOutlineArrowForward,
   MdOutlineEmail,
   MdOutlineLocationOn,
@@ -12,18 +13,7 @@ import PasswordInputField from "../ui/input/PasswordInputField";
 import CarsList from "../ui/car/CarsList";
 import OptionsInput from "../ui/input/OptionsInput";
 
-const cars = [
-  {
-    id: "cwwewewdwed",
-    make: "Toyota",
-    model: "Cruise",
-    imagePaths: ["../car3.jpg", "s"],
-    registrationNumber: "AV45234",
-    nextEUControl: "2026-04-07",
-    kilometers: 12321,
-    status: "Bid Placed",
-  },
-];
+const cars = [];
 
 const UserPanel = () => {
   const [userData, setUserData] = useState({
@@ -58,22 +48,27 @@ const UserPanel = () => {
           className={`flex flex-col items-center rounded-lg ${!inputDisabled && "card_shadow"} border border-light-gray bg-slate-50 p-6 md:col-span-2`}
         >
           <div className="mb-5 flex w-full flex-col flex-wrap items-center justify-between gap-2 md:flex-row md:items-end">
-            <h1 className="text-center text-2xl font-bold text-medium-gray md:text-3xl">
-              STYREPANEL
-            </h1>
             <div
-              className={`card_shadow hover:button_shadow_hover ${!inputDisabled && "hidden"} active:button_shadow_click cursor-pointer rounded-lg border border-medium-gray bg-lighthouse from-mirage to-swamp-500 px-2 py-1 text-lg font-semibold text-medium-gray duration-300 hover:-translate-y-1 hover:bg-gradient-to-br hover:text-lighthouse md:px-4 md:pb-2 md:pt-1 md:text-xl`}
-              onClick={() => {
-                setInputDisabled(false);
-              }}
+              className={`flex w-full ${inputDisabled && "justify-between md:w-full"} flex-row items-center justify-center md:w-auto`}
             >
-              Endre info
+              <h1 className="text-center text-2xl font-bold text-medium-gray md:text-3xl">
+                STYREPANEL
+              </h1>
+              <div
+                className={`buttonsh hover:button_shadow_hover ${!inputDisabled && "hidden"} active:button_shadow_click flex cursor-pointer flex-row items-center rounded-lg border border-medium-gray bg-lighthouse from-mirage to-swamp-500 px-2 py-1 text-lg font-semibold text-medium-gray duration-300 hover:-translate-y-1 hover:bg-gradient-to-br hover:text-lighthouse md:px-4 md:pb-2 md:pt-1 md:text-xl`}
+                onClick={() => {
+                  setInputDisabled(false);
+                }}
+              >
+                <p className="hidden md:block">Endre info</p>
+                <MdEdit className="m-1 h-5 w-auto md:ml-2" />
+              </div>
             </div>
             <div
               className={`flex flex-row items-center ${inputDisabled && "hidden"} gap-2`}
             >
               <div
-                className={`card_shadow hover:button_shadow_hover active:button_shadow_click cursor-pointer rounded-lg border border-medium-gray bg-lighthouse from-mirage to-swamp-500 px-2 py-1 text-lg font-semibold text-medium-gray duration-300 hover:-translate-y-1 hover:bg-gradient-to-br hover:text-lighthouse md:px-4 md:pb-2 md:pt-1 md:text-xl`}
+                className={`buttonsh hover:button_shadow_hover active:button_shadow_click cursor-pointer rounded-lg border border-medium-gray bg-lighthouse from-mirage to-swamp-500 px-2 py-1 text-lg font-semibold text-medium-gray duration-300 hover:-translate-y-1 hover:bg-gradient-to-br hover:text-lighthouse md:px-4 md:pb-2 md:pt-1 md:text-xl`}
                 onClick={() => {
                   console.log(userData);
                   setInputDisabled(true);
@@ -82,7 +77,7 @@ const UserPanel = () => {
                 Lagre info
               </div>
               <div
-                className={`card_shadow hover:button_shadow_hover active:button_shadow_click cursor-pointer rounded-lg border border-medium-gray bg-lighthouse px-2 py-1 text-lg font-semibold text-medium-gray duration-300 hover:-translate-y-1 hover:bg-gunmental hover:text-lighthouse md:px-4 md:pb-2 md:pt-1 md:text-xl`}
+                className={`buttonsh hover:button_shadow_hover active:button_shadow_click cursor-pointer rounded-lg border border-medium-gray bg-lighthouse px-2 py-1 text-lg font-semibold text-medium-gray duration-300 hover:-translate-y-1 hover:bg-gunmental hover:text-lighthouse md:px-4 md:pb-2 md:pt-1 md:text-xl`}
                 onClick={() => {
                   setInputDisabled(true);
                 }}
@@ -91,7 +86,7 @@ const UserPanel = () => {
               </div>
             </div>
           </div>
-          <hr className="mb-3 w-full border-[1px] border-dashed border-gunmental px-2" />
+          <hr className="mb-3 hidden w-full border-[1px] border-dashed border-gunmental px-2 md:block" />
 
           <div className="flex w-full flex-col items-center md:flex-row md:items-start">
             <div className="flex w-full flex-col items-center justify-around rounded-lg border border-light-gray bg-white p-2 md:mt-8 md:w-auto">

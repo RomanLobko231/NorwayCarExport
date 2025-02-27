@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { RiArrowDownBoxLine, RiArrowUpBoxLine } from "react-icons/ri";
+import {
+  RiArrowDownBoxLine,
+  RiArrowRightBoxLine,
+  RiArrowUpBoxLine,
+} from "react-icons/ri";
 import TextInputField from "../input/TextInputField";
 import {
   MdOutlineEmail,
@@ -21,6 +25,7 @@ const RegisterSeller = () => {
     name: "",
     address: "",
   });
+  const [regStep, setRegStep] = useState(1);
 
   useEffect(() => {
     if (isExpanded && expandedRef.current) {
@@ -29,7 +34,7 @@ const RegisterSeller = () => {
         block: "start",
       });
     }
-  }, [isExpanded]);
+  }, [isExpanded, regStep]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -39,9 +44,16 @@ const RegisterSeller = () => {
     }));
   };
 
-  const submitSaveRequest = (e) => {
+  const submitFirstStep = (e) => {
     e.preventDefault();
     console.log(sellerData);
+    setRegStep(2);
+  };
+
+  const submitFinalStep = (e) => {
+    e.preventDefault();
+    console.log(sellerData);
+    setRegStep(1);
   };
 
   return (
@@ -69,14 +81,47 @@ const RegisterSeller = () => {
         </div>
       </div>
 
-      {isExpanded && (
+      {regStep == 1 && isExpanded && (
         <form
           className="flex w-full flex-col items-center border-t p-4 text-base font-medium text-medium-gray"
-          onSubmit={submitSaveRequest}
+          onSubmit={submitFirstStep}
           onClick={(e) => e.stopPropagation()}
         >
           <TextInputField
-            label="Navn"
+            label="Epost"
+            name="email"
+            type="email"
+            icon={<MdOutlineEmail className="h-6 w-auto" />}
+            initialValue={sellerData.email}
+            onChange={handleInputChange}
+          />
+          <PasswordInputField
+            label="Passord"
+            name="password"
+            icon={<MdPassword className="h-6 w-auto" color="#333" />}
+            initialValue={sellerData.password}
+            onChange={handleInputChange}
+          />
+          <button
+            type="submit"
+            className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg md:pb-2 md:pt-2"
+          >
+            <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
+              NESTE
+            </span>
+            <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[18px]"></div>
+            <RiArrowRightBoxLine className="h-6 w-auto" color="#FEFAF0" />
+          </button>
+        </form>
+      )}
+      {regStep == 2 && isExpanded && (
+        <form
+          className="flex w-full flex-col items-center border-t p-4 text-base font-medium text-medium-gray"
+          onSubmit={submitFinalStep}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <TextInputField
+            label="Fult Navn"
             name="name"
             icon={<MdOutlinePerson2 className="h-6 w-auto" />}
             initialValue={sellerData.name}
@@ -90,21 +135,6 @@ const RegisterSeller = () => {
             onChange={handleInputChange}
           />
           <TextInputField
-            label="Epost"
-            name="email"
-            type="email"
-            icon={<MdOutlineEmail className="h-6 w-auto" />}
-            initialValue={sellerData.email}
-            onChange={handleInputChange}
-          />
-          {/* <PasswordInputField
-            label="Passord"
-            name="password"
-            icon={<MdPassword className="h-6 w-auto" color="#333" />}
-            initialValue={sellerData.password}
-            onChange={handleInputChange}
-          /> */}
-          <TextInputField
             label="Adresse"
             name="address"
             icon={<MdOutlineLocationOn className="h-6 w-auto" color="#333" />}
@@ -113,12 +143,12 @@ const RegisterSeller = () => {
           />
           <button
             type="submit"
-            className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-lg md:pb-2 md:pt-2"
+            className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg md:pb-2 md:pt-2"
           >
             <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
               SEND
             </span>
-            <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[22px]"></div>
+            <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[18px]"></div>
             <RiArrowUpBoxLine className="h-6 w-auto" color="#FEFAF0" />
           </button>
         </form>

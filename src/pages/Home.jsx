@@ -13,14 +13,7 @@ const Home = () => {
 
   return (
     <div className="flex flex-col items-center justify-center pt-28 md:pt-40">
-      <h1 className="mx-6 text-center text-4xl font-normal text-medium-gray md:hidden">
-        Velkommen til{" "}
-        <span className="inline-block bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text font-bold text-transparent">
-          stressfri handel
-        </span>{" "}
-        for bilen din
-      </h1>
-      <h1 className="hidden w-4/5 text-center text-6xl font-normal text-medium-gray md:block">
+      <h1 className="animate-fade-in-slow mx-6 w-4/5 text-center text-4xl font-normal text-medium-gray md:mx-0 md:text-6xl">
         Velkommen til{" "}
         <span className="inline-block bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text font-bold text-transparent">
           stressfri handel
@@ -28,7 +21,7 @@ const Home = () => {
         for bilen din
       </h1>
       <img
-        className="gradv md:gradvh mt-8 h-[155px] w-full object-cover object-center md:h-[300px] lg:h-[340px]"
+        className="gradv md:gradvh animate-fade-in-fast mt-8 h-[155px] w-full object-cover object-center opacity-0 md:h-[300px] lg:h-[340px]"
         src="../carhero.jpg"
         alt=""
       />

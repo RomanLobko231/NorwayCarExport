@@ -32,9 +32,15 @@ module.exports = {
           "20%": { transform: "translateY(15px)" },
           "40%": { transform: "translateY(0)" },
         },
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
       },
       animation: {
         down: "down 1.5s infinite",
+        "fade-in-fast": "fade-in 1s ease-in-out forwards",
+        "fade-in-slow": "fade-in 2.5s ease-in-out forwards",
       },
     },
   },
