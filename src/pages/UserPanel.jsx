@@ -13,7 +13,18 @@ import PasswordInputField from "../ui/input/PasswordInputField";
 import CarsList from "../ui/car/CarsList";
 import OptionsInput from "../ui/input/OptionsInput";
 
-const cars = [];
+const cars = [
+  {
+    id: "1234",
+    imagePaths: ["../car2.jpg"],
+    make: "Toyota",
+    model: "Aventador",
+    registrationNumber: "AV12345",
+    status: "Sold",
+    kilometers: 1234,
+    nextEUControl: "11-11-2027",
+  },
+];
 
 const UserPanel = () => {
   const [userData, setUserData] = useState({

@@ -53,6 +53,7 @@ const RegisterSeller = () => {
   const submitFinalStep = (e) => {
     e.preventDefault();
     console.log(sellerData);
+    //setSellerData()
     setRegStep(1);
   };
 

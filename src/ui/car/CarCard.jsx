@@ -24,7 +24,7 @@ const CarCard = ({ carInfo, onDelete }) => {
       {carInfo.imagePaths[0] ? (
         <img
           src={carInfo.imagePaths[0]}
-          alt="Car Name"
+          alt={carInfo.model ?? "Car"}
           className="h-[185px] w-full rounded border border-medium-gray object-cover"
         />
       ) : (

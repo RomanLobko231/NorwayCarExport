@@ -6,6 +6,32 @@ import { useState } from "react";
 import RegisterBuyerModal from "../ui/buyer/BuyerModal";
 import SellerModal from "../ui/seller/SellerModal";
 import BuyerModal from "../ui/buyer/BuyerModal";
+import CarCardBlurred from "../ui/car/CarCardBlurred";
+
+const cars = [
+  {
+    id: "1234",
+    imagePaths: ["../toyota_example.jpg"],
+    make: "Toyota",
+    model: "Landcruiser",
+    gearbox: "Manuell",
+    engineType: "Diesel",
+    kilometers: 134056,
+    year: "2003",
+    nextEUControl: "11-11-2027",
+  },
+  {
+    id: "12345",
+    imagePaths: ["../zoe_example.jpg"],
+    make: "Renault",
+    model: "Zoe",
+    gearbox: "Automat",
+    engineType: "Elektrisk",
+    kilometers: 75980,
+    year: "2021",
+    nextEUControl: "23-08-2026",
+  },
+];
 
 const Home = () => {
   const [sellerModalopen, setSellerModalOpen] = useState(false);
@@ -66,29 +92,33 @@ const Home = () => {
         </button>
       </div>
       <div className="mt-16 flex flex-row items-center space-x-4 md:mt-20">
-        <div className="w-[70px] border-t-2 border-solid border-light-gray md:w-[200px]"></div>
+        <div className="h-[2px] w-[70px] bg-gradient-to-l from-medium-gray to-transparent md:w-[200px]"></div>
         <h1 className="text-center text-2xl font-bold text-medium-gray md:text-4xl">
           KOM I GANG
         </h1>
-        <div className="w-[70px] border-t-2 border-solid border-light-gray md:w-[200px]"></div>
+        <div className="h-[2px] w-[70px] bg-gradient-to-r from-medium-gray to-transparent md:w-[200px]"></div>
       </div>
       <h3 className="text-center text-lg font-extralight text-light-gray md:text-lg">
         Selg bilen din på 3 enkle steg
       </h3>
       <InfoList />
       <div className="mt-12 flex flex-row items-center space-x-4 md:mt-20">
-        <div className="w-[70px] border-t-2 border-solid border-light-gray md:w-[200px]"></div>
+        <div className="h-[2px] w-[70px] bg-gradient-to-l from-medium-gray to-transparent md:w-[200px]"></div>
         <h1 className="text-center text-2xl font-bold text-medium-gray md:text-4xl">
           NYESTE BUD
         </h1>
-        <div className="w-[70px] border-t-2 border-solid border-light-gray md:w-[200px]"></div>
+        <div className="h-[2px] w-[70px] bg-gradient-to-r from-medium-gray to-transparent md:w-[200px]"></div>
       </div>
       <h3 className="text-center text-lg font-extralight text-light-gray md:text-lg">
         Sjekk hva som er tilgjelgelig nå
       </h3>
-      <h1 className="mt-10 w-4/5 text-center text-2xl font-light text-light-gray">
-        Ingen tilgjengelige bud akkurat nå
-      </h1>
+      <div
+        className={`mt-8 flex w-full max-w-7xl flex-col flex-nowrap items-center justify-center gap-4 pb-4 md:flex-row md:flex-wrap md:items-start`}
+      >
+        {cars.map((car) => (
+          <CarCardBlurred carInfo={car} key={car.id} />
+        ))}
+      </div>
 
       <SellerModal open={sellerModalopen} setOpen={setSellerModalOpen} />
       <BuyerModal open={buyerModalopen} setOpen={setBuyerModalOpen} />
