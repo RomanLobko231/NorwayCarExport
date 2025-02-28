@@ -11,7 +11,7 @@ const TextInputField = ({
     <div className="mb-2 mt-1 w-full flex-col">
       <label
         htmlFor={label}
-        className="ml-5 text-base font-medium text-light-gray"
+        className="ml-5 text-sm font-medium text-light-gray md:text-base"
       >
         {label}
       </label>

@@ -2,6 +2,7 @@ import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import {
   MdClose,
   MdOutlineAccountBalance,
+  MdOutlineAlternateEmail,
   MdOutlineEmail,
   MdOutlineLocationOn,
   MdOutlinePerson2,
@@ -75,7 +76,12 @@ const BuyerModal = ({ open, setOpen }) => {
                 label="Epost"
                 name="email"
                 type="email"
-                icon={<MdOutlineEmail className="h-6 w-auto" color="#333" />}
+                icon={
+                  <MdOutlineAlternateEmail
+                    className="h-6 w-auto"
+                    color="#333"
+                  />
+                }
                 initialValue={buyerData.email}
                 onChange={handleInputChange}
               />

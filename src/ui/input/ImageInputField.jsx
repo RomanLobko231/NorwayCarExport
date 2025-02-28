@@ -1,3 +1,5 @@
+import { MdClose, MdOutlineFileUpload } from "react-icons/md";
+
 const ImageInputField = ({ images, setImages }) => {
   const handleFileChange = (event) => {
     const files = Array.from(event.target.files).filter(
@@ -13,35 +15,35 @@ const ImageInputField = ({ images, setImages }) => {
   };
 
   return (
-    <div className="mx-auto flex flex-col items-center p-4">
-      <label className="mb-4 block text-center text-2xl font-bold text-medium-gray">
-        LASTE OPP BILDER
+    <div className="mb-2 mt-1 flex w-full flex-col items-center">
+      <label className="flex w-full cursor-pointer flex-row items-center justify-center gap-1 rounded-lg border border-gunmental bg-white px-4 py-2 text-base font-medium text-light-gray hover:bg-gray-200 hover:text-medium-gray md:text-lg">
+        <MdOutlineFileUpload className="h-6 w-auto" color="#888" />
+        Velg filer
+        <input
+          type="file"
+          multiple
+          accept="image/jpeg, image/png"
+          onChange={handleFileChange}
+          className="hidden"
+        />
       </label>
-      <input
-        type="file"
-        multiple
-        accept="image/jpeg, image/png"
-        onChange={handleFileChange}
-        className="block w-full text-base text-gunmental file:mr-4 file:rounded-lg file:border file:border-gunmental file:bg-lighthouse file:px-4 file:py-2 file:text-base file:font-medium hover:file:bg-blue-100"
-      />
 
       {images.length > 0 && (
-        <div className="mt-4">
+        <div className="mt-3 w-full">
           <ul className="mt-2 list-inside list-disc">
             {images.map((file, index) => (
               <li
                 key={index}
                 className="mt-2 flex flex-row items-center text-gray-700"
               >
-                <span className="text-base font-medium text-medium-gray">
+                <p className="max-w-[70%] truncate text-sm font-medium text-medium-gray md:text-base">
                   {file.name}
-                </span>
-                <div className="mx-2 h-[1px] w-full bg-light-gray opacity-50"></div>
-                <img
-                  src="../icons/cross_dark.png"
-                  alt="Delete"
+                </p>
+                <div className="mx-3 h-[1px] flex-grow bg-light-gray opacity-50"></div>
+                <MdClose
+                  className="h-5 w-5 flex-shrink-0 hover:opacity-25"
+                  color="#333333"
                   onClick={() => handleFileDelete(index)}
-                  className="ml-4 mt-1 h-4 w-4 cursor-pointer hover:opacity-70"
                 />
               </li>
             ))}

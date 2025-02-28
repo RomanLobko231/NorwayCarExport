@@ -3,6 +3,7 @@ import {
   MdClose,
   MdEmail,
   MdOutlineAccountBalance,
+  MdOutlineAlternateEmail,
   MdOutlineEmail,
   MdOutlineLocationOn,
   MdOutlinePerson2,
@@ -65,7 +66,12 @@ const LoginModal = ({ open, setOpen }) => {
                 label="Epost"
                 name="email"
                 type="email"
-                icon={<MdEmail className="h-6 w-auto" color="#333" />}
+                icon={
+                  <MdOutlineAlternateEmail
+                    className="h-6 w-auto"
+                    color="#333"
+                  />
+                }
                 initialValue={loginData.email}
                 onChange={handleInputChange}
               />

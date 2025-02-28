@@ -17,13 +17,13 @@ const CarCardBlurred = ({ carInfo }) => {
         // navigate(`/car/${carInfo.id}`);
         setLoginModalOpen(true);
       }}
-      className="card_shadow hover:card_shadow_hover active:card_shadow_click from-swamp-100 flex w-[300px] cursor-pointer flex-col items-center rounded-md border border-light-gray border-swamp-500 bg-gradient-to-br to-distant-cloud p-3 duration-300 hover:-translate-y-1"
+      className="card_shadow hover:card_shadow_hover active:card_shadow_click from-swamp-100 flex w-[300px] cursor-pointer flex-col items-center rounded-md border border-swamp-500 bg-gradient-to-br to-distant-cloud p-3 duration-300 hover:-translate-y-1"
     >
       {carInfo.imagePaths[0] ? (
         <img
           src={carInfo.imagePaths[0]}
           alt={carInfo.model ?? "Car"}
-          className="h-[185px] w-full rounded border border-medium-gray object-cover"
+          className="h-[185px] w-full rounded border border-swamp-500 object-cover"
         />
       ) : (
         <div className="from-swamp-100 flex h-[185px] w-full items-center justify-center rounded border border-medium-gray bg-lighthouse">
@@ -54,7 +54,7 @@ const CarCardBlurred = ({ carInfo }) => {
         <h1 className="text-xl font-medium text-cornsilk group-hover:text-lighthouse">
           Siste bud:{" "}
         </h1>
-        <h1 className="text-xl font-medium text-cornsilk blur-[5px] group-hover:text-lighthouse">
+        <h1 className="select-none text-xl font-medium text-cornsilk blur-[5px] group-hover:text-lighthouse">
           {carInfo.kilometers}
         </h1>
       </div>

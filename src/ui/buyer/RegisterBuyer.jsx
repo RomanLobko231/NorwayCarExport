@@ -7,13 +7,16 @@ import {
 import TextInputField from "../input/TextInputField";
 import {
   MdOutlineAccountBalance,
+  MdOutlineAlternateEmail,
   MdOutlineEmail,
   MdOutlineLocationOn,
+  MdOutlineNumbers,
   MdOutlinePerson2,
   MdOutlinePhone,
   MdPassword,
 } from "react-icons/md";
 import PasswordInputField from "../input/PasswordInputField";
+import { LuMailbox } from "react-icons/lu";
 
 const RegisterBuyer = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -25,6 +28,8 @@ const RegisterBuyer = () => {
     email: "",
     address: "",
     password: "",
+    postalLocation: "",
+    postalCode: "",
   });
   const [regStep, setRegStep] = useState(1);
 
@@ -42,6 +47,16 @@ const RegisterBuyer = () => {
     setBuyerData((prevData) => ({
       ...prevData,
       [name]: value,
+    }));
+  };
+
+  const handleNumericInputChange = (e) => {
+    const { name, value } = e.target;
+    const numericValue = value.replace(/\D/g, "");
+
+    setBuyerData((prevData) => ({
+      ...prevData,
+      [name]: numericValue,
     }));
   };
 
@@ -91,7 +106,9 @@ const RegisterBuyer = () => {
             label="Epost"
             name="email"
             type="email"
-            icon={<MdOutlineEmail className="h-6 w-auto" color="#333" />}
+            icon={
+              <MdOutlineAlternateEmail className="h-6 w-auto" color="#333" />
+            }
             initialValue={buyerData.email}
             onChange={handleInputChange}
           />
@@ -118,7 +135,7 @@ const RegisterBuyer = () => {
       {regStep == 2 && isExpanded && (
         <form
           className="flex w-full flex-col items-center border-t p-4 text-base font-medium text-medium-gray"
-          onSubmit={submitFirstStep}
+          onSubmit={submitFinalStep}
           onClick={(e) => e.stopPropagation()}
         >
           <TextInputField
@@ -146,12 +163,32 @@ const RegisterBuyer = () => {
             onChange={handleInputChange}
           />
           <TextInputField
-            label="Adresse"
+            label="Gateadresse"
             name="address"
             icon={<MdOutlineLocationOn className="h-6 w-auto" color="#333" />}
             initialValue={buyerData.address}
             onChange={handleInputChange}
           />
+          <div className="flex w-full flex-row gap-3">
+            <div className="basis-7/12">
+              <TextInputField
+                label="Poststed (By)"
+                name="postalLocation"
+                icon={<LuMailbox className="h-6 w-auto" color="#333" />}
+                initialValue={buyerData.postalLocation}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="basis-5/12">
+              <TextInputField
+                label="Postnummer"
+                name="postalCode"
+                icon={<MdOutlineNumbers className="h-6 w-auto" color="#333" />}
+                initialValue={buyerData.postalCode}
+                onChange={handleNumericInputChange}
+              />
+            </div>
+          </div>
           <button
             type="submit"
             className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg md:pb-2 md:pt-2"

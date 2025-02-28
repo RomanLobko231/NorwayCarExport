@@ -6,12 +6,14 @@ import TextInputField from "../input/TextInputField";
 import NumberInputField from "../input/NumberInputField";
 import {
   MdClose,
+  MdOutlineAlternateEmail,
   MdOutlineDirectionsCar,
   MdOutlineEmail,
   MdOutlinePerson2,
   MdOutlinePhone,
   MdOutlineSpeed,
 } from "react-icons/md";
+import ImageInputField from "../input/ImageInputField";
 
 const SellerModal = ({ open, setOpen }) => {
   const [sellerData, setSellerData] = useState({
@@ -22,6 +24,7 @@ const SellerModal = ({ open, setOpen }) => {
     kilometers: "",
   });
   const [error, setError] = useState("");
+  const [uploadImages, setUploadImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const postCarRequest = async (request) => {
@@ -104,25 +107,42 @@ const SellerModal = ({ open, setOpen }) => {
                 label="Epost"
                 name="email"
                 type="email"
-                icon={<MdOutlineEmail className="h-6 w-auto" color="#333" />}
+                icon={
+                  <MdOutlineAlternateEmail
+                    className="h-6 w-auto"
+                    color="#333"
+                  />
+                }
                 initialValue={sellerData.email}
                 onChange={handleInputChange}
               />
-              <TextInputField
-                label="Registrasjonsnummer"
-                name="registrationNumber"
-                icon={
-                  <MdOutlineDirectionsCar className="h-6 w-auto" color="#333" />
-                }
-                initialValue={sellerData.registrationNumber}
-                onChange={handleInputChange}
-              />
-              <NumberInputField
-                label="Kilometerstand"
-                name="kilometers"
-                icon={<MdOutlineSpeed className="h-6 w-auto" color="#333" />}
-                initialValue={sellerData.kilometers}
-                onChange={handleInputChange}
+              <div className="flex w-full flex-row gap-3">
+                <TextInputField
+                  label="Registrasjonr."
+                  name="registrationNumber"
+                  icon={
+                    <MdOutlineDirectionsCar
+                      className="h-6 w-auto"
+                      color="#333"
+                    />
+                  }
+                  initialValue={sellerData.registrationNumber}
+                  onChange={handleInputChange}
+                />
+                <NumberInputField
+                  label="Kilometerstand"
+                  name="kilometers"
+                  icon={<MdOutlineSpeed className="h-6 w-auto" color="#333" />}
+                  initialValue={sellerData.kilometers}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <p className="mt-3 text-center text-base font-light italic text-light-gray">
+                Last opp bilder allerede nå, hvis du vil
+              </p>
+              <ImageInputField
+                images={uploadImages}
+                setImages={setUploadImages}
               />
               {error && <p>{error.message}</p>}
               {isLoading ? (
