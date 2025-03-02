@@ -30,7 +30,7 @@ export default function Navbar() {
     <div className="fixed z-10 flex w-full justify-center">
       <Disclosure
         as="nav"
-        className="mx-4 my-3 flex w-full max-w-7xl flex-col items-center justify-center rounded-lg border border-medium-gray bg-gradient-to-bl from-lighthouse/50 to-slate-50/50 backdrop-blur"
+        className="mx-4 my-3 flex w-full max-w-7xl flex-col items-center justify-center rounded-lg border border-medium-gray bg-gradient-to-bl from-lighthouse/70 to-slate-50/70 backdrop-blur"
       >
         <div className="w-full max-w-7xl px-6 lg:px-8">
           <div className="flex h-12 flex-row items-center justify-between md:h-14">
@@ -94,7 +94,7 @@ export default function Navbar() {
               to={"/register"}
               className={`${
                 location.pathname === "/register"
-                  ? "bg-swamp-100 border border-dashed text-gunmental"
+                  ? "bg-swamp-100 border text-gunmental"
                   : "from-mirage to-swamp-500 text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse"
               } flex w-full flex-row items-center justify-between rounded-lg border-gunmental px-4 pb-2 pt-1 text-xl font-semibold`}
             >

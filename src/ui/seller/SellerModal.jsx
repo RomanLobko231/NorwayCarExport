@@ -14,6 +14,7 @@ import {
   MdOutlineSpeed,
 } from "react-icons/md";
 import ImageInputField from "../input/ImageInputField";
+import FileInputField from "../input/FileInputField";
 
 const SellerModal = ({ open, setOpen }) => {
   const [sellerData, setSellerData] = useState({
@@ -72,7 +73,7 @@ const SellerModal = ({ open, setOpen }) => {
         <div className="flex min-h-full w-full items-center justify-center p-4 text-center sm:p-0">
           <DialogPanel
             transition
-            className="from-swamp-100 relative w-full max-w-lg transform overflow-hidden rounded-xl border border-light-gray bg-gradient-to-bl to-distant-cloud p-6 text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 md:min-w-[400px]"
+            className="from-swamp-100 relative w-full max-w-lg transform overflow-hidden rounded-lg border border-light-gray bg-gradient-to-bl to-distant-cloud p-6 text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 md:min-w-[400px]"
           >
             <div className="mb-2 flex flex-row items-center justify-between md:px-2">
               <h1 className="mb-1 whitespace-nowrap text-center text-2xl font-bold text-medium-gray md:text-3xl">
@@ -137,12 +138,13 @@ const SellerModal = ({ open, setOpen }) => {
                   onChange={handleInputChange}
                 />
               </div>
-              <p className="mt-3 text-center text-base font-light italic text-light-gray">
+              <p className="mt-3 text-center text-sm font-light italic text-light-gray md:text-base">
                 Last opp bilder allerede nå, hvis du vil
               </p>
-              <ImageInputField
-                images={uploadImages}
-                setImages={setUploadImages}
+              <FileInputField
+                files={uploadImages}
+                fileTypes={["image/jpeg", "image/png"]}
+                setFiles={setUploadImages}
               />
               {error && <p>{error.message}</p>}
               {isLoading ? (

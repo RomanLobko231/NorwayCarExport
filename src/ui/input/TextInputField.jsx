@@ -26,7 +26,7 @@ const TextInputField = ({
           autoComplete={name}
           value={initialValue}
           onChange={onChange}
-          className="block w-full rounded-lg border border-medium-gray bg-white px-5 py-2.5 ps-12 text-base font-medium text-medium-gray disabled:border-none disabled:bg-slate-50 disabled:px-[22px] disabled:py-[11px] disabled:ps-12 md:text-lg"
+          className="block w-full rounded-lg border border-medium-gray bg-white px-3 py-2.5 ps-12 text-base font-medium text-medium-gray disabled:border-none disabled:bg-slate-50 disabled:px-[22px] disabled:py-[11px] disabled:ps-12 md:text-lg"
           required
           disabled={disabled}
         />

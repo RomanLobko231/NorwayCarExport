@@ -17,6 +17,8 @@ import {
 } from "react-icons/md";
 import PasswordInputField from "../input/PasswordInputField";
 import { LuMailbox } from "react-icons/lu";
+import ImageInputField from "../input/ImageInputField";
+import FileInputField from "../input/FileInputField";
 
 const RegisterBuyer = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -31,6 +33,7 @@ const RegisterBuyer = () => {
     postalLocation: "",
     postalCode: "",
   });
+  const [companyLicences, setCompanyLicences] = useState([]);
   const [regStep, setRegStep] = useState(1);
 
   useEffect(() => {
@@ -76,25 +79,24 @@ const RegisterBuyer = () => {
     <div
       ref={expandedRef}
       onClick={() => setIsExpanded(!isExpanded)}
-      className={`from-swamp-100 card_shadow hover:card_shadow_hover active:card_shadow_click mb-4 w-full cursor-pointer rounded-xl border border-light-gray bg-gradient-to-bl to-distant-cloud ${!isExpanded ? "hover:-translate-y-1" : "-translate-y-1"} duration-300 md:w-[500px]`}
+      className={`from-swamp-100 card_shadow hover:card_shadow_hover active:card_shadow_click mb-4 flex w-full cursor-pointer flex-col items-center justify-center rounded-xl border border-light-gray bg-gradient-to-bl to-distant-cloud ${!isExpanded ? "hover:-translate-y-1" : "-translate-y-1"} duration-300 md:w-[500px]`}
     >
       <div className="flex w-full flex-row items-center justify-between p-4">
         <h1 className="inline-block bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text text-xl font-bold text-transparent md:text-2xl">
           Register som Kjøper
         </h1>
-        <div>
-          {isExpanded ? (
-            <RiArrowUpBoxLine
-              className="h-10 w-auto hover:opacity-50 active:opacity-10"
-              color="#333333"
-            />
-          ) : (
-            <RiArrowDownBoxLine
-              className="h-10 w-auto hover:opacity-50 active:opacity-10"
-              color="#333333"
-            />
-          )}
-        </div>
+
+        {isExpanded ? (
+          <RiArrowUpBoxLine
+            className="h-10 w-auto hover:opacity-50 active:opacity-10"
+            color="#333333"
+          />
+        ) : (
+          <RiArrowDownBoxLine
+            className="h-10 w-auto hover:opacity-50 active:opacity-10"
+            color="#333333"
+          />
+        )}
       </div>
       {regStep == 1 && isExpanded && (
         <form
@@ -152,7 +154,6 @@ const RegisterBuyer = () => {
             initialValue={buyerData.phoneNumber}
             onChange={handleInputChange}
           />
-
           <TextInputField
             label="Organisasjonsnummer"
             name="organizationNumber"
@@ -169,7 +170,7 @@ const RegisterBuyer = () => {
             initialValue={buyerData.address}
             onChange={handleInputChange}
           />
-          <div className="flex w-full flex-row gap-3">
+          <div className="flex w-full flex-row gap-2">
             <div className="basis-7/12">
               <TextInputField
                 label="Poststed (By)"
@@ -189,6 +190,21 @@ const RegisterBuyer = () => {
               />
             </div>
           </div>
+          <div className="mb-2 mt-1 flex w-full flex-col items-start">
+            <p className="ml-5 text-sm font-medium text-light-gray md:text-base">
+              Organisasjonslisens
+            </p>
+            <FileInputField
+              files={companyLicences}
+              fileTypes={[
+                "application/msword",
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "application/pdf",
+              ]}
+              setFiles={setCompanyLicences}
+            />
+          </div>
+
           <button
             type="submit"
             className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg md:pb-2 md:pt-2"

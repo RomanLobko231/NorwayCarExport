@@ -158,7 +158,7 @@ const RegisterSeller = () => {
             initialValue={sellerData.address}
             onChange={handleInputChange}
           />
-          <div className="flex w-full flex-row gap-3">
+          <div className="flex w-full flex-row gap-2">
             <div className="basis-7/12">
               <TextInputField
                 label="Poststed (By)"

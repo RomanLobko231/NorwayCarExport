@@ -16,7 +16,7 @@ module.exports = {
         mirage: "#001f3f",
         "medium-gray": "#333333",
         "medli-gray": "#666666",
-        "light-gray": "#888888",
+        "light-gray": "#999999",
         "danger-red": "#800000",
       },
       borderRadius: {
