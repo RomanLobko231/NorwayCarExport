@@ -28,11 +28,11 @@ const SellerModal = ({ open, setOpen }) => {
   const [uploadImages, setUploadImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const postCarRequest = async (request) => {
+  const postCarRequest = async () => {
     setIsLoading(true);
     setError(null);
     try {
-      await ApiService.postCarRequest(request);
+      await ApiService.postCarRequest(sellerData, uploadImages);
       setSellerData({
         ownerName: "",
         phoneNumber: "",
@@ -49,9 +49,7 @@ const SellerModal = ({ open, setOpen }) => {
   };
 
   const submitRequest = (e) => {
-    console.log(sellerData);
-    e.preventDefault();
-    postCarRequest(sellerData);
+    postCarRequest();
   };
 
   const handleInputChange = (e) => {
@@ -73,7 +71,7 @@ const SellerModal = ({ open, setOpen }) => {
         <div className="flex min-h-full w-full items-center justify-center p-4 text-center sm:p-0">
           <DialogPanel
             transition
-            className="from-swamp-100 relative w-full max-w-lg transform overflow-hidden rounded-lg border border-light-gray bg-gradient-to-bl to-distant-cloud p-6 text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 md:min-w-[400px]"
+            className="relative w-full max-w-lg transform overflow-hidden rounded-lg border border-light-gray bg-gradient-to-bl from-swamp-100 to-distant-cloud p-6 text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 md:min-w-[400px]"
           >
             <div className="mb-2 flex flex-row items-center justify-between md:px-2">
               <h1 className="mb-1 whitespace-nowrap text-center text-2xl font-bold text-medium-gray md:text-3xl">
