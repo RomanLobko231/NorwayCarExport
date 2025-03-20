@@ -17,6 +17,17 @@ api.interceptors.response.use(
   },
 );
 
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error),
+);
+
 function handleError(error) {
   if (error.response) {
     const { statusCode, message, timestamp } = error.response?.data ?? {};

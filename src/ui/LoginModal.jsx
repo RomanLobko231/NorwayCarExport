@@ -14,10 +14,26 @@ import { useState } from "react";
 import TextInputField from "./input/TextInputField";
 import PasswordInputField from "./input/PasswordInputField";
 import { useNavigate } from "react-router-dom";
+import ApiService from "../api/ApiService";
 
 const LoginModal = ({ open, setOpen }) => {
-  const [loginData, setLoginData] = useState({ email: "", password: "" });
+  const [loginData, setLoginData] = useState({ password: "", email: "" });
   const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const loginUser = async () => {
+    try {
+      console.log(loginData);
+      const response = await ApiService.loginUser(loginData);
+      navigate(`/user/${response.data.userId}`);
+      setLoginData({ password: "", email: "" });
+    } catch (error) {
+      setError(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -29,9 +45,8 @@ const LoginModal = ({ open, setOpen }) => {
 
   const submitLogin = (e) => {
     e.preventDefault();
-    setLoginData({ email: "", password: "" });
+    loginUser();
     setOpen(false);
-    navigate("/user/d311-24nh-212");
   };
 
   return (
@@ -45,7 +60,7 @@ const LoginModal = ({ open, setOpen }) => {
         <div className="flex min-h-full w-full items-center justify-center p-4 text-center sm:p-0">
           <DialogPanel
             transition
-            className="from-swamp-100 relative w-full max-w-lg transform overflow-hidden rounded-xl border border-light-gray bg-gradient-to-bl to-distant-cloud p-6 text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 md:min-w-[400px]"
+            className="relative w-full max-w-lg transform overflow-hidden rounded-xl border border-light-gray bg-gradient-to-bl from-swamp-100 to-distant-cloud p-6 text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 md:min-w-[400px]"
           >
             <div className="mb-2 flex flex-row items-center justify-between md:px-2">
               <h1 className="mb-1 whitespace-nowrap text-center text-2xl font-bold text-medium-gray md:text-3xl">

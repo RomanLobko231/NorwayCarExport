@@ -39,7 +39,7 @@ const Home = () => {
 
   return (
     <div className="flex flex-col items-center justify-center pt-28 md:pt-40">
-      <h1 className="animate-fade-in-slow mx-6 w-4/5 text-center text-4xl font-normal text-medium-gray md:mx-0 md:text-6xl">
+      <h1 className="mx-6 w-4/5 animate-fade-in-slow text-center text-4xl font-normal text-medium-gray md:mx-0 md:text-6xl">
         Velkommen til{" "}
         <span className="inline-block bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text font-bold text-transparent">
           stressfri handel
@@ -47,7 +47,7 @@ const Home = () => {
         for bilen din
       </h1>
       <img
-        className="gradv md:gradvh animate-fade-in-fast mt-8 h-[155px] w-full object-cover object-center opacity-0 md:h-[300px] lg:h-[340px]"
+        className="gradv md:gradvh mt-8 h-[155px] w-full animate-fade-in-fast object-cover object-center opacity-0 md:h-[300px] lg:h-[340px]"
         src="../carhero.jpg"
         alt=""
       />
@@ -78,7 +78,7 @@ const Home = () => {
           onClick={() => {
             setBuyerModalOpen(true);
           }}
-          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-lg border border-swamp-300 bg-cornsilk px-6 pb-3 pt-3 duration-300 hover:-translate-y-1 md:space-x-3 md:rounded-xl md:px-7 md:pb-4"
+          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-lg border border-light-gray bg-lighthouse px-6 pb-3 pt-3 duration-300 hover:-translate-y-1 md:space-x-3 md:rounded-xl md:px-7 md:pb-4"
         >
           <span className="text-2xl font-semibold leading-4 text-medium-gray md:text-3xl">
             KJØPE BIL

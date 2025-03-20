@@ -12,6 +12,10 @@ import TextInputField from "../ui/input/TextInputField";
 import PasswordInputField from "../ui/input/PasswordInputField";
 import CarsList from "../ui/car/CarsList";
 import OptionsInput from "../ui/input/OptionsInput";
+import ApiService from "../api/ApiService";
+import UserDataPanel from "../ui/users/UserDataPanel";
+import { useNavigate, useParams } from "react-router-dom";
+import { RiAddBoxLine } from "react-icons/ri";
 
 const cars = [
   {
@@ -27,23 +31,32 @@ const cars = [
 ];
 
 const UserPanel = () => {
-  const [userData, setUserData] = useState({
-    email: "email@gmail.com",
-    password: "jcjcjecwjc",
-    phoneNumber: "+4787662356",
-    name: "Test Name",
-    address: "Storgata 22, Oslo, 0717",
-  });
-  const [inputDisabled, setInputDisabled] = useState(true);
+  const params = useParams();
+  const navigate = useNavigate();
+
+  const [userData, setUserData] = useState(null);
   const [carFilter, setCarFilter] = useState("");
   const [filteredCars, setFilteredCars] = useState(cars);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUserData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    //fetchUserById(params.id);
+  }, []);
+
+  const fetchUserById = async (id) => {
+    setIsLoading(true);
+    setError("");
+    try {
+      const user = await ApiService.getUserById(id);
+      setUserData(user.data);
+      console.log(user);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleFilterChange = (e) => {
@@ -55,116 +68,7 @@ const UserPanel = () => {
   return (
     <div className="flex w-full flex-col items-center justify-center px-4 pt-20 md:px-0 md:pt-28">
       <div className="grid w-full max-w-7xl grid-cols-1 gap-3 md:grid-cols-3 md:gap-5">
-        <div
-          className={`flex flex-col items-center rounded-lg ${!inputDisabled && "card_shadow"} border border-light-gray bg-slate-50 p-6 md:col-span-2`}
-        >
-          <div className="mb-5 flex w-full flex-col flex-wrap items-center justify-between gap-2 md:flex-row md:items-end">
-            <div
-              className={`flex w-full ${inputDisabled && "justify-between md:w-full"} flex-row items-center justify-center md:w-auto`}
-            >
-              <h1 className="text-center text-2xl font-bold text-medium-gray md:text-3xl">
-                STYREPANEL
-              </h1>
-              <div
-                className={`buttonsh hover:button_shadow_hover ${!inputDisabled && "hidden"} active:button_shadow_click flex cursor-pointer flex-row items-center rounded-lg border border-medium-gray bg-lighthouse from-mirage to-swamp-500 px-2 py-1 text-lg font-semibold text-medium-gray duration-300 hover:-translate-y-1 hover:bg-gradient-to-br hover:text-lighthouse md:px-4 md:pb-2 md:pt-1 md:text-xl`}
-                onClick={() => {
-                  setInputDisabled(false);
-                }}
-              >
-                <p className="hidden md:block">Endre info</p>
-                <MdEdit className="m-1 h-5 w-auto md:ml-2" />
-              </div>
-            </div>
-            <div
-              className={`flex flex-row items-center ${inputDisabled && "hidden"} gap-2`}
-            >
-              <div
-                className={`buttonsh hover:button_shadow_hover active:button_shadow_click cursor-pointer rounded-lg border border-medium-gray bg-lighthouse from-mirage to-swamp-500 px-2 py-1 text-lg font-semibold text-medium-gray duration-300 hover:-translate-y-1 hover:bg-gradient-to-br hover:text-lighthouse md:px-4 md:pb-2 md:pt-1 md:text-xl`}
-                onClick={() => {
-                  console.log(userData);
-                  setInputDisabled(true);
-                }}
-              >
-                Lagre info
-              </div>
-              <div
-                className={`buttonsh hover:button_shadow_hover active:button_shadow_click cursor-pointer rounded-lg border border-medium-gray bg-lighthouse px-2 py-1 text-lg font-semibold text-medium-gray duration-300 hover:-translate-y-1 hover:bg-gunmental hover:text-lighthouse md:px-4 md:pb-2 md:pt-1 md:text-xl`}
-                onClick={() => {
-                  setInputDisabled(true);
-                }}
-              >
-                Avbryt
-              </div>
-            </div>
-          </div>
-          <hr className="mb-3 hidden w-full border-[1px] border-dashed border-gunmental px-2 md:block" />
-
-          <div className="flex w-full flex-col items-center md:flex-row md:items-start">
-            <div className="flex w-full flex-col items-center justify-around rounded-lg border border-light-gray bg-white p-2 md:mt-8 md:w-auto">
-              <img
-                src="../icons/buyer_profile_icon.png"
-                alt="User"
-                className="mb-3 mt-2 h-36 w-36 object-contain"
-              />
-              <div className="mb-3 flex flex-col items-center">
-                <h1 className="text-center text-lg font-thin text-light-gray md:text-xl">
-                  Status:
-                </h1>
-                <p className="text-center text-lg font-bold text-medium-gray md:text-2xl">
-                  BUYER
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-4 grid flex-1 grid-cols-1 gap-3 sm:grid-cols-2 md:ml-6 md:mt-0">
-              <TextInputField
-                label="Navn"
-                name="name"
-                icon={
-                  <MdOutlinePerson2 className="h-6 w-auto" color="#333333" />
-                }
-                initialValue={userData.name}
-                onChange={handleInputChange}
-                disabled={inputDisabled}
-              />
-              <TextInputField
-                label="Mobilnummer"
-                name="phoneNumber"
-                icon={<MdOutlinePhone className="h-6 w-auto" color="#333333" />}
-                initialValue={userData.phoneNumber}
-                onChange={handleInputChange}
-                disabled={inputDisabled}
-              />
-              <TextInputField
-                label="Epost"
-                name="email"
-                type="email"
-                icon={<MdOutlineEmail className="h-6 w-auto" color="#333333" />}
-                initialValue={userData.email}
-                onChange={handleInputChange}
-                disabled={inputDisabled}
-              />
-              <PasswordInputField
-                label="Passord"
-                name="password"
-                icon={<MdPassword className="h-6 w-auto" color="#333333" />}
-                initialValue={userData.password}
-                onChange={handleInputChange}
-                disabled={inputDisabled}
-              />
-              <TextInputField
-                label="Adresse"
-                name="address"
-                icon={
-                  <MdOutlineLocationOn className="h-6 w-auto" color="#333333" />
-                }
-                initialValue={userData.address}
-                onChange={handleInputChange}
-                disabled={inputDisabled}
-              />
-            </div>
-          </div>
-        </div>
+        {isLoading ? <p>Loading...</p> : <UserDataPanel user={userData} />}
 
         <div className="flex flex-col items-center gap-3 md:gap-5">
           <div className="flex w-full flex-row items-center rounded-lg border border-light-gray bg-slate-50 p-8 pt-5">
@@ -211,6 +115,18 @@ const UserPanel = () => {
           >
             Reset filter
           </p>
+          <button
+            onClick={() => {
+              navigate("/add-car");
+            }}
+            className="buttonsh hover:button_shadow_hover active:button_shadow_click group ml-auto flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg md:pb-2 md:pt-2"
+          >
+            <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
+              LEGG TIL
+            </span>
+            <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[18px]"></div>
+            <RiAddBoxLine className="h-6 w-auto" color="#FEFAF0" />
+          </button>
         </div>
         <CarsList cars={filteredCars} onDelete={() => {}} />
       </div>
