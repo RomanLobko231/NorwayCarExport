@@ -15,6 +15,7 @@ import TextInputField from "./input/TextInputField";
 import PasswordInputField from "./input/PasswordInputField";
 import { useNavigate } from "react-router-dom";
 import ApiService from "../api/ApiService";
+import ErrorMessage from "./ErrorMessage";
 
 const LoginModal = ({ open, setOpen }) => {
   const [loginData, setLoginData] = useState({ password: "", email: "" });
@@ -24,10 +25,11 @@ const LoginModal = ({ open, setOpen }) => {
 
   const loginUser = async () => {
     try {
-      console.log(loginData);
       const response = await ApiService.loginUser(loginData);
       navigate(`/user/${response.data.userId}`);
       setLoginData({ password: "", email: "" });
+      setOpen(false);
+      setError("");
     } catch (error) {
       setError(error);
     } finally {
@@ -46,7 +48,6 @@ const LoginModal = ({ open, setOpen }) => {
   const submitLogin = (e) => {
     e.preventDefault();
     loginUser();
-    setOpen(false);
   };
 
   return (
@@ -97,6 +98,7 @@ const LoginModal = ({ open, setOpen }) => {
                 initialValue={loginData.password}
                 onChange={handleInputChange}
               />
+              {error && <ErrorMessage error={error.message} />}
               <button
                 type="submit"
                 className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-lg md:px-7 md:pb-3 md:pt-3"

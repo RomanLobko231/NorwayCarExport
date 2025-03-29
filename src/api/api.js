@@ -1,4 +1,5 @@
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const DEV_URL = "http://localhost:8080";
 const PROD_URL = "https://nce-backend-production.up.railway.app/";
@@ -20,9 +21,18 @@ api.interceptors.response.use(
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
+
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+      const decoded = jwtDecode(token);
+      const currentTime = Date.now() / 1000;
+
+      if (decoded.exp < currentTime) {
+        localStorage.removeItem("token");
+      } else {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
     }
+
     return config;
   },
   (error) => Promise.reject(error),

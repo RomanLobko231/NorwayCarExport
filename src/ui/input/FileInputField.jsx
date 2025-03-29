@@ -1,6 +1,6 @@
 import { MdClose, MdOutlineFileUpload } from "react-icons/md";
 
-const FileInputField = ({ files, setFiles, fileTypes }) => {
+const FileInputField = ({ files, setFiles, fileTypes, error }) => {
   const handleFileChange = (event) => {
     const selectedFiles = Array.from(event.target.files);
 
@@ -30,7 +30,11 @@ const FileInputField = ({ files, setFiles, fileTypes }) => {
           className="hidden"
         />
       </label>
-
+      {error && (
+        <p className="mt-1 text-lg font-medium text-danger-red">
+          Lisens feltet er obligatorisk
+        </p>
+      )}
       {files.length > 0 && (
         <div className="mt-3 w-full">
           <ul className="mt-2 list-inside list-disc">

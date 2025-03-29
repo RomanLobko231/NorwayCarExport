@@ -104,7 +104,7 @@ const RegisterBuyer = () => {
     <div
       ref={expandedRef}
       onClick={() => setIsExpanded(!isExpanded)}
-      className={`card_shadow hover:card_shadow_hover active:card_shadow_click mb-4 flex w-full cursor-pointer flex-col items-center justify-center rounded-xl border border-light-gray bg-gradient-to-bl from-swamp-100 to-distant-cloud ${!isExpanded ? "hover:-translate-y-1" : "-translate-y-1"} duration-300 md:w-[500px]`}
+      className={`card_shadow hover:card_shadow_hover active:card_shadow_click mb-4 flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border border-light-gray bg-gradient-to-bl from-swamp-100 to-distant-cloud ${!isExpanded ? "hover:-translate-y-1" : "-translate-y-1"} duration-300 md:w-[500px]`}
     >
       <div className="flex w-full flex-row items-center justify-between p-4">
         <h1 className="inline-block bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text text-xl font-bold text-transparent md:text-2xl">

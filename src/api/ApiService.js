@@ -34,6 +34,19 @@ export default class ApiService {
     }
   }
 
+  static async registerOneTimeSeller(sellerData) {
+    try {
+      const response = await api.post(
+        "/api/v1/users/register_one_time_seller",
+        sellerData,
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
   static async registerBuyer(buyerData, licences) {
     try {
       const data = new FormData();
@@ -58,7 +71,6 @@ export default class ApiService {
     try {
       const response = await api.post("/api/v1/users/login", loginData);
       localStorage.setItem("token", response.data.token);
-
       return response;
     } catch (error) {
       console.log(error);

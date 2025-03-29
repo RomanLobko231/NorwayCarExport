@@ -33,9 +33,6 @@ const SellerModal = ({ open, setOpen }) => {
   const [sellerData, setSellerData] = useState({
     name: "",
     phoneNumber: "",
-    email: "",
-    password: "",
-    address: { streetAddress: "", postalLocation: "", postalCode: "" },
   });
   const [carData, setCarData] = useState({
     ownerId: "",
@@ -47,43 +44,27 @@ const SellerModal = ({ open, setOpen }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [regStep, setRegStep] = useState(1);
 
-  const postSellerData = async () => {
-    setIsLoading(true);
-    setError(null);
+  const postCarApplication = async () => {
+    if (isLoading) return;
     try {
-      const savedUser = await ApiService.registerSeller(sellerData);
-      setSellerData({
-        name: "",
-        phoneNumber: "",
-        email: "",
-        password: "",
-        address: { streetAddress: "", postalLocation: "", postalCode: "" },
-      });
-      console.log(savedUser);
+      setIsLoading(true);
+      setError(null);
+      const savedUser = await ApiService.registerOneTimeSeller(sellerData);
       setCarData((prevData) => ({
         ...prevData,
         ownerId: savedUser.data.userId,
       }));
-      setRegStep(3);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const postCarData = async () => {
-    setIsLoading(true);
-    setError(null);
-    try {
       await ApiService.postCarData(carData, uploadImages);
+      setSellerData({
+        name: "",
+        phoneNumber: "",
+      });
       setCarData({
         ownerId: "",
         registrationNumber: "",
         kilometers: "",
       });
       setUploadImages([]);
-      setRegStep(4);
     } catch (error) {
       setError(error);
     } finally {
@@ -93,17 +74,8 @@ const SellerModal = ({ open, setOpen }) => {
 
   const submitFirstStep = (e) => {
     e.preventDefault();
+    postCarApplication();
     setRegStep(2);
-  };
-
-  const submitSecondStep = (e) => {
-    e.preventDefault();
-    postSellerData();
-  };
-
-  const submitFinalStep = (e) => {
-    e.preventDefault();
-    postCarData();
   };
 
   const handleUserInputChange = (e) => {
@@ -146,69 +118,11 @@ const SellerModal = ({ open, setOpen }) => {
                 onClick={() => setOpen(false)}
               />
             </div>
-            <div
-              className={`my-5 flex w-full flex-row gap-1 md:px-2 ${regStep == 3 && "hidden"}`}
-            >
-              <div
-                className={`h-[3px] w-full rounded-full bg-swamp-500 opacity-100`}
-              ></div>
-              <div
-                className={`h-[3px] w-full rounded-full ${regStep > 1 ? "bg-swamp-500 opacity-100" : "bg-light-gray opacity-50"} `}
-              ></div>
-              <div
-                className={`h-[3px] w-full rounded-full ${regStep > 2 ? "bg-swamp-500 opacity-100" : "bg-light-gray opacity-50"} `}
-              ></div>
-            </div>
+
             {regStep == 1 && (
               <form
                 className="flex w-full flex-col items-center md:px-2"
                 onSubmit={submitFirstStep}
-              >
-                <TextInputField
-                  label="Epost"
-                  name="email"
-                  type="email"
-                  icon={
-                    <MdOutlineAlternateEmail
-                      className="h-6 w-auto"
-                      color="#333"
-                    />
-                  }
-                  initialValue={sellerData.email}
-                  onChange={handleUserInputChange}
-                />
-                <PasswordInputField
-                  label="Passord"
-                  name="password"
-                  icon={<MdPassword className="h-6 w-auto" color="#333" />}
-                  initialValue={sellerData.password}
-                  onChange={handleUserInputChange}
-                />
-
-                {error && <ErrorMessage error={error.message} />}
-                {isLoading ? (
-                  <p>Loading..</p>
-                ) : (
-                  <button
-                    type="submit"
-                    className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg md:pb-2 md:pt-2"
-                  >
-                    <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
-                      NESTE
-                    </span>
-                    <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[18px]"></div>
-                    <RiArrowRightBoxLine
-                      className="h-6 w-auto"
-                      color="#FEFAF0"
-                    />
-                  </button>
-                )}
-              </form>
-            )}
-            {regStep == 2 && (
-              <form
-                className="flex w-full flex-col items-center md:px-2"
-                onSubmit={submitSecondStep}
               >
                 <TextInputField
                   label="Navn"
@@ -226,97 +140,6 @@ const SellerModal = ({ open, setOpen }) => {
                   initialValue={sellerData.phoneNumber}
                   onChange={handleUserInputChange}
                 />
-                <TextInputField
-                  label="Gateadresse"
-                  name="streetAddress"
-                  icon={
-                    <MdOutlineLocationOn className="h-6 w-auto" color="#333" />
-                  }
-                  initialValue={sellerData.address.streetAddress}
-                  onChange={(e) =>
-                    setSellerData((prev) => ({
-                      ...prev,
-                      address: {
-                        ...prev.address,
-                        streetAddress: e.target.value,
-                      },
-                    }))
-                  }
-                />
-                <div className="flex w-full flex-row gap-2">
-                  <div className="basis-7/12">
-                    <TextInputField
-                      label="Poststed (By)"
-                      name="postalLocation"
-                      icon={<LuMailbox className="h-6 w-auto" color="#333" />}
-                      initialValue={sellerData.address.postalLocation}
-                      onChange={(e) =>
-                        setSellerData((prev) => ({
-                          ...prev,
-                          address: {
-                            ...prev.address,
-                            postalLocation: e.target.value,
-                          },
-                        }))
-                      }
-                    />
-                  </div>
-                  <div className="basis-5/12">
-                    <NumberInputField
-                      label="Postnummer"
-                      name="postalCode"
-                      icon={
-                        <MdOutlineNumbers className="h-6 w-auto" color="#333" />
-                      }
-                      initialValue={sellerData.address.postalCode}
-                      onChange={(e) =>
-                        setSellerData((prev) => ({
-                          ...prev,
-                          address: {
-                            ...prev.address,
-                            postalCode: e.target.value,
-                          },
-                        }))
-                      }
-                    />
-                  </div>
-                </div>
-                {error && <ErrorMessage error={error.message} />}
-                {isLoading ? (
-                  <p>Loading..</p>
-                ) : (
-                  <div className="flex w-full flex-row items-center justify-center gap-3">
-                    <button
-                      type="button"
-                      className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center rounded-lg border border-medium-gray bg-lighthouse px-4 pb-3 pt-3 text-medium-gray hover:bg-gradient-to-br hover:from-mirage hover:to-gunmental hover:text-lighthouse md:rounded-lg md:pb-2 md:pt-2"
-                      onClick={() => {
-                        setRegStep(regStep - 1);
-                      }}
-                    >
-                      <RiArrowLeftBoxLine className="h-7 w-auto" />
-                    </button>
-                    <button
-                      type="submit"
-                      className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg md:pb-2 md:pt-2"
-                    >
-                      <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
-                        NESTE
-                      </span>
-                      <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[18px]"></div>
-                      <RiArrowRightBoxLine
-                        className="h-6 w-auto"
-                        color="#FEFAF0"
-                      />
-                    </button>
-                  </div>
-                )}
-              </form>
-            )}
-            {regStep == 3 && (
-              <form
-                className="flex w-full flex-col items-center md:px-2"
-                onSubmit={submitFinalStep}
-              >
                 <div className="flex w-full flex-row gap-3">
                   <TextInputField
                     label="Registrasjonr."
@@ -330,14 +153,22 @@ const SellerModal = ({ open, setOpen }) => {
                     initialValue={carData.registrationNumber}
                     onChange={handleCarInputChange}
                   />
-                  <NumberInputField
+                  <TextInputField
                     label="Kilometerstand"
                     name="kilometers"
                     icon={
                       <MdOutlineSpeed className="h-6 w-auto" color="#333" />
                     }
                     initialValue={carData.kilometers}
-                    onChange={handleCarInputChange}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      const numericValue = value.replace(/\D/g, "");
+
+                      setCarData((prev) => ({
+                        ...prev,
+                        kilometers: numericValue,
+                      }));
+                    }}
                   />
                 </div>
                 <p className="mt-3 text-center text-sm font-light italic text-light-gray md:text-base">
@@ -365,7 +196,7 @@ const SellerModal = ({ open, setOpen }) => {
                 )}
               </form>
             )}
-            {regStep == 4 && (
+            {regStep == 2 && (
               <div className="flex w-full flex-col items-center justify-center md:px-2">
                 <PiSealCheckBold className="mt-9 h-20 w-auto" color="#416858" />
                 <h1 className="mb-9 mt-3 text-center text-xl font-bold text-medium-gray md:text-2xl">
@@ -376,7 +207,7 @@ const SellerModal = ({ open, setOpen }) => {
                     setOpen(false);
                     setTimeout(() => {
                       setRegStep(1);
-                    }, 2000);
+                    }, 1000);
                   }}
                   className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg md:pb-2 md:pt-2"
                 >

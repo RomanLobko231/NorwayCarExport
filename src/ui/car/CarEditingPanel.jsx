@@ -24,7 +24,6 @@ const CarEditingPanel = ({ car, saveCar }) => {
     "Annet",
   ];
   const GEARBOX_TYPES = ["Manuell", "Automat", "Annet"];
-  const STATUS_OPTIONS = ["Vurdering", "Auksjon", "Solgt", "Annet"];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -256,12 +255,6 @@ const CarEditingPanel = ({ car, saveCar }) => {
         </div>
         <hr className="mb-4 mt-4 w-10/12 border-[1px] border-dashed border-gunmental px-2" />
         <h1 className="mt-8 text-2xl font-bold text-gunmental">STATUS</h1>
-        <OptionsInput
-          options={STATUS_OPTIONS}
-          initialOption={carData.status}
-          optionName={"status"}
-          handleInputChange={handleInputChange}
-        />
         <div className="fixed bottom-0 flex w-full flex-row items-center justify-center gap-2 bg-lighthouse/50 backdrop-blur md:gap-5">
           <button
             type="submit"
