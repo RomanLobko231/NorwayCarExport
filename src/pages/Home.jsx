@@ -7,6 +7,7 @@ import RegisterBuyerModal from "../ui/buyer/BuyerModal";
 import SellerModal from "../ui/seller/SellerModal";
 import BuyerModal from "../ui/buyer/BuyerModal";
 import CarCardBlurred from "../ui/car/CarCardBlurred";
+import HeroGallery from "../ui/HeroGallery";
 
 const cars = [
   {
@@ -38,7 +39,7 @@ const Home = () => {
   const [buyerModalopen, setBuyerModalOpen] = useState(false);
 
   return (
-    <div className="flex flex-col items-center justify-center pt-28 md:pt-40">
+    <div className="flex flex-col items-center justify-center pt-28 md:pt-32">
       <h1 className="mx-6 w-4/5 animate-fade-in-slow text-center text-4xl font-normal text-medium-gray md:mx-0 md:text-6xl">
         Velkommen til{" "}
         <span className="inline-block bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text font-bold text-transparent">
@@ -46,12 +47,13 @@ const Home = () => {
         </span>{" "}
         for bilen din
       </h1>
-      <img
+      {/* <img
         className="gradv md:gradvh mt-8 h-[155px] w-full animate-fade-in-fast object-cover object-center opacity-0 md:h-[300px] lg:h-[340px]"
         src="../carhero.jpg"
         alt=""
-      />
-      <p className="text-center text-2xl font-light text-light-gray">
+      /> */}
+      <HeroGallery />
+      <p className="text-center text-lg font-light text-light-gray md:text-2xl">
         Vi gjør det enkelt for deg
       </p>
       <div className="mt-2 flex flex-col items-center pt-4 md:flex-row md:space-x-10">

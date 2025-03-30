@@ -30,7 +30,7 @@ export default function Navbar() {
     <div className="fixed z-10 flex w-full justify-center">
       <Disclosure
         as="nav"
-        className="mx-4 my-3 flex w-full max-w-7xl flex-col items-center justify-center rounded-lg border border-medium-gray bg-gradient-to-bl from-lighthouse/70 to-slate-50/70 backdrop-blur"
+        className="mx-4 my-3 flex w-full max-w-7xl flex-col items-center justify-center rounded-lg border border-medium-gray bg-gradient-to-bl from-lighthouse/80 to-slate-50/80 backdrop-blur"
       >
         <div className="w-full max-w-7xl px-6 lg:px-8">
           <div className="flex h-12 flex-row items-center justify-between md:h-14">
@@ -88,7 +88,7 @@ export default function Navbar() {
         </div>
 
         <DisclosurePanel className="w-full sm:hidden">
-          <div className="flex w-full flex-col items-start space-y-5 pb-7 pl-7 pr-6 pt-8">
+          <div className="flex w-full flex-col items-center space-y-3 pb-7 pl-7 pr-6 pt-8">
             <CloseButton
               as={Link}
               to={"/register"}
@@ -96,7 +96,7 @@ export default function Navbar() {
                 location.pathname === "/register"
                   ? "border bg-swamp-100 text-gunmental"
                   : "from-mirage to-swamp-500 text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse"
-              } flex w-full flex-row items-center justify-between rounded-lg border-gunmental px-4 pb-2 pt-1 text-xl font-semibold`}
+              } flex w-full flex-row items-center justify-between rounded-lg border-gunmental px-4 pb-1 pt-1 text-xl font-semibold md:pb-2`}
             >
               Register bruker
               <div className="mx-3 mt-[1px] h-[1px] flex-grow bg-light-gray opacity-50"></div>
@@ -112,6 +112,7 @@ export default function Navbar() {
               <div className="mx-3 mt-[1px] h-[1px] flex-grow bg-light-gray opacity-50"></div>
               <IoMdLogIn className="mt-[1px] h-6 w-auto" />
             </CloseButton>
+
             <CloseButton
               as={Link}
               onClick={() => setLoginModalOpen(true)}

@@ -42,7 +42,7 @@ const UserPanel = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    //fetchUserById(params.id);
+    fetchUserById(params.id);
   }, []);
 
   const fetchUserById = async (id) => {
@@ -50,7 +50,7 @@ const UserPanel = () => {
     setError("");
     try {
       const user = await ApiService.getUserById(id);
-      setUserData(user.data);
+      //setUserData(user.data);
       console.log(user);
     } catch (error) {
       setError(error);
