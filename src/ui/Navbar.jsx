@@ -88,7 +88,7 @@ export default function Navbar() {
         </div>
 
         <DisclosurePanel className="w-full sm:hidden">
-          <div className="flex w-full flex-col items-center space-y-3 pb-7 pl-7 pr-6 pt-8">
+          <div className="flex w-full flex-col items-center space-y-5 pb-7 pl-7 pr-6 pt-8">
             <CloseButton
               as={Link}
               to={"/register"}
