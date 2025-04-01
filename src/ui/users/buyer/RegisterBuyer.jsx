@@ -5,26 +5,23 @@ import {
   RiArrowRightBoxLine,
   RiArrowUpBoxLine,
 } from "react-icons/ri";
-import TextInputField from "../input/TextInputField";
 import {
   MdOutlineAccountBalance,
   MdOutlineAlternateEmail,
-  MdOutlineEmail,
   MdOutlineLocationOn,
   MdOutlineNumbers,
   MdOutlinePerson2,
   MdOutlinePhone,
   MdPassword,
 } from "react-icons/md";
-import PasswordInputField from "../input/PasswordInputField";
 import { LuMailbox } from "react-icons/lu";
-import ImageInputField from "../input/ImageInputField";
-import FileInputField from "../input/FileInputField";
-import NumberInputField from "../input/NumberInputField";
-import ApiService from "../../api/ApiService";
-import ErrorMessage from "../ErrorMessage";
 import { PiSealCheckBold } from "react-icons/pi";
 import { AiOutlineCloseSquare } from "react-icons/ai";
+import TextInputField from "../../input/TextInputField";
+import PasswordInputField from "../../input/PasswordInputField";
+import FileInputField from "../../input/FileInputField";
+import ErrorMessage from "../../ErrorMessage";
+import ApiService from "../../../api/ApiService";
 
 const RegisterBuyer = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -231,7 +228,7 @@ const RegisterBuyer = () => {
               />
             </div>
             <div className="basis-5/12">
-              <NumberInputField
+              <TextInputField
                 label="Postnummer"
                 name="postalCode"
                 icon={<MdOutlineNumbers className="h-6 w-auto" color="#333" />}

@@ -41,6 +41,7 @@ api.interceptors.request.use(
 function handleError(error) {
   if (error.response) {
     const { statusCode, message, timestamp } = error.response?.data ?? {};
+    console.log(error);
 
     const resolvedStatusCode = statusCode ?? 500;
     const resolvedMessage = message ?? "An unexpected error occurred.";

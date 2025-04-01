@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
 const images = [
+  "../car_right_angle.jpg",
+  "../car_right_side.jpg",
   "../car_left_side.jpg",
   "../car_left_angle.jpg",
   "../car_str.jpg",
-  "../car_right_angle.jpg",
-  "../car_right_side.jpg",
 ];
 
 const HeroGallery = () => {
@@ -14,7 +14,7 @@ const HeroGallery = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); // Change image every 5 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
@@ -57,6 +57,7 @@ const HeroGallery = () => {
           />
         </div>
       </div>
+
       <div className="relative my-10 flex w-full items-center justify-center overflow-hidden px-4 md:hidden">
         {/* Background images */}
         <img
@@ -91,40 +92,6 @@ const HeroGallery = () => {
           />
         </div>
       </div>
-      {/* <div className="relative my-5 flex w-full items-center justify-center overflow-hidden px-4 md:hidden">
-        
-        <img
-          src={images[getImageIndex(1)]}
-          alt="Background 1"
-          className="absolute mb-[20%] aspect-[4/3] w-[65%] max-w-[400px] transform rounded-md object-cover opacity-60 blur-[1px] transition-all duration-1000"
-        />
-        <img
-          src={images[getImageIndex(2)]}
-          alt="Background 2"
-          className="absolute mt-[20%] aspect-[4/3] w-[65%] max-w-[400px] transform rounded-md object-cover opacity-60 blur-[1px] transition-all duration-1000"
-        />
-
-        
-        <img
-          src={images[getImageIndex(0)]}
-          alt="Left Side"
-          className="absolute mb-[12%] aspect-[4/3] w-[70%] max-w-[450px] transform rounded-md object-cover blur-[1px] transition-all duration-1000"
-        />
-        <img
-          src={images[getImageIndex(3)]}
-          alt="Right Side"
-          className="absolute mt-[12%] aspect-[4/3] w-[70%] max-w-[450px] transform rounded-md object-cover blur-[1px] transition-all duration-1000"
-        />
-
-       
-        <div className="relative z-[5] my-[10%] aspect-[4/3] w-[85%] max-w-[500px] transform rounded-md bg-gradient-to-br from-mirage to-swamp-300 p-[2px] transition-all duration-1000">
-          <img
-            src={images[getImageIndex(4)]}
-            alt="Main Image"
-            className="h-full w-full rounded-[4px] object-cover"
-          />
-        </div>
-      </div> */}
     </>
   );
 };

@@ -10,7 +10,6 @@ import {
   MdOutlinePhone,
   MdPassword,
 } from "react-icons/md";
-import TextInputField from "../input/TextInputField";
 import { useState } from "react";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 import { PiSealCheckBold } from "react-icons/pi";
@@ -19,12 +18,12 @@ import {
   RiArrowRightBoxLine,
   RiArrowUpBoxLine,
 } from "react-icons/ri";
-import ErrorMessage from "../ErrorMessage";
-import FileInputField from "../input/FileInputField";
-import NumberInputField from "../input/NumberInputField";
 import { LuMailbox } from "react-icons/lu";
-import PasswordInputField from "../input/PasswordInputField";
-import ApiService from "../../api/ApiService";
+import ApiService from "../../../api/ApiService";
+import TextInputField from "../../input/TextInputField";
+import PasswordInputField from "../../input/PasswordInputField";
+import FileInputField from "../../input/FileInputField";
+import ErrorMessage from "../../ErrorMessage";
 
 const BuyerModal = ({ open, setOpen }) => {
   const [buyerData, setBuyerData] = useState({

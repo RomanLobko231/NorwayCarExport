@@ -11,20 +11,23 @@ import {
 } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import BuyerModal from "./buyer/BuyerModal";
+import BuyerModal from "./users/buyer/BuyerModal";
 import LoginModal from "./LoginModal";
 import { MdOutlineDirectionsCar, MdOutlinePersonAddAlt } from "react-icons/md";
 import { IoMdLogIn } from "react-icons/io";
-
-const navigation = [
-  { name: "Logg inn", href: "/login", current: false },
-  { name: "Registrer bruker", href: "/register", current: false },
-];
+import { useTranslation } from "react-i18next";
+import LanguageChange from "./LanguageChange";
 
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const [loginModalopen, setLoginModalOpen] = useState(false);
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+  };
 
   return (
     <div className="fixed z-10 flex w-full justify-center">
@@ -49,7 +52,7 @@ export default function Navbar() {
                 </p>
               </div>
               <div className="hidden py-1 sm:ml-6 sm:block">
-                <div className="flex space-x-3">
+                <div className="flex gap-3">
                   <Link
                     to="/register"
                     className={`${
@@ -58,15 +61,18 @@ export default function Navbar() {
                         : "from-mirage to-swamp-500 text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse"
                     } rounded-lg border-gunmental px-4 pb-2 pt-1 text-xl font-semibold`}
                   >
-                    Register bruker
+                    {t("register_user")}
                   </Link>
                   <div
                     className={`cursor-pointer rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
                     onClick={() => setLoginModalOpen(true)}
                   >
-                    {" "}
-                    Logg inn
+                    {t("login")}
                   </div>
+                  <LanguageChange
+                    changeLanguage={changeLanguage}
+                    currLang={i18n.language}
+                  />
                 </div>
               </div>
             </div>
@@ -98,7 +104,7 @@ export default function Navbar() {
                   : "from-mirage to-swamp-500 text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse"
               } flex w-full flex-row items-center justify-between rounded-lg border-gunmental px-4 pb-1 pt-1 text-xl font-semibold md:pb-2`}
             >
-              Register bruker
+              {t("register_user")}
               <div className="mx-3 mt-[1px] h-[1px] flex-grow bg-light-gray opacity-50"></div>
               <MdOutlinePersonAddAlt className="mt-[1px] h-6 w-auto" />
             </CloseButton>
@@ -108,7 +114,7 @@ export default function Navbar() {
               onClick={() => setLoginModalOpen(true)}
               className={`flex w-full cursor-pointer flex-row items-center justify-between rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
             >
-              Logg inn
+              {t("login")}
               <div className="mx-3 mt-[1px] h-[1px] flex-grow bg-light-gray opacity-50"></div>
               <IoMdLogIn className="mt-[1px] h-6 w-auto" />
             </CloseButton>
@@ -118,13 +124,17 @@ export default function Navbar() {
               onClick={() => setLoginModalOpen(true)}
               className={`flex w-full cursor-pointer flex-row items-center justify-between rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
             >
-              Alle biler
+              {t("all_cars")}
               <div className="mx-3 mt-[1px] h-[1px] flex-grow bg-light-gray opacity-50"></div>
               <MdOutlineDirectionsCar className="mt-[1px] h-6 w-auto" />
             </CloseButton>
             <p className="mt-12 w-full text-center font-extralight text-gray-500">
-              Vi gjør det enkelt for deg
+              {t("moto")}
             </p>
+            <LanguageChange
+              changeLanguage={changeLanguage}
+              currLang={i18n.language}
+            />
           </div>
         </DisclosurePanel>
       </Disclosure>

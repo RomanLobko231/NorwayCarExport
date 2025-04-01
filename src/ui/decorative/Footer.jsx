@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="mx-auto my-2 w-full max-w-screen-xl p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <a
-            href="https://norwaycarexport.netlify.app/"
+            href="/"
             className="mb-4 flex items-center space-x-3 text-4xl font-extrabold text-medium-gray sm:mb-0 rtl:space-x-reverse"
           >
             NCE
@@ -35,10 +35,7 @@ const Footer = () => {
         <hr className="my-3 border-gray-200 sm:mx-auto dark:border-gray-700" />
         <span className="block text-sm text-medium-gray sm:text-center">
           © 2024{" "}
-          <a
-            href="https://norwaycarexport.netlify.app/"
-            className="hover:underline"
-          >
+          <a href="/" className="hover:underline">
             NorwayCarExport™
           </a>
           . All Rights Reserved.

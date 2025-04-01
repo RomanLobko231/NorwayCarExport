@@ -5,24 +5,21 @@ import {
   RiArrowRightBoxLine,
   RiArrowUpBoxLine,
 } from "react-icons/ri";
-import TextInputField from "../input/TextInputField";
 import {
   MdOutlineAlternateEmail,
-  MdOutlineEmail,
   MdOutlineLocationOn,
   MdOutlineNumbers,
-  MdOutlinePassword,
   MdOutlinePerson2,
   MdOutlinePhone,
   MdPassword,
 } from "react-icons/md";
-import PasswordInputField from "../input/PasswordInputField";
 import { LuMailbox } from "react-icons/lu";
-import NumberInputField from "../input/NumberInputField";
-import ApiService from "../../api/ApiService";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 import { PiSealCheckBold } from "react-icons/pi";
-import ErrorMessage from "../ErrorMessage";
+import ErrorMessage from "../../ErrorMessage";
+import TextInputField from "../../input/TextInputField";
+import PasswordInputField from "../../input/PasswordInputField";
+import ApiService from "../../../api/ApiService";
 
 const RegisterSeller = () => {
   const [isExpanded, setIsExpanded] = useState(false);

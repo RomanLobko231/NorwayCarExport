@@ -1,13 +1,17 @@
 import { useNavigate } from "react-router-dom";
-import InfoList from "../ui/InfoList";
-import InfoCard from "../ui/InfoList";
-import RegisterSellerModal from "../ui/seller/SellerModal";
+import InfoList from "../ui/decorative/InfoList";
+import InfoCard from "../ui/decorative/InfoList";
+import RegisterSellerModal from "../ui/users/seller/SellerModal";
 import { useState } from "react";
-import RegisterBuyerModal from "../ui/buyer/BuyerModal";
-import SellerModal from "../ui/seller/SellerModal";
-import BuyerModal from "../ui/buyer/BuyerModal";
+import RegisterBuyerModal from "../ui/users/buyer/BuyerModal";
+import SellerModal from "../ui/users/seller/SellerModal";
+import BuyerModal from "../ui/users/buyer/BuyerModal";
 import CarCardBlurred from "../ui/car/CarCardBlurred";
-import HeroGallery from "../ui/HeroGallery";
+import HeroGallery from "../ui/decorative/HeroGallery";
+import "./../i18n";
+import { useTranslation } from "react-i18next";
+import { LuBadgeEuro } from "react-icons/lu";
+import { GiCarKey } from "react-icons/gi";
 
 const cars = [
   {
@@ -37,82 +41,74 @@ const cars = [
 const Home = () => {
   const [sellerModalopen, setSellerModalOpen] = useState(false);
   const [buyerModalopen, setBuyerModalOpen] = useState(false);
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+  };
 
   return (
     <div className="flex flex-col items-center justify-center pt-20 md:pt-32">
       <h1 className="mx-6 w-4/5 animate-fade-in-slow text-center text-4xl font-normal text-medium-gray md:mx-0 md:text-6xl">
-        Velkommen til{" "}
-        <span className="inline-block bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text font-bold text-transparent">
-          stressfri handel
+        {t("welcome_to") + " "}
+        <span className="inline-block bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text font-bold leading-[2.8rem] text-transparent md:leading-[5rem]">
+          {t("trading")}
         </span>{" "}
-        for bilen din
+        {t("of_car")}
       </h1>
-      {/* <img
-        className="gradv md:gradvh mt-8 h-[155px] w-full animate-fade-in-fast object-cover object-center opacity-0 md:h-[300px] lg:h-[340px]"
-        src="../carhero.jpg"
-        alt=""
-      /> */}
       <HeroGallery />
       <p className="text-center text-lg font-light text-light-gray md:text-2xl">
-        Vi gjør det enkelt for deg
+        {t("moto")}
       </p>
       <div className="mt-2 flex flex-col items-center md:flex-row md:space-x-10 md:pt-4">
         <button
           onClick={() => {
             setSellerModalOpen(true);
           }}
-          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 duration-300 hover:-translate-y-1 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-xl md:px-7 md:pb-4"
+          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 text-cornsilk duration-300 hover:-translate-y-1 hover:from-mirage hover:to-gunmental hover:text-lighthouse md:space-x-3 md:rounded-xl md:px-7 md:pb-4"
         >
-          <span className="text-2xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-3xl">
-            SELGE BIL
+          <span className="text-2xl font-semibold leading-4 md:text-3xl">
+            {t("sell_car")}
           </span>
           <div className="h-[18px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[24px]"></div>
-          <img
-            src="../icons/sellcar.png"
-            alt="Dollar sign"
-            className="h-5 w-5 md:h-6 md:w-6"
-          />
+          <LuBadgeEuro className="h-5 w-auto md:h-7 md:w-auto" />
         </button>
         <span className="my-2 text-center text-sm font-extralight text-light-gray md:text-base">
-          eller
+          {t("or")}
         </span>
         <button
           onClick={() => {
             setBuyerModalOpen(true);
           }}
-          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-lg border border-light-gray bg-lighthouse px-6 pb-3 pt-3 duration-300 hover:-translate-y-1 md:space-x-3 md:rounded-xl md:px-7 md:pb-4"
+          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-lg border border-light-gray bg-lighthouse px-6 pb-3 pt-3 text-medium-gray duration-300 hover:-translate-y-1 md:space-x-3 md:rounded-xl md:px-7 md:pb-4"
         >
-          <span className="text-2xl font-semibold leading-4 text-medium-gray md:text-3xl">
-            KJØPE BIL
+          <span className="text-2xl font-semibold leading-4 md:text-3xl">
+            {t("buy_car")}
           </span>
           <div className="h-[18px] border-l-2 border-solid border-gunmental md:h-[24px]"></div>
-          <img
-            src="../icons/buycar.png"
-            alt="Dollar sign"
-            className="h-5 w-5 md:h-6 md:w-6"
-          />
+          <GiCarKey className="h-5 w-auto md:h-7 md:w-auto" />
         </button>
       </div>
       <div className="mt-16 flex flex-row items-center space-x-4 md:mt-20">
         <div className="h-[2px] w-[70px] bg-gradient-to-l from-medium-gray to-transparent md:w-[200px]"></div>
         <h1 className="text-center text-2xl font-bold text-medium-gray md:text-4xl">
-          KOM I GANG
+          {t("get_started")}
         </h1>
         <div className="h-[2px] w-[70px] bg-gradient-to-r from-medium-gray to-transparent md:w-[200px]"></div>
       </div>
       <h3 className="text-center text-lg font-extralight text-light-gray md:text-lg">
-        Selg bilen din på 3 enkle steg
+        {t("three_steps")}
       </h3>
       <InfoList />
       <div className="mt-12 flex flex-row items-center space-x-4 md:mt-20">
         <div className="h-[2px] w-[70px] bg-gradient-to-l from-medium-gray to-transparent md:w-[200px]"></div>
         <h1 className="text-center text-2xl font-bold text-medium-gray md:text-4xl">
-          NYESTE BUD
+          {t("latest_bids")}
         </h1>
         <div className="h-[2px] w-[70px] bg-gradient-to-r from-medium-gray to-transparent md:w-[200px]"></div>
       </div>
       <h3 className="text-center text-lg font-extralight text-light-gray md:text-lg">
-        Sjekk hva som er tilgjelgelig nå
+        {t("check_out")}
       </h3>
       <div
         className={`mt-8 flex w-full max-w-7xl flex-col flex-nowrap items-center justify-center gap-4 pb-4 md:flex-row md:flex-wrap md:items-start`}

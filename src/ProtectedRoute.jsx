@@ -1,5 +1,7 @@
 import { jwtDecode } from "jwt-decode";
 import { Navigate, Outlet } from "react-router-dom";
+import LoginModal from "./ui/LoginModal";
+import { useState } from "react";
 
 const isAuthenticated = () => {
   const token = localStorage.getItem("token");
@@ -23,6 +25,12 @@ const isAuthenticated = () => {
 };
 
 const ProtectedRoute = () => {
-  return isAuthenticated() ? <Outlet /> : <Navigate to="/login" />;
+  const [open, setOpen] = useState(true);
+
+  return isAuthenticated() ? (
+    <Outlet />
+  ) : (
+    <LoginModal open={open} setOpen={setOpen} />
+  );
 };
 export default ProtectedRoute;

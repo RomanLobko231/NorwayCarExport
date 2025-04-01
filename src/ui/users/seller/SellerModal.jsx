@@ -1,9 +1,9 @@
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 
 import { useState } from "react";
-import ApiService from "../../api/ApiService";
-import TextInputField from "../input/TextInputField";
-import NumberInputField from "../input/NumberInputField";
+import ApiService from "../../../api/ApiService";
+import TextInputField from "../../input/TextInputField";
+import NumberInputField from "../../input/NumberInputField";
 import {
   MdClose,
   MdOutlineAlternateEmail,
@@ -16,9 +16,9 @@ import {
   MdOutlineSpeed,
   MdPassword,
 } from "react-icons/md";
-import ImageInputField from "../input/ImageInputField";
-import FileInputField from "../input/FileInputField";
-import PasswordInputField from "../input/PasswordInputField";
+import ImageInputField from "../../input/ImageInputField";
+import FileInputField from "../../input/FileInputField";
+import PasswordInputField from "../../input/PasswordInputField";
 import {
   RiArrowLeftBoxLine,
   RiArrowRightBoxLine,
@@ -26,7 +26,7 @@ import {
 } from "react-icons/ri";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 import { PiSealCheckBold } from "react-icons/pi";
-import ErrorMessage from "../ErrorMessage";
+import ErrorMessage from "../../ErrorMessage";
 import { LuMailbox } from "react-icons/lu";
 
 const SellerModal = ({ open, setOpen }) => {
