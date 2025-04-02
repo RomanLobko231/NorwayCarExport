@@ -83,7 +83,7 @@ export default function Navbar() {
                 </div>
               </div>
               <div className="flex items-center sm:hidden">
-                <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-medium-gray hover:text-gunmental">
+                <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md py-2 text-medium-gray hover:text-gunmental">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
                   <Bars2Icon
@@ -138,10 +138,6 @@ export default function Navbar() {
             <p className="mt-12 w-full text-center font-extralight text-gray-500">
               {t("moto")}
             </p>
-            {/* <LanguageChange
-              changeLanguage={changeLanguage}
-              currLang={i18n.language}
-            /> */}
           </div>
         </DisclosurePanel>
       </Disclosure>

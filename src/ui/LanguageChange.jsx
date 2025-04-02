@@ -16,12 +16,15 @@ const LanguageChange = ({ changeLanguage, currLang }) => {
   const setGlobalLanguage = (lang) => {
     setSelectedLang(lang);
     changeLanguage(lang.code);
-    setIsOpen(false);
+
+    setTimeout(() => {
+      setIsOpen(false);
+    }, 1000);
   };
 
   return (
     <div
-      className="relative ml-3 flex items-center"
+      className="relative flex items-center sm:ml-3"
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
       onClick={() => setIsOpen(true)}
