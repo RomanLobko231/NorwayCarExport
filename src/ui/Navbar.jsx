@@ -54,9 +54,6 @@ export default function Navbar() {
                   src="../nce_logo.png"
                   className="mr-2 h-7 w-auto"
                 />
-                {/* <p className="text-3xl font-black text-medium-gray md:pb-1 md:text-4xl">
-                  NCE
-                </p> */}
               </div>
               <div className="hidden py-1 sm:ml-6 sm:block">
                 <div className="flex gap-3">

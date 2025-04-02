@@ -3,12 +3,12 @@ import { useState } from "react";
 const LanguageChange = ({ changeLanguage, currLang }) => {
   const [selectedLang, setSelectedLang] = useState({
     code: currLang,
-    flag: currLang == "no" ? "./no_flag.png" : "./en_flag.png",
+    flag: currLang == "no" ? "../no_flag.png" : "../en_flag.png",
   });
 
   const languages = [
-    { code: "no", flag: "./no_flag.png" },
-    { code: "en", flag: "./en_flag.png" },
+    { code: "no", flag: "../no_flag.png" },
+    { code: "en", flag: "../en_flag.png" },
   ];
 
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +19,7 @@ const LanguageChange = ({ changeLanguage, currLang }) => {
 
     setTimeout(() => {
       setIsOpen(false);
-    }, 1000);
+    }, 500);
   };
 
   return (

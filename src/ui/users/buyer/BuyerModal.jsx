@@ -38,10 +38,12 @@ const BuyerModal = ({ open, setOpen }) => {
       streetAddress: "",
       postalLocation: "",
       postalCode: "",
+      country: "",
     },
     password: "",
   });
   const [organisationLicences, setOrganisationLicences] = useState([]);
+  const [termsChecked, setTermsChecked] = useState(false);
   const [error, setError] = useState("");
   const [fileError, setFileError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -66,6 +68,8 @@ const BuyerModal = ({ open, setOpen }) => {
       setFileError(true);
       return;
     }
+    if (!termsChecked) return;
+
     postBuyerData();
   };
 
@@ -84,11 +88,15 @@ const BuyerModal = ({ open, setOpen }) => {
           streetAddress: "",
           postalLocation: "",
           postalCode: "",
+          country: "",
         },
         password: "",
       });
       setOrganisationLicences([]);
       setRegStep(3);
+      setError(null);
+      setFileError(false);
+      setTermsChecked(false);
     } catch (error) {
       setError(error);
     } finally {
@@ -121,18 +129,16 @@ const BuyerModal = ({ open, setOpen }) => {
               />
             </div>
             <div
-              className={`my-5 flex w-full flex-row gap-1 md:px-2 ${regStep == 3 && "hidden"}`}
+              className={`my-5 flex w-full flex-row gap-1 ${regStep == 3 && "hidden"} md:px-2`}
             >
               <div
-                className={`h-[3px] w-full rounded-full bg-swamp-500 opacity-100`}
+                className={`h-[3px] w-full rounded-full ${regStep == 2 ? "bg-swamp-500 opacity-100" : "bg-light-gray opacity-50"} `}
               ></div>
               <div
-                className={`h-[3px] w-full rounded-full ${regStep > 1 ? "bg-swamp-500 opacity-100" : "bg-light-gray opacity-50"} `}
-              ></div>
-              <div
-                className={`h-[3px] w-full rounded-full ${regStep > 2 ? "bg-swamp-500 opacity-100" : "bg-light-gray opacity-50"} `}
+                className={`h-[3px] w-full rounded-full bg-light-gray opacity-50`}
               ></div>
             </div>
+
             {regStep == 1 && (
               <form
                 className="flex w-full flex-col items-center md:px-2"
@@ -278,6 +284,23 @@ const BuyerModal = ({ open, setOpen }) => {
                     />
                   </div>
                 </div>
+                <TextInputField
+                  label={t("country")}
+                  name="country"
+                  icon={
+                    <MdOutlineLocationOn className="h-6 w-auto" color="#333" />
+                  }
+                  initialValue={buyerData.organisationAddress.country}
+                  onChange={(e) =>
+                    setBuyerData((prev) => ({
+                      ...prev,
+                      organisationAddress: {
+                        ...prev.organisationAddress,
+                        country: e.target.value,
+                      },
+                    }))
+                  }
+                />
                 <div className="mb-2 mt-1 flex w-full flex-col items-start">
                   <p className="ml-5 text-sm font-medium text-light-gray md:text-base">
                     {t("organisation_licence")}
@@ -293,6 +316,23 @@ const BuyerModal = ({ open, setOpen }) => {
                     error={fileError}
                   />
                 </div>
+                <label
+                  className={`text-md mt-2 flex cursor-pointer items-center sm:text-lg ${
+                    termsChecked
+                      ? "font-semibold text-gunmental"
+                      : "font-normal text-medium-gray"
+                  }`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={termsChecked}
+                    onChange={() => {
+                      setTermsChecked((checked) => !checked);
+                    }}
+                    className="mr-2 h-5 w-5 cursor-pointer accent-gunmental"
+                  />
+                  {t("terms_check")}
+                </label>
                 {error && <ErrorMessage error={error.message} />}
                 {isLoading ? (
                   <p>Loading..</p>

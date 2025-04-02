@@ -1,11 +1,14 @@
+import { useTranslation } from "react-i18next";
 import RegisterBuyer from "../ui/users/buyer/RegisterBuyer";
 import RegisterSeller from "../ui/users/seller/RegisterSeller";
 
 const RegisterPage = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="flex w-full flex-col items-center px-4 pt-28 md:px-0 md:pt-28">
       <h1 className="mb-3 text-center text-2xl font-semibold text-medium-gray md:mb-7 md:text-4xl">
-        Hvem vil du registrere deg som?
+        {t("register_as")}
       </h1>
       <div className="scroll relative flex h-9 w-9 animate-down items-center justify-center rounded-full border-2 border-medium-gray md:hidden">
         <div className="absolute left-3 top-3 h-2 w-2 rotate-[-45deg] border-b-2 border-l-2 border-medium-gray"></div>
@@ -17,7 +20,7 @@ const RegisterPage = () => {
             className="h-[150px] w-auto animate-fade-in-fast object-contain"
           />
           <p className="mb-3 mt-5 text-center text-lg font-normal text-medli-gray">
-            Selg bilen din raskt og enkelt til pålitelige kjøpere
+            {t("sell_to_buyers")}
           </p>
           <RegisterSeller />
         </div>
@@ -27,7 +30,7 @@ const RegisterPage = () => {
             className="h-[150px] w-auto animate-fade-in-fast object-contain"
           />
           <p className="mb-3 mt-5 text-center text-lg font-normal text-medli-gray">
-            Få tilgang til eksklusive bilauksjoner og gode tilbud
+            {t("get_access_to_auctions")}
           </p>
           <RegisterBuyer />
         </div>
