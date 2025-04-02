@@ -3,33 +3,23 @@ import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import { useState } from "react";
 import ApiService from "../../../api/ApiService";
 import TextInputField from "../../input/TextInputField";
-import NumberInputField from "../../input/NumberInputField";
 import {
   MdClose,
-  MdOutlineAlternateEmail,
   MdOutlineDirectionsCar,
-  MdOutlineEmail,
-  MdOutlineLocationOn,
-  MdOutlineNumbers,
   MdOutlinePerson2,
   MdOutlinePhone,
   MdOutlineSpeed,
-  MdPassword,
 } from "react-icons/md";
-import ImageInputField from "../../input/ImageInputField";
 import FileInputField from "../../input/FileInputField";
-import PasswordInputField from "../../input/PasswordInputField";
-import {
-  RiArrowLeftBoxLine,
-  RiArrowRightBoxLine,
-  RiArrowUpBoxLine,
-} from "react-icons/ri";
+import { RiArrowUpBoxLine } from "react-icons/ri";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 import { PiSealCheckBold } from "react-icons/pi";
 import ErrorMessage from "../../ErrorMessage";
-import { LuMailbox } from "react-icons/lu";
+import { useTranslation } from "react-i18next";
 
 const SellerModal = ({ open, setOpen }) => {
+  const { t } = useTranslation();
+
   const [sellerData, setSellerData] = useState({
     name: "",
     phoneNumber: "",
@@ -109,7 +99,7 @@ const SellerModal = ({ open, setOpen }) => {
           >
             <div className="mb-2 flex flex-row items-center justify-between md:px-2">
               <h1 className="mb-1 whitespace-nowrap text-center text-2xl font-bold text-medium-gray md:text-3xl">
-                Fyll ut skjemaet
+                {t("fill_form")}
               </h1>
               <div className="mx-3 h-[1px] flex-grow bg-light-gray opacity-50"></div>
               <MdClose
@@ -125,7 +115,7 @@ const SellerModal = ({ open, setOpen }) => {
                 onSubmit={submitFirstStep}
               >
                 <TextInputField
-                  label="Navn"
+                  label={t("name")}
                   name="name"
                   icon={
                     <MdOutlinePerson2 className="h-6 w-auto" color="#333" />
@@ -134,7 +124,7 @@ const SellerModal = ({ open, setOpen }) => {
                   onChange={handleUserInputChange}
                 />
                 <TextInputField
-                  label="Mobilnummer"
+                  label={t("phone_number")}
                   name="phoneNumber"
                   icon={<MdOutlinePhone className="h-6 w-auto" color="#333" />}
                   initialValue={sellerData.phoneNumber}
@@ -142,7 +132,7 @@ const SellerModal = ({ open, setOpen }) => {
                 />
                 <div className="flex w-full flex-row gap-3">
                   <TextInputField
-                    label="Registrasjonr."
+                    label={t("registration_number")}
                     name="registrationNumber"
                     icon={
                       <MdOutlineDirectionsCar
@@ -154,7 +144,7 @@ const SellerModal = ({ open, setOpen }) => {
                     onChange={handleCarInputChange}
                   />
                   <TextInputField
-                    label="Kilometerstand"
+                    label={t("kilometers")}
                     name="kilometers"
                     icon={
                       <MdOutlineSpeed className="h-6 w-auto" color="#333" />
@@ -172,7 +162,7 @@ const SellerModal = ({ open, setOpen }) => {
                   />
                 </div>
                 <p className="mt-3 text-center text-sm font-light italic text-light-gray md:text-base">
-                  Last opp bilder allerede nå, hvis du vil
+                  {t("upload_photo_if_want")}
                 </p>
                 <FileInputField
                   files={uploadImages}
@@ -188,7 +178,7 @@ const SellerModal = ({ open, setOpen }) => {
                     className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg md:pb-2 md:pt-2"
                   >
                     <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
-                      SEND
+                      {t("send")}
                     </span>
                     <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[18px]"></div>
                     <RiArrowUpBoxLine className="h-6 w-auto" color="#FEFAF0" />
@@ -200,7 +190,7 @@ const SellerModal = ({ open, setOpen }) => {
               <div className="flex w-full flex-col items-center justify-center md:px-2">
                 <PiSealCheckBold className="mt-9 h-20 w-auto" color="#416858" />
                 <h1 className="mb-9 mt-3 text-center text-xl font-bold text-medium-gray md:text-2xl">
-                  Søknad er sendt!
+                  {t("application_sent")}
                 </h1>
                 <button
                   onClick={() => {
@@ -212,7 +202,7 @@ const SellerModal = ({ open, setOpen }) => {
                   className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg md:pb-2 md:pt-2"
                 >
                   <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
-                    LUKK
+                    {t("close")}
                   </span>
                   <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[18px]"></div>
                   <AiOutlineCloseSquare

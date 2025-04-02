@@ -269,7 +269,7 @@ const RegisterBuyer = () => {
             <div className="flex w-full flex-row items-center justify-center gap-3">
               <button
                 type="button"
-                className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center rounded-lg border border-medium-gray bg-lighthouse px-4 pb-3 pt-3 text-medium-gray hover:bg-gradient-to-br hover:from-mirage hover:to-gunmental hover:text-lighthouse md:rounded-lg md:pb-2 md:pt-2"
+                className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center rounded-lg border border-medium-gray bg-lighthouse px-3 pb-2 pt-2 text-medium-gray hover:bg-gradient-to-br hover:from-mirage hover:to-gunmental hover:text-lighthouse md:rounded-lg md:px-4"
                 onClick={() => {
                   setRegStep(regStep - 1);
                 }}

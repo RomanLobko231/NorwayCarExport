@@ -16,8 +16,10 @@ import PasswordInputField from "./input/PasswordInputField";
 import { useNavigate } from "react-router-dom";
 import ApiService from "../api/ApiService";
 import ErrorMessage from "./ErrorMessage";
+import { useTranslation } from "react-i18next";
 
 const LoginModal = ({ open, setOpen }) => {
+  const { t } = useTranslation();
   const [loginData, setLoginData] = useState({ password: "", email: "" });
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -65,7 +67,7 @@ const LoginModal = ({ open, setOpen }) => {
           >
             <div className="mb-2 flex flex-row items-center justify-between md:px-2">
               <h1 className="mb-1 whitespace-nowrap text-center text-2xl font-bold text-medium-gray md:text-3xl">
-                Logg inn
+                {t("login")}
               </h1>
               <div className="mx-3 h-[1px] flex-grow bg-light-gray opacity-50"></div>
               <MdClose
@@ -79,7 +81,7 @@ const LoginModal = ({ open, setOpen }) => {
               onSubmit={submitLogin}
             >
               <TextInputField
-                label="Epost"
+                label={t("email")}
                 name="email"
                 type="email"
                 icon={
@@ -92,7 +94,7 @@ const LoginModal = ({ open, setOpen }) => {
                 onChange={handleInputChange}
               />
               <PasswordInputField
-                label="Passord"
+                label={t("password")}
                 name="password"
                 icon={<MdPassword className="h-6 w-auto" color="#333" />}
                 initialValue={loginData.password}
@@ -104,7 +106,7 @@ const LoginModal = ({ open, setOpen }) => {
                 className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-lg md:px-7 md:pb-3 md:pt-3"
               >
                 <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
-                  LOGG INN
+                  {t("login").toUpperCase()}{" "}
                 </span>
                 <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[22px]"></div>
                 <img

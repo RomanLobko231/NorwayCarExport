@@ -24,8 +24,10 @@ import TextInputField from "../../input/TextInputField";
 import PasswordInputField from "../../input/PasswordInputField";
 import FileInputField from "../../input/FileInputField";
 import ErrorMessage from "../../ErrorMessage";
+import { useTranslation } from "react-i18next";
 
 const BuyerModal = ({ open, setOpen }) => {
+  const { t } = useTranslation();
   const [buyerData, setBuyerData] = useState({
     name: "",
     phoneNumber: "",
@@ -109,7 +111,7 @@ const BuyerModal = ({ open, setOpen }) => {
           >
             <div className="mb-2 flex flex-row items-center justify-between md:px-2">
               <h1 className="mb-1 whitespace-nowrap text-center text-2xl font-bold text-medium-gray md:text-3xl">
-                Fyll ut skjemaet
+                {t("fill_form")}
               </h1>
               <div className="mx-3 h-[1px] flex-grow bg-light-gray opacity-50"></div>
               <MdClose
@@ -138,7 +140,7 @@ const BuyerModal = ({ open, setOpen }) => {
                 onClick={(e) => e.stopPropagation()}
               >
                 <TextInputField
-                  label="Epost"
+                  label={t("email")}
                   name="email"
                   type="email"
                   icon={
@@ -151,7 +153,7 @@ const BuyerModal = ({ open, setOpen }) => {
                   onChange={handleInputChange}
                 />
                 <PasswordInputField
-                  label="Passord"
+                  label={t("password")}
                   name="password"
                   icon={<MdPassword className="h-6 w-auto" color="#333" />}
                   initialValue={buyerData.password}
@@ -162,7 +164,7 @@ const BuyerModal = ({ open, setOpen }) => {
                   className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg md:pb-2 md:pt-2"
                 >
                   <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
-                    NESTE
+                    {t("next")}
                   </span>
                   <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[18px]"></div>
                   <RiArrowRightBoxLine className="h-6 w-auto" color="#FEFAF0" />
@@ -177,7 +179,7 @@ const BuyerModal = ({ open, setOpen }) => {
                 onClick={(e) => e.stopPropagation()}
               >
                 <TextInputField
-                  label="Navn"
+                  label={t("name")}
                   name="name"
                   icon={
                     <MdOutlinePerson2 className="h-6 w-auto" color="#333" />
@@ -186,14 +188,14 @@ const BuyerModal = ({ open, setOpen }) => {
                   onChange={handleInputChange}
                 />
                 <TextInputField
-                  label="Mobilnummer"
+                  label={t("phone_number")}
                   name="phoneNumber"
                   icon={<MdOutlinePhone className="h-6 w-auto" color="#333" />}
                   initialValue={buyerData.phoneNumber}
                   onChange={handleInputChange}
                 />
                 <TextInputField
-                  label="Organisasjonsnavn"
+                  label={t("organisation_name")}
                   name="organisationName"
                   icon={
                     <MdOutlineAccountBalance
@@ -205,7 +207,7 @@ const BuyerModal = ({ open, setOpen }) => {
                   onChange={handleInputChange}
                 />
                 <TextInputField
-                  label="Organisasjonsnummer"
+                  label={t("organisation_number")}
                   name="organisationNumber"
                   icon={
                     <MdOutlineAccountBalance
@@ -217,7 +219,7 @@ const BuyerModal = ({ open, setOpen }) => {
                   onChange={handleInputChange}
                 />
                 <TextInputField
-                  label="Gateadresse"
+                  label={t("street_address")}
                   name="address"
                   icon={
                     <MdOutlineLocationOn className="h-6 w-auto" color="#333" />
@@ -236,7 +238,7 @@ const BuyerModal = ({ open, setOpen }) => {
                 <div className="flex w-full flex-row gap-2">
                   <div className="basis-7/12">
                     <TextInputField
-                      label="Poststed (By)"
+                      label={t("postal_location")}
                       name="postalLocation"
                       icon={<LuMailbox className="h-6 w-auto" color="#333" />}
                       initialValue={
@@ -255,7 +257,7 @@ const BuyerModal = ({ open, setOpen }) => {
                   </div>
                   <div className="basis-5/12">
                     <TextInputField
-                      label="Postnummer"
+                      label={t("postal_code")}
                       name="postalCode"
                       icon={
                         <MdOutlineNumbers className="h-6 w-auto" color="#333" />
@@ -278,7 +280,7 @@ const BuyerModal = ({ open, setOpen }) => {
                 </div>
                 <div className="mb-2 mt-1 flex w-full flex-col items-start">
                   <p className="ml-5 text-sm font-medium text-light-gray md:text-base">
-                    Organisasjonslisens
+                    {t("organisation_licence")}
                   </p>
                   <FileInputField
                     files={organisationLicences}
@@ -298,19 +300,19 @@ const BuyerModal = ({ open, setOpen }) => {
                   <div className="flex w-full flex-row items-center justify-center gap-3">
                     <button
                       type="button"
-                      className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center rounded-lg border border-medium-gray bg-lighthouse px-4 pb-3 pt-3 text-medium-gray hover:bg-gradient-to-br hover:from-mirage hover:to-gunmental hover:text-lighthouse md:rounded-lg md:pb-2 md:pt-2"
+                      className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center rounded-lg border border-medium-gray bg-lighthouse px-3 pb-2 pt-2 text-medium-gray hover:bg-gradient-to-br hover:from-mirage hover:to-gunmental hover:text-lighthouse md:rounded-lg md:px-4"
                       onClick={() => {
                         setRegStep(regStep - 1);
                       }}
                     >
-                      <RiArrowLeftBoxLine className="h-7 w-auto" />
+                      <RiArrowLeftBoxLine className="h-7 w-auto md:h-7" />
                     </button>
                     <button
                       type="submit"
                       className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg md:pb-2 md:pt-2"
                     >
                       <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
-                        SEND
+                        {t("send")}
                       </span>
                       <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[18px]"></div>
                       <RiArrowUpBoxLine
@@ -326,7 +328,7 @@ const BuyerModal = ({ open, setOpen }) => {
               <div className="mb-5 flex w-full flex-col items-center justify-center md:px-2">
                 <PiSealCheckBold className="mt-9 h-28 w-auto" color="#416858" />
                 <h1 className="mb-9 mt-3 text-center text-xl font-bold text-medium-gray md:text-2xl">
-                  Brukeren er registrert!
+                  {t("user_registered")}
                 </h1>
                 <button
                   onClick={() => {
@@ -338,7 +340,7 @@ const BuyerModal = ({ open, setOpen }) => {
                   className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg md:pb-2 md:pt-2"
                 >
                   <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
-                    LUKK
+                    {t("close")}
                   </span>
                   <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[18px]"></div>
                   <AiOutlineCloseSquare
