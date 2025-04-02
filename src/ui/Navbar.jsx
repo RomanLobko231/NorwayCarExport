@@ -38,6 +38,13 @@ export default function Navbar() {
         <div className="w-full max-w-7xl px-6 lg:px-8">
           <div className="flex h-12 flex-row items-center justify-between md:h-14">
             <div className="flex flex-1 items-center justify-between sm:items-stretch">
+              <div className="block sm:hidden">
+                <LanguageChange
+                  changeLanguage={changeLanguage}
+                  currLang={i18n.language}
+                />
+              </div>
+
               <div
                 className="flex flex-shrink-0 cursor-pointer items-center"
                 onClick={() => navigate("/")}
@@ -47,9 +54,9 @@ export default function Navbar() {
                   src="../nce_logo.png"
                   className="mr-2 h-7 w-auto"
                 />
-                <p className="text-3xl font-black text-medium-gray md:pb-1 md:text-4xl">
+                {/* <p className="text-3xl font-black text-medium-gray md:pb-1 md:text-4xl">
                   NCE
-                </p>
+                </p> */}
               </div>
               <div className="hidden py-1 sm:ml-6 sm:block">
                 <div className="flex gap-3">
@@ -75,20 +82,20 @@ export default function Navbar() {
                   />
                 </div>
               </div>
-            </div>
-            <div className="flex items-center sm:hidden">
-              <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-medium-gray hover:text-gunmental">
-                <span className="absolute -inset-0.5" />
-                <span className="sr-only">Open main menu</span>
-                <Bars2Icon
-                  aria-hidden="true"
-                  className="block h-8 w-8 group-data-[open]:hidden"
-                />
-                <XMarkIcon
-                  aria-hidden="true"
-                  className="hidden h-8 w-8 group-data-[open]:block"
-                />
-              </DisclosureButton>
+              <div className="flex items-center sm:hidden">
+                <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-medium-gray hover:text-gunmental">
+                  <span className="absolute -inset-0.5" />
+                  <span className="sr-only">Open main menu</span>
+                  <Bars2Icon
+                    aria-hidden="true"
+                    className="block h-8 w-8 group-data-[open]:hidden"
+                  />
+                  <XMarkIcon
+                    aria-hidden="true"
+                    className="hidden h-8 w-8 group-data-[open]:block"
+                  />
+                </DisclosureButton>
+              </div>
             </div>
           </div>
         </div>
@@ -131,10 +138,10 @@ export default function Navbar() {
             <p className="mt-12 w-full text-center font-extralight text-gray-500">
               {t("moto")}
             </p>
-            <LanguageChange
+            {/* <LanguageChange
               changeLanguage={changeLanguage}
               currLang={i18n.language}
-            />
+            /> */}
           </div>
         </DisclosurePanel>
       </Disclosure>

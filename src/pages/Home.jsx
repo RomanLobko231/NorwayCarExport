@@ -65,7 +65,7 @@ const Home = () => {
           onClick={() => {
             setSellerModalOpen(true);
           }}
-          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 text-cornsilk duration-300 hover:-translate-y-1 hover:from-mirage hover:to-gunmental hover:text-lighthouse md:space-x-3 md:px-7 md:pb-4"
+          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-md bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 text-cornsilk duration-300 hover:-translate-y-1 hover:from-mirage hover:to-gunmental hover:text-lighthouse md:space-x-3 md:px-7 md:pb-4"
         >
           <span className="text-2xl font-semibold leading-4 md:text-3xl">
             {t("sell_car")}
@@ -80,7 +80,7 @@ const Home = () => {
           onClick={() => {
             setBuyerModalOpen(true);
           }}
-          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-lg border border-medium-gray bg-lighthouse px-6 pb-3 pt-3 text-medium-gray duration-300 hover:-translate-y-1 md:space-x-3 md:px-7 md:pb-4"
+          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-md border border-medium-gray bg-lighthouse px-6 pb-3 pt-3 text-medium-gray duration-300 hover:-translate-y-1 md:space-x-3 md:px-7 md:pb-4"
         >
           <span className="text-2xl font-semibold leading-4 md:text-3xl">
             {t("buy_car")}

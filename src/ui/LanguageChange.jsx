@@ -38,7 +38,7 @@ const LanguageChange = ({ changeLanguage, currLang }) => {
       </div>
 
       {isOpen && (
-        <div className="absolute -left-2 top-7 w-16 rounded-md border border-medium-gray bg-white md:top-10">
+        <div className="absolute -left-2 top-8 w-16 rounded-md border border-medium-gray bg-lighthouse md:top-10">
           {languages
             .filter((lang) => lang.code !== selectedLang.code)
             .map((lang) => (
