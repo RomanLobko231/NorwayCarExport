@@ -21,7 +21,7 @@ import TextInputField from "../../input/TextInputField";
 import PasswordInputField from "../../input/PasswordInputField";
 import FileInputField from "../../input/FileInputField";
 import ErrorMessage from "../../ErrorMessage";
-import ApiService from "../../../api/ApiService";
+import UserApiService from "../../../api/UserApiService";
 import { useTranslation } from "react-i18next";
 
 const RegisterBuyer = () => {
@@ -53,7 +53,7 @@ const RegisterBuyer = () => {
     setIsLoading(true);
     setError(null);
     try {
-      await ApiService.registerBuyer(buyerData, organisationLicences);
+      await UserApiService.registerBuyer(buyerData, organisationLicences);
       setBuyerData({
         name: "",
         phoneNumber: "",
@@ -104,6 +104,12 @@ const RegisterBuyer = () => {
 
   const submitFinalStep = (e) => {
     e.preventDefault();
+    if (organisationLicences.length < 1) {
+      setFileError(true);
+      return;
+    }
+    if (!termsChecked) return;
+
     postBuyerData();
   };
 

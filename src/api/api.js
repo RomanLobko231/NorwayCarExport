@@ -5,7 +5,7 @@ const DEV_URL = "http://localhost:8080";
 const PROD_URL = "https://nce-backend-production.up.railway.app/";
 
 const api = axios.create({
-  baseURL: PROD_URL,
+  baseURL: DEV_URL,
 });
 
 api.interceptors.response.use(
@@ -39,6 +39,11 @@ api.interceptors.request.use(
 );
 
 function handleError(error) {
+  if (error.status == 401 || error.status == 403) {
+    localStorage.removeItem("userId");
+    localStorage.removeItem("token");
+  }
+
   if (error.response) {
     const { statusCode, message, timestamp } = error.response?.data ?? {};
     console.log(error);
@@ -46,6 +51,7 @@ function handleError(error) {
     const resolvedStatusCode = statusCode ?? 500;
     const resolvedMessage = message ?? "An unexpected error occurred.";
     const resolvedTimestamp = timestamp ?? new Date().toISOString();
+
     return {
       errorMessage: {
         statusCode: resolvedStatusCode,

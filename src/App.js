@@ -5,9 +5,9 @@ import Home from "./pages/Home";
 import Footer from "./ui/decorative/Footer";
 import ScrollToTop from "./tools/ScrollToTop";
 import RegisterPage from "./pages/RegisterPage";
-import UserPanel from "./pages/UserPanel";
 import ProtectedRoute from "./ProtectedRoute";
 import AddCarPage from "./pages/AddCarPage";
+import UserPage from "./pages/UserPage";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} exact={true} />
         <Route path="/add-car" element={<AddCarPage />} exact={true} />
         <Route element={<ProtectedRoute />}>
-          <Route path="/user/:id" element={<UserPanel />} exact={false} />
+          <Route path="/user/:id" element={<UserPage />} exact={false} />
         </Route>
       </Routes>
       <Footer />

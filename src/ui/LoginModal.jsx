@@ -1,20 +1,10 @@
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
-import {
-  MdClose,
-  MdEmail,
-  MdOutlineAccountBalance,
-  MdOutlineAlternateEmail,
-  MdOutlineEmail,
-  MdOutlineLocationOn,
-  MdOutlinePerson2,
-  MdOutlinePhone,
-  MdPassword,
-} from "react-icons/md";
+import { MdClose, MdOutlineAlternateEmail, MdPassword } from "react-icons/md";
 import { useState } from "react";
 import TextInputField from "./input/TextInputField";
 import PasswordInputField from "./input/PasswordInputField";
 import { useNavigate } from "react-router-dom";
-import ApiService from "../api/ApiService";
+import UserApiService from "../api/UserApiService";
 import ErrorMessage from "./ErrorMessage";
 import { useTranslation } from "react-i18next";
 
@@ -27,11 +17,11 @@ const LoginModal = ({ open, setOpen }) => {
 
   const loginUser = async () => {
     try {
-      const response = await ApiService.loginUser(loginData);
+      const response = await UserApiService.loginUser(loginData);
       navigate(`/user/${response.data.userId}`);
       setLoginData({ password: "", email: "" });
       setOpen(false);
-      setError("");
+      setError(null);
     } catch (error) {
       setError(error);
     } finally {
@@ -106,7 +96,7 @@ const LoginModal = ({ open, setOpen }) => {
                 className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-lg md:px-7 md:pb-3 md:pt-3"
               >
                 <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
-                  {t("login").toUpperCase()}{" "}
+                  {t("login").toUpperCase()}
                 </span>
                 <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[22px]"></div>
                 <img

@@ -11,7 +11,6 @@ import {
 } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import BuyerModal from "./users/buyer/BuyerModal";
 import LoginModal from "./LoginModal";
 import { MdOutlineDirectionsCar, MdOutlinePersonAddAlt } from "react-icons/md";
 import { IoMdLogIn } from "react-icons/io";
@@ -22,6 +21,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const [loginModalopen, setLoginModalOpen] = useState(false);
+  const userId = localStorage.getItem("userId");
 
   const { t, i18n } = useTranslation();
 
@@ -54,6 +54,9 @@ export default function Navbar() {
                   src="../nce_logo.png"
                   className="mr-2 h-7 w-auto"
                 />
+                <span className="mb-1 hidden bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text text-[1.95rem] font-black text-transparent md:inline-block">
+                  NCE
+                </span>
               </div>
               <div className="hidden py-1 sm:ml-6 sm:block">
                 <div className="flex gap-3">
@@ -67,12 +70,22 @@ export default function Navbar() {
                   >
                     {t("register_user")}
                   </Link>
-                  <div
-                    className={`cursor-pointer rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
-                    onClick={() => setLoginModalOpen(true)}
-                  >
-                    {t("login")}
-                  </div>
+                  {userId ? (
+                    <div
+                      className={`cursor-pointer rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
+                      onClick={() => navigate(`/user/${userId}`)}
+                    >
+                      {t("profile")}
+                    </div>
+                  ) : (
+                    <div
+                      className={`cursor-pointer rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
+                      onClick={() => setLoginModalOpen(true)}
+                    >
+                      {t("login")}
+                    </div>
+                  )}
+
                   <LanguageChange
                     changeLanguage={changeLanguage}
                     currLang={i18n.language}
@@ -113,15 +126,27 @@ export default function Navbar() {
               <MdOutlinePersonAddAlt className="mt-[1px] h-6 w-auto" />
             </CloseButton>
 
-            <CloseButton
-              as={Link}
-              onClick={() => setLoginModalOpen(true)}
-              className={`flex w-full cursor-pointer flex-row items-center justify-between rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
-            >
-              {t("login")}
-              <div className="mx-3 mt-[1px] h-[1px] flex-grow bg-light-gray opacity-50"></div>
-              <IoMdLogIn className="mt-[1px] h-6 w-auto" />
-            </CloseButton>
+            {userId ? (
+              <CloseButton
+                as={Link}
+                onClick={() => navigate(`/user/${userId}`)}
+                className={`flex w-full cursor-pointer flex-row items-center justify-between rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
+              >
+                {t("profile")}
+                <div className="mx-3 mt-[1px] h-[1px] flex-grow bg-light-gray opacity-50"></div>
+                <IoMdLogIn className="mt-[1px] h-6 w-auto" />
+              </CloseButton>
+            ) : (
+              <CloseButton
+                as={Link}
+                onClick={() => setLoginModalOpen(true)}
+                className={`flex w-full cursor-pointer flex-row items-center justify-between rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
+              >
+                {t("login")}
+                <div className="mx-3 mt-[1px] h-[1px] flex-grow bg-light-gray opacity-50"></div>
+                <IoMdLogIn className="mt-[1px] h-6 w-auto" />
+              </CloseButton>
+            )}
 
             <CloseButton
               as={Link}

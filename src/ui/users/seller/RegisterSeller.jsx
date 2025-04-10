@@ -19,7 +19,7 @@ import { PiSealCheckBold } from "react-icons/pi";
 import ErrorMessage from "../../ErrorMessage";
 import TextInputField from "../../input/TextInputField";
 import PasswordInputField from "../../input/PasswordInputField";
-import ApiService from "../../../api/ApiService";
+import UserApiService from "../../../api/UserApiService";
 import { useTranslation } from "react-i18next";
 
 const RegisterSeller = () => {
@@ -41,7 +41,7 @@ const RegisterSeller = () => {
     setIsLoading(true);
     setError(null);
     try {
-      await ApiService.registerSeller(sellerData);
+      await UserApiService.registerSeller(sellerData);
       setSellerData({
         name: "",
         phoneNumber: "",

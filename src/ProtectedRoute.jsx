@@ -14,10 +14,12 @@ const isAuthenticated = () => {
     const { exp } = jwtDecode(token);
     if (Date.now() > exp * 1000) {
       localStorage.removeItem("token");
+      localStorage.removeItem("userId");
       return false;
     }
   } catch (error) {
     localStorage.removeItem("token");
+    localStorage.removeItem("userId");
     return false;
   }
 

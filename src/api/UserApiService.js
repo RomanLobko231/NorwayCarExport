@@ -1,26 +1,6 @@
 import api from "./api";
 
-export default class ApiService {
-  static async postCarData(carData, images) {
-    try {
-      const data = new FormData();
-      const requestBlob = new Blob([JSON.stringify(carData)], {
-        type: "application/json",
-      });
-      data.append("carData", requestBlob);
-
-      images.forEach((image) => {
-        data.append("images", image);
-      });
-
-      const response = await api.post("/api/v1/cars/customer", data);
-      return response;
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
-  }
-
+export default class UserApiService {
   static async registerSeller(sellerData) {
     try {
       const response = await api.post(
@@ -71,6 +51,7 @@ export default class ApiService {
     try {
       const response = await api.post("/api/v1/users/login", loginData);
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("userId", response.data.userId);
       return response;
     } catch (error) {
       console.log(error);
@@ -81,6 +62,16 @@ export default class ApiService {
   static async getUserById(id) {
     try {
       const response = await api.get(`/api/v1/users/${id}`);
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  static async updateUser(userData) {
+    try {
+      const response = await api.put(`/api/v1/users/${userData.id}`, userData);
       return response;
     } catch (error) {
       console.log(error);

@@ -1,7 +1,7 @@
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 
 import { useState } from "react";
-import ApiService from "../../../api/ApiService";
+import UserApiService from "../../../api/UserApiService";
 import TextInputField from "../../input/TextInputField";
 import {
   MdClose,
@@ -16,6 +16,7 @@ import { AiOutlineCloseSquare } from "react-icons/ai";
 import { PiSealCheckBold } from "react-icons/pi";
 import ErrorMessage from "../../ErrorMessage";
 import { useTranslation } from "react-i18next";
+import CarApiService from "../../../api/CarApiService";
 
 const SellerModal = ({ open, setOpen }) => {
   const { t } = useTranslation();
@@ -39,12 +40,15 @@ const SellerModal = ({ open, setOpen }) => {
     try {
       setIsLoading(true);
       setError(null);
-      const savedUser = await ApiService.registerOneTimeSeller(sellerData);
-      setCarData((prevData) => ({
-        ...prevData,
+      const savedUser = await UserApiService.registerOneTimeSeller(sellerData);
+      const updatedCarData = {
+        ...carData,
         ownerId: savedUser.data.userId,
-      }));
-      await ApiService.postCarData(carData, uploadImages);
+      };
+      const response = await CarApiService.postCarData(
+        updatedCarData,
+        uploadImages,
+      );
       setSellerData({
         name: "",
         phoneNumber: "",
@@ -55,6 +59,7 @@ const SellerModal = ({ open, setOpen }) => {
         kilometers: "",
       });
       setUploadImages([]);
+      setRegStep(2);
     } catch (error) {
       setError(error);
     } finally {
@@ -65,7 +70,6 @@ const SellerModal = ({ open, setOpen }) => {
   const submitFirstStep = (e) => {
     e.preventDefault();
     postCarApplication();
-    setRegStep(2);
   };
 
   const handleUserInputChange = (e) => {

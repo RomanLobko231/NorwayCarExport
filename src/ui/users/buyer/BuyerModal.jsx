@@ -19,7 +19,7 @@ import {
   RiArrowUpBoxLine,
 } from "react-icons/ri";
 import { LuMailbox } from "react-icons/lu";
-import ApiService from "../../../api/ApiService";
+import UserApiService from "../../../api/UserApiService";
 import TextInputField from "../../input/TextInputField";
 import PasswordInputField from "../../input/PasswordInputField";
 import FileInputField from "../../input/FileInputField";
@@ -77,7 +77,7 @@ const BuyerModal = ({ open, setOpen }) => {
     setIsLoading(true);
     setError(null);
     try {
-      await ApiService.registerBuyer(buyerData, organisationLicences);
+      await UserApiService.registerBuyer(buyerData, organisationLicences);
       setBuyerData({
         name: "",
         phoneNumber: "",
