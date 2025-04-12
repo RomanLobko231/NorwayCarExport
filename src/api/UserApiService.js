@@ -50,8 +50,8 @@ export default class UserApiService {
   static async loginUser(loginData) {
     try {
       const response = await api.post("/api/v1/users/login", loginData);
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("userId", response.data.userId);
+      sessionStorage.setItem("token", response.data.token);
+      sessionStorage.setItem("userId", response.data.userId);
       return response;
     } catch (error) {
       console.log(error);
@@ -71,7 +71,7 @@ export default class UserApiService {
 
   static async updateUser(userData) {
     try {
-      const response = await api.put(`/api/v1/users/${userData.id}`, userData);
+      const response = await api.put(`/api/v1/users`, userData);
       return response;
     } catch (error) {
       console.log(error);

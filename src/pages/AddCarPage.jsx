@@ -1,14 +1,19 @@
 import { useState } from "react";
 import ApiService from "../api/UserApiService";
 import CarEditingPanel from "../ui/car/CarEditingPanel";
+import ErrorDialog from "../ui/dialog/ErrorDialog";
+import { useNavigate, useParams } from "react-router-dom";
+import CarApiService from "../api/CarApiService";
 
 const AddCarPage = () => {
+  const params = useParams();
+
   const [isErrorOpen, setIsErrorOpen] = useState(false);
   const [error, setError] = useState(null);
-
   const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
   const [car, setCar] = useState({
-    id: null,
     registrationNumber: "",
     kilometers: 0,
     make: "",
@@ -20,16 +25,12 @@ const AddCarPage = () => {
     numberOfSeats: 0,
     numberOfDoors: 0,
     color: "",
-    gearboxType: "",
-    operatingMode: "",
+    gearboxType: "Annet",
+    operatingMode: "Annet",
     weight: 0,
     nextEUControl: "",
-    ownerInfo: {
-      name: "",
-      phoneNumber: "",
-      email: "",
-    },
-    status: "",
+    ownerId: params.id,
+    status: "Annet",
     additionalInformation: "",
     imagePaths: [],
   });
@@ -38,8 +39,30 @@ const AddCarPage = () => {
     setIsLoading(true);
     setError(null);
     try {
-      console.log(carData);
-      //const response = await ApiService.saveCar(carData, images);
+      const response = await CarApiService.saveCarExistingUser(carData, images);
+      setCar({
+        registrationNumber: "",
+        kilometers: 0,
+        make: "",
+        model: "",
+        firstTimeRegisteredInNorway: "",
+        engineType: "",
+        engineVolume: 0,
+        bodywork: "",
+        numberOfSeats: 0,
+        numberOfDoors: 0,
+        color: "",
+        gearboxType: "Annet",
+        operatingMode: "Annet",
+        weight: 0,
+        nextEUControl: "",
+        ownerId: params.id,
+        status: "Annet",
+        additionalInformation: "",
+        imagePaths: [],
+      });
+
+      navigate("/user/" + params.id);
     } catch (error) {
       setError(error);
       setIsErrorOpen(true);
@@ -49,23 +72,21 @@ const AddCarPage = () => {
   };
 
   return (
-    <>
+    <div className="flex w-full justify-center">
       {isLoading && (
-        <p className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-          Loading...
-        </p>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="text-xl text-white">Loading...</div>
+        </div>
       )}
-      {/* {error && (
+      {error && (
         <ErrorDialog
           isOpen={isErrorOpen}
           setIsOpen={setIsErrorOpen}
           error={error}
         />
-      )} */}
-      {!isLoading && !error && car && (
-        <CarEditingPanel car={car} saveCar={saveCar} />
       )}
-    </>
+      <CarEditingPanel car={car} saveCar={saveCar} />
+    </div>
   );
 };
 

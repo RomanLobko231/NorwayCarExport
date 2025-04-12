@@ -4,10 +4,11 @@ import {
   DialogPanel,
   DialogTitle,
 } from "@headlessui/react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 const ErrorDialog = ({ isOpen, setIsOpen, error }) => {
   const navigate = useNavigate();
+
   return (
     <Dialog
       open={isOpen}
@@ -32,7 +33,11 @@ const ErrorDialog = ({ isOpen, setIsOpen, error }) => {
           <div className="flex gap-4">
             <button
               className="card_shadow mb-2 mt-5 flex flex-row items-center rounded-md border border-medium-gray bg-lighthouse px-4 pb-1 pt-1 text-xl font-semibold text-gunmental hover:bg-gunmental hover:text-lighthouse"
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setIsOpen(false);
+                if (error.statusCode == 401 || error.statusCode == 403)
+                  window.location.reload();
+              }}
             >
               Close
             </button>

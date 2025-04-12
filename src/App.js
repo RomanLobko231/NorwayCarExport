@@ -18,9 +18,13 @@ function App() {
         <Route path="/" element={<Home />} exact={true} />
         <Route path="*" element={<Home />} exact={true} />
         <Route path="/register" element={<RegisterPage />} exact={true} />
-        <Route path="/add-car" element={<AddCarPage />} exact={true} />
         <Route element={<ProtectedRoute />}>
           <Route path="/user/:id" element={<UserPage />} exact={false} />
+          <Route
+            path="/user/:id/add-car"
+            element={<AddCarPage />}
+            exact={true}
+          />
         </Route>
       </Routes>
       <Footer />

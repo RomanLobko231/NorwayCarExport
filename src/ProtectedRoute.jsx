@@ -4,7 +4,7 @@ import LoginModal from "./ui/LoginModal";
 import { useState } from "react";
 
 const isAuthenticated = () => {
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
 
   if (!token) {
     return false;
@@ -13,13 +13,14 @@ const isAuthenticated = () => {
   try {
     const { exp } = jwtDecode(token);
     if (Date.now() > exp * 1000) {
-      localStorage.removeItem("token");
-      localStorage.removeItem("userId");
+      console.log("what");
+      sessionStorage.removeItem("token");
+      sessionStorage.removeItem("userId");
       return false;
     }
   } catch (error) {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userId");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("userId");
     return false;
   }
 

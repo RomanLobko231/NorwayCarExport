@@ -11,7 +11,7 @@ import {
 import TextInputField from "../input/TextInputField";
 import { LuMailbox } from "react-icons/lu";
 
-const UserDataPanel = ({ user }) => {
+const UserDataPanel = ({ user, updateUser }) => {
   const [inputDisabled, setInputDisabled] = useState(true);
   const [userData, setUserData] = useState(user);
   const [error, setError] = useState("");
@@ -25,11 +25,13 @@ const UserDataPanel = ({ user }) => {
     }));
   };
 
-  console.log(user);
-
   return (
-    <div
+    <form
       className={`flex w-full ${userData.role == "BUYER" ? "max-w-7xl" : "max-w-5xl"} flex-col items-center rounded-lg ${!inputDisabled && "card_shadow"} border border-light-gray bg-slate-50 p-4 md:px-6`}
+      onSubmit={() => {
+        updateUser(userData);
+        setInputDisabled(true);
+      }}
     >
       <div className="mb-4 flex w-full flex-col flex-wrap items-center justify-between gap-2 md:flex-row md:items-center">
         <div
@@ -50,17 +52,15 @@ const UserDataPanel = ({ user }) => {
         <div
           className={`hidden w-auto flex-row items-center ${inputDisabled ? "hidden" : "md:flex"} gap-7`}
         >
-          <p
+          <input
             className="mb-1 mt-3 inline-block w-auto cursor-pointer border-b-2 border-swamp-500 bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text text-center text-xl font-medium text-transparent hover:border-gunmental hover:text-gunmental"
-            onClick={() => {
-              setInputDisabled(true);
-            }}
-          >
-            Lagre
-          </p>
+            type="submit"
+            value="Lagre"
+          ></input>
           <p
             className="mb-1 mt-3 w-auto cursor-pointer border-b-2 border-danger-red text-center text-xl font-medium text-danger-red hover:border-gunmental hover:text-gunmental"
             onClick={() => {
+              setUserData(user);
               setInputDisabled(true);
             }}
           >
@@ -119,7 +119,6 @@ const UserDataPanel = ({ user }) => {
               disabled={inputDisabled}
             />
           </div>
-
           <hr className="mb-3 hidden h-auto border-[1px] border-l border-dashed border-light-gray/35 md:block" />
           <div className="flex w-full flex-col items-center">
             <p className="mb-1 mt-6 w-full text-center text-xl font-medium text-medium-gray md:mb-3 md:ml-10 md:mt-1 md:text-start">
@@ -230,7 +229,7 @@ const UserDataPanel = ({ user }) => {
           )}
         </div>
         <p
-          className={`mb-3 w-auto cursor-pointer border-b md:mt-5 md:hidden ${!inputDisabled && "hidden"} border-light-gray text-center text-lg font-normal text-light-gray hover:text-gunmental`}
+          className={`mb-3 mt-5 w-auto cursor-pointer border-b md:hidden ${!inputDisabled && "hidden"} border-light-gray text-center text-lg font-normal text-light-gray hover:text-gunmental`}
           onClick={() => {
             setInputDisabled(false);
           }}
@@ -240,17 +239,15 @@ const UserDataPanel = ({ user }) => {
         <div
           className={`flex flex-row items-center md:hidden ${inputDisabled && "hidden"} gap-5`}
         >
-          <p
+          <input
             className="mb-3 mt-5 inline-block w-auto cursor-pointer border-b border-swamp-500 bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text text-center text-lg font-normal text-transparent hover:border-gunmental hover:text-gunmental"
-            onClick={() => {
-              setInputDisabled(true);
-            }}
-          >
-            Lagre
-          </p>
+            type="submit"
+            value="Lagre"
+          ></input>
           <p
             className="mb-3 mt-5 w-auto cursor-pointer border-b border-danger-red text-center text-lg font-normal text-danger-red"
             onClick={() => {
+              setUserData(user);
               setInputDisabled(true);
             }}
           >
@@ -258,7 +255,7 @@ const UserDataPanel = ({ user }) => {
           </p>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 

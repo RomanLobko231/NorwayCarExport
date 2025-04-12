@@ -21,7 +21,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const [loginModalopen, setLoginModalOpen] = useState(false);
-  const userId = localStorage.getItem("userId");
+  const userId = sessionStorage.getItem("userId");
 
   const { t, i18n } = useTranslation();
 

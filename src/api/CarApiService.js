@@ -21,6 +21,36 @@ export default class CarApiService {
     }
   }
 
+  static async saveCarExistingUser(car, images) {
+    try {
+      const data = new FormData();
+      const carDataBlob = new Blob([JSON.stringify(car)], {
+        type: "application/json",
+      });
+      data.append("carData", carDataBlob);
+
+      images.forEach((image) => {
+        data.append("images", image);
+      });
+
+      const response = await api.post("/api/v1/cars/add_complete_user", data);
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  static async deleteCarById(id) {
+    try {
+      const response = await api.delete(`/api/v1/cars/${id}`);
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
   static async getCarsByOwnerId(id) {
     try {
       const response = await api.get(`/api/v1/cars/by_owner/${id}`);

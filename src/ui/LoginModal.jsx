@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import UserApiService from "../api/UserApiService";
 import ErrorMessage from "./ErrorMessage";
 import { useTranslation } from "react-i18next";
+import { RiArrowUpBoxLine } from "react-icons/ri";
 
 const LoginModal = ({ open, setOpen }) => {
   const { t } = useTranslation();
@@ -93,17 +94,13 @@ const LoginModal = ({ open, setOpen }) => {
               {error && <ErrorMessage error={error.message} />}
               <button
                 type="submit"
-                className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-lg md:px-7 md:pb-3 md:pt-3"
+                className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-2 pt-2 text-cornsilk hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-lg md:px-7"
               >
                 <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
                   {t("login").toUpperCase()}
                 </span>
                 <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[22px]"></div>
-                <img
-                  src="../icons/send.png"
-                  alt="Login"
-                  className="h-4 w-4 md:h-5 md:w-5"
-                />
+                <RiArrowUpBoxLine className="h-7 w-auto" />
               </button>
             </form>
           </DialogPanel>

@@ -20,14 +20,14 @@ api.interceptors.response.use(
 
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
 
     if (token) {
       const decoded = jwtDecode(token);
       const currentTime = Date.now() / 1000;
 
       if (decoded.exp < currentTime) {
-        localStorage.removeItem("token");
+        sessionStorage.removeItem("token");
       } else {
         config.headers.Authorization = `Bearer ${token}`;
       }
@@ -40,15 +40,15 @@ api.interceptors.request.use(
 
 function handleError(error) {
   if (error.status == 401 || error.status == 403) {
-    localStorage.removeItem("userId");
-    localStorage.removeItem("token");
+    sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("token");
   }
 
   if (error.response) {
-    const { statusCode, message, timestamp } = error.response?.data ?? {};
+    const { message, timestamp } = error.response?.data ?? {};
     console.log(error);
 
-    const resolvedStatusCode = statusCode ?? 500;
+    const resolvedStatusCode = error.status ?? 500;
     const resolvedMessage = message ?? "An unexpected error occurred.";
     const resolvedTimestamp = timestamp ?? new Date().toISOString();
 

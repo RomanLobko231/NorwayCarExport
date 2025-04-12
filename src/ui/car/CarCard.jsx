@@ -5,6 +5,7 @@ import TextInputField from "../input/TextInputField";
 import { TbCarOff } from "react-icons/tb";
 import { MdDelete, MdEdit } from "react-icons/md";
 import MessageDialog from "../dialogs/MessageDialog";
+import DeleteDialog from "../dialog/DeleteDialog";
 
 const CarCard = ({ carInfo, onDelete }) => {
   const navigate = useNavigate();
@@ -19,53 +20,67 @@ const CarCard = ({ carInfo, onDelete }) => {
       onClick={() => {
         navigate(`/car/${carInfo.id}`);
       }}
-      className="card_shadow hover:card_shadow_hover active:card_shadow_click flex w-[300px] cursor-pointer flex-col items-center rounded-md border border-light-gray bg-slate-50 p-3 duration-300 hover:-translate-y-1"
+      className="card_shadow hover:card_shadow_hover active:card_shadow_click flex cursor-pointer flex-col items-center rounded-md border border-swamp-500 bg-gradient-to-br from-swamp-100 to-distant-cloud p-3 duration-300 hover:-translate-y-1 md:w-[300px]"
     >
       {carInfo.imagePaths[0] ? (
         <img
           src={carInfo.imagePaths[0]}
           alt={carInfo.model ?? "Car"}
-          className="h-[185px] w-full rounded border border-medium-gray object-cover"
+          className="h-[185px] w-full rounded border border-swamp-500 object-cover"
         />
       ) : (
-        <div className="from-swamp-100 flex h-[185px] w-full items-center justify-center rounded border border-medium-gray bg-lighthouse">
+        <div className="flex h-[185px] w-full items-center justify-center rounded border border-medium-gray bg-lighthouse from-swamp-100">
           <TbCarOff className="h-10 w-auto" color="#888" />
         </div>
       )}
+      <hr className="mt-3 h-[1px] w-full border border-dashed bg-light-gray opacity-50" />
 
-      <h1 className="my-1 text-xl font-semibold leading-6 text-gunmental">
-        {carInfo.make ?? "-"} {carInfo.model ?? "-"}
-      </h1>
-      <hr className="mb-2 mt-1 h-[2px] w-full bg-slate-950" />
-      <div className="flex flex-wrap items-center gap-2">
-        <CarInfoElement info={carInfo.registrationNumber ?? "-"} />
-        <CarInfoElement info={`EU: ${carInfo.nextEUControl ?? "-"}`} />
-        <CarInfoElement info={`${carInfo.kilometers ?? "-"} KMs`} />
-        <CarInfoElement info={carInfo.status ?? "-"} />
+      <div className="mb-2 mt-1 flex w-full flex-row items-center justify-between">
+        <h1 className="inline-block truncate whitespace-nowrap bg-gradient-to-br from-gunmental to-swamp-500 bg-clip-text text-xl font-bold leading-[26px] text-transparent">
+          {carInfo.make ?? "-"} {carInfo.model ?? "-"}
+        </h1>
+        <div className="mx-3 h-[1px] flex-grow bg-light-gray opacity-50"></div>
+        <h1 className="inline-block bg-gradient-to-br from-gunmental to-swamp-500 bg-clip-text text-lg font-bold text-transparent">
+          {carInfo.firstTimeRegisteredInNorway.substring(0, 4)}
+        </h1>
       </div>
+
+      <div className="flex flex-wrap items-center gap-2">
+        {carInfo.nextEUControl && (
+          <CarInfoElement info={carInfo.nextEUControl} />
+        )}
+        {carInfo.engineType && <CarInfoElement info={carInfo.engineType} />}
+        {carInfo.gearboxType && <CarInfoElement info={carInfo.gearboxType} />}
+        {carInfo.kilometers >= 0 && (
+          <CarInfoElement info={`${carInfo.kilometers} KMs`} />
+        )}
+      </div>
+      <hr className="mt-3 h-[1px] w-full border border-dashed bg-light-gray opacity-50" />
+
       <div className="flex w-full flex-row items-center justify-center gap-3">
-        <button className="card_shadow group mb-2 mt-5 flex flex-row items-center rounded-lg border border-medium-gray bg-white px-4 pb-1 pt-1 text-xl font-semibold text-gunmental hover:bg-gunmental hover:text-lighthouse">
+        <button
+          disabled={carInfo.status == "Auksjon" || carInfo.status == "Solgt"}
+          className="card_shadow disabled:card_shadow_click mb-2 mt-5 flex flex-row items-center gap-2 rounded-lg border border-medium-gray bg-white px-4 pb-1 pt-1 text-xl font-semibold text-gunmental hover:bg-gunmental hover:text-lighthouse disabled:border-light-gray disabled:text-light-gray disabled:hover:bg-white disabled:hover:text-light-gray"
+        >
           Edit
-          <MdEdit className="ml-2 mr-1 h-5 w-auto" />
+          <MdEdit />
         </button>
         <button
           onClick={(e) => {
             setIsOpen(true);
             e.stopPropagation();
           }}
-          className="card_shadow text-danger-red hover:bg-danger-red group mb-2 mt-5 flex flex-row items-center rounded-lg border border-medium-gray bg-white px-4 pb-1 pt-1 text-xl font-semibold hover:text-lighthouse"
+          disabled={carInfo.status == "Auksjon" || carInfo.status == "Solgt"}
+          className="card_shadow disabled:card_shadow_click mb-2 mt-5 flex flex-row items-center gap-2 rounded-lg border border-danger-red bg-white px-4 pb-1 pt-1 text-xl font-semibold text-danger-red hover:bg-danger-red hover:text-lighthouse disabled:border-danger-red/50 disabled:text-danger-red/50 disabled:hover:bg-white disabled:hover:text-danger-red/50"
         >
           Delete
-          <MdDelete className="ml-2 mr-1 h-5 w-auto" />
+          <MdDelete />
         </button>
       </div>
-      <MessageDialog
+      <DeleteDialog
         isOpen={isOpen}
         setIsOpen={setIsOpen}
-        onFunc={handleDelete}
-        message={
-          "Do you actually want to delete this car? This actions is final and can't be restored."
-        }
+        onDelete={handleDelete}
       />
     </div>
   );
