@@ -7,7 +7,7 @@ import { MdDelete, MdEdit } from "react-icons/md";
 import MessageDialog from "../dialogs/MessageDialog";
 import DeleteDialog from "../dialog/DeleteDialog";
 
-const CarCard = ({ carInfo, onDelete }) => {
+const CarCard = ({ carInfo, onDelete, actionsDisabled }) => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,7 +20,7 @@ const CarCard = ({ carInfo, onDelete }) => {
       onClick={() => {
         navigate(`/car/${carInfo.id}`);
       }}
-      className="card_shadow hover:card_shadow_hover active:card_shadow_click flex cursor-pointer flex-col items-center rounded-md border border-swamp-500 bg-gradient-to-br from-swamp-100 to-distant-cloud p-3 duration-300 hover:-translate-y-1 md:w-[300px]"
+      className="card_shadow hover:card_shadow_hover active:card_shadow_click flex w-full max-w-[300px] cursor-pointer flex-col items-center rounded-md border border-swamp-500 bg-gradient-to-br from-swamp-100 to-distant-cloud p-3 duration-300 hover:-translate-y-1"
     >
       {carInfo.imagePaths[0] ? (
         <img
@@ -57,10 +57,14 @@ const CarCard = ({ carInfo, onDelete }) => {
       </div>
       <hr className="mt-3 h-[1px] w-full border border-dashed bg-light-gray opacity-50" />
 
-      <div className="flex w-full flex-row items-center justify-center gap-3">
+      <div className="mb-2 mt-5 flex w-full flex-row flex-wrap items-center justify-center gap-3">
         <button
-          disabled={carInfo.status == "Auksjon" || carInfo.status == "Solgt"}
-          className="card_shadow disabled:card_shadow_click mb-2 mt-5 flex flex-row items-center gap-2 rounded-lg border border-medium-gray bg-white px-4 pb-1 pt-1 text-xl font-semibold text-gunmental hover:bg-gunmental hover:text-lighthouse disabled:border-light-gray disabled:text-light-gray disabled:hover:bg-white disabled:hover:text-light-gray"
+          disabled={
+            actionsDisabled ||
+            carInfo.status == "Auksjon" ||
+            carInfo.status == "Solgt"
+          }
+          className="card_shadow disabled:card_shadow_click flex flex-row items-center gap-2 rounded-lg border border-medium-gray bg-white px-4 pb-1 pt-1 text-xl font-semibold text-gunmental hover:bg-gunmental hover:text-lighthouse disabled:border-light-gray disabled:text-light-gray disabled:hover:bg-white disabled:hover:text-light-gray"
         >
           Edit
           <MdEdit />
@@ -70,8 +74,12 @@ const CarCard = ({ carInfo, onDelete }) => {
             setIsOpen(true);
             e.stopPropagation();
           }}
-          disabled={carInfo.status == "Auksjon" || carInfo.status == "Solgt"}
-          className="card_shadow disabled:card_shadow_click mb-2 mt-5 flex flex-row items-center gap-2 rounded-lg border border-danger-red bg-white px-4 pb-1 pt-1 text-xl font-semibold text-danger-red hover:bg-danger-red hover:text-lighthouse disabled:border-danger-red/50 disabled:text-danger-red/50 disabled:hover:bg-white disabled:hover:text-danger-red/50"
+          disabled={
+            actionsDisabled ||
+            carInfo.status == "Auksjon" ||
+            carInfo.status == "Solgt"
+          }
+          className="card_shadow disabled:card_shadow_click flex flex-row items-center gap-2 rounded-lg border border-danger-red bg-white px-4 pb-1 pt-1 text-xl font-semibold text-danger-red hover:bg-danger-red hover:text-lighthouse disabled:border-danger-red/50 disabled:text-danger-red/50 disabled:hover:bg-white disabled:hover:text-danger-red/50"
         >
           Delete
           <MdDelete />

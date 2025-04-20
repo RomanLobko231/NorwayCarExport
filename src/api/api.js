@@ -42,11 +42,19 @@ function handleError(error) {
   if (error.status == 401 || error.status == 403) {
     sessionStorage.removeItem("userId");
     sessionStorage.removeItem("token");
+
+    return {
+      errorMessage: {
+        statusCode: error.status,
+        message:
+          "An unexpected error occurred with your account. Please login again or contact us if error continues",
+        timestamp: new Date().toISOString(),
+      },
+    };
   }
 
   if (error.response) {
     const { message, timestamp } = error.response?.data ?? {};
-    console.log(error);
 
     const resolvedStatusCode = error.status ?? 500;
     const resolvedMessage = message ?? "An unexpected error occurred.";

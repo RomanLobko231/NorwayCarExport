@@ -12,7 +12,7 @@ module.exports = {
         "swamp-500": "#416858",
         "swamp-300": "#a7beb3",
         "swamp-100": "#EDF2EF",
-        "distant-cloud": "#F7F8F7",
+        "distant-cloud": "#F7F8F8",
         mirage: "#001f3f",
         "medium-gray": "#333333",
         "medli-gray": "#666666",

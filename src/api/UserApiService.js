@@ -47,6 +47,19 @@ export default class UserApiService {
     }
   }
 
+  static async registerBuyerRepresentative(representativeData) {
+    try {
+      const response = api.post(
+        "api/v1/users/register_representative",
+        representativeData,
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
   static async loginUser(loginData) {
     try {
       const response = await api.post("/api/v1/users/login", loginData);
@@ -72,6 +85,28 @@ export default class UserApiService {
   static async updateUser(userData) {
     try {
       const response = await api.put(`/api/v1/users`, userData);
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  static async deleteUserById(id) {
+    try {
+      const response = await api.delete(`/api/v1/users/${id}`);
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  static async getRepresentativesByBuyerId(id) {
+    try {
+      const response = await api.get(
+        `/api/v1/users/buyers/${id}/representatives`,
+      );
       return response;
     } catch (error) {
       console.log(error);

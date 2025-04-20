@@ -12,7 +12,11 @@ import {
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import LoginModal from "./LoginModal";
-import { MdOutlineDirectionsCar, MdOutlinePersonAddAlt } from "react-icons/md";
+import {
+  MdOutlineDirectionsCar,
+  MdOutlinePerson2,
+  MdOutlinePersonAddAlt,
+} from "react-icons/md";
 import { IoMdLogIn } from "react-icons/io";
 import { useTranslation } from "react-i18next";
 import LanguageChange from "./LanguageChange";
@@ -126,6 +130,16 @@ export default function Navbar() {
               <MdOutlinePersonAddAlt className="mt-[1px] h-6 w-auto" />
             </CloseButton>
 
+            <CloseButton
+              as={Link}
+              onClick={() => setLoginModalOpen(true)}
+              className={`flex w-full cursor-pointer flex-row items-center justify-between rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
+            >
+              {t("all_cars")}
+              <div className="mx-3 mt-[1px] h-[1px] flex-grow bg-light-gray opacity-50"></div>
+              <MdOutlineDirectionsCar className="mt-[1px] h-6 w-auto" />
+            </CloseButton>
+
             {userId ? (
               <CloseButton
                 as={Link}
@@ -134,7 +148,7 @@ export default function Navbar() {
               >
                 {t("profile")}
                 <div className="mx-3 mt-[1px] h-[1px] flex-grow bg-light-gray opacity-50"></div>
-                <IoMdLogIn className="mt-[1px] h-6 w-auto" />
+                <MdOutlinePerson2 className="mt-[1px] h-6 w-auto" />
               </CloseButton>
             ) : (
               <CloseButton
@@ -148,15 +162,6 @@ export default function Navbar() {
               </CloseButton>
             )}
 
-            <CloseButton
-              as={Link}
-              onClick={() => setLoginModalOpen(true)}
-              className={`flex w-full cursor-pointer flex-row items-center justify-between rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
-            >
-              {t("all_cars")}
-              <div className="mx-3 mt-[1px] h-[1px] flex-grow bg-light-gray opacity-50"></div>
-              <MdOutlineDirectionsCar className="mt-[1px] h-6 w-auto" />
-            </CloseButton>
             <p className="mt-12 w-full text-center font-extralight text-gray-500">
               {t("moto")}
             </p>

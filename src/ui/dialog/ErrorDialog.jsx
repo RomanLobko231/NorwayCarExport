@@ -19,12 +19,12 @@ const ErrorDialog = ({ isOpen, setIsOpen, error }) => {
         transition
         className="fixed inset-0 bg-gray-500/75 backdrop-blur-sm transition-opacity data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
       />
-      <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
+      <div className="fixed inset-0 flex w-full items-center justify-center p-4">
         <DialogPanel className="max-w-lg space-y-4 rounded-lg border bg-lighthouse p-8">
           <DialogTitle className="font-bold">
             {`Error: ${error.statusCode}`}
           </DialogTitle>
-          <p className="text-lg font-semibold text-gunmental">
+          <p className="text-base font-semibold text-gunmental md:text-lg">
             {error.message}
           </p>
           <p className="text-base font-normal text-medium-gray">

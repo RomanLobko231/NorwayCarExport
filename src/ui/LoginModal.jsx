@@ -54,7 +54,7 @@ const LoginModal = ({ open, setOpen }) => {
         <div className="flex min-h-full w-full items-center justify-center p-4 text-center sm:p-0">
           <DialogPanel
             transition
-            className="relative w-full max-w-lg transform overflow-hidden rounded-xl border border-light-gray bg-gradient-to-bl from-swamp-100 to-distant-cloud p-6 text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 md:min-w-[400px]"
+            className="relative w-full max-w-lg transform overflow-hidden rounded-lg border border-swamp-500 bg-gradient-to-bl from-swamp-100 to-distant-cloud p-6 text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 md:min-w-[400px]"
           >
             <div className="mb-2 flex flex-row items-center justify-between md:px-2">
               <h1 className="mb-1 whitespace-nowrap text-center text-2xl font-bold text-medium-gray md:text-3xl">
@@ -94,13 +94,13 @@ const LoginModal = ({ open, setOpen }) => {
               {error && <ErrorMessage error={error.message} />}
               <button
                 type="submit"
-                className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-2 pt-2 text-cornsilk hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-lg md:px-7"
+                className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 py-2 text-cornsilk hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-lg md:px-7"
               >
                 <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
                   {t("login").toUpperCase()}
                 </span>
                 <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[22px]"></div>
-                <RiArrowUpBoxLine className="h-7 w-auto" />
+                <RiArrowUpBoxLine className="h-6 w-auto" />
               </button>
             </form>
           </DialogPanel>

@@ -115,7 +115,7 @@ const BuyerModal = ({ open, setOpen }) => {
         <div className="flex min-h-full w-full items-center justify-center p-4 text-center sm:p-0">
           <DialogPanel
             transition
-            className="relative w-full max-w-lg transform overflow-hidden rounded-lg border border-light-gray bg-gradient-to-bl from-swamp-100 to-distant-cloud p-6 text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 md:min-w-[400px]"
+            className="relative w-full max-w-lg transform overflow-hidden rounded-lg border border-swamp-500 bg-gradient-to-bl from-swamp-100 to-distant-cloud p-6 text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 md:min-w-[400px]"
           >
             <div className="mb-2 flex flex-row items-center justify-between md:px-2">
               <h1 className="mb-1 whitespace-nowrap text-center text-2xl font-bold text-medium-gray md:text-3xl">
@@ -167,7 +167,7 @@ const BuyerModal = ({ open, setOpen }) => {
                 />
                 <button
                   type="submit"
-                  className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg md:pb-2 md:pt-2"
+                  className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-2 pt-2 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg"
                 >
                   <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
                     {t("next")}
@@ -320,7 +320,7 @@ const BuyerModal = ({ open, setOpen }) => {
                   className={`text-md mt-2 flex cursor-pointer items-center sm:text-lg ${
                     termsChecked
                       ? "font-semibold text-gunmental"
-                      : "font-normal text-medium-gray"
+                      : "font-medium text-light-gray"
                   }`}
                 >
                   <input
@@ -340,7 +340,7 @@ const BuyerModal = ({ open, setOpen }) => {
                   <div className="flex w-full flex-row items-center justify-center gap-3">
                     <button
                       type="button"
-                      className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center rounded-lg border border-medium-gray bg-lighthouse px-3 pb-2 pt-2 text-medium-gray hover:bg-gradient-to-br hover:from-mirage hover:to-gunmental hover:text-lighthouse md:rounded-lg md:px-4"
+                      className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center rounded-lg border border-medium-gray bg-lighthouse px-3 py-1 text-medium-gray hover:bg-gradient-to-br hover:from-mirage hover:to-gunmental hover:text-lighthouse md:rounded-lg md:px-4 md:py-2"
                       onClick={() => {
                         setRegStep(regStep - 1);
                       }}
@@ -349,7 +349,7 @@ const BuyerModal = ({ open, setOpen }) => {
                     </button>
                     <button
                       type="submit"
-                      className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg md:pb-2 md:pt-2"
+                      className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-2 pt-2 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg"
                     >
                       <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
                         {t("send")}
@@ -377,7 +377,7 @@ const BuyerModal = ({ open, setOpen }) => {
                       setRegStep(1);
                     }, 2000);
                   }}
-                  className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 pb-3 pt-3 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg md:pb-2 md:pt-2"
+                  className="buttonsh hover:button_shadow_hover active:button_shadow_click group mb-2 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 py-2 hover:from-mirage hover:to-gunmental md:space-x-2 md:rounded-lg"
                 >
                   <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
                     {t("close")}

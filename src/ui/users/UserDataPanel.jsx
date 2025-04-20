@@ -87,7 +87,7 @@ const UserDataPanel = ({ user, updateUser }) => {
           </div>
         </div>
 
-        <div className="mt-4 flex w-full flex-col justify-between md:ml-6 md:mt-3 md:flex-row md:gap-3">
+        <div className="mt-4 flex w-full flex-col justify-between md:ml-6 md:mt-3 md:gap-3 lg:flex-row">
           <hr className="mb-3 hidden h-auto border-[1px] border-l border-dashed border-light-gray/35 md:block" />
           <div className="flex w-full flex-col items-center">
             <p className="mb-1 mt-3 w-full text-center text-xl font-medium text-medium-gray md:mb-3 md:ml-10 md:mt-1 md:text-start">
@@ -212,7 +212,7 @@ const UserDataPanel = ({ user, updateUser }) => {
                   }
                   initialValue={userData.organisationNumber}
                   onChange={handleInputChange}
-                  disabled={inputDisabled}
+                  disabled={true}
                 />
                 <TextInputField
                   label="Organisasjonsnavn"
@@ -222,7 +222,7 @@ const UserDataPanel = ({ user, updateUser }) => {
                   }
                   initialValue={userData.organisationName}
                   onChange={handleInputChange}
-                  disabled={inputDisabled}
+                  disabled={true}
                 />
               </div>
             </>

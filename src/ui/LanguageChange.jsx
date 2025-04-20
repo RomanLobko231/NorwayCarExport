@@ -35,7 +35,7 @@ const LanguageChange = ({ changeLanguage, currLang }) => {
           alt={selectedLang.code}
           className="h-4 w-6"
         />
-        <p className="text-md font-semibold text-medium-gray">
+        <p className="text-base font-semibold text-medium-gray md:text-lg">
           {selectedLang.code.toUpperCase()}
         </p>
       </div>
