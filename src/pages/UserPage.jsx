@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
-import UserDataPanel from "../ui/users/UserDataPanel";
 import { useNavigate, useParams } from "react-router-dom";
 import UserApiService from "../api/UserApiService";
 import CarApiService from "../api/CarApiService";
 import ErrorDialog from "../ui/dialog/ErrorDialog";
 import SellerCarList from "../ui/users/seller/SellerCarList";
 import BuyerRepresentativesList from "../ui/users/buyer/BuyerRepresentativesList";
+import ErrorMessage from "../ui/ErrorMessage";
+import SellerUserPanel from "../ui/users/seller/SellerUserPanel";
+import BuyerRepresentativeUserPanel from "../ui/users/buyer/BuyerRepresentativeUserPanel";
+import CompanyUserPanel from "../ui/users/buyer/CompanyUserPanel";
 
 const UserPage = () => {
   const params = useParams();
-  const navigate = useNavigate();
 
   const [userData, setUserData] = useState(null);
-  const [cars, setCars] = useState([]);
 
   const [error, setError] = useState(null);
   const [isErrorOpen, setIsErrorOpen] = useState(false);
@@ -27,9 +28,7 @@ const UserPage = () => {
     setError(null);
     try {
       const user = await UserApiService.getUserById(id);
-      const cars = await CarApiService.getCarsByOwnerId(id);
       setUserData(user.data);
-      setCars(cars.data);
       setError(null);
     } catch (error) {
       setError(error);
@@ -55,7 +54,7 @@ const UserPage = () => {
 
   return (
     <>
-      {error && (
+      {error && isErrorOpen && (
         <ErrorDialog
           isOpen={isErrorOpen}
           setIsOpen={setIsErrorOpen}
@@ -67,13 +66,28 @@ const UserPage = () => {
           Loading...
         </p>
       )}
-      {!isLoading && !error && userData && (
+      {userData && !isLoading && (
         <div
           className={`flex w-full flex-col items-center justify-center px-4 pt-20`}
         >
-          <UserDataPanel user={userData} updateUser={updateUser} />
-          {userData.role == "SELLER" && <SellerCarList />}
-          {userData.role == "BUYER" && <BuyerRepresentativesList />}
+          {userData.role === "BUYER_COMPANY" && (
+            <>
+              <CompanyUserPanel user={userData} updateUser={updateUser} />
+              <BuyerRepresentativesList reps={userData.representatives} />
+            </>
+          )}
+          {userData.role === "BUYER_REPRESENTATIVE" && (
+            <>
+              <BuyerRepresentativeUserPanel user={userData} />
+              <SellerCarList />
+            </>
+          )}
+          {userData.role === "SELLER" && (
+            <>
+              <SellerUserPanel user={userData} updateUser={updateUser} />
+              <SellerCarList />
+            </>
+          )}
         </div>
       )}
     </>

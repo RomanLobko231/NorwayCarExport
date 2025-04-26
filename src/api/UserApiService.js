@@ -75,6 +75,7 @@ export default class UserApiService {
   static async getUserById(id) {
     try {
       const response = await api.get(`/api/v1/users/${id}`);
+      sessionStorage.setItem("isAccountLocked", response.data.accountLocked);
       return response;
     } catch (error) {
       console.log(error);

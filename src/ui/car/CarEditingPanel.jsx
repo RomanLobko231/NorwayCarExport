@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import ImageCarousel from "../carousel/ImageCarousel";
 import TextInputField from "../input/TextInputField";
 import NumberInputField from "../input/NumberInputField";
@@ -15,8 +15,12 @@ import {
   MdOutlineFormatColorFill,
 } from "react-icons/md";
 import { LuFuel } from "react-icons/lu";
+import { LiaMoneyBillWaveAltSolid } from "react-icons/lia";
+import { useTranslation } from "react-i18next";
 
 const CarEditingPanel = ({ car, saveCar }) => {
+  const { t } = useTranslation();
+
   const [carData, setCarData] = useState(car);
   const [uploadImages, setUploadImages] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -73,6 +77,23 @@ const CarEditingPanel = ({ car, saveCar }) => {
         <h1 className="mb-3 mt-8 text-2xl font-bold text-medium-gray">
           BILENS INFO
         </h1>
+        <TextInputField
+          label={t("exp_price")}
+          name="expectedPrice"
+          icon={
+            <LiaMoneyBillWaveAltSolid className="h-6 w-auto" color="#333" />
+          }
+          initialValue={carData.expectedPrice}
+          onChange={(e) => {
+            const value = e.target.value;
+            const numericValue = value.replace(/\D/g, "");
+
+            setCarData((prev) => ({
+              ...prev,
+              price: numericValue,
+            }));
+          }}
+        />
         <TextInputField
           label={"Modell"}
           icon={<MdOutlineDirectionsCar className="h-5 w-5" />}

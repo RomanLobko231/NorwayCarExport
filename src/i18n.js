@@ -64,6 +64,7 @@ i18n
           terms_check: "I accept the terms and conditions",
           profile: "Profile",
           changeLanguage: "Change Language",
+          exp_price: "Expected Price",
         },
       },
       no: {
@@ -125,6 +126,7 @@ i18n
           terms_check: "Jeg godtar vilkår og betingelser",
           profile: "Profil",
           changeLanguage: "Bytt språk",
+          exp_price: "Forventet Pris",
         },
       },
     },

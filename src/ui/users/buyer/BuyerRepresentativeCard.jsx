@@ -1,38 +1,118 @@
-import { TbTrashX } from "react-icons/tb";
+import { TbCheck, TbEdit, TbTrashX } from "react-icons/tb";
+import TextInputField from "../../input/TextInputField";
+import {
+  MdClose,
+  MdOutlineEmail,
+  MdOutlinePerson2,
+  MdOutlinePhone,
+} from "react-icons/md";
+import { useState } from "react";
+import DeleteDialog from "../../dialog/DeleteDialog";
 
-const BuyerRepresentativeCard = ({ rep, index, deleteRep }) => {
+const BuyerRepresentativeCard = ({ rep, deleteRep, updateRep }) => {
+  const [repData, setRepData] = useState(rep);
+  const [inputDisabled, setInputDisabled] = useState(true);
+
+  const [isDelOpen, setIsDelOpen] = useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setRepData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const onUpdateSubmit = (e) => {
+    e.preventDefault();
+    updateRep(repData);
+  };
+
+  const resetData = (e) => {
+    e.preventDefault();
+    setRepData(rep);
+    setInputDisabled(true);
+  };
+
   return (
-    <div className="flex w-full cursor-pointer flex-row items-start gap-3 rounded-lg border border-swamp-500 bg-gradient-to-br from-swamp-100 to-distant-cloud p-3 md:items-center md:justify-between">
-      <div className="flex w-full flex-col items-start gap-1 md:flex-row md:items-center md:gap-2">
-        <p className="hidden text-xl font-bold text-medium-gray md:block">
-          {index + 1}.
-        </p>
-        <div className="flex w-full flex-row items-center justify-between md:w-auto">
-          <h1 className="inline-block bg-gradient-to-br from-gunmental to-swamp-500 bg-clip-text text-lg font-bold leading-[26px] text-transparent md:text-xl">
-            {rep.name}
-          </h1>
-          <div className="flex rounded-md border border-danger-red p-1 text-danger-red hover:bg-danger-red hover:text-lighthouse md:hidden">
-            <TbTrashX className="h-auto w-5 md:w-7" />
-          </div>
-        </div>
-        <div className="mt-[2px] hidden h-[1px] w-3 bg-light-gray md:flex" />
-        <h1 className="text-base font-medium text-medium-gray md:text-lg">
-          {rep.email}
-        </h1>
-        <div className="mt-[2px] hidden h-[1px] w-3 bg-light-gray md:flex" />
-        <h1 className="text-base font-medium text-medium-gray md:text-lg">
-          {rep.phoneNumber}
-        </h1>
+    <form
+      onSubmit={onUpdateSubmit}
+      onReset={resetData}
+      className="flex w-full cursor-pointer flex-col items-center gap-3 rounded-lg border border-swamp-500 bg-gradient-to-br from-swamp-100 to-distant-cloud p-3 md:items-end md:justify-between lg:flex-row"
+    >
+      <div className="flex w-full flex-col items-start gap-1 md:items-center lg:mr-2 lg:flex-row lg:gap-2">
+        <TextInputField
+          label="Navn"
+          name="name"
+          icon={<MdOutlinePerson2 className="h-6 w-auto" color="#333333" />}
+          initialValue={repData.name}
+          onChange={handleInputChange}
+          disabled={inputDisabled}
+        />
+        <TextInputField
+          label="Mobilnummer"
+          name="phoneNumber"
+          icon={<MdOutlinePhone className="h-6 w-auto" color="#333333" />}
+          initialValue={repData.phoneNumber}
+          onChange={handleInputChange}
+          disabled={inputDisabled}
+        />
+        <TextInputField
+          label="Epost"
+          name="email"
+          type="email"
+          icon={<MdOutlineEmail className="h-6 w-auto" color="#333333" />}
+          initialValue={repData.email}
+          onChange={handleInputChange}
+          disabled={inputDisabled}
+        />
       </div>
       <div
-        className="hidden rounded-md border border-danger-red p-1 text-danger-red hover:bg-danger-red hover:text-lighthouse md:flex"
-        onClick={() => {
+        className={`mb-3 ${inputDisabled ? "flex" : "hidden"} flex-row items-center gap-2`}
+      >
+        <button
+          className="flex rounded-lg border border-medium-gray p-1 text-medium-gray hover:bg-medium-gray hover:text-lighthouse"
+          onClick={() => {
+            setInputDisabled(false);
+          }}
+          type="button"
+        >
+          <TbEdit className="h-auto w-8" />
+        </button>
+        <button
+          className="flex rounded-lg border border-danger-red p-1 text-danger-red hover:bg-danger-red hover:text-lighthouse"
+          onClick={() => {
+            setIsDelOpen(true);
+          }}
+          type="button"
+        >
+          <TbTrashX className="h-auto w-8" />
+        </button>
+      </div>
+      <div
+        className={`mb-3 ${inputDisabled ? "hidden" : "flex"} flex-row items-center gap-2`}
+      >
+        <button
+          className="flex rounded-lg border border-swamp-500 p-1 text-swamp-500 hover:bg-swamp-500 hover:text-lighthouse"
+          type="submit"
+        >
+          <TbCheck className="h-auto w-8" />
+        </button>
+        <button
+          className="flex rounded-lg border border-danger-red p-1 text-danger-red hover:bg-danger-red hover:text-lighthouse"
+          type="reset"
+        >
+          <MdClose className="h-auto w-8" />
+        </button>
+      </div>
+      <DeleteDialog
+        isOpen={isDelOpen}
+        setIsOpen={setIsDelOpen}
+        onDelete={() => {
           deleteRep(rep.id);
         }}
-      >
-        <TbTrashX className="h-auto w-7" />
-      </div>
-    </div>
+      />
+    </form>
   );
 };
 

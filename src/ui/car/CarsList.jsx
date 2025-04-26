@@ -1,7 +1,7 @@
 import { TbCarOff } from "react-icons/tb";
 import CarCard from "./CarCard";
 
-const CarsList = ({ cars, onDelete, error, actionsDisabled }) => {
+const CarsList = ({ cars, onDelete, actionsDisabled }) => {
   return (
     <>
       {cars.length > 0 ? (
@@ -20,17 +20,10 @@ const CarsList = ({ cars, onDelete, error, actionsDisabled }) => {
       ) : (
         <div className="my-8 flex flex-col">
           <TbCarOff className="h-16 w-auto opacity-50" color="#888" />
-          {error ? (
-            <p className="mt-2 text-center text-xl font-normal text-light-gray opacity-75">
-              Kunne ikke få tak i dine biler :( <br />
-              Prøv igjen eller ta kontakt med oss
-            </p>
-          ) : (
-            <p className="mt-2 text-center text-xl font-normal text-light-gray opacity-75">
-              Ingen biler her ennå. <br />
-              Legg til din første da :)
-            </p>
-          )}
+          <p className="mt-2 text-center text-xl font-normal text-light-gray opacity-75">
+            Ingen biler her ennå. <br />
+            Legg til din første da :)
+          </p>
         </div>
       )}
     </>

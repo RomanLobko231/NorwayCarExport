@@ -21,7 +21,7 @@ export default class CarApiService {
     }
   }
 
-  static async saveCarExistingUser(car, images) {
+  static async saveCarComplete(car, images) {
     try {
       const data = new FormData();
       const carDataBlob = new Blob([JSON.stringify(car)], {

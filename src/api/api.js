@@ -39,26 +39,23 @@ api.interceptors.request.use(
 );
 
 function handleError(error) {
-  if (error.status == 401 || error.status == 403) {
+  if (error.status == 401) {
     sessionStorage.removeItem("userId");
     sessionStorage.removeItem("token");
-
-    return {
-      errorMessage: {
-        statusCode: error.status,
-        message:
-          "An unexpected error occurred with your account. Please login again or contact us if error continues",
-        timestamp: new Date().toISOString(),
-      },
-    };
   }
+
+  console.log(error);
 
   if (error.response) {
     const { message, timestamp } = error.response?.data ?? {};
 
     const resolvedStatusCode = error.status ?? 500;
-    const resolvedMessage = message ?? "An unexpected error occurred.";
+    let resolvedMessage = message;
     const resolvedTimestamp = timestamp ?? new Date().toISOString();
+
+    if (error.status == 401 || error.status == 403) {
+      resolvedMessage = message ?? "Auth error";
+    }
 
     return {
       errorMessage: {

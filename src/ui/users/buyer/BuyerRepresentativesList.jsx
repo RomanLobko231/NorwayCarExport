@@ -2,52 +2,24 @@ import { useEffect, useState } from "react";
 import { RiAddBoxLine } from "react-icons/ri";
 import { useParams } from "react-router-dom";
 import UserApiService from "../../../api/UserApiService";
-import { MdOutlineGroupOff, MdPersonOutline } from "react-icons/md";
+import {
+  MdLockOutline,
+  MdOutlineGroupOff,
+  MdPersonOutline,
+} from "react-icons/md";
 import { TbTrashX } from "react-icons/tb";
 import CarInfoElement from "../../car/CarInfoElement";
 import AddRepresentativeModal from "./AddRepresentativeModal";
 import BuyerRepresentativeCard from "./BuyerRepresentativeCard";
 import ErrorDialog from "../../dialog/ErrorDialog";
 
-const BuyerRepresentativesList = () => {
-  const params = useParams();
-
+const BuyerRepresentativesList = ({ reps }) => {
   const [isRepModalOpen, setRepModalOpen] = useState(false);
-  const [representatives, setRepresentatives] = useState([
-    { name: "Olaf Johansen", email: "oj1@gmail.com", phoneNumber: "8362902" },
-    {
-      name: "Kari Nordmann",
-      email: "kari.nordmann@gmail.com",
-      phoneNumber: "73689202",
-    },
-    {
-      name: "Andrew Jan",
-      email: "and.3243@gmail.com",
-      phoneNumber: "09924802",
-    },
-  ]);
+  const [representatives, setRepresentatives] = useState(reps);
 
   const [error, setError] = useState(null);
   const [isErrorOpen, setIsErrorOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    fetchRepresentatives(params.id);
-  }, [params.id]);
-
-  const fetchRepresentatives = async (id) => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      //   const representatives = await UserApiService.getRepresentativesByBuyerId(id);
-      //   setSubusers(representatives.data);
-      setError(null);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const deleteRepresentativeById = async (id) => {
     setError(null);
@@ -55,6 +27,20 @@ const BuyerRepresentativesList = () => {
     try {
       await UserApiService.deleteUserById(id);
       setRepresentatives((prev) => prev.filter((u) => u.id !== id));
+    } catch (error) {
+      setError(error);
+      setIsErrorOpen(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const updateRepresentative = async (repData) => {
+    setError(null);
+    setIsLoading(true);
+    try {
+      await UserApiService.updateUser(repData);
+      window.location.reload();
     } catch (error) {
       setError(error);
       setIsErrorOpen(true);
@@ -71,18 +57,29 @@ const BuyerRepresentativesList = () => {
         <h1 className="mb-4 text-center text-2xl font-bold text-medium-gray md:mb-0 md:text-3xl">
           SEKUNDÆRBRUKERE
         </h1>
-        <button
-          onClick={() => {
-            setRepModalOpen(true);
-          }}
-          className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 py-2 hover:from-mirage hover:to-gunmental md:ml-auto md:mt-0 md:space-x-2 md:rounded-lg"
-        >
-          <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
-            LEGG TIL
-          </span>
-          <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[18px]"></div>
-          <RiAddBoxLine className="h-6 w-auto" color="#FEFAF0" />
-        </button>
+        {sessionStorage.getItem("isAccountLocked") === "true" ? (
+          <div className="flex flex-col items-center gap-2 py-2 text-center text-lg font-semibold text-light-gray md:ml-auto md:flex-row md:pl-6">
+            <MdLockOutline className="h-6 w-auto" />
+            <p>
+              Kontoen er ikke godkjent. Det er ikke mulig å legge til nye
+              sekundærbrukere
+            </p>
+          </div>
+        ) : (
+          <button
+            onClick={() => {
+              setRepModalOpen(true);
+            }}
+            className="buttonsh hover:button_shadow_hover active:button_shadow_click group flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 py-2 hover:from-mirage hover:to-gunmental md:ml-auto md:mt-0 md:space-x-2 md:rounded-lg"
+            disabled={sessionStorage.getItem("isAccountLocked") === true}
+          >
+            <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
+              LEGG TIL
+            </span>
+            <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[18px]"></div>
+            <RiAddBoxLine className="h-6 w-auto" color="#FEFAF0" />
+          </button>
+        )}
       </div>
 
       {representatives.length > 0 ? (
@@ -95,6 +92,7 @@ const BuyerRepresentativesList = () => {
                 rep={rep}
                 index={index}
                 deleteRep={deleteRepresentativeById}
+                updateRep={updateRepresentative}
               />
               {representatives.length !== index + 1 && (
                 <hr className="mt-4 h-[1px] w-full border border-dashed bg-light-gray opacity-50" />

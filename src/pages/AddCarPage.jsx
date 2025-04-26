@@ -30,16 +30,14 @@ const AddCarPage = () => {
     weight: 0,
     nextEUControl: "",
     ownerId: params.id,
-    status: "Annet",
     additionalInformation: "",
-    imagePaths: [],
   });
 
   const saveCar = async (carData, images) => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await CarApiService.saveCarExistingUser(carData, images);
+      const response = await CarApiService.saveCarComplete(carData, images);
       setCar({
         registrationNumber: "",
         kilometers: 0,
@@ -57,9 +55,8 @@ const AddCarPage = () => {
         weight: 0,
         nextEUControl: "",
         ownerId: params.id,
-        status: "Annet",
         additionalInformation: "",
-        imagePaths: [],
+        expectedPrice: "",
       });
 
       navigate("/user/" + params.id);

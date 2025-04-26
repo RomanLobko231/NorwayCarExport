@@ -27,7 +27,7 @@ const AddRepresentativeModal = ({ open, setOpen }) => {
     phoneNumber: "",
     email: "",
     password: "",
-    buyerOrganisationId: params.id,
+    buyerCompanyId: params.id,
   });
 
   const handleInputChange = (e) => {
@@ -42,18 +42,16 @@ const AddRepresentativeModal = ({ open, setOpen }) => {
     setIsLoading(true);
     setError(null);
     try {
-      //   await UserApiService.registerBuyerRepresentative(
-      //     representativeData,
-      //     organisationLicences,
-      //   );
+      await UserApiService.registerBuyerRepresentative(representativeData);
       setRepresentativeData({
         name: "",
         phoneNumber: "",
         email: "",
         password: "",
-        buyerOrganisationId: params.id,
+        buyerCompanyId: params.id,
       });
       setOpen(false);
+      window.location.reload();
     } catch (error) {
       setError(error);
     } finally {
@@ -61,7 +59,8 @@ const AddRepresentativeModal = ({ open, setOpen }) => {
     }
   };
 
-  const submitForm = () => {
+  const submitForm = (e) => {
+    e.preventDefault();
     saveRepresentative(representativeData);
   };
 

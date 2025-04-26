@@ -17,6 +17,8 @@ import { PiSealCheckBold } from "react-icons/pi";
 import ErrorMessage from "../../ErrorMessage";
 import { useTranslation } from "react-i18next";
 import CarApiService from "../../../api/CarApiService";
+import { GiMoneyStack } from "react-icons/gi";
+import { LiaMoneyBillWaveAltSolid } from "react-icons/lia";
 
 const SellerModal = ({ open, setOpen }) => {
   const { t } = useTranslation();
@@ -29,6 +31,7 @@ const SellerModal = ({ open, setOpen }) => {
     ownerId: "",
     registrationNumber: "",
     kilometers: "",
+    expectedPrice: "",
   });
   const [error, setError] = useState("");
   const [uploadImages, setUploadImages] = useState([]);
@@ -165,6 +168,27 @@ const SellerModal = ({ open, setOpen }) => {
                     }}
                   />
                 </div>
+                <TextInputField
+                  label={t("exp_price")}
+                  name="expectedPrice"
+                  icon={
+                    <LiaMoneyBillWaveAltSolid
+                      className="h-6 w-auto"
+                      color="#333"
+                    />
+                  }
+                  initialValue={carData.expectedPrice}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    const numericValue = value.replace(/\D/g, "");
+
+                    setCarData((prev) => ({
+                      ...prev,
+                      expectedPrice: numericValue,
+                    }));
+                  }}
+                  optional={true}
+                />
                 <p className="mt-3 text-center text-sm font-light italic text-light-gray md:text-base">
                   {t("upload_photo_if_want")}
                 </p>

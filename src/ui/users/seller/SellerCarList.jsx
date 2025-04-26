@@ -5,6 +5,7 @@ import { RiAddBoxLine } from "react-icons/ri";
 import CarsList from "../../car/CarsList";
 import CarApiService from "../../../api/CarApiService";
 import ErrorDialog from "../../dialog/ErrorDialog";
+import ErrorMessage from "../../ErrorMessage";
 
 const SellerCarList = () => {
   const [cars, setCars] = useState([]);
@@ -104,12 +105,15 @@ const SellerCarList = () => {
           </button>
         </div>
 
-        <CarsList
-          cars={filteredCars}
-          onDelete={deleteCarById}
-          error={error}
-          actionsDisabled={isLoading}
-        />
+        {error && !isErrorOpen ? (
+          <ErrorMessage error={error.message} />
+        ) : (
+          <CarsList
+            cars={filteredCars}
+            onDelete={deleteCarById}
+            actionsDisabled={isLoading}
+          />
+        )}
       </div>
     </>
   );

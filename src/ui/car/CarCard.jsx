@@ -57,7 +57,7 @@ const CarCard = ({ carInfo, onDelete, actionsDisabled }) => {
       </div>
       <hr className="mt-3 h-[1px] w-full border border-dashed bg-light-gray opacity-50" />
 
-      <div className="mb-2 mt-5 flex w-full flex-row flex-wrap items-center justify-center gap-3">
+      <div className="mb-2 mt-5 flex w-full flex-row items-center justify-center gap-3">
         <button
           disabled={
             actionsDisabled ||
