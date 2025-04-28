@@ -9,6 +9,7 @@ import {
   MdOutlineAlternateEmail,
   MdOutlineLocationOn,
   MdOutlineNumbers,
+  MdOutlineOutbox,
   MdOutlinePerson2,
   MdOutlinePhone,
   MdPassword,
@@ -238,7 +239,7 @@ const RegisterSeller = () => {
                   {t("send")}
                 </span>
                 <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[18px]"></div>
-                <RiArrowUpBoxLine className="h-6 w-auto" color="#FEFAF0" />
+                <MdOutlineOutbox className="h-6 w-auto" color="#FEFAF0" />
               </button>
             </div>
           )}

@@ -31,6 +31,7 @@ const AddCarPage = () => {
     nextEUControl: "",
     ownerId: params.id,
     additionalInformation: "",
+    expectedPrice: 0,
   });
 
   const saveCar = async (carData, images) => {
@@ -56,7 +57,7 @@ const AddCarPage = () => {
         nextEUControl: "",
         ownerId: params.id,
         additionalInformation: "",
-        expectedPrice: "",
+        expectedPrice: 0,
       });
 
       navigate("/user/" + params.id);

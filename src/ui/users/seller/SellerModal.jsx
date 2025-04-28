@@ -6,6 +6,7 @@ import TextInputField from "../../input/TextInputField";
 import {
   MdClose,
   MdOutlineDirectionsCar,
+  MdOutlineOutbox,
   MdOutlinePerson2,
   MdOutlinePhone,
   MdOutlineSpeed,
@@ -19,6 +20,7 @@ import { useTranslation } from "react-i18next";
 import CarApiService from "../../../api/CarApiService";
 import { GiMoneyStack } from "react-icons/gi";
 import { LiaMoneyBillWaveAltSolid } from "react-icons/lia";
+import NumberInputField from "../../input/NumberInputField";
 
 const SellerModal = ({ open, setOpen }) => {
   const { t } = useTranslation();
@@ -30,8 +32,8 @@ const SellerModal = ({ open, setOpen }) => {
   const [carData, setCarData] = useState({
     ownerId: "",
     registrationNumber: "",
-    kilometers: "",
-    expectedPrice: "",
+    kilometers: 0,
+    expectedPrice: 0,
   });
   const [error, setError] = useState("");
   const [uploadImages, setUploadImages] = useState([]);
@@ -48,10 +50,8 @@ const SellerModal = ({ open, setOpen }) => {
         ...carData,
         ownerId: savedUser.data.userId,
       };
-      const response = await CarApiService.postCarData(
-        updatedCarData,
-        uploadImages,
-      );
+      console.log(updatedCarData);
+      await CarApiService.postCarData(updatedCarData, uploadImages);
       setSellerData({
         name: "",
         phoneNumber: "",
@@ -59,7 +59,8 @@ const SellerModal = ({ open, setOpen }) => {
       setCarData({
         ownerId: "",
         registrationNumber: "",
-        kilometers: "",
+        kilometers: 0,
+        expectedPrice: 0,
       });
       setUploadImages([]);
       setRegStep(2);
@@ -150,25 +151,17 @@ const SellerModal = ({ open, setOpen }) => {
                     initialValue={carData.registrationNumber}
                     onChange={handleCarInputChange}
                   />
-                  <TextInputField
+                  <NumberInputField
                     label={t("kilometers")}
                     name="kilometers"
                     icon={
                       <MdOutlineSpeed className="h-6 w-auto" color="#333" />
                     }
                     initialValue={carData.kilometers}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      const numericValue = value.replace(/\D/g, "");
-
-                      setCarData((prev) => ({
-                        ...prev,
-                        kilometers: numericValue,
-                      }));
-                    }}
+                    onChange={handleCarInputChange}
                   />
                 </div>
-                <TextInputField
+                <NumberInputField
                   label={t("exp_price")}
                   name="expectedPrice"
                   icon={
@@ -178,15 +171,7 @@ const SellerModal = ({ open, setOpen }) => {
                     />
                   }
                   initialValue={carData.expectedPrice}
-                  onChange={(e) => {
-                    const value = e.target.value;
-                    const numericValue = value.replace(/\D/g, "");
-
-                    setCarData((prev) => ({
-                      ...prev,
-                      expectedPrice: numericValue,
-                    }));
-                  }}
+                  onChange={handleCarInputChange}
                   optional={true}
                 />
                 <p className="mt-3 text-center text-sm font-light italic text-light-gray md:text-base">
@@ -209,7 +194,7 @@ const SellerModal = ({ open, setOpen }) => {
                       {t("send")}
                     </span>
                     <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[18px]"></div>
-                    <RiArrowUpBoxLine className="h-6 w-auto" color="#FEFAF0" />
+                    <MdOutlineOutbox className="h-6 w-auto" color="#FEFAF0" />
                   </button>
                 )}
               </form>

@@ -10,6 +10,7 @@ import {
   MdOutlineAlternateEmail,
   MdOutlineLocationOn,
   MdOutlineNumbers,
+  MdOutlineOutbox,
   MdOutlinePerson2,
   MdOutlinePhone,
   MdPassword,
@@ -298,7 +299,7 @@ const RegisterBuyer = () => {
             className={`text-md mt-2 flex cursor-pointer items-center sm:text-lg ${
               termsChecked
                 ? "font-semibold text-gunmental"
-                : "font-normal text-medium-gray"
+                : "font-medium text-light-gray"
             }`}
           >
             <input
@@ -333,7 +334,7 @@ const RegisterBuyer = () => {
                   {t("send")}
                 </span>
                 <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[18px]"></div>
-                <RiArrowUpBoxLine className="h-6 w-auto" color="#FEFAF0" />
+                <MdOutlineOutbox className="h-6 w-auto" color="#FEFAF0" />
               </button>
             </div>
           )}

@@ -60,4 +60,34 @@ export default class CarApiService {
       throw error;
     }
   }
+
+  static async getCarById(id) {
+    try {
+      const response = await api.get(`/api/v1/cars/${id}`);
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  static async updateCar(car, images) {
+    try {
+      const data = new FormData();
+      const carDataBlob = new Blob([JSON.stringify(car)], {
+        type: "application/json",
+      });
+      data.append("carData", carDataBlob);
+
+      images.forEach((image) => {
+        data.append("images", image);
+      });
+
+      const response = await api.put("/api/v1/cars", data);
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
 }

@@ -57,12 +57,13 @@ const CarEditingPanel = ({ car, saveCar }) => {
 
   return (
     <div className="flex w-full max-w-7xl flex-col items-center justify-center py-20">
-      <hr className="mb-2 mt-1 h-[4px] w-full max-w-[700px] bg-gunmental px-2" />
-      <ImageCarousel
-        images={carData.imagePaths}
-        deleteImage={deleteImageByName}
-      />
-      <hr className="mb-4 mt-2 w-full max-w-[700px] border-[1px] border-dashed border-gunmental px-2" />
+      <div className="px-4">
+        <ImageCarousel
+          images={carData.imagePaths}
+          deleteImage={deleteImageByName}
+        />
+      </div>
+
       <div className="flex w-full justify-center px-4">
         <ImageInputField images={uploadImages} setImages={setUploadImages} />
       </div>
@@ -77,22 +78,15 @@ const CarEditingPanel = ({ car, saveCar }) => {
         <h1 className="mb-3 mt-8 text-2xl font-bold text-medium-gray">
           BILENS INFO
         </h1>
-        <TextInputField
+        <NumberInputField
           label={t("exp_price")}
           name="expectedPrice"
           icon={
             <LiaMoneyBillWaveAltSolid className="h-6 w-auto" color="#333" />
           }
           initialValue={carData.expectedPrice}
-          onChange={(e) => {
-            const value = e.target.value;
-            const numericValue = value.replace(/\D/g, "");
-
-            setCarData((prev) => ({
-              ...prev,
-              price: numericValue,
-            }));
-          }}
+          onChange={handleInputChange}
+          optional={true}
         />
         <TextInputField
           label={"Modell"}

@@ -79,7 +79,6 @@ const UserPage = () => {
           {userData.role === "BUYER_REPRESENTATIVE" && (
             <>
               <BuyerRepresentativeUserPanel user={userData} />
-              <SellerCarList />
             </>
           )}
           {userData.role === "SELLER" && (

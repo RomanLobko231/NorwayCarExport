@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 
-const DateInputField = ({ icon, label, name, initialValue, onChange }) => {
+const DateInputField = ({
+  icon,
+  label,
+  name,
+  initialValue,
+  onChange,
+  optional,
+}) => {
   const formatDate = (value) => {
     let cleaned = value.replace(/\D/g, "");
 
@@ -30,6 +37,7 @@ const DateInputField = ({ icon, label, name, initialValue, onChange }) => {
         className="ml-5 text-base font-medium text-light-gray"
       >
         {label}
+        {!optional && "*"}
       </label>
       <div className="relative mt-1 w-full">
         <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-4">
@@ -42,7 +50,7 @@ const DateInputField = ({ icon, label, name, initialValue, onChange }) => {
           value={initialValue}
           onChange={handleInputChange}
           className="block w-full rounded-lg border border-medium-gray bg-white px-5 py-2.5 ps-11 text-base font-medium text-medium-gray disabled:text-light-gray md:ps-12 md:text-lg"
-          required
+          required={!optional}
           placeholder="YYYY-MM-DD"
           maxLength={10}
         />

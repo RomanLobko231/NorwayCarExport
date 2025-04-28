@@ -1,5 +1,10 @@
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
-import { MdClose, MdOutlineAlternateEmail, MdPassword } from "react-icons/md";
+import {
+  MdClose,
+  MdOutlineAlternateEmail,
+  MdOutlineOutbox,
+  MdPassword,
+} from "react-icons/md";
 import { useState } from "react";
 import TextInputField from "./input/TextInputField";
 import PasswordInputField from "./input/PasswordInputField";
@@ -100,7 +105,7 @@ const LoginModal = ({ open, setOpen }) => {
                   {t("login").toUpperCase()}
                 </span>
                 <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[22px]"></div>
-                <RiArrowUpBoxLine className="h-6 w-auto" />
+                <MdOutlineOutbox className="h-6 w-auto" />
               </button>
             </form>
           </DialogPanel>

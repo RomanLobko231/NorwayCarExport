@@ -15,6 +15,7 @@ const TextInputField = ({
         className="ml-5 text-sm font-medium text-light-gray md:text-base"
       >
         {label}
+        {!optional && "*"}
       </label>
       <div className="relative mt-1 w-full">
         <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-4">

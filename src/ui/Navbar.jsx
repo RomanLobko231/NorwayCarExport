@@ -143,7 +143,7 @@ export default function Navbar() {
             {userId ? (
               <CloseButton
                 as={Link}
-                onClick={() => navigate(`/user/${userId}`)}
+                to={`/user/${userId}`}
                 className={`flex w-full cursor-pointer flex-row items-center justify-between rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
               >
                 {t("profile")}
