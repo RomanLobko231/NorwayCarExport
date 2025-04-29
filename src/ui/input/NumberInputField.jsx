@@ -37,9 +37,7 @@ const NumberInputField = ({
           name={name}
           onChange={onChange}
           value={
-            initialValue == 0 ||
-            initialValue == null ||
-            initialValue == undefined
+            initialValue == null || initialValue == undefined
               ? ""
               : initialValue
           }

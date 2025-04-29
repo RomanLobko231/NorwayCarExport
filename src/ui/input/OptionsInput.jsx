@@ -13,7 +13,7 @@ const OptionsInput = ({
             className={`cursor-pointer rounded-lg border px-4 py-1 text-lg font-medium transition ${
               initialOption === option
                 ? "border-gunmental bg-gunmental text-lighthouse"
-                : "border-medium-gray bg-lighthouse text-gunmental hover:bg-gray-200"
+                : "border-medium-gray bg-distant-cloud text-gunmental hover:bg-gray-200"
             }`}
           >
             <input
