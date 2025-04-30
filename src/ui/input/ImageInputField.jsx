@@ -17,7 +17,7 @@ const ImageInputField = ({ images, setImages }) => {
   return (
     <div className="mb-2 mt-1 flex w-full max-w-[300px] flex-col items-center">
       <label className="flex w-full cursor-pointer flex-row items-center justify-center gap-1 rounded-lg border border-gunmental bg-white px-4 py-2 text-base font-medium text-light-gray hover:bg-gray-200 hover:text-medium-gray md:text-lg">
-        <MdOutlineFileUpload className="h-6 w-auto" color="#888" />
+        <MdOutlineFileUpload className="h-6 w-auto" />
         Velg filer
         <input
           type="file"

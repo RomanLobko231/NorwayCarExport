@@ -60,7 +60,7 @@ const SellerModal = ({ open, setOpen }) => {
         ownerId: "",
         registrationNumber: "",
         kilometers: 0,
-        expectedPrice: 0,
+        expectedPrice: "",
       });
       setUploadImages([]);
       setRegStep(2);
@@ -71,8 +71,34 @@ const SellerModal = ({ open, setOpen }) => {
     }
   };
 
-  const submitFirstStep = (e) => {
+  const carExistsByRegNumber = async (regNumber) => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const exists = await CarApiService.existsByRegNumber(regNumber);
+      if (exists.data) {
+        setError({
+          message: "Car with this Registration number already exists.",
+        });
+      }
+
+      return exists.data;
+    } catch (error) {
+      setError(error);
+      return null;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const submitFirstStep = async (e) => {
     e.preventDefault();
+
+    const carExists = await carExistsByRegNumber(carData.registrationNumber);
+    if (carExists || carExists == null) {
+      return;
+    }
+
     postCarApplication();
   };
 

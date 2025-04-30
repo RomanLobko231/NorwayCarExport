@@ -21,6 +21,18 @@ export default class CarApiService {
     }
   }
 
+  static async existsByRegNumber(regNumber) {
+    try {
+      const response = await api.get(
+        `/api/v1/cars/exists?regNumber=${regNumber}`,
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
   static async saveCarComplete(car, images) {
     try {
       const data = new FormData();

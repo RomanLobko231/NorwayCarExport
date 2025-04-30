@@ -28,6 +28,7 @@ const EditCarPage = () => {
     try {
       const carResponse = await CarApiService.getCarById(id);
       setCar(carResponse.data);
+      console.log(carResponse.data);
     } catch (error) {
       setError(error);
       setIsErrorOpen(true);

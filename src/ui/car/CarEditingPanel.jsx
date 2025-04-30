@@ -51,7 +51,6 @@ const CarEditingPanel = ({ car, saveCar }) => {
 
   const submitSaveRequest = (e) => {
     e.preventDefault();
-    console.log(carData);
     saveCar(carData, uploadImages);
   };
 
@@ -63,7 +62,9 @@ const CarEditingPanel = ({ car, saveCar }) => {
           deleteImage={deleteImageByName}
         />
       </div>
-
+      <h1 className="my-4 block text-center text-2xl font-bold text-medium-gray">
+        LASTE OPP BILDER
+      </h1>
       <div className="flex w-full justify-center px-4">
         <ImageInputField images={uploadImages} setImages={setUploadImages} />
       </div>

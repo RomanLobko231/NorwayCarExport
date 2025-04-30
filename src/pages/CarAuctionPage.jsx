@@ -124,8 +124,7 @@ const CarAuctionPage = () => {
           <div className="flex w-full max-w-[700px] flex-col items-start">
             <div className="mb-2 mt-1 flex w-full flex-row items-baseline justify-between">
               <h1 className="inline-block bg-gradient-to-br from-gunmental to-swamp-500 bg-clip-text text-2xl font-bold text-transparent md:text-3xl">
-                {carData.make ?? ""} Toyota Fremhjulstrekk Mmunell 233332{" "}
-                {carData.model ?? ""}
+                {carData.make ?? ""} {carData.model ?? ""}
               </h1>
               <h1 className="ml-7 hidden bg-gradient-to-br from-gunmental to-swamp-500 bg-clip-text text-2xl font-normal text-transparent md:inline-block md:text-3xl">
                 {carData.firstTimeRegisteredInNorway.substring(0, 4)}
@@ -215,7 +214,7 @@ const CarAuctionPage = () => {
                       onChange={(e) => {
                         setBid((prev) => ({
                           ...prev,
-                          bid: e.target.value,
+                          autoBid: e.target.value,
                         }));
                       }}
                       disableCheckbox={true}
