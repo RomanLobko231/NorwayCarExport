@@ -13,52 +13,35 @@ const AddCarPage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
-  const [car, setCar] = useState({
+  const defaultCar = {
     registrationNumber: "",
-    kilometers: 0,
+    kilometers: "",
     make: "",
     model: "",
     firstTimeRegisteredInNorway: "",
     engineType: "",
-    engineVolume: 0,
+    engineVolume: "",
     bodywork: "",
-    numberOfSeats: 0,
-    numberOfDoors: 0,
+    numberOfSeats: "",
+    numberOfDoors: "",
     color: "",
     gearboxType: "Annet",
     operatingMode: "Annet",
-    weight: 0,
+    weight: "",
     nextEUControl: "",
     ownerId: params.id,
     additionalInformation: "",
-    expectedPrice: 0,
-  });
+    expectedPrice: "",
+  };
+
+  const [car, setCar] = useState(defaultCar);
 
   const saveCar = async (carData, images) => {
     setIsLoading(true);
     setError(null);
     try {
       const response = await CarApiService.saveCarComplete(carData, images);
-      setCar({
-        registrationNumber: "",
-        kilometers: 0,
-        make: "",
-        model: "",
-        firstTimeRegisteredInNorway: "",
-        engineType: "",
-        engineVolume: 0,
-        bodywork: "",
-        numberOfSeats: 0,
-        numberOfDoors: 0,
-        color: "",
-        gearboxType: "Annet",
-        operatingMode: "Annet",
-        weight: 0,
-        nextEUControl: "",
-        ownerId: params.id,
-        additionalInformation: "",
-        expectedPrice: 0,
-      });
+      setCar(defaultCar);
 
       navigate("/user/" + params.id);
     } catch (error) {

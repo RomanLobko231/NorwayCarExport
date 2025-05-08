@@ -13,7 +13,6 @@ const isAuthenticated = () => {
   try {
     const { exp } = jwtDecode(token);
     if (Date.now() > exp * 1000) {
-      console.log("what");
       sessionStorage.removeItem("token");
       sessionStorage.removeItem("userId");
       return false;

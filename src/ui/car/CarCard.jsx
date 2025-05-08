@@ -18,10 +18,10 @@ const CarCard = ({ carInfo, onDelete, actionsDisabled }) => {
   return (
     <div
       onClick={() => {
-        if (carInfo.status == "Vurdering" || carInfo.status == "Annet") {
-          navigate(`/car/${carInfo.id}`);
-        } else {
+        if (carInfo.status == "Auksjon") {
           navigate(`/auction/${carInfo.id}`);
+        } else {
+          navigate(`/car/${carInfo.id}`);
         }
       }}
       className="card_shadow hover:card_shadow_hover active:card_shadow_click flex w-full max-w-[300px] cursor-pointer flex-col items-center rounded-md border border-swamp-500 bg-gradient-to-br from-swamp-100 to-distant-cloud p-3 duration-300 hover:-translate-y-1"
@@ -61,7 +61,7 @@ const CarCard = ({ carInfo, onDelete, actionsDisabled }) => {
       </div>
       <hr className="mt-3 h-[1px] w-full border border-dashed bg-light-gray opacity-50" />
 
-      <div className="mb-2 mt-5 flex w-full flex-row items-center justify-center gap-3">
+      <div className="mb-2 mt-5 flex w-full flex-row flex-wrap items-center justify-center gap-3">
         <button
           disabled={
             actionsDisabled ||

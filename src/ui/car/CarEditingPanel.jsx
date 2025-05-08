@@ -87,7 +87,6 @@ const CarEditingPanel = ({ car, saveCar }) => {
           }
           initialValue={carData.expectedPrice}
           onChange={handleInputChange}
-          optional={true}
         />
         <TextInputField
           label={"Modell"}

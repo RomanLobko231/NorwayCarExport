@@ -12,7 +12,6 @@ import {
   MdOutlineSpeed,
 } from "react-icons/md";
 import FileInputField from "../../input/FileInputField";
-import { RiArrowUpBoxLine } from "react-icons/ri";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 import { PiSealCheckBold } from "react-icons/pi";
 import ErrorMessage from "../../ErrorMessage";
@@ -32,8 +31,8 @@ const SellerModal = ({ open, setOpen }) => {
   const [carData, setCarData] = useState({
     ownerId: "",
     registrationNumber: "",
-    kilometers: 0,
-    expectedPrice: 0,
+    kilometers: "",
+    expectedPrice: "",
   });
   const [error, setError] = useState("");
   const [uploadImages, setUploadImages] = useState([]);
@@ -49,8 +48,8 @@ const SellerModal = ({ open, setOpen }) => {
       const updatedCarData = {
         ...carData,
         ownerId: savedUser.data.userId,
+        expectedPrice: carData.expectedPrice ? carData.expectedPrice : 0,
       };
-      console.log(updatedCarData);
       await CarApiService.postCarData(updatedCarData, uploadImages);
       setSellerData({
         name: "",
@@ -60,7 +59,7 @@ const SellerModal = ({ open, setOpen }) => {
         ownerId: "",
         registrationNumber: "",
         kilometers: 0,
-        expectedPrice: "",
+        expectedPrice: 0,
       });
       setUploadImages([]);
       setRegStep(2);
@@ -75,7 +74,8 @@ const SellerModal = ({ open, setOpen }) => {
     setIsLoading(true);
     setError(null);
     try {
-      const exists = await CarApiService.existsByRegNumber(regNumber);
+      const trimmedNumber = regNumber.trim();
+      const exists = await CarApiService.existsByRegNumber(trimmedNumber);
       if (exists.data) {
         setError({
           message: "Car with this Registration number already exists.",

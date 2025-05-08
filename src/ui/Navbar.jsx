@@ -25,6 +25,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const [loginModalopen, setLoginModalOpen] = useState(false);
+  const token = sessionStorage.getItem("token");
   const userId = sessionStorage.getItem("userId");
 
   const { t, i18n } = useTranslation();
@@ -65,6 +66,16 @@ export default function Navbar() {
               <div className="hidden py-1 sm:ml-6 sm:block">
                 <div className="flex gap-3">
                   <Link
+                    to="/auctions"
+                    className={`${
+                      location.pathname === "/auctions"
+                        ? "border bg-swamp-100 text-gunmental"
+                        : "from-mirage to-swamp-500 text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse"
+                    } rounded-lg border-gunmental px-4 pb-2 pt-1 text-xl font-semibold`}
+                  >
+                    {t("all_cars")}
+                  </Link>
+                  <Link
                     to="/register"
                     className={`${
                       location.pathname === "/register"
@@ -74,7 +85,7 @@ export default function Navbar() {
                   >
                     {t("register_user")}
                   </Link>
-                  {userId ? (
+                  {token ? (
                     <div
                       className={`cursor-pointer rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
                       onClick={() => navigate(`/user/${userId}`)}
@@ -132,7 +143,7 @@ export default function Navbar() {
 
             <CloseButton
               as={Link}
-              onClick={() => setLoginModalOpen(true)}
+              to={"/auctions"}
               className={`flex w-full cursor-pointer flex-row items-center justify-between rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
             >
               {t("all_cars")}
@@ -140,7 +151,7 @@ export default function Navbar() {
               <MdOutlineDirectionsCar className="mt-[1px] h-6 w-auto" />
             </CloseButton>
 
-            {userId ? (
+            {token ? (
               <CloseButton
                 as={Link}
                 to={`/user/${userId}`}

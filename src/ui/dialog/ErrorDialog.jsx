@@ -4,10 +4,12 @@ import {
   DialogPanel,
   DialogTitle,
 } from "@headlessui/react";
+import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router";
 
 const ErrorDialog = ({ isOpen, setIsOpen, error }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <Dialog
@@ -30,13 +32,12 @@ const ErrorDialog = ({ isOpen, setIsOpen, error }) => {
           {error.statusCode === 401 ||
             (error.statusCode === 403 && (
               <p className="text-sm font-normal text-medium-gray">
-                Refresh page or try to login again.
+                {t("refresh_or_try")}
               </p>
             ))}
 
           <p className="text-sm font-normal text-medium-gray">
-            If an error persists after several retries, please contact us:
-            contact@norwaycarexport.no
+            {t("contact_if_error")}
           </p>
           <p className="text-xs font-light text-light-gray">
             {error.timestamp}
@@ -46,11 +47,10 @@ const ErrorDialog = ({ isOpen, setIsOpen, error }) => {
               className="card_shadow mb-2 mt-5 flex flex-row items-center rounded-md border border-medium-gray bg-lighthouse px-4 pb-1 pt-1 text-xl font-semibold text-gunmental hover:bg-gunmental hover:text-lighthouse"
               onClick={() => {
                 setIsOpen(false);
-                if (error.statusCode == 401 || error.statusCode == 403)
-                  window.location.reload();
+                if (error.statusCode == 401) window.location.reload();
               }}
             >
-              Lukk
+              {t("close_lower_case")}
             </button>
             {error.statusCode == 401 || error.statusCode == 403 ? (
               <button
@@ -61,7 +61,7 @@ const ErrorDialog = ({ isOpen, setIsOpen, error }) => {
                   window.location.reload();
                 }}
               >
-                Logg inn
+                {t("login")}
               </button>
             ) : (
               <button
@@ -71,7 +71,7 @@ const ErrorDialog = ({ isOpen, setIsOpen, error }) => {
                   navigate("/");
                 }}
               >
-                Hjem
+                {t("home")}
               </button>
             )}
           </div>

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { RiArrowRightBoxLine, RiArrowLeftBoxLine } from "react-icons/ri";
 import { TiDelete } from "react-icons/ti";
 
 const ImageCarousel = ({ images, deleteImage }) => {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevSlide = () => {
@@ -44,7 +46,7 @@ const ImageCarousel = ({ images, deleteImage }) => {
                 }}
                 className="card_shadow group mb-2 mt-2 flex select-none flex-row items-center gap-1 rounded-lg border border-medium-gray bg-lighthouse px-1 pb-1 pt-1 text-base font-semibold text-medium-gray hover:bg-danger-red hover:text-lighthouse md:px-4 md:text-xl"
               >
-                Delete
+                {t("delete")}
                 <TiDelete className="h-6 w-auto" />
               </button>
             )}

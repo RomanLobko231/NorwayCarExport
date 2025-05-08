@@ -44,16 +44,15 @@ function handleError(error) {
     sessionStorage.removeItem("token");
   }
 
-  console.log(error);
-
   if (error.response) {
+    console.log(error);
     const { message, timestamp } = error.response?.data ?? {};
 
     const resolvedStatusCode = error.status ?? 500;
-    let resolvedMessage = message;
+    let resolvedMessage = message ?? "An error occurred.";
     const resolvedTimestamp = timestamp ?? new Date().toISOString();
 
-    if (error.status == 401 || error.status == 403) {
+    if (error.status == 401) {
       resolvedMessage = message ?? "Auth error";
     }
 
