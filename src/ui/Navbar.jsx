@@ -46,7 +46,7 @@ export default function Navbar() {
                         ul.insertAdjacentHTML('afterend', ul.outerHTML);
                         ul.nextSibling.setAttribute('aria-hidden', 'true');
                     })"
-            class="inline-flex w-full flex-nowrap overflow-hidden py-1 [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]"
+            class="inline-flex w-full flex-nowrap overflow-hidden py-1 [mask-image:_linear-gradient(to_right,transparent_0,_black_50px,_black_calc(100%-50px),transparent_100%)]"
           >
             <ul
               x-ref="text"
