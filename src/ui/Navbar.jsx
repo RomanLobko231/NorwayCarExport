@@ -4,6 +4,7 @@ import {
   DisclosureButton,
   DisclosurePanel,
 } from "@headlessui/react";
+import { GoNorthStar } from "react-icons/go";
 import {
   Bars2Icon,
   XMarkIcon,
@@ -35,7 +36,67 @@ export default function Navbar() {
   };
 
   return (
-    <div className="fixed z-10 flex w-full justify-center">
+    <div className="fixed z-10 flex w-full flex-col items-center justify-center px-4">
+      <div class="mx-auto -mb-2 w-full max-w-7xl bg-gradient-to-bl from-lighthouse/80 to-slate-50/80 backdrop-blur">
+        <div class="text-center text-base font-semibold text-medium-gray">
+          <div
+            x-data="{}"
+            x-init="$nextTick(() => {
+                        let ul = $refs.text;
+                        ul.insertAdjacentHTML('afterend', ul.outerHTML);
+                        ul.nextSibling.setAttribute('aria-hidden', 'true');
+                    })"
+            class="inline-flex w-full flex-nowrap overflow-hidden py-1 [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]"
+          >
+            <ul
+              x-ref="text"
+              class="animate-infiniteScroll flex items-center justify-center md:justify-start [&_li]:mx-8"
+            >
+              <li>
+                <p className="text-nowrap">
+                  The auction is currently in a development stage. Please check
+                  again in a short period. Thank you!
+                </p>
+              </li>
+              <li>
+                <GoNorthStar className="text-danger-red" />
+              </li>
+              <li>
+                <p className="text-nowrap">
+                  The auction is currently in a development stage. Please check
+                  again in a short period. Thank you!
+                </p>
+              </li>
+              <li>
+                <GoNorthStar className="text-danger-red" />
+              </li>
+            </ul>
+            <ul
+              x-ref="text"
+              class="animate-infiniteScroll flex items-center justify-center md:justify-start [&_li]:mx-8"
+            >
+              <li>
+                <p className="text-nowrap">
+                  The auction is currently in a development stage. Please check
+                  again in a short period. Thank you!
+                </p>
+              </li>
+              <li>
+                <GoNorthStar className="text-danger-red" />
+              </li>
+              <li>
+                <p className="text-nowrap">
+                  The auction is currently in a development stage. Please check
+                  again in a short period. Thank you!
+                </p>
+              </li>
+              <li>
+                <GoNorthStar className="text-danger-red" />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <Disclosure
         as="nav"
         className="mx-4 my-3 flex w-full max-w-7xl flex-col items-center justify-center rounded-lg border border-medium-gray bg-gradient-to-bl from-lighthouse/80 to-slate-50/80 backdrop-blur"

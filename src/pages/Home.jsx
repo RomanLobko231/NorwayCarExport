@@ -41,14 +41,10 @@ const cars = [
 const Home = () => {
   const [sellerModalopen, setSellerModalOpen] = useState(false);
   const [buyerModalopen, setBuyerModalOpen] = useState(false);
-  const { t, i18n } = useTranslation();
-
-  const changeLanguage = (lang) => {
-    i18n.changeLanguage(lang);
-  };
+  const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col items-center justify-center pt-20 md:pt-32">
+    <div className="flex flex-col items-center justify-center pt-24 md:pt-32">
       <h1 className="mx-6 w-4/5 animate-fade-in-slow text-center text-4xl font-normal text-medium-gray md:mx-0 md:text-6xl">
         {t("welcome_to") + " "}
         <span className="inline-block bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text font-bold leading-[2.8rem] text-transparent md:leading-[5rem]">

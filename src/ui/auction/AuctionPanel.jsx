@@ -12,26 +12,26 @@ import ErrorMessage from "../ErrorMessage";
 const AuctionPanel = ({ auctionData, carData, placeBid, error }) => {
   const { t } = useTranslation();
 
-  const [bidAmount, setBidAmount] = useState(
-    auctionData.highestBid
-      ? auctionData.highestBid + auctionData.minimalStep
-      : auctionData.startingPrice,
-  );
-  const [autoBid, setAutoBid] = useState(
-    auctionData.highestBid + auctionData.minimalStep,
-  );
+  const highestBidAmount = auctionData.highestBid?.amount ?? 0;
+  const nextMinBid =
+    highestBidAmount == 0
+      ? auctionData.startingPrice
+      : highestBidAmount + auctionData.minimalStep;
+
+  const [bidAmount, setBidAmount] = useState(nextMinBid);
+  const [autoBid, setAutoBid] = useState(nextMinBid);
   const [isAutoBidOpen, setIsAutoBidOpen] = useState(false);
 
   const [bidError, setBidError] = useState(error?.message);
 
   const validateBid = (bid) => {
-    if (bid < auctionData.highestBid) {
-      setBidError(
-        `Bid is too low, must be at least ${auctionData.highestBid + auctionData.minimalStep}`,
-      );
+    if (bid < nextMinBid || bid < auctionData.startingPrice) {
+      setBidError(`Bid is too low, must be at least ${nextMinBid},-`);
     }
-    return bid > auctionData.highestBid;
+    return bid >= nextMinBid;
   };
+
+  console.log(auctionData);
 
   return (
     <div className="flex w-full max-w-7xl flex-col items-center justify-center px-4 py-20">
@@ -60,8 +60,8 @@ const AuctionPanel = ({ auctionData, carData, placeBid, error }) => {
                 {t("highest_bid")}:
               </p>
               <p className="text-center text-3xl font-bold text-medium-gray">
-                {auctionData.highestBid
-                  ? `${auctionData.highestBid},-`
+                {highestBidAmount !== 0
+                  ? `${highestBidAmount},-`
                   : t("no_bids")}
               </p>
             </div>
@@ -78,7 +78,7 @@ const AuctionPanel = ({ auctionData, carData, placeBid, error }) => {
                 {t("auction_ends_in")}:
               </p>
               {auctionData.status == "FINISHED" ||
-              auctionData.status == "PAUSED" ? (
+              auctionData.status == "DISABLED" ? (
                 <p className="text-lg font-bold text-medium-gray">-</p>
               ) : (
                 <AuctionCountdown utcEndTime={auctionData.endDateTime} />
@@ -88,7 +88,7 @@ const AuctionPanel = ({ auctionData, carData, placeBid, error }) => {
           {bidError && <ErrorMessage error={bidError} />}
 
           {auctionData.status == "FINISHED" ||
-          auctionData.status == "PAUSED" ? (
+          auctionData.status == "DISABLED" ? (
             <h1 className="mt-7 w-full rounded-md border border-medium-gray bg-distant-cloud p-4 text-center text-2xl font-semibold text-medium-gray">
               {t("auction_inactive")}
             </h1>
@@ -101,7 +101,8 @@ const AuctionPanel = ({ auctionData, carData, placeBid, error }) => {
                   icon={<TbCoins className="h-6 w-auto" color="#333" />}
                   initialValue={bidAmount}
                   onChange={(e) => {
-                    setBidAmount(e.target.value);
+                    const value = Number(e.target.value);
+                    if (!isNaN(value)) setBidAmount(value);
                   }}
                   disableCheckbox={true}
                 />
@@ -109,6 +110,7 @@ const AuctionPanel = ({ auctionData, carData, placeBid, error }) => {
                   onClick={() => {
                     if (validateBid(bidAmount)) {
                       placeBid(bidAmount);
+                      setBidError(null);
                     }
                   }}
                   className="buttonsh hover:button_shadow_hover disabled:button_shadow_click active:button_shadow_click group mb-2 flex w-full cursor-pointer flex-row items-center justify-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 py-2 hover:from-mirage hover:to-gunmental disabled:opacity-35 disabled:hover:to-swamp-500 sm:h-[50px] sm:w-auto md:space-x-2"
@@ -138,7 +140,8 @@ const AuctionPanel = ({ auctionData, carData, placeBid, error }) => {
                       icon={<TbCoins className="h-6 w-auto" color="#333" />}
                       initialValue={autoBid}
                       onChange={(e) => {
-                        setAutoBid(e.target.value);
+                        const value = Number(e.target.value);
+                        if (!isNaN(value)) setAutoBid(value);
                       }}
                       disableCheckbox={true}
                     />

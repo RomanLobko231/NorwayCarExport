@@ -122,7 +122,10 @@ const CarAuctionPage = () => {
         body: JSON.stringify(bidMessage),
       });
     } catch (error) {
-      setError(error);
+      setError({
+        message: "Connection was interrupted. Please refresh page",
+        statusCode: 409,
+      });
       setIsErrorOpen(true);
       console.error("Error placing bid: ", error);
     }

@@ -95,6 +95,7 @@ i18n
           specifications: "Specifications",
           additional_details: "Additional Details",
           auction_inactive: "Auction is inactive",
+          all_auctions: "All auctions",
         },
       },
       no: {
@@ -188,7 +189,8 @@ i18n
           car_details: "Bil Info",
           specifications: "Spesifikasjoner",
           additional_details: "Tillegsinfo",
-          auction_inactive: "Auksjonen er inaktivt",
+          auction_inactive: "Auksjonen er inaktiv",
+          all_auctions: "Alle auksjoner",
         },
       },
     },

@@ -26,7 +26,7 @@ const ErrorDialog = ({ isOpen, setIsOpen, error }) => {
           <DialogTitle className="text-base font-bold text-medium-gray md:text-lg">
             {`Error: ${error.statusCode}`}
           </DialogTitle>
-          <p className="text-lg font-bold text-medium-gray md:text-xl">
+          <p className="break-all text-lg font-bold text-medium-gray md:text-xl">
             {error.message}
           </p>
           {error.statusCode === 401 ||

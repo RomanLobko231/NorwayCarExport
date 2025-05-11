@@ -39,6 +39,7 @@ const AuctionCarCard = ({ auction }) => {
           {auction.carDetails.modelYear ?? ""}
         </h1>
       </div>
+      <hr className="h-[1px] w-full border border-dashed bg-light-gray opacity-50" />
 
       {/* <div className="flex flex-wrap items-center gap-2">
         <CarInfoElement info={`EU: ${carInfo.nextEUControl ?? "-"}`} />
@@ -53,10 +54,10 @@ const AuctionCarCard = ({ auction }) => {
           Siste bud:
         </h1>
         <h1 className="select-none text-xl font-medium text-cornsilk group-hover:text-lighthouse">
-          {auction.highestBid ?? "-"}
+          {auction.highestBid?.amount ?? "-"}
         </h1>
       </div>
-      <div className="mt-4 flex w-full flex-row items-center justify-between text-center text-base font-semibold text-light-gray">
+      <div className="mt-2 flex w-full flex-row items-center justify-between rounded-md border border-medium-gray px-3 py-1 text-center text-base font-semibold text-light-gray">
         Avslutes om
         <AuctionCountdown utcEndTime={auction.endDateTime} />
       </div>

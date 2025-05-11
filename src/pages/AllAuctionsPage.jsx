@@ -29,7 +29,7 @@ const AllAuctionsPage = () => {
   };
 
   return (
-    <div className="flex w-full max-w-7xl flex-col items-center justify-center px-4 py-20">
+    <div className="flex w-full max-w-7xl flex-col items-center justify-center px-4 py-20 md:py-24">
       {isLoading && (
         <p className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
           Loading...

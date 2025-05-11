@@ -36,11 +36,16 @@ module.exports = {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
+        "infinite-scroll": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-100%)" },
+        },
       },
       animation: {
         down: "down 1.5s infinite",
         "fade-in-fast": "fade-in 1s ease-in-out forwards",
         "fade-in-slow": "fade-in 2.5s ease-in-out forwards",
+        infiniteScroll: "infinite-scroll 25s linear infinite",
       },
     },
   },
