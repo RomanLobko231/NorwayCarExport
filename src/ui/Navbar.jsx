@@ -37,8 +37,8 @@ export default function Navbar() {
 
   return (
     <div className="fixed z-10 flex w-full flex-col items-center justify-center px-4">
-      <div class="mx-auto -mb-2 w-full max-w-7xl bg-gradient-to-bl from-lighthouse/80 to-slate-50/80 backdrop-blur">
-        <div class="text-center text-base font-semibold text-medium-gray">
+      <div className="mx-auto -mb-2 w-full max-w-7xl bg-gradient-to-bl from-lighthouse/80 to-slate-50/80 backdrop-blur">
+        <div className="text-center text-base font-semibold text-medium-gray">
           <div
             x-data="{}"
             x-init="$nextTick(() => {
@@ -46,11 +46,11 @@ export default function Navbar() {
                         ul.insertAdjacentHTML('afterend', ul.outerHTML);
                         ul.nextSibling.setAttribute('aria-hidden', 'true');
                     })"
-            class="inline-flex w-full flex-nowrap overflow-hidden py-1 [mask-image:_linear-gradient(to_right,transparent_0,_black_50px,_black_calc(100%-50px),transparent_100%)]"
+            className="inline-flex w-full flex-nowrap overflow-hidden py-1 [mask-image:_linear-gradient(to_right,transparent_0,_black_50px,_black_calc(100%-50px),transparent_100%)]"
           >
             <ul
               x-ref="text"
-              class="animate-infiniteScroll flex items-center justify-center md:justify-start [&_li]:mx-8"
+              className="animate-infiniteScroll flex items-center justify-center md:justify-start [&_li]:mx-8"
             >
               <li>
                 <p className="text-nowrap">
@@ -73,7 +73,7 @@ export default function Navbar() {
             </ul>
             <ul
               x-ref="text"
-              class="animate-infiniteScroll flex items-center justify-center md:justify-start [&_li]:mx-8"
+              className="animate-infiniteScroll flex items-center justify-center md:justify-start [&_li]:mx-8"
             >
               <li>
                 <p className="text-nowrap">
@@ -134,7 +134,7 @@ export default function Navbar() {
                         : "from-mirage to-swamp-500 text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse"
                     } rounded-lg border-gunmental px-4 pb-2 pt-1 text-xl font-semibold`}
                   >
-                    {t("all_cars")}
+                    {t("auctions")}
                   </Link>
                   <Link
                     to="/register"
@@ -207,7 +207,7 @@ export default function Navbar() {
               to={"/auctions"}
               className={`flex w-full cursor-pointer flex-row items-center justify-between rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
             >
-              {t("all_cars")}
+              {t("auctions")}
               <div className="mx-3 mt-[1px] h-[1px] flex-grow bg-light-gray opacity-50"></div>
               <MdOutlineDirectionsCar className="mt-[1px] h-6 w-auto" />
             </CloseButton>

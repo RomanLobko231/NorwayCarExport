@@ -68,7 +68,7 @@ const UserPage = () => {
       )}
       {userData && !isLoading && (
         <div
-          className={`flex w-full flex-col items-center justify-center px-4 pt-20`}
+          className={`flex w-full flex-col items-center justify-center px-4 pt-28`}
         >
           {userData.role === "BUYER_COMPANY" && (
             <>

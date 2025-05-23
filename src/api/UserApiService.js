@@ -4,7 +4,7 @@ export default class UserApiService {
   static async registerSeller(sellerData) {
     try {
       const response = await api.post(
-        "/api/v1/users/register_seller",
+        "/api/v1/users/register-seller",
         sellerData,
       );
       return response;
@@ -17,7 +17,7 @@ export default class UserApiService {
   static async registerOneTimeSeller(sellerData) {
     try {
       const response = await api.post(
-        "/api/v1/users/register_one_time_seller",
+        "/api/v1/users/register-one-time-seller",
         sellerData,
       );
       return response;
@@ -39,7 +39,7 @@ export default class UserApiService {
         data.append("organisationLicences", licence);
       });
 
-      const response = api.post("api/v1/users/register_buyer", data);
+      const response = api.post("api/v1/users/register-buyer", data);
       return response;
     } catch (error) {
       console.log(error);
@@ -50,7 +50,7 @@ export default class UserApiService {
   static async registerBuyerRepresentative(representativeData) {
     try {
       const response = api.post(
-        "api/v1/users/register_representative",
+        "api/v1/users/register-representative",
         representativeData,
       );
       return response;

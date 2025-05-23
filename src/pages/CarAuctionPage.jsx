@@ -96,6 +96,7 @@ const CarAuctionPage = () => {
 
       onStompError: (frame) => {
         console.error("Broker error: ", frame);
+        //setError("Connection was interrupted. Please refresh page");
       },
     });
 
@@ -131,6 +132,34 @@ const CarAuctionPage = () => {
     }
   };
 
+  const placeNewAutoBid = (limitAmount) => {
+    if (!stompClient) {
+      console.error("WebSocket client is not initialized.");
+      return;
+    }
+
+    setError(null);
+    try {
+      const autoBidMessage = {
+        auctionId: auctionData.id,
+        bidderId: userId,
+        limitAmount: limitAmount,
+      };
+
+      stompClient.publish({
+        destination: "/app/place-auto-bid",
+        body: JSON.stringify(autoBidMessage),
+      });
+    } catch (error) {
+      setError({
+        message: "Connection was interrupted. Please refresh page",
+        statusCode: 409,
+      });
+      setIsErrorOpen(true);
+      console.error("Error placing auto bid: ", error);
+    }
+  };
+
   return (
     <>
       {isLoading && (
@@ -150,6 +179,7 @@ const CarAuctionPage = () => {
           auctionData={auctionData}
           carData={carData}
           placeBid={placeNewBid}
+          placeAutoBid={placeNewAutoBid}
           error={error}
         />
       )}

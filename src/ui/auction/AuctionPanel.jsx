@@ -9,7 +9,13 @@ import ImageCarousel from "../carousel/ImageCarousel";
 import { TbCoins } from "react-icons/tb";
 import ErrorMessage from "../ErrorMessage";
 
-const AuctionPanel = ({ auctionData, carData, placeBid, error }) => {
+const AuctionPanel = ({
+  auctionData,
+  carData,
+  placeBid,
+  placeAutoBid,
+  error,
+}) => {
   const { t } = useTranslation();
 
   const highestBidAmount = auctionData.highestBid?.amount ?? 0;
@@ -114,7 +120,10 @@ const AuctionPanel = ({ auctionData, carData, placeBid, error }) => {
                     }
                   }}
                   className="buttonsh hover:button_shadow_hover disabled:button_shadow_click active:button_shadow_click group mb-2 flex w-full cursor-pointer flex-row items-center justify-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 py-2 hover:from-mirage hover:to-gunmental disabled:opacity-35 disabled:hover:to-swamp-500 sm:h-[50px] sm:w-auto md:space-x-2"
-                  disabled={auctionData.status == "FINISHED"}
+                  disabled={
+                    auctionData.status == "FINISHED" ||
+                    auctionData.status == "DISABLED"
+                  }
                 >
                   <span className="whitespace-nowrap text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
                     {t("place_bid").toUpperCase()}
@@ -146,8 +155,17 @@ const AuctionPanel = ({ auctionData, carData, placeBid, error }) => {
                       disableCheckbox={true}
                     />
                     <button
+                      onClick={() => {
+                        if (validateBid(autoBid)) {
+                          placeAutoBid(autoBid);
+                          setBidError(null);
+                        }
+                      }}
                       className="buttonsh disabled:button_shadow_clickhover:button_shadow_hover active:button_shadow_click group mb-2 flex w-full cursor-pointer flex-row items-center justify-center space-x-2 rounded-lg border border-medium-gray bg-lighthouse px-6 py-2 text-medium-gray hover:bg-medium-gray hover:text-lighthouse disabled:opacity-35 disabled:hover:bg-lighthouse disabled:hover:text-medium-gray sm:h-[50px] sm:w-auto md:space-x-2"
-                      disabled={auctionData.status == "FINISHED"}
+                      disabled={
+                        auctionData.status == "FINISHED" ||
+                        auctionData.status == "DISABLED"
+                      }
                     >
                       <span className="whitespace-nowrap text-xl font-semibold leading-4 md:text-2xl">
                         {t("autobid").toUpperCase()}

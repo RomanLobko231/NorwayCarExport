@@ -13,7 +13,7 @@ export default class AuctionApiService {
 
   static async getAuctionByCarId(carId) {
     try {
-      const response = await api.get(`/api/v1/auctions/by_car/${carId}`);
+      const response = await api.get(`/api/v1/auctions/by-car/${carId}`);
       return response;
     } catch (error) {
       console.log(error);

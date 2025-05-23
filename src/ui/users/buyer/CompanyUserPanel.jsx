@@ -27,8 +27,6 @@ const CompanyUserPanel = ({ user, updateUser }) => {
     setInputDisabled(true);
   };
 
-  console.log(user);
-
   return (
     <form
       className={`flex w-full max-w-7xl flex-col items-center rounded-lg ${!inputDisabled && "card_shadow"} border border-light-gray bg-slate-50 p-4 md:px-6`}

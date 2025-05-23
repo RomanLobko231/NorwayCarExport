@@ -15,7 +15,7 @@ import UserApiService from "../../../api/UserApiService";
 import ErrorMessage from "../../ErrorMessage";
 import { useState } from "react";
 
-const AddRepresentativeModal = ({ open, setOpen }) => {
+const AddRepresentativeModal = ({ open, setOpen, setRepresentatives }) => {
   const { t } = useTranslation();
   const params = useParams();
 
@@ -42,7 +42,9 @@ const AddRepresentativeModal = ({ open, setOpen }) => {
     setIsLoading(true);
     setError(null);
     try {
-      await UserApiService.registerBuyerRepresentative(representativeData);
+      const response =
+        await UserApiService.registerBuyerRepresentative(representativeData);
+      setRepresentatives((prevUsers) => [...prevUsers, response.data]);
       setRepresentativeData({
         name: "",
         phoneNumber: "",
@@ -51,7 +53,6 @@ const AddRepresentativeModal = ({ open, setOpen }) => {
         buyerCompanyId: params.id,
       });
       setOpen(false);
-      window.location.reload();
     } catch (error) {
       setError(error);
     } finally {

@@ -6,7 +6,7 @@ const AuctionsList = ({ auctions }) => {
   return (
     <div className="flex max-w-7xl flex-col items-center">
       <h1 className="mb-6 w-full text-center text-2xl font-bold text-medium-gray md:text-3xl">
-        {t("all_auctions").toUpperCase()}
+        {t("auctions").toUpperCase()}
       </h1>
       <div className="flex w-full flex-row flex-wrap justify-center gap-4">
         {auctions.map((auction) => (

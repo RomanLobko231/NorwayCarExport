@@ -6,7 +6,7 @@ import {
   MdOutlinePerson2,
   MdOutlinePhone,
 } from "react-icons/md";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DeleteDialog from "../../dialog/DeleteDialog";
 
 const BuyerRepresentativeCard = ({ rep, deleteRep, updateRep }) => {
@@ -14,6 +14,10 @@ const BuyerRepresentativeCard = ({ rep, deleteRep, updateRep }) => {
   const [inputDisabled, setInputDisabled] = useState(true);
 
   const [isDelOpen, setIsDelOpen] = useState(false);
+
+  useEffect(() => {
+    setInputDisabled(true);
+  }, [rep]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

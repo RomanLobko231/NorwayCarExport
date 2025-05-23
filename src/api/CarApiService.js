@@ -13,7 +13,7 @@ export default class CarApiService {
         data.append("images", image);
       });
 
-      const response = await api.post("/api/v1/cars/add_simplified", data);
+      const response = await api.post("/api/v1/cars/add-simplified", data);
       return response;
     } catch (error) {
       console.log(error);
@@ -45,7 +45,7 @@ export default class CarApiService {
         data.append("images", image);
       });
 
-      const response = await api.post("/api/v1/cars/add_complete_user", data);
+      const response = await api.post("/api/v1/cars/add-complete-user", data);
       return response;
     } catch (error) {
       console.log(error);
@@ -65,7 +65,7 @@ export default class CarApiService {
 
   static async getCarsByOwnerId(id) {
     try {
-      const response = await api.get(`/api/v1/cars/by_owner/${id}`);
+      const response = await api.get(`/api/v1/cars/by-owner/${id}`);
       return response;
     } catch (error) {
       console.log(error);

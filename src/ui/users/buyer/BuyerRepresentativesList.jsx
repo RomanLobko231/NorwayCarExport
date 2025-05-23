@@ -39,8 +39,12 @@ const BuyerRepresentativesList = ({ reps }) => {
     setError(null);
     setIsLoading(true);
     try {
-      await UserApiService.updateUser(repData);
-      window.location.reload();
+      const response = await UserApiService.updateUser(repData);
+      setRepresentatives((prevUsers) =>
+        prevUsers.map((user) =>
+          user.id === response.data.id ? response.data : user,
+        ),
+      );
     } catch (error) {
       setError(error);
       setIsErrorOpen(true);
@@ -87,10 +91,9 @@ const BuyerRepresentativesList = ({ reps }) => {
           className={`flex w-full max-w-7xl flex-col flex-nowrap items-center justify-center gap-4 pb-4 md:flex-row md:flex-wrap md:items-start`}
         >
           {representatives.map((rep, index) => (
-            <div className="flex w-full flex-col items-center" key={index}>
+            <div className="flex w-full flex-col items-center" key={rep.id}>
               <BuyerRepresentativeCard
                 rep={rep}
-                index={index}
                 deleteRep={deleteRepresentativeById}
                 updateRep={updateRepresentative}
               />
@@ -116,7 +119,11 @@ const BuyerRepresentativesList = ({ reps }) => {
           )}
         </div>
       )}
-      <AddRepresentativeModal open={isRepModalOpen} setOpen={setRepModalOpen} />
+      <AddRepresentativeModal
+        open={isRepModalOpen}
+        setOpen={setRepModalOpen}
+        setRepresentatives={setRepresentatives}
+      />
       {error && (
         <ErrorDialog
           isOpen={isErrorOpen}

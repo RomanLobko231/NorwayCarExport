@@ -3,8 +3,8 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 
 i18n
-  .use(LanguageDetector) // Detects user's language preference
-  .use(initReactI18next) // Enables hooks and HOCs
+  .use(LanguageDetector)
+  .use(initReactI18next)
   .init({
     resources: {
       en: {
@@ -95,7 +95,7 @@ i18n
           specifications: "Specifications",
           additional_details: "Additional Details",
           auction_inactive: "Auction is inactive",
-          all_auctions: "All auctions",
+          auctions: "Auctions",
         },
       },
       no: {
@@ -190,7 +190,7 @@ i18n
           specifications: "Spesifikasjoner",
           additional_details: "Tillegsinfo",
           auction_inactive: "Auksjonen er inaktiv",
-          all_auctions: "Alle auksjoner",
+          auctions: "Auksjoner",
         },
       },
     },
