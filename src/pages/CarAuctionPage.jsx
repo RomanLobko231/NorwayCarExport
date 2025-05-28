@@ -33,9 +33,11 @@ const CarAuctionPage = () => {
 
     setUserId(sessionStorage.getItem("userId"));
 
+    if (!params.id) return;
+
     return () => {
       if (stompClient) {
-        stompClient.desactivate();
+        stompClient.deactivate();
         console.log("Stomp desactivated");
       }
     };
@@ -70,10 +72,17 @@ const CarAuctionPage = () => {
   };
 
   const setupWebSocket = () => {
-    const socket = new SockJS("http://localhost:8080/ws-auction");
+    const url = process.env.REACT_APP_BACKEND_URL;
+    const socket = new SockJS(`${url}/ws-auction`);
+
+    const token = sessionStorage.getItem("token");
 
     const client = new Client({
       webSocketFactory: () => socket,
+
+      connectHeaders: {
+        Authorization: `Bearer ${token}`,
+      },
 
       heartbeatIncoming: 10000,
       heartbeatOutgoing: 10000,
@@ -96,7 +105,18 @@ const CarAuctionPage = () => {
 
       onStompError: (frame) => {
         console.error("Broker error: ", frame);
-        //setError("Connection was interrupted. Please refresh page");
+        setError({
+          message: "Connection was interrupted. Please refresh page",
+        });
+      },
+
+      onWebSocketClose: (event) => {
+        console.error("WebSocket closed", event);
+        setError({
+          message: "Connection lost. Please refresh the page.",
+          statusCode: 500,
+        });
+        //setIsErrorOpen(true);
       },
     });
 
@@ -124,7 +144,7 @@ const CarAuctionPage = () => {
       });
     } catch (error) {
       setError({
-        message: "Connection was interrupted. Please refresh page",
+        message: "Connection is not up-to-date. Please refresh page",
         statusCode: 409,
       });
       setIsErrorOpen(true);

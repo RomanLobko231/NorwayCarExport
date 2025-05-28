@@ -20,6 +20,8 @@ i18n
           three_steps: "Sell your car in 3 easy steps",
           latest_bids: "LATEST BIDS",
           check_out: "Check what's available now",
+          faq: "FAQ",
+          get_answer: "Get answer to your questions",
           register_user: "Register user",
           login: "Login",
           all_cars: "All cars",
@@ -96,6 +98,11 @@ i18n
           additional_details: "Additional Details",
           auction_inactive: "Auction is inactive",
           auctions: "Auctions",
+          delete_user: "Delete this user",
+          sure_to_del_user:
+            "Are you sure you want to delete this user? All information will be lost.",
+          only_company_can_change:
+            "Representative's information can only be changed from Company account.",
         },
       },
       no: {
@@ -110,6 +117,8 @@ i18n
           get_started: "KOM I GANG",
           three_steps: "Selg bilen din på 3 enkle steg",
           latest_bids: " NYESTE BUD",
+          faq: "OFTE STILTE SPØRSMÅL",
+          get_answer: "Få svar på dine spørsmål",
           check_out: "Sjekk hva som er tilgjelgelig nå",
           register_user: "Registrer bruker",
           login: "Logg inn",
@@ -179,7 +188,7 @@ i18n
           min_step: "Min Steg",
           autobid: "Autobud",
           place_bid: "Legg Inn Bud",
-          your_bid: "Din Bud",
+          your_bid: "Ditt Bud",
           set_autobid: "Legg Inn Autobud",
           close_autobid: "Lukk Autobud",
           highest_bid: "Høyeste Bud",
@@ -191,6 +200,11 @@ i18n
           additional_details: "Tillegsinfo",
           auction_inactive: "Auksjonen er inaktiv",
           auctions: "Auksjoner",
+          delete_user: "Slette denne brukeren",
+          sure_to_del_user:
+            "Er du sikker på at du vil slette denne brukeren? All informasjon vil bli tapt.",
+          only_company_can_change:
+            "Representantens informasjon kan kun endres fra Bedriftskontoen.",
         },
       },
     },

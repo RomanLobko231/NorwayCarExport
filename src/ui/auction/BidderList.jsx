@@ -73,7 +73,7 @@ const BidderList = ({ bidsData }) => {
                     {t("bidder")}:
                   </p>
                   <p className="font-semibold text-medium-gray">
-                    {t("bidder")} #{bids.bidderLabel}
+                    {t("bidder")} {bid.bidderLabel}
                   </p>
                 </div>
                 <div className="flex w-full flex-row items-center justify-between">

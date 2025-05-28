@@ -1,10 +1,5 @@
 import { useNavigate } from "react-router";
-import { useCallback, useState } from "react";
-import TextInputField from "../input/TextInputField";
 import { TbCarOff } from "react-icons/tb";
-import { MdDelete, MdEdit } from "react-icons/md";
-import MessageDialog from "../dialogs/MessageDialog";
-import LoginModal from "../LoginModal";
 import AuctionCountdown from "./AuctionCountdown";
 
 const AuctionCarCard = ({ auction }) => {

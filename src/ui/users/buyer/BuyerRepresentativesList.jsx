@@ -10,8 +10,8 @@ import {
 import { TbTrashX } from "react-icons/tb";
 import CarInfoElement from "../../car/CarInfoElement";
 import AddRepresentativeModal from "./AddRepresentativeModal";
-import BuyerRepresentativeCard from "./BuyerRepresentativeCard";
 import ErrorDialog from "../../dialog/ErrorDialog";
+import BuyerRepresentativeCard from "./BuyerRepresentativeCard";
 
 const BuyerRepresentativesList = ({ reps }) => {
   const [isRepModalOpen, setRepModalOpen] = useState(false);

@@ -96,6 +96,16 @@ const Home = () => {
         {t("three_steps")}
       </h3>
       <InfoList />
+      {/* <div className="mt-12 flex flex-row items-center space-x-4 md:mt-20">
+        <div className="h-[2px] w-[70px] bg-gradient-to-l from-medium-gray to-transparent md:w-[200px]"></div>
+        <h1 className="text-center text-2xl font-bold text-medium-gray md:text-4xl">
+          {t("faq")}
+        </h1>
+        <div className="h-[2px] w-[70px] bg-gradient-to-r from-medium-gray to-transparent md:w-[200px]"></div>
+      </div>
+      <h3 className="text-center text-lg font-extralight text-light-gray md:text-lg">
+        {t("get_answer")}
+      </h3> */}
       <div className="mt-12 flex flex-row items-center space-x-4 md:mt-20">
         <div className="h-[2px] w-[70px] bg-gradient-to-l from-medium-gray to-transparent md:w-[200px]"></div>
         <h1 className="text-center text-2xl font-bold text-medium-gray md:text-4xl">

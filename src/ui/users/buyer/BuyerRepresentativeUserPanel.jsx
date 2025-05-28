@@ -4,8 +4,10 @@ import {
   MdOutlinePhone,
 } from "react-icons/md";
 import TextInputField from "../../input/TextInputField";
+import { useTranslation } from "react-i18next";
 
 const BuyerRepresentativeUserPanel = ({ user }) => {
+  const { t } = useTranslation();
   return (
     <div
       className={`flex w-full max-w-5xl flex-col items-center rounded-lg border border-light-gray bg-slate-50 p-4 md:px-6`}
@@ -21,12 +23,12 @@ const BuyerRepresentativeUserPanel = ({ user }) => {
             Status:
           </h1>
           <p className="text-center text-lg font-bold text-medium-gray md:text-2xl">
-            {user.role.replace("BUYER_", "")}
+            REPRESENTATIVE
           </p>
         </div>
 
         <div className="mt-4 flex w-full flex-col justify-between md:ml-7 md:mt-0 md:gap-3 lg:flex-row">
-          <hr className="my-1 hidden h-auto border-[1px] border-l border-dashed border-light-gray/35 md:block" />
+          <hr className="my-1 hidden h-auto border-[1px] border-l border-dashed border-light-gray/35 lg:block" />
           <TextInputField
             label="Navn"
             name="name"
@@ -54,6 +56,9 @@ const BuyerRepresentativeUserPanel = ({ user }) => {
           />
         </div>
       </div>
+      <p className="mt-3 text-center text-sm font-light italic text-light-gray md:text-base">
+        {t("only_company_can_change")}
+      </p>
     </div>
   );
 };

@@ -4,14 +4,10 @@ import { useCallback, useState } from "react";
 import TextInputField from "../input/TextInputField";
 import { TbCarOff } from "react-icons/tb";
 import { MdDelete, MdEdit } from "react-icons/md";
-import MessageDialog from "../dialogs/MessageDialog";
 import LoginModal from "../LoginModal";
 
 const CarCardBlurred = ({ carInfo }) => {
-  const navigate = useNavigate();
   const [loginModalopen, setLoginModalOpen] = useState(false);
-
-  const parseTime = () => {};
 
   return (
     <div

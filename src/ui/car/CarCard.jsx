@@ -4,7 +4,6 @@ import { useCallback, useState } from "react";
 import TextInputField from "../input/TextInputField";
 import { TbCarOff } from "react-icons/tb";
 import { MdDelete, MdEdit } from "react-icons/md";
-import MessageDialog from "../dialogs/MessageDialog";
 import DeleteDialog from "../dialog/DeleteDialog";
 
 const CarCard = ({ carInfo, onDelete, actionsDisabled }) => {

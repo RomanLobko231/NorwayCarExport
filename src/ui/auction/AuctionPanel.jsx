@@ -8,6 +8,7 @@ import { useState } from "react";
 import ImageCarousel from "../carousel/ImageCarousel";
 import { TbCoins } from "react-icons/tb";
 import ErrorMessage from "../ErrorMessage";
+import { isDeadlineReached } from "../../utils/dateTimeUtils";
 
 const AuctionPanel = ({
   auctionData,
@@ -28,13 +29,23 @@ const AuctionPanel = ({
   const [autoBid, setAutoBid] = useState(nextMinBid);
   const [isAutoBidOpen, setIsAutoBidOpen] = useState(false);
 
-  const [bidError, setBidError] = useState(error?.message);
+  const [bidError, setBidError] = useState(error);
 
   const validateBid = (bid) => {
     if (bid < nextMinBid || bid < auctionData.startingPrice) {
-      setBidError(`Bid is too low, must be at least ${nextMinBid},-`);
+      setBidError({
+        message: `Bid is too low, must be at least ${nextMinBid},-`,
+      });
     }
     return bid >= nextMinBid;
+  };
+
+  const isAuctionDisabled = () => {
+    return (
+      auctionData.status == "FINISHED" ||
+      auctionData.status == "DISABLED" ||
+      isDeadlineReached(auctionData.endDateTime)
+    );
   };
 
   console.log(auctionData);
@@ -83,18 +94,16 @@ const AuctionPanel = ({
               <p className="text-base font-medium text-light-gray">
                 {t("auction_ends_in")}:
               </p>
-              {auctionData.status == "FINISHED" ||
-              auctionData.status == "DISABLED" ? (
+              {isAuctionDisabled() ? (
                 <p className="text-lg font-bold text-medium-gray">-</p>
               ) : (
                 <AuctionCountdown utcEndTime={auctionData.endDateTime} />
               )}
             </div>
           </div>
-          {bidError && <ErrorMessage error={bidError} />}
+          {bidError && <ErrorMessage error={bidError.message} />}
 
-          {auctionData.status == "FINISHED" ||
-          auctionData.status == "DISABLED" ? (
+          {isAuctionDisabled() ? (
             <h1 className="mt-7 w-full rounded-md border border-medium-gray bg-distant-cloud p-4 text-center text-2xl font-semibold text-medium-gray">
               {t("auction_inactive")}
             </h1>
@@ -107,8 +116,7 @@ const AuctionPanel = ({
                   icon={<TbCoins className="h-6 w-auto" color="#333" />}
                   initialValue={bidAmount}
                   onChange={(e) => {
-                    const value = Number(e.target.value);
-                    if (!isNaN(value)) setBidAmount(value);
+                    setBidAmount(e.target.value);
                   }}
                   disableCheckbox={true}
                 />
@@ -120,10 +128,7 @@ const AuctionPanel = ({
                     }
                   }}
                   className="buttonsh hover:button_shadow_hover disabled:button_shadow_click active:button_shadow_click group mb-2 flex w-full cursor-pointer flex-row items-center justify-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 py-2 hover:from-mirage hover:to-gunmental disabled:opacity-35 disabled:hover:to-swamp-500 sm:h-[50px] sm:w-auto md:space-x-2"
-                  disabled={
-                    auctionData.status == "FINISHED" ||
-                    auctionData.status == "DISABLED"
-                  }
+                  disabled={isAuctionDisabled()}
                 >
                   <span className="whitespace-nowrap text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
                     {t("place_bid").toUpperCase()}
@@ -149,8 +154,7 @@ const AuctionPanel = ({
                       icon={<TbCoins className="h-6 w-auto" color="#333" />}
                       initialValue={autoBid}
                       onChange={(e) => {
-                        const value = Number(e.target.value);
-                        if (!isNaN(value)) setAutoBid(value);
+                        setAutoBid(e.target.value);
                       }}
                       disableCheckbox={true}
                     />
@@ -162,10 +166,7 @@ const AuctionPanel = ({
                         }
                       }}
                       className="buttonsh disabled:button_shadow_clickhover:button_shadow_hover active:button_shadow_click group mb-2 flex w-full cursor-pointer flex-row items-center justify-center space-x-2 rounded-lg border border-medium-gray bg-lighthouse px-6 py-2 text-medium-gray hover:bg-medium-gray hover:text-lighthouse disabled:opacity-35 disabled:hover:bg-lighthouse disabled:hover:text-medium-gray sm:h-[50px] sm:w-auto md:space-x-2"
-                      disabled={
-                        auctionData.status == "FINISHED" ||
-                        auctionData.status == "DISABLED"
-                      }
+                      disabled={isAuctionDisabled()}
                     >
                       <span className="whitespace-nowrap text-xl font-semibold leading-4 md:text-2xl">
                         {t("autobid").toUpperCase()}

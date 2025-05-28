@@ -32,3 +32,12 @@ export function getTimeLeftUntil(utcEndTime) {
 
   return { hours, minutes, seconds, totalSeconds };
 }
+
+export function isDeadlineReached(utcEndTime) {
+  const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const deadlineUTC = parseISO(utcEndTime);
+  const deadlineInUserTZ = toZonedTime(deadlineUTC, userTimeZone);
+  const now = toZonedTime(new Date(), userTimeZone);
+
+  return deadlineInUserTZ < now;
+}
