@@ -21,7 +21,7 @@ const InfoList = () => {
             {index + 1}
           </div>
           <div className="flex flex-col gap-2 pl-3 pr-1 lg:px-4">
-            <h1 className="inline-block w-full bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text text-lg font-bold text-transparent md:text-3xl">
+            <h1 className="inline-block w-full bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text text-2xl font-bold text-transparent md:text-3xl">
               {translated_titles.at(index).title}
             </h1>
             <p className="text-lg font-medium text-medium-gray/70 md:text-lg">

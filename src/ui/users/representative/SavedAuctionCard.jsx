@@ -182,7 +182,7 @@ const SavedAuctionCard = ({ auctionData }) => {
           <button
             type="submit"
             className="buttonsh hover:button_shadow_hover disabled:button_shadow_click active:button_shadow_click group mt-2 flex w-full cursor-pointer flex-row items-center justify-center space-x-2 rounded-md bg-gradient-to-br from-mirage to-swamp-500 px-3 py-2 hover:from-mirage hover:to-gunmental disabled:opacity-35 disabled:hover:to-swamp-500 md:space-x-2 lg:py-[5px]"
-            disabled={isAuctionDisabled()}
+            disabled={isAuctionDisabled() || isLoading}
           >
             <span className="whitespace-nowrap text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-xl">
               {t("place_bid").toUpperCase()}
@@ -245,7 +245,7 @@ const SavedAuctionCard = ({ auctionData }) => {
           <button
             type="submit"
             className="buttonsh hover:button_shadow_hover disabled:button_shadow_click active:button_shadow_click group mt-2 flex w-full cursor-pointer flex-row items-center justify-center space-x-2 rounded-md border border-medium-gray bg-lighthouse px-3 py-2 text-medium-gray hover:bg-medium-gray hover:text-lighthouse disabled:opacity-35 disabled:hover:bg-lighthouse disabled:hover:text-medium-gray md:space-x-2 lg:py-1"
-            disabled={isAuctionDisabled()}
+            disabled={isAuctionDisabled() || isLoading}
           >
             <span className="whitespace-nowrap text-xl font-semibold leading-4 md:text-xl">
               {t("autobid").toUpperCase()}

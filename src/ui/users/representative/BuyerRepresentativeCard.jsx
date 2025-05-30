@@ -54,6 +54,8 @@ const BuyerRepresentativeCard = ({ rep, deleteRep, updateRep }) => {
     setAuctionsOpen(true);
     if (rep.savedCarIds.length <= 0) return;
 
+    if (auctions?.length > 0) return;
+
     setIsLoading(true);
     setFetchError(null);
     try {
