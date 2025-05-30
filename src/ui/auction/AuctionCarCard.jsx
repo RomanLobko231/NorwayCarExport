@@ -36,14 +36,6 @@ const AuctionCarCard = ({ auction }) => {
       </div>
       <hr className="h-[1px] w-full border border-dashed bg-light-gray opacity-50" />
 
-      {/* <div className="flex flex-wrap items-center gap-2">
-        <CarInfoElement info={`EU: ${carInfo.nextEUControl ?? "-"}`} />
-        <CarInfoElement info={carInfo.gearbox ?? "-"} />
-        <CarInfoElement info={carInfo.engineType ?? "-"} />
-        <CarInfoElement info={`${carInfo.kilometers ?? "-"} KMs`} />
-      </div>
-      <hr className="mt-3 h-[1px] w-full border border-dashed bg-light-gray opacity-50" /> */}
-
       <div className="group mt-3 flex w-full flex-row items-center justify-between gap-3 rounded-md border border-gunmental bg-gradient-to-br from-mirage to-swamp-500 px-3 py-1 hover:from-mirage hover:to-gunmental">
         <h1 className="text-xl font-medium text-cornsilk group-hover:text-lighthouse">
           Siste bud:

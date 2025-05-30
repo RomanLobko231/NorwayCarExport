@@ -148,7 +148,11 @@ export default function Navbar() {
                   </Link>
                   {token ? (
                     <div
-                      className={`cursor-pointer rounded-lg border-gunmental from-mirage to-swamp-500 px-4 pb-2 pt-1 text-xl font-semibold text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse`}
+                      className={`${
+                        location.pathname.includes("user")
+                          ? "border bg-swamp-100 text-gunmental"
+                          : "from-mirage to-swamp-500 text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse"
+                      } rounded-lg border-gunmental px-4 pb-2 pt-1 text-xl font-semibold`}
                       onClick={() => navigate(`/user/${userId}`)}
                     >
                       {t("profile")}

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { getTimeLeftUntil } from "../../utils/dateTimeUtils";
+import { useTranslation } from "react-i18next";
 
 const AuctionCountdown = ({ utcEndTime }) => {
+  const { t } = useTranslation();
   const [timeLeft, setTimeLeft] = useState(getTimeLeftUntil(utcEndTime));
 
   useEffect(() => {
@@ -13,7 +15,7 @@ const AuctionCountdown = ({ utcEndTime }) => {
   }, [utcEndTime]);
 
   if (timeLeft.totalSeconds === 0) {
-    return <p>Auction ended</p>;
+    return <p>{t("auction_ended")}</p>;
   }
 
   return (

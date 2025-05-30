@@ -132,7 +132,7 @@ const SellerModal = ({ open, setOpen }) => {
             className="relative w-full max-w-lg transform overflow-hidden rounded-lg border border-swamp-500 bg-gradient-to-bl from-swamp-100 to-distant-cloud p-6 text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95 md:min-w-[400px]"
           >
             <div className="mb-2 flex flex-row items-center justify-between md:px-2">
-              <h1 className="mb-1 whitespace-nowrap text-center text-2xl font-bold text-medium-gray md:text-3xl">
+              <h1 className="mb-1 whitespace-nowrap text-center text-xl font-bold text-medium-gray md:text-2xl">
                 {t("fill_form")}
               </h1>
               <div className="mx-3 h-[1px] flex-grow bg-light-gray opacity-50"></div>

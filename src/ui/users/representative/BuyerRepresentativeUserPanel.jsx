@@ -56,7 +56,7 @@ const BuyerRepresentativeUserPanel = ({ user }) => {
           />
         </div>
       </div>
-      <p className="mt-3 text-center text-sm font-light italic text-light-gray md:text-base">
+      <p className="mt-3 text-center text-sm font-normal italic text-light-gray md:text-base">
         {t("only_company_can_change")}
       </p>
     </div>

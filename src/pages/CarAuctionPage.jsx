@@ -31,8 +31,6 @@ const CarAuctionPage = () => {
     loadAuction(params.id);
     setupWebSocket();
 
-    setUserId(sessionStorage.getItem("userId"));
-
     if (!params.id) return;
 
     return () => {
@@ -134,7 +132,6 @@ const CarAuctionPage = () => {
     try {
       const bidMessage = {
         auctionId: auctionData.id,
-        bidderId: userId,
         amount: amount,
       };
 
@@ -162,7 +159,6 @@ const CarAuctionPage = () => {
     try {
       const autoBidMessage = {
         auctionId: auctionData.id,
-        bidderId: userId,
         limitAmount: limitAmount,
       };
 

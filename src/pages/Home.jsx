@@ -12,6 +12,7 @@ import "./../i18n";
 import { useTranslation } from "react-i18next";
 import { LuBadgeEuro } from "react-icons/lu";
 import { GiCarKey } from "react-icons/gi";
+import FAQList from "../ui/decorative/FAQList";
 
 const cars = [
   {
@@ -53,7 +54,7 @@ const Home = () => {
         {t("of_car")}
       </h1>
       <HeroGallery />
-      <p className="text-center text-lg font-light text-light-gray md:text-2xl">
+      <p className="text-center text-lg font-light italic text-light-gray md:text-2xl">
         {t("moto")}
       </p>
       <div className="mt-2 flex flex-col items-center md:flex-row md:space-x-10 md:pt-4">
@@ -96,7 +97,7 @@ const Home = () => {
         {t("three_steps")}
       </h3>
       <InfoList />
-      {/* <div className="mt-12 flex flex-row items-center space-x-4 md:mt-20">
+      <div className="mt-12 flex flex-row items-center space-x-4 md:mt-20">
         <div className="h-[2px] w-[70px] bg-gradient-to-l from-medium-gray to-transparent md:w-[200px]"></div>
         <h1 className="text-center text-2xl font-bold text-medium-gray md:text-4xl">
           {t("faq")}
@@ -105,7 +106,8 @@ const Home = () => {
       </div>
       <h3 className="text-center text-lg font-extralight text-light-gray md:text-lg">
         {t("get_answer")}
-      </h3> */}
+      </h3>
+      <FAQList />
       <div className="mt-12 flex flex-row items-center space-x-4 md:mt-20">
         <div className="h-[2px] w-[70px] bg-gradient-to-l from-medium-gray to-transparent md:w-[200px]"></div>
         <h1 className="text-center text-2xl font-bold text-medium-gray md:text-4xl">

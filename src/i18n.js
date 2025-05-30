@@ -103,6 +103,13 @@ i18n
             "Are you sure you want to delete this user? All information will be lost.",
           only_company_can_change:
             "Representative's information can only be changed from Company account.",
+          auction_ended: "Auction ended",
+          ends_in: "Ends in",
+          asteriks_means_that:
+            "near the last bid means that your bid is the highest one so far",
+          see_rep_auctions: "See saved auctions",
+          remember_not_online:
+            "Before placing bets, please do remember that auctions displayed might not be up-to-date. Real-time information is only available on auction's page",
         },
       },
       no: {
@@ -205,6 +212,13 @@ i18n
             "Er du sikker på at du vil slette denne brukeren? All informasjon vil bli tapt.",
           only_company_can_change:
             "Representantens informasjon kan kun endres fra Bedriftskontoen.",
+          auction_ended: "Avsluttet",
+          ends_in: "Avsluttes om",
+          asteriks_means_that:
+            "ved siden av det siste budet betyr at det var deg som har lagt inn det høyeste budet hittil",
+          see_rep_auctions: "Se lagrede auksjoner",
+          remember_not_online:
+            "Før du legger inn bud, husk at auksjonene som vises kan være utdaterte. Informasjon i sanntid er kun tilgjengelig på auksjonens side.",
         },
       },
     },

@@ -9,8 +9,9 @@ import SellerUserPanel from "../ui/users/seller/SellerUserPanel";
 import CompanyUserPanel from "../ui/users/buyer/CompanyUserPanel";
 import { useTranslation } from "react-i18next";
 import MessageDialog from "../ui/dialog/MessageDialog";
-import BuyerRepresentativeUserPanel from "../ui/users/buyer/BuyerRepresentativeUserPanel";
-import BuyerRepresentativesList from "../ui/users/buyer/BuyerRepresentativesList";
+import BuyerRepresentativeUserPanel from "../ui/users/representative/BuyerRepresentativeUserPanel";
+import BuyerRepresentativesList from "../ui/users/representative/BuyerRepresentativesList";
+import RepresentativeCarList from "../ui/users/representative/RepresentativeCarList";
 
 const UserPage = () => {
   const { t } = useTranslation();
@@ -100,6 +101,7 @@ const UserPage = () => {
           {userData.role === "BUYER_REPRESENTATIVE" && (
             <>
               <BuyerRepresentativeUserPanel user={userData} />
+              <RepresentativeCarList auctionIds={userData.savedCarIds} />
             </>
           )}
           {userData.role === "SELLER" && (
