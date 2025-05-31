@@ -80,6 +80,7 @@
   "only_company_can_change": "Representative's information can only be changed from Company account.",
   "auction_ended": "Auction ended",
   "ends_in": "Ends in",
+  "last_bid": "Latest bid",
   "asteriks_means_that": "near the last bid means that your bid is the highest one so far",
   "see_rep_auctions": "See saved auctions",
   "remember_not_online": "Before placing bets, please do remember that auctions displayed might not be up-to-date. Real-time information is only available on auction's page"

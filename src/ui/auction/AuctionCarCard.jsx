@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router";
 import { TbCarOff } from "react-icons/tb";
 import AuctionCountdown from "./AuctionCountdown";
+import { useTranslation } from "react-i18next";
 
 const AuctionCarCard = ({ auction }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
@@ -38,15 +40,14 @@ const AuctionCarCard = ({ auction }) => {
 
       <div className="group mt-3 flex w-full flex-row items-center justify-between gap-3 rounded-md border border-gunmental bg-gradient-to-br from-mirage to-swamp-500 px-3 py-1 hover:from-mirage hover:to-gunmental">
         <h1 className="text-xl font-medium text-cornsilk group-hover:text-lighthouse">
-          Siste bud:
+          {t("last_bid")}:{" "}
         </h1>
         <h1 className="select-none text-xl font-medium text-cornsilk group-hover:text-lighthouse">
           {auction.highestBid?.amount ?? "-"}
         </h1>
       </div>
       <div className="mt-2 flex w-full flex-row items-center justify-between rounded-md border border-medium-gray px-3 py-1 text-center text-base font-semibold text-light-gray">
-        Avslutes om
-        <AuctionCountdown utcEndTime={auction.endDateTime} />
+        {t("ends_in")}: <AuctionCountdown utcEndTime={auction.endDateTime} />
       </div>
     </div>
   );

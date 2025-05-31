@@ -115,7 +115,9 @@ const SavedAuctionCard = ({ auctionData, isForCompany }) => {
           </div>
 
           <div className="mt-2 flex w-full flex-row items-center justify-between rounded-md border border-medium-gray px-3 py-1 text-center text-lg font-semibold text-light-gray">
-            <h1 className="text-base font-medium md:text-lg">Siste bud:</h1>
+            <h1 className="text-base font-medium md:text-lg">
+              {t("last_bid")}:
+            </h1>
             <h1 className="select-none text-lg font-bold text-medium-gray">
               {auction.highestBid?.amount ?? "-"}
               {sessionStorage.getItem("userId") ==
