@@ -19,8 +19,9 @@ import {
   MdOutlinePersonAddAlt,
 } from "react-icons/md";
 import { IoMdLogIn } from "react-icons/io";
-import { useTranslation } from "react-i18next";
 import LanguageChange from "./LanguageChange";
+import { useTranslation } from "react-i18next";
+import { i18n } from "./../i18n/i18n.js";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ export default function Navbar() {
   const token = sessionStorage.getItem("token");
   const userId = sessionStorage.getItem("userId");
 
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation("common");
 
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang);
@@ -152,7 +153,7 @@ export default function Navbar() {
                         location.pathname.includes("user")
                           ? "border bg-swamp-100 text-gunmental"
                           : "from-mirage to-swamp-500 text-medium-gray hover:bg-gradient-to-br hover:text-lighthouse"
-                      } rounded-lg border-gunmental px-4 pb-2 pt-1 text-xl font-semibold`}
+                      } cursor-pointer rounded-lg border-gunmental px-4 pb-2 pt-1 text-xl font-semibold`}
                       onClick={() => navigate(`/user/${userId}`)}
                     >
                       {t("profile")}

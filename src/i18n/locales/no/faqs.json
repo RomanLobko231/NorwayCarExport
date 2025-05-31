@@ -1,0 +1,28 @@
+{
+  "faqs": [
+    {
+      "question": "Må jeg registrere meg for å delta i auksjoner?",
+      "answer": "Kun godkjente firmarepresentanter kan legge inn bud i auksjoner. Privatpersoner kan enten sende inn en bil uten å registrere seg, eller registrere seg som selger for å få mer kontroll og oversikt."
+    },
+    {
+      "question": "Hvordan sender jeg inn bilen min til auksjon?",
+      "answer": "Du kan sende inn bilen din ved å fylle ut et kort skjema – ingen konto er nødvendig. Hvis du vil ha mer kontroll, som å følge med på status eller håndtere flere annonser, kan du registrere deg som selger."
+    },
+    {
+      "question": "Hvem kan legge inn bud på auksjoner?",
+      "answer": "Kun representanter for verifiserte firmaer kan by. Firmaer må sende inn gyldig organisasjonsdokumentasjon. Etter godkjenning kan de registrere interne brukere som kan by på deres vegne."
+    },
+    {
+      "question": "Hvordan vet jeg om jeg har vunnet en auksjon?",
+      "answer": "Dersom budet ditt vinner, vil du motta en e-post med detaljer om auksjonen og kontaktinformasjon til selgeren."
+    },
+    {
+      "question": "Koster det noe å legge ut bilen min på auksjon?",
+      "answer": "Nei, det er helt gratis å legge ut bilen din på auksjon. Vi ønsker å gjøre prosessen enkel og tilgjengelig for alle brukere."
+    },
+    {
+      "question": "Håndteres betaling gjennom nettstedet?",
+      "answer": "Nei, plattformen vår håndterer ikke betalinger. Når en auksjon avsluttes, får både kjøper og selger kontaktinformasjonen til hverandre for å gjennomføre handelen direkte."
+    }
+  ]
+}

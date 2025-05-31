@@ -10,23 +10,23 @@ const AuctionCarCard = ({ auction }) => {
       onClick={() => {
         navigate(`/auction/${auction.carDetails.carId}`);
       }}
-      className="card_shadow hover:card_shadow_hover active:card_shadow_click flex w-[300px] cursor-pointer flex-col items-center rounded-md border border-swamp-500 bg-gradient-to-br from-swamp-100 to-distant-cloud p-3 duration-300 hover:-translate-y-1"
+      className="card_shadow hover:card_shadow_hover active:card_shadow_click flex w-full max-w-[300px] cursor-pointer flex-col items-center rounded-md border border-swamp-500 bg-gradient-to-br from-swamp-100 to-distant-cloud p-3 duration-300 hover:-translate-y-1 md:w-[300px]"
     >
       {auction.carDetails.thumbnailImageUrl ? (
         <img
           src={auction.carDetails.thumbnailImageUrl}
           alt={"Car"}
-          className="h-[185px] w-full rounded border border-swamp-500 object-cover"
+          className="h-[155px] w-full rounded border border-swamp-500 object-cover"
         />
       ) : (
-        <div className="flex h-[185px] w-full items-center justify-center rounded border border-medium-gray bg-lighthouse from-swamp-100">
+        <div className="flex h-[155px] w-full items-center justify-center rounded border border-medium-gray bg-lighthouse from-swamp-100">
           <TbCarOff className="h-10 w-auto" color="#888" />
         </div>
       )}
       <hr className="mt-3 h-[1px] w-full border border-dashed bg-light-gray opacity-50" />
 
       <div className="mb-2 mt-1 flex w-full flex-row items-center justify-between">
-        <h1 className="inline-block bg-gradient-to-br from-gunmental to-swamp-500 bg-clip-text text-xl font-bold leading-[26px] text-transparent">
+        <h1 className="inline-block truncate bg-gradient-to-br from-gunmental to-swamp-500 bg-clip-text text-xl font-bold leading-[26px] text-transparent">
           {auction.carDetails.makeModel ?? ""}
         </h1>
         <div className="mx-3 h-[1px] flex-grow bg-light-gray opacity-50"></div>

@@ -164,9 +164,35 @@ const BuyerRepresentativeCard = ({ rep, deleteRep, updateRep }) => {
         {t("see_rep_auctions")}
       </p>
       {auctionsOpen && auctions && !fetchError && (
-        <div className="mt-4 flex w-full flex-row flex-wrap justify-center gap-4">
+        <div className="mt-4 flex w-full flex-row flex-wrap justify-center gap-3 rounded-md border-dashed border-gunmental md:border md:bg-distant-cloud md:p-3">
           {auctions.map((auction) => (
-            <SavedAuctionCard auctionData={auction} key={auction.id} />
+            <>
+              <SavedAuctionCard
+                auctionData={auction}
+                key={auction.id}
+                isForCompany={true}
+              />
+              <SavedAuctionCard
+                auctionData={auction}
+                key={auction.id}
+                isForCompany={true}
+              />
+              <SavedAuctionCard
+                auctionData={auction}
+                key={auction.id}
+                isForCompany={true}
+              />
+              <SavedAuctionCard
+                auctionData={auction}
+                key={auction.id}
+                isForCompany={true}
+              />
+              <SavedAuctionCard
+                auctionData={auction}
+                key={auction.id}
+                isForCompany={true}
+              />
+            </>
           ))}
         </div>
       )}

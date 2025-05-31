@@ -28,7 +28,7 @@ const FAQItem = ({ item, index }) => {
         )}
       </div>
       {isExpanded && (
-        <p className="mt-3 w-full text-lg font-medium text-medium-gray/70 md:text-lg">
+        <p className="mt-3 w-full text-base font-medium text-medium-gray/70 md:text-lg">
           {item.answer}
         </p>
       )}

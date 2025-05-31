@@ -1,0 +1,28 @@
+{
+  "faqs": [
+    {
+      "question": "Do I need to register to participate in auctions?",
+      "answer": "Only approved company representatives can place bids in auctions. Private individuals can either submit a car without registering or register as sellers to manage and track their listings."
+    },
+    {
+      "question": "How do I submit my car for auction?",
+      "answer": "You can submit a car by filling out a short form—no account required. For more control, like tracking submission status or managing multiple listings, you can also register as a seller."
+    },
+    {
+      "question": "Who can place bids on auctions?",
+      "answer": "Only representatives of verified companies can bid. Companies must submit valid organization licenses. After approval, they can register internal users to bid on their behalf."
+    },
+    {
+      "question": "How will I know if I’ve won an auction?",
+      "answer": "If your bid wins, you’ll receive an email notification with details about the auction and contact information for the seller."
+    },
+    {
+      "question": "Is there a fee to list my car for auction?",
+      "answer": "No, listing a car for auction is completely free. We aim to keep the process simple and accessible for all users."
+    },
+    {
+      "question": "Is payment handled through the website?",
+      "answer": "No, our platform does not process payments. Once an auction ends, buyers and sellers receive each other's contact information to complete the transaction independently."
+    }
+  ]
+}

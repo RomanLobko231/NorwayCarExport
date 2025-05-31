@@ -8,7 +8,6 @@ import SellerModal from "../ui/users/seller/SellerModal";
 import BuyerModal from "../ui/users/buyer/BuyerModal";
 import CarCardBlurred from "../ui/car/CarCardBlurred";
 import HeroGallery from "../ui/decorative/HeroGallery";
-import "./../i18n";
 import { useTranslation } from "react-i18next";
 import { LuBadgeEuro } from "react-icons/lu";
 import { GiCarKey } from "react-icons/gi";
@@ -42,7 +41,7 @@ const cars = [
 const Home = () => {
   const [sellerModalopen, setSellerModalOpen] = useState(false);
   const [buyerModalopen, setBuyerModalOpen] = useState(false);
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   return (
     <div className="flex flex-col items-center justify-center pt-24 md:pt-32">
@@ -97,7 +96,7 @@ const Home = () => {
         {t("three_steps")}
       </h3>
       <InfoList />
-      {/* <div className="mt-12 flex flex-row items-center space-x-4 md:mt-20">
+      <div className="mt-12 flex flex-row items-center space-x-4 md:mt-20">
         <div className="h-[2px] w-[70px] bg-gradient-to-l from-medium-gray to-transparent md:w-[200px]"></div>
         <h1 className="text-center text-2xl font-bold text-medium-gray md:text-4xl">
           {t("faq")}
@@ -107,7 +106,7 @@ const Home = () => {
       <h3 className="text-center text-lg font-extralight text-light-gray md:text-lg">
         {t("get_answer")}
       </h3>
-      <FAQList /> */}
+      <FAQList />
       <div className="mt-12 flex flex-row items-center space-x-4 md:mt-20">
         <div className="h-[2px] w-[70px] bg-gradient-to-l from-medium-gray to-transparent md:w-[200px]"></div>
         <h1 className="text-center text-2xl font-bold text-medium-gray md:text-4xl">

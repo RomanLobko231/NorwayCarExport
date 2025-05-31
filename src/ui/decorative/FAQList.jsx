@@ -1,47 +1,13 @@
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { RiArrowDownBoxLine, RiArrowUpBoxLine } from "react-icons/ri";
 import FAQItem from "./FAQItem";
-
-const faqs = [
-  {
-    question:
-      "Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand",
-    answer:
-      "Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand. Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand",
-  },
-  {
-    question:
-      "Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand",
-    answer:
-      "Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand. Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand",
-  },
-  {
-    question:
-      "Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand",
-    answer:
-      "Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand. Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand",
-  },
-  {
-    question:
-      "Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand",
-    answer:
-      "Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand. Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand",
-  },
-  {
-    question:
-      "Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand",
-    answer:
-      "Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand. Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand",
-  },
-  {
-    question:
-      "Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand",
-    answer:
-      "Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand. Etter at søknaden er godkjent, blir bilen din tilgjengelig for salg til forhand",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const FAQList = () => {
+  const { t } = useTranslation("faqs");
+
+  const faqs = t("faqs", { returnObjects: true });
+
   return (
     <div className="flex w-full max-w-5xl flex-col gap-4 px-4 pt-8">
       {faqs.map((item, index) => (

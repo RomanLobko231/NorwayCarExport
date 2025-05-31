@@ -1,0 +1,16 @@
+{
+  "startsteps": [
+    {
+      "title": "Send application",
+      "body": "First, you have to send us an application in which you fill in your details, for example the car's registration number and your personal details."
+    },
+    {
+      "title": "Wait for the answer",
+      "body": "After your application has been approved, your car will become available for sale to dealers. You will receive a message from us when this happens"
+    },
+    {
+      "title": "Your car is sold!",
+      "body": "Congratulations! When the auction is over and the dealer is ready to buy the car, we will contact you"
+    }
+  ]
+}

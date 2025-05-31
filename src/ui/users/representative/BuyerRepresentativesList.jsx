@@ -108,7 +108,7 @@ const BuyerRepresentativesList = ({ reps }) => {
           <MdOutlineGroupOff className="h-16 w-auto opacity-50" color="#888" />
           {error ? (
             <p className="mt-2 text-center text-xl font-normal text-light-gray opacity-75">
-              Kunne ikke få tak i sekundærbrukere :( <br />
+              Kunne ikke få tak i representanter :( <br />
               Prøv igjen eller ta kontakt med oss
             </p>
           ) : (
