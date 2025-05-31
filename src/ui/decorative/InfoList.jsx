@@ -16,7 +16,7 @@ const InfoList = () => {
           <div className="flex h-[60px] min-w-[60px] items-center justify-center rounded-md bg-gradient-to-r from-mirage to-swamp-500 text-5xl font-bold text-distant-cloud lg:pb-1">
             {index + 1}
           </div>
-          <div className="flex flex-col gap-2 pl-3 pr-1 lg:px-4">
+          <div className="-mt-1 flex flex-col gap-1 pl-3 pr-1 lg:px-4">
             <h1 className="inline-block w-full bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text text-2xl font-bold text-transparent md:text-3xl">
               {step.title}
             </h1>

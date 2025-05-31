@@ -10,7 +10,7 @@ const BuyerRepresentativeUserPanel = ({ user }) => {
   const { t } = useTranslation();
   return (
     <div
-      className={`flex w-full max-w-5xl flex-col items-center rounded-lg border border-light-gray bg-slate-50 p-4 md:px-6`}
+      className={`flex w-full max-w-7xl flex-col items-center rounded-lg border border-light-gray bg-slate-50 p-4 md:px-6`}
     >
       <h1 className="mt-2 w-full text-center text-2xl font-bold text-medium-gray md:text-start md:text-3xl">
         BRUKERINFO
