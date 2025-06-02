@@ -1,0 +1,21 @@
+{
+  "upload_photos": "LASTE OPP BILDER",
+  "car_info": "BILENS INFO",
+  "additional_info": "TILLEGSINFO",
+  "expected_price": "Forventet pris",
+  "model": "Modell",
+  "make": "Merke",
+  "registration_number": "Registrasjonsnummer",
+  "first_time_registered_in_norway": "Førstegangsregistrering i Norge",
+  "next_eu_control": "Neste EU-kontroll",
+  "kilometers": "Kilometerstand",
+  "fuel": "Drivstoff",
+  "engine_volume": "Motorvolum/slagvolum",
+  "operating_mode": "Driftstype",
+  "gearbox_type": "Girkassetype",
+  "weight": "Egenvekt",
+  "bodywork": "Karosseri",
+  "number_of_doors": "Dørantall",
+  "number_of_seats": "Seteantall",
+  "color": "Farge"
+}

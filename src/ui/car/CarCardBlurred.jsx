@@ -12,7 +12,6 @@ const CarCardBlurred = ({ carInfo }) => {
   return (
     <div
       onClick={() => {
-        // navigate(`/car/${carInfo.id}`);
         setLoginModalOpen(true);
       }}
       className="card_shadow hover:card_shadow_hover active:card_shadow_click flex w-[300px] cursor-pointer flex-col items-center rounded-md border border-swamp-500 bg-gradient-to-br from-swamp-100 to-distant-cloud p-3 duration-300 hover:-translate-y-1"
@@ -57,7 +56,7 @@ const CarCardBlurred = ({ carInfo }) => {
         </h1>
       </div>
       <p className="mt-1 text-base font-light text-light-gray">
-        Auksjonen slutter om {carInfo.model.length} timer
+        Auksjonen avsluttes om {carInfo.model.length} timer
       </p>
 
       <LoginModal open={loginModalopen} setOpen={setLoginModalOpen} />

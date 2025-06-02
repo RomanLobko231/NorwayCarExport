@@ -12,8 +12,11 @@ import CarInfoElement from "../../car/CarInfoElement";
 import AddRepresentativeModal from "./AddRepresentativeModal";
 import ErrorDialog from "../../dialog/ErrorDialog";
 import BuyerRepresentativeCard from "./BuyerRepresentativeCard";
+import { useTranslation } from "react-i18next";
 
 const BuyerRepresentativesList = ({ reps }) => {
+  const { t } = useTranslation(["common", "user"]);
+
   const [isRepModalOpen, setRepModalOpen] = useState(false);
   const [representatives, setRepresentatives] = useState(reps);
 
@@ -59,15 +62,12 @@ const BuyerRepresentativesList = ({ reps }) => {
     >
       <div className="mb-8 flex w-full flex-col flex-wrap items-center justify-start md:flex-row">
         <h1 className="mb-4 text-center text-2xl font-bold text-medium-gray md:mb-0 md:text-3xl">
-          SEKUNDÆRBRUKERE
+          {t("representatives", { ns: "user" })}
         </h1>
         {sessionStorage.getItem("isAccountLocked") === "true" ? (
           <div className="flex flex-col items-center gap-2 py-2 text-center text-lg font-semibold text-light-gray md:ml-auto md:flex-row md:pl-6">
             <MdLockOutline className="h-6 w-auto" />
-            <p>
-              Kontoen er ikke godkjent. Det er ikke mulig å legge til nye
-              sekundærbrukere
-            </p>
+            <p>{t("account_not_approved", { ns: "user" })}</p>
           </div>
         ) : (
           <button
@@ -78,7 +78,7 @@ const BuyerRepresentativesList = ({ reps }) => {
             disabled={sessionStorage.getItem("isAccountLocked") === true}
           >
             <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
-              LEGG TIL
+              {t("add").toUpperCase()}
             </span>
             <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[18px]"></div>
             <RiAddBoxLine className="h-6 w-auto" color="#FEFAF0" />

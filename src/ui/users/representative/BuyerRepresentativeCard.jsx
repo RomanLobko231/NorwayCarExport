@@ -53,7 +53,6 @@ const BuyerRepresentativeCard = ({ rep, deleteRep, updateRep }) => {
   const showAuctions = async () => {
     setAuctionsOpen(true);
     if (rep.savedCarIds.length <= 0) return;
-
     if (auctions?.length > 0) return;
 
     setIsLoading(true);
@@ -80,7 +79,7 @@ const BuyerRepresentativeCard = ({ rep, deleteRep, updateRep }) => {
       >
         <div className="flex w-full flex-col items-start gap-1 md:items-center lg:mr-2 lg:flex-row lg:gap-2">
           <TextInputField
-            label="Navn"
+            label={t("name")}
             name="name"
             icon={<MdOutlinePerson2 className="h-6 w-auto" color="#333333" />}
             initialValue={repData.name}
@@ -88,7 +87,7 @@ const BuyerRepresentativeCard = ({ rep, deleteRep, updateRep }) => {
             disabled={inputDisabled}
           />
           <TextInputField
-            label="Mobilnummer"
+            label={t("phone_number")}
             name="phoneNumber"
             icon={<MdOutlinePhone className="h-6 w-auto" color="#333333" />}
             initialValue={repData.phoneNumber}
@@ -96,7 +95,7 @@ const BuyerRepresentativeCard = ({ rep, deleteRep, updateRep }) => {
             disabled={inputDisabled}
           />
           <TextInputField
-            label="Epost"
+            label={t("email")}
             name="email"
             type="email"
             icon={<MdOutlineEmail className="h-6 w-auto" color="#333333" />}
@@ -161,7 +160,7 @@ const BuyerRepresentativeCard = ({ rep, deleteRep, updateRep }) => {
             : showAuctions
         }
       >
-        {t("see_rep_auctions")}
+        {auctionsOpen ? t("close_lower_case") : t("see_rep_auctions")}
       </p>
       {auctionsOpen && auctions && !fetchError && (
         <div className="mt-4 flex w-full flex-row flex-wrap justify-center gap-3 rounded-md border-dashed border-gunmental md:border md:bg-distant-cloud md:p-3">
@@ -178,7 +177,7 @@ const BuyerRepresentativeCard = ({ rep, deleteRep, updateRep }) => {
         <div className="my-4 flex flex-col">
           <TbCarOff className="h-12 w-auto opacity-50" color="#888" />
           <p className="mt-2 text-center text-base font-normal text-light-gray opacity-75 md:text-lg">
-            Representant har ikke deltatt i aksjoner ennå
+            {t("no_auctions_rep")}
           </p>
         </div>
       )}

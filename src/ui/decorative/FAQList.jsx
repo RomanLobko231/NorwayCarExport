@@ -11,7 +11,7 @@ const FAQList = () => {
   return (
     <div className="flex w-full max-w-5xl flex-col gap-3 px-4 pt-8 md:gap-4">
       {faqs.map((item, index) => (
-        <div className="flex w-full flex-col items-center">
+        <div className="flex w-full flex-col items-center" key={item.question}>
           <FAQItem item={item} index={index} />
           {faqs.length !== index + 1 && (
             <hr className="mt-3 h-[1px] w-4/5 border border-dashed bg-light-gray opacity-50 md:mt-4" />

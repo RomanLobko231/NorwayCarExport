@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { stepsToStart } from "../../infoForUser";
 
 const InfoList = () => {
   const { t } = useTranslation("startsteps");

@@ -80,7 +80,7 @@ const AddRepresentativeModal = ({ open, setOpen, setRepresentatives }) => {
           >
             <div className="mb-2 flex flex-row items-center justify-between md:px-2">
               <h1 className="mb-1 whitespace-nowrap text-center text-2xl font-bold text-medium-gray md:text-3xl">
-                Legg til
+                {t("add")}
               </h1>
               <div className="mx-3 h-[1px] flex-grow bg-light-gray opacity-50"></div>
               <MdClose

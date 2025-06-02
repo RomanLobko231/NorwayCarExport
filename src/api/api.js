@@ -48,7 +48,8 @@ function handleError(error) {
     const { message, timestamp } = error.response?.data ?? {};
 
     const resolvedStatusCode = error.status ?? 500;
-    let resolvedMessage = message ?? "An error occurred.";
+    let resolvedMessage =
+      message ?? "An error occurred. Try refreshing the page";
     const resolvedTimestamp = timestamp ?? new Date().toISOString();
 
     if (error.status == 401) {

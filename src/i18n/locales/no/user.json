@@ -1,0 +1,9 @@
+{
+  "manage_panel": "STYREPANEL",
+  "personal_info": "PERSONALIA",
+  "address": "ADRESSE",
+  "organisation": "ORGANISASJON",
+  "representatives": "REPRESENTANTER",
+  "account_not_approved": "Kontoen er ikke godkjent. Det er ikke mulig å legge til nye representanter",
+  "user_cars": "BILUTVALG"
+}

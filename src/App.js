@@ -11,6 +11,7 @@ import UserPage from "./pages/UserPage";
 import EditCarPage from "./pages/EditCarPage";
 import CarAuctionPage from "./pages/CarAuctionPage";
 import AllAuctionsPage from "./pages/AllAuctionsPage";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   return (
@@ -22,14 +23,11 @@ function App() {
           <Route path="/" element={<Home />} exact={true} />
           <Route path="*" element={<Home />} exact={true} />
           <Route path="/register" element={<RegisterPage />} exact={true} />
+          <Route path="/contact" element={<ContactPage />} exact={true} />
+          <Route path="/auctions" element={<AllAuctionsPage />} exact={false} />
           <Route element={<ProtectedRoute />}>
             <Route path="/user/:id" element={<UserPage />} exact={false} />
             <Route path="/car/:id" element={<EditCarPage />} exact={false} />
-            <Route
-              path="/auctions"
-              element={<AllAuctionsPage />}
-              exact={false}
-            />
             <Route
               path="/auction/:id"
               element={<CarAuctionPage />}

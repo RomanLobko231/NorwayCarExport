@@ -19,7 +19,7 @@ import { LiaMoneyBillWaveAltSolid } from "react-icons/lia";
 import { useTranslation } from "react-i18next";
 
 const CarEditingPanel = ({ car, saveCar }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common", "car");
 
   const [carData, setCarData] = useState(car);
   const [uploadImages, setUploadImages] = useState([]);
@@ -63,7 +63,7 @@ const CarEditingPanel = ({ car, saveCar }) => {
         />
       </div>
       <h1 className="my-4 block text-center text-2xl font-bold text-medium-gray">
-        LASTE OPP BILDER
+        {t("upload_photos", { ns: "car" })}
       </h1>
       <div className="flex w-full justify-center px-4">
         <ImageInputField images={uploadImages} setImages={setUploadImages} />
@@ -77,10 +77,10 @@ const CarEditingPanel = ({ car, saveCar }) => {
         }}
       >
         <h1 className="mb-3 mt-8 text-2xl font-bold text-medium-gray">
-          BILENS INFO
+          {t("car_info", { ns: "car" })}
         </h1>
         <NumberInputField
-          label={t("exp_price")}
+          label={t("expected_price", { ns: "car" })}
           name="expectedPrice"
           icon={
             <LiaMoneyBillWaveAltSolid className="h-6 w-auto" color="#333" />
@@ -89,64 +89,64 @@ const CarEditingPanel = ({ car, saveCar }) => {
           onChange={handleInputChange}
         />
         <TextInputField
-          label={"Modell"}
+          label={t("model", { ns: "car" })}
           icon={<MdOutlineDirectionsCar className="h-5 w-5" />}
-          name={"model"}
+          name="model"
           initialValue={carData.model}
           onChange={handleInputChange}
         />
         <TextInputField
-          label={"Merke"}
+          label={t("make", { ns: "car" })}
           icon={<MdOutlineDirectionsCar className="h-5 w-5" />}
-          name={"make"}
+          name="make"
           initialValue={carData.make}
           onChange={handleInputChange}
         />
         <TextInputField
-          label={"Registrasjonsnummer"}
+          label={t("registration_number", { ns: "car" })}
           icon={<MdNumbers className="h-5 w-5" />}
-          name={"registrationNumber"}
+          name="registrationNumber"
           initialValue={carData.registrationNumber}
           onChange={handleInputChange}
         />
         <DateInputField
-          label={"Førstegangsregistrering i Norge"}
+          label={t("first_time_registered_in_norway", { ns: "car" })}
           icon={<MdOutlineCalendarMonth className="h-5 w-5" />}
-          name={"firstTimeRegisteredInNorway"}
+          name="firstTimeRegisteredInNorway"
           initialValue={carData.firstTimeRegisteredInNorway}
           onChange={handleInputChange}
         />
         <DateInputField
-          label={"Neste EU-kontroll"}
+          label={t("next_eu_control", { ns: "car" })}
           icon={<MdOutlineCalendarMonth className="h-5 w-5" />}
-          name={"nextEUControl"}
+          name="nextEUControl"
           initialValue={carData.nextEUControl}
           onChange={handleInputChange}
         />
         <NumberInputField
-          label={"Kilometerstand"}
+          label={t("kilometers", { ns: "car" })}
           icon={<MdNumbers className="h-5 w-5" />}
-          name={"kilometers"}
+          name="kilometers"
           initialValue={carData.kilometers}
           onChange={handleInputChange}
         />
         <TextInputField
-          label={"Drivstoff"}
+          label={t("fuel", { ns: "car" })}
           icon={<LuFuel className="h-5 w-5" />}
-          name={"engineType"}
+          name="engineType"
           initialValue={carData.engineType}
           onChange={handleInputChange}
         />
         <NumberInputField
-          label={"Motorvolum/slagvolum"}
+          label={t("engine_volume", { ns: "car" })}
           icon={<MdNumbers className="h-5 w-5" />}
-          name={"engineVolume"}
+          name="engineVolume"
           initialValue={carData.engineVolume}
           onChange={handleInputChange}
         />
         <div className="mb-4 flex w-full flex-col items-center">
           <p className="mb-2 mt-4 text-base font-medium text-light-gray md:mb-0">
-            Driftstype
+            {t("operating_mode", { ns: "car" })}
           </p>
           <OptionsInput
             options={OPERATING_MODES}
@@ -155,7 +155,7 @@ const CarEditingPanel = ({ car, saveCar }) => {
             handleInputChange={handleInputChange}
           />
           <p className="mb-2 mt-4 text-base font-medium text-light-gray md:mb-0">
-            Girkassetype
+            {t("gearbox_type", { ns: "car" })}
           </p>
           <OptionsInput
             options={GEARBOX_TYPES}
@@ -165,43 +165,44 @@ const CarEditingPanel = ({ car, saveCar }) => {
           />
         </div>
         <NumberInputField
-          label={"Egenvekt"}
+          label={t("weight", { ns: "car" })}
           icon={<MdNumbers className="h-5 w-5" />}
-          name={"weight"}
+          name="weight"
           initialValue={carData.weight}
           onChange={handleInputChange}
         />
         <TextInputField
-          label={"Karosseri"}
+          label={t("bodywork", { ns: "car" })}
           icon={<MdOutlineDirectionsCar className="h-5 w-5" />}
-          name={"bodywork"}
+          name="bodywork"
           initialValue={carData.bodywork}
           onChange={handleInputChange}
         />
         <NumberInputField
-          label={"Dørantall"}
+          label={t("number_of_doors", { ns: "car" })}
           icon={<MdNumbers className="h-5 w-5" />}
-          name={"numberOfDoors"}
+          name="numberOfDoors"
           initialValue={carData.numberOfDoors}
           onChange={handleInputChange}
         />
         <NumberInputField
-          label={"Seteantall"}
+          label={t("number_of_seats", { ns: "car" })}
           icon={<MdOutlineAirlineSeatReclineNormal className="h-5 w-5" />}
-          name={"numberOfSeats"}
+          name="numberOfSeats"
           initialValue={carData.numberOfSeats}
           onChange={handleInputChange}
         />
         <TextInputField
-          label={"Farge"}
+          label={t("color", { ns: "car" })}
           icon={<MdOutlineFormatColorFill className="h-5 w-5" />}
-          name={"color"}
+          name="color"
           initialValue={carData.color}
           onChange={handleInputChange}
         />
+
         <hr className="mb-4 mt-4 w-10/12 border-[1px] border-dashed border-gunmental px-2" />
         <h1 className="mt-8 text-2xl font-bold text-medium-gray">
-          TILLEGSINFO
+          {t("additional_info", { ns: "car" })}
         </h1>
         <div className="relative mb-3 mt-5 w-full">
           <div className="pointer-events-none absolute inset-y-0 start-0 top-5 flex items-baseline ps-5">
@@ -210,7 +211,9 @@ const CarEditingPanel = ({ car, saveCar }) => {
           <textarea
             id="add_info"
             className="block min-h-48 w-full rounded-lg border border-medium-gray bg-white px-5 py-4 ps-11 text-base font-medium text-medium-gray md:ps-14 md:text-lg"
-            placeholder="Ytterligere opplysninger"
+            placeholder={t("additional_info", {
+              ns: "car",
+            }).toLowerCase()}
             name={"additionalInformation"}
             value={carData.additionalInformation || ""}
             onChange={handleInputChange}
@@ -222,7 +225,7 @@ const CarEditingPanel = ({ car, saveCar }) => {
             type="submit"
             className="card_shadow group mb-3 mt-3 flex flex-row items-center rounded-lg border border-medium-gray bg-lighthouse px-3 pb-2 pt-1 text-lg font-semibold text-gunmental hover:bg-gunmental hover:text-lighthouse md:px-4 md:text-2xl"
           >
-            Save For Now
+            {t("save")}{" "}
           </button>
           <button
             type="reset"

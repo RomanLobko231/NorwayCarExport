@@ -1,0 +1,21 @@
+{
+  "upload_photos": "UPLOAD PHOTOS",
+  "car_info": "CAR INFO",
+  "additional_info": "ADDITIONAL INFO",
+  "expected_price": "Expected Price",
+  "model": "Model",
+  "make": "Make",
+  "registration_number": "Registration Number",
+  "first_time_registered_in_norway": "First Time Registered in Norway",
+  "next_eu_control": "Next EU Control",
+  "kilometers": "Kilometers",
+  "fuel": "Fuel",
+  "engine_volume": "Engine Volume",
+  "operating_mode": "Operating Mode",
+  "gearbox_type": "Gearbox Type",
+  "weight": "Weight",
+  "bodywork": "Bodywork",
+  "number_of_doors": "Number of Doors",
+  "number_of_seats": "Number of Seats",
+  "color": "Color"
+}

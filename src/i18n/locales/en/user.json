@@ -1,0 +1,9 @@
+{
+  "manage_panel": "USER PANEL",
+  "personal_info": "PERSONAL DETAILS",
+  "address": "ADDRESS",
+  "organisation": "ORGANISATION",
+  "representatives": "REPRESENTATIVES",
+  "account_not_approved": "Your account is not yet approved. It is not possiblt to add new representatives now",
+  "user_cars": "YOUR CARS"
+}

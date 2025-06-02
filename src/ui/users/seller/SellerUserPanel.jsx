@@ -8,8 +8,10 @@ import {
 } from "react-icons/md";
 import { LuMailbox } from "react-icons/lu";
 import TextInputField from "../../input/TextInputField";
+import { useTranslation } from "react-i18next";
 
 const SellerUserPanel = ({ user, updateUser }) => {
+  const { t } = useTranslation("common", "user");
   const [inputDisabled, setInputDisabled] = useState(true);
   const [userData, setUserData] = useState(user);
 
@@ -37,7 +39,7 @@ const SellerUserPanel = ({ user, updateUser }) => {
           className={`flex w-full ${inputDisabled && "justify-between md:w-full"} flex-row items-center justify-center md:w-auto`}
         >
           <h1 className="w-full text-center text-2xl font-bold text-medium-gray md:-mb-2 md:w-auto md:text-3xl">
-            STYREPANEL
+            {t("manage_panel", { ns: "user" })}
           </h1>
           <p
             className={`mb-1 mt-3 w-auto cursor-pointer border-b-2 ${!inputDisabled ? "hidden" : "md:flex"} hidden border-light-gray text-center text-xl font-medium text-light-gray hover:border-gunmental hover:text-gunmental`}
@@ -45,7 +47,7 @@ const SellerUserPanel = ({ user, updateUser }) => {
               setInputDisabled(false);
             }}
           >
-            Endre opplysninger
+            {t("change_data")}
           </p>
         </div>
         <div
@@ -54,7 +56,7 @@ const SellerUserPanel = ({ user, updateUser }) => {
           <input
             className="mb-1 mt-3 inline-block w-auto cursor-pointer border-b-2 border-swamp-500 bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text text-center text-xl font-medium text-transparent hover:border-gunmental hover:text-gunmental"
             type="submit"
-            value="Lagre"
+            value={t("save")}
           ></input>
           <p
             className="mb-1 mt-3 w-auto cursor-pointer border-b-2 border-danger-red text-center text-xl font-medium text-danger-red hover:border-gunmental hover:text-gunmental"
@@ -63,7 +65,7 @@ const SellerUserPanel = ({ user, updateUser }) => {
               setInputDisabled(true);
             }}
           >
-            Avbryt
+            {t("close_lower_case")}
           </p>
         </div>
       </div>
@@ -72,7 +74,7 @@ const SellerUserPanel = ({ user, updateUser }) => {
       <div className="mb-2 flex w-full flex-col items-center md:flex-row md:items-start">
         <div className="flex w-full flex-row items-center gap-2 md:w-auto md:flex-col md:justify-around md:py-2">
           <img
-            src="../icons/buyer_profile_icon.png"
+            src="../icons/seller_profile_icon.png"
             alt="User"
             className="h-20 w-20 rounded-lg border border-light-gray bg-white object-contain p-4 md:mb-3 md:mt-2 md:h-36 md:min-w-36"
           />
@@ -90,10 +92,10 @@ const SellerUserPanel = ({ user, updateUser }) => {
           <hr className="mb-3 hidden h-auto border-[1px] border-l border-dashed border-light-gray/35 md:block" />
           <div className="flex w-full flex-col items-center">
             <p className="mb-1 mt-3 w-full text-center text-xl font-medium text-medium-gray md:mb-3 md:ml-10 md:mt-1 md:text-start">
-              PERSONALIA
+              {t("personal_info", { ns: "user" })}
             </p>
             <TextInputField
-              label="Navn"
+              label={t("name")}
               name="name"
               icon={<MdOutlinePerson2 className="h-6 w-auto" color="#333333" />}
               initialValue={userData.name}
@@ -101,7 +103,7 @@ const SellerUserPanel = ({ user, updateUser }) => {
               disabled={inputDisabled}
             />
             <TextInputField
-              label="Mobilnummer"
+              label={t("phone_number")}
               name="phoneNumber"
               icon={<MdOutlinePhone className="h-6 w-auto" color="#333333" />}
               initialValue={userData.phoneNumber}
@@ -109,22 +111,23 @@ const SellerUserPanel = ({ user, updateUser }) => {
               disabled={inputDisabled}
             />
             <TextInputField
-              label="Epost"
+              label={t("email")}
               name="email"
               type="email"
               icon={<MdOutlineEmail className="h-6 w-auto" color="#333333" />}
               initialValue={userData.email}
               onChange={handleInputChange}
               disabled={true}
+              optional={true}
             />
           </div>
           <hr className="mb-3 hidden h-auto border-[1px] border-l border-dashed border-light-gray/35 md:block" />
           <div className="flex w-full flex-col items-center">
             <p className="mb-1 mt-6 w-full text-center text-xl font-medium text-medium-gray md:mb-3 md:ml-10 md:mt-1 md:text-start">
-              ADDRESSE
+              {t("address", { ns: "user" })}
             </p>
             <TextInputField
-              label="Gateadresse"
+              label={t("street_address")}
               name="streetAddress"
               icon={<MdOutlineLocationOn className="h-6 w-auto" color="#333" />}
               initialValue={userData.address.streetAddress}
@@ -140,7 +143,7 @@ const SellerUserPanel = ({ user, updateUser }) => {
               }
             />
             <TextInputField
-              label="Poststed (By)"
+              label={t("postal_location")}
               name="postalLocation"
               icon={<LuMailbox className="h-6 w-auto" color="#333" />}
               initialValue={userData.address.postalLocation}
@@ -156,7 +159,7 @@ const SellerUserPanel = ({ user, updateUser }) => {
               }
             />
             <TextInputField
-              label="Postnummer"
+              label={t("postal_code")}
               name="postalCode"
               icon={<MdOutlineNumbers className="h-6 w-auto" color="#333" />}
               initialValue={userData.address.postalCode}
@@ -182,7 +185,7 @@ const SellerUserPanel = ({ user, updateUser }) => {
             setInputDisabled(false);
           }}
         >
-          Endre opplysninger
+          {t("change_data")}
         </p>
         <div
           className={`flex flex-row items-center md:hidden ${inputDisabled && "hidden"} gap-5`}
@@ -190,7 +193,7 @@ const SellerUserPanel = ({ user, updateUser }) => {
           <input
             className="mb-3 mt-5 inline-block w-auto cursor-pointer border-b border-swamp-500 bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text text-center text-lg font-normal text-transparent hover:border-gunmental hover:text-gunmental"
             type="submit"
-            value="Lagre"
+            value={t("save")}
           ></input>
           <p
             className="mb-3 mt-5 w-auto cursor-pointer border-b border-danger-red text-center text-lg font-normal text-danger-red"
@@ -199,7 +202,7 @@ const SellerUserPanel = ({ user, updateUser }) => {
               setInputDisabled(true);
             }}
           >
-            Avbryt
+            {t("close_lower_case")}
           </p>
         </div>
       </div>

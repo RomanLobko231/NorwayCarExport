@@ -1,4 +1,8 @@
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer className="mt-auto">
       <div className="mx-auto my-2 w-full max-w-screen-xl p-4 md:py-8">
@@ -10,25 +14,20 @@ const Footer = () => {
             NCE
           </a>
           <ul className="flex flex-wrap items-center text-sm font-medium text-medium-gray">
+            {/* <li>
+              <a href="#" className="me-4 hover:underline md:me-6">
+                {t("about")}
+              </a>
+            </li> */}
             <li>
               <a href="#" className="me-4 hover:underline md:me-6">
-                About
+                {t("privacy_policy")}
               </a>
             </li>
             <li>
-              <a href="#" className="me-4 hover:underline md:me-6">
-                Privacy Policy
-              </a>
-            </li>
-            <li>
-              <a href="#" className="me-4 hover:underline md:me-6">
-                Licensing
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline">
-                Contact
-              </a>
+              <Link to="/contact" className="hover:underline">
+                {t("contact")}
+              </Link>
             </li>
           </ul>
         </div>

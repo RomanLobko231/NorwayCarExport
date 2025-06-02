@@ -15,7 +15,6 @@
   "register_user": "Register user",
   "login": "Login",
   "all_cars": "All cars",
-
   "fill_form": "Fill in the form",
   "email": "Email",
   "phone_number": "Phone Number",
@@ -83,5 +82,13 @@
   "last_bid": "Latest bid",
   "asteriks_means_that": "near the last bid means that your bid is the highest one so far",
   "see_rep_auctions": "See saved auctions",
-  "remember_not_online": "Before placing bets, please do remember that auctions displayed might not be up-to-date. Real-time information is only available on auction's page"
+  "remember_not_online": "Before placing bets, please do remember that auctions displayed might not be up-to-date. Real-time information is only available on auction's page",
+  "privacy_policy": "Privacy Policy & Terms",
+  "contact": "Contact Us",
+  "about": "About",
+  "login_to_see_more": "Want to see more and participate in auctions? Login or create a buyer account",
+  "save": "Save",
+  "change_data": "Edit information",
+  "add": "Add new",
+  "no_auctions_rep": "This user has no active auctions at the moment"
 }
