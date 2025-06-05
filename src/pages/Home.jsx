@@ -13,6 +13,7 @@ import { LuBadgeEuro } from "react-icons/lu";
 import { GiCarKey } from "react-icons/gi";
 import FAQList from "../ui/decorative/FAQList";
 import { Helmet } from "react-helmet";
+import MockAuctionsList from "../ui/auction/mock/MockAuctionsList";
 
 const cars = [
   {
@@ -141,13 +142,7 @@ const Home = () => {
         <h3 className="text-center text-lg font-extralight text-light-gray md:text-lg">
           {t("check_out")}
         </h3>
-        <div
-          className={`mt-8 flex w-full max-w-7xl flex-col flex-nowrap items-center justify-center gap-4 pb-4 md:flex-row md:flex-wrap md:items-start`}
-        >
-          {cars.map((car) => (
-            <CarCardBlurred carInfo={car} key={car.id} />
-          ))}
-        </div>
+        <MockAuctionsList />
 
         <SellerModal open={sellerModalopen} setOpen={setSellerModalOpen} />
         <BuyerModal open={buyerModalopen} setOpen={setBuyerModalOpen} />

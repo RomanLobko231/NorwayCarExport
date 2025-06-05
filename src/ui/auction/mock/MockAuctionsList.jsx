@@ -44,10 +44,7 @@ const MockAuctionsList = () => {
   const { t } = useTranslation();
   return (
     <div className="flex w-full max-w-7xl flex-col items-center">
-      <h1 className="mb-6 w-full text-center text-2xl font-bold text-medium-gray md:text-3xl">
-        {t("auctions").toUpperCase()}
-      </h1>
-      <div className="flex w-full flex-row flex-wrap justify-center gap-4">
+      <div className="mt-6 flex w-full flex-row flex-wrap justify-center gap-4">
         {auctions.map((auction) => (
           <MockAuctionCarCard
             auction={auction}
