@@ -22,7 +22,9 @@ const auctions = [
     highestBid: {
       amount: 87000,
     },
-    endDateTime: new Date(Date.now() + 12 * 60 * 60 * 1000).toISOString(),
+    endDateTime: new Date(
+      Date.now() + 12 * 60 * 60 * 1000 - 26 * 60 * 1000,
+    ).toISOString(),
   },
   {
     carDetails: {
@@ -33,7 +35,9 @@ const auctions = [
     highestBid: {
       amount: 32450,
     },
-    endDateTime: new Date(Date.now() + 18 * 60 * 60 * 1000).toISOString(),
+    endDateTime: new Date(
+      Date.now() + 18 * 60 * 60 * 1000 - 13 * 60 * 1000,
+    ).toISOString(),
   },
 ];
 const MockAuctionsList = () => {

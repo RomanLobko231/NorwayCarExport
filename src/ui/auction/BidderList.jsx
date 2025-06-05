@@ -6,6 +6,7 @@ import { MdOutlineGroupOff } from "react-icons/md";
 
 const BidderList = ({ bidsData }) => {
   const { t } = useTranslation();
+  const userId = sessionStorage.getItem("userId");
 
   const formatTime = (time) => {
     return formatUtcToLocal(time).slice(0, -6).replaceAll("-", ".");
@@ -43,9 +44,11 @@ const BidderList = ({ bidsData }) => {
             {bids.map((bid, index) => (
               <div
                 key={index}
-                className="flex w-full flex-col items-center gap-2"
+                className={`flex w-full flex-col items-center gap-2`}
               >
-                <div className="flex w-full flex-row items-center justify-between text-lg">
+                <div
+                  className={`flex w-full flex-row items-center justify-between text-lg ${userId == bid.bidderId && "rounded-md bg-swamp-300/50"} p-2`}
+                >
                   <p className="w-full text-start font-semibold text-medium-gray">
                     {t("bidder")} {bid.bidderLabel}
                   </p>

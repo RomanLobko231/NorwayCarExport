@@ -7,6 +7,7 @@ import AuctionCountdown from "../../auction/AuctionCountdown";
 import { MdOutlineBrightnessAuto, MdOutlineOutbox } from "react-icons/md";
 import AuctionApiService from "../../../api/AuctionApiService";
 import ErrorMessage from "../../ErrorMessage";
+import { Link } from "react-router-dom";
 
 const SavedAuctionCard = ({ auctionData, isForCompany }) => {
   const { t } = useTranslation();
@@ -85,9 +86,9 @@ const SavedAuctionCard = ({ auctionData, isForCompany }) => {
   };
 
   return (
-    <a
+    <Link
       className={`card_shadow hover:card_shadow_hover ${isForCompany ? "w-full min-w-[150px] sm:w-[calc(50%-0.5rem)] sm:min-w-[300px]" : "w-full"} active:card_shadow_click flex w-full flex-col gap-3 rounded-lg border border-swamp-500 bg-gradient-to-br from-swamp-100 to-distant-cloud p-3`}
-      href={`/auction/${auction.carDetails.carId}`}
+      to={`/auction/${auction.carDetails.carId}`}
     >
       <div className="flex w-full flex-col gap-3 lg:flex-row">
         <div className="aspect-square max-h-[155px] min-h-[120px] rounded border border-swamp-500 md:max-h-[120px]">
@@ -140,19 +141,19 @@ const SavedAuctionCard = ({ auctionData, isForCompany }) => {
                 e.stopPropagation();
               }}
             >
-              <div
-                className="mt-1 w-full flex-col"
-                onClick={(e) => {
-                  e.preventDefault();
-                }}
-              >
+              <div className="mt-1 w-full flex-col">
                 <label
                   htmlFor={t("your_bid")}
                   className="ml-5 text-sm font-medium text-light-gray md:text-base"
                 >
                   {t("your_bid")}*
                 </label>
-                <div className="relative mt-2 w-full">
+                <div
+                  className="relative mt-2 w-full"
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                >
                   <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-4">
                     {<TbCoins className="h-6 w-auto" color="#333" />}
                   </div>
@@ -205,19 +206,19 @@ const SavedAuctionCard = ({ auctionData, isForCompany }) => {
                 e.stopPropagation();
               }}
             >
-              <div
-                className="mt-1 w-full flex-col"
-                onClick={(e) => {
-                  e.preventDefault();
-                }}
-              >
+              <div className="mt-1 w-full flex-col">
                 <label
                   htmlFor={t("autobid")}
                   className="ml-5 text-sm font-medium text-light-gray md:text-base"
                 >
                   {t("autobid")}
                 </label>
-                <div className="relative mt-2 w-full">
+                <div
+                  className="relative mt-2 w-full"
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                >
                   <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-4">
                     {<TbCoins className="h-6 w-auto" color="#333" />}
                   </div>
@@ -263,7 +264,7 @@ const SavedAuctionCard = ({ auctionData, isForCompany }) => {
         )}
       </div>
       {bidError && <ErrorMessage error={bidError.message} />}
-    </a>
+    </Link>
   );
 };
 

@@ -20,9 +20,12 @@ const Footer = () => {
               </a>
             </li> */}
             <li>
-              <a href="#" className="me-4 hover:underline md:me-6">
+              <Link
+                to="privacy-policy"
+                className="me-4 hover:underline md:me-6"
+              >
                 {t("privacy_policy")}
-              </a>
+              </Link>
             </li>
             <li>
               <Link to="/contact" className="hover:underline">

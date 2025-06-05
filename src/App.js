@@ -12,6 +12,7 @@ import EditCarPage from "./pages/EditCarPage";
 import CarAuctionPage from "./pages/CarAuctionPage";
 import AllAuctionsPage from "./pages/AllAuctionsPage";
 import ContactPage from "./pages/ContactPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 
 function App() {
   return (
@@ -24,6 +25,11 @@ function App() {
           <Route path="*" element={<Home />} exact={true} />
           <Route path="/register" element={<RegisterPage />} exact={true} />
           <Route path="/contact" element={<ContactPage />} exact={true} />
+          <Route
+            path="/privacy-policy"
+            element={<PrivacyPolicyPage />}
+            exact={false}
+          />
           <Route path="/auctions" element={<AllAuctionsPage />} exact={false} />
           <Route element={<ProtectedRoute />}>
             <Route path="/user/:id" element={<UserPage />} exact={false} />
