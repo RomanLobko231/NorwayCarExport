@@ -90,5 +90,7 @@
   "save": "Save",
   "change_data": "Edit information",
   "add": "Add new",
-  "no_auctions_rep": "This user has no active auctions at the moment"
+  "no_auctions_rep": "This user has no active auctions at the moment",
+  "your_bids_marked_color": "N.B. Your bids are marked with green color",
+  "your_earlier_autobids": "Your previous auto bids"
 }

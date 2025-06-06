@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const LanguageChange = ({ changeLanguage, currLang }) => {
   const [selectedLang, setSelectedLang] = useState({
-    code: currLang,
+    code: currLang == "no" ? "no" : "en",
     flag: currLang == "no" ? "/no_flag.png" : "/en_flag.png",
   });
 

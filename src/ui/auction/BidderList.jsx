@@ -47,13 +47,13 @@ const BidderList = ({ bidsData }) => {
                 className={`flex w-full flex-col items-center gap-2`}
               >
                 <div
-                  className={`flex w-full flex-row items-center justify-between text-lg ${userId == bid.bidderId && "rounded-md bg-swamp-300/50"} p-2`}
+                  className={`flex w-full flex-row items-center justify-between text-lg ${userId == bid.bidderId && bid.amount && "rounded-md bg-swamp-300/50"} p-2`}
                 >
                   <p className="w-full text-start font-semibold text-medium-gray">
                     {t("bidder")} {bid.bidderLabel}
                   </p>
                   <p className="w-full text-center font-semibold text-medium-gray">
-                    {bid.amount},-
+                    {bid.amount || bid.limitAmount},-
                   </p>
                   <p className="w-full text-end font-semibold text-medium-gray">
                     {formatTime(bid.placedAt)}
@@ -65,33 +65,36 @@ const BidderList = ({ bidsData }) => {
               </div>
             ))}
           </div>
-          <div className="mt-6 flex w-full flex-col items-center gap-2 rounded-md border border-gunmental bg-distant-cloud p-4 md:hidden">
+          <div className="mt-6 flex w-full flex-col items-center rounded-md border border-gunmental bg-distant-cloud p-4 md:hidden">
             {bids.map((bid, index) => (
-              <div
-                key={index}
-                className="flex w-full flex-col items-center text-base"
-              >
-                <div className="flex w-full flex-row items-center justify-between">
-                  <p className="font-semibold text-light-gray">
-                    {t("bidder")}:
-                  </p>
-                  <p className="font-semibold text-medium-gray">
-                    {t("bidder")} {bid.bidderLabel}
-                  </p>
-                </div>
-                <div className="flex w-full flex-row items-center justify-between">
-                  <p className="font-semibold text-light-gray">
-                    {t("amount")}:
-                  </p>
-                  <p className="font-semibold text-medium-gray">
-                    {bid.amount},-
-                  </p>
-                </div>
-                <div className="flex w-full flex-row items-center justify-between">
-                  <p className="font-semibold text-light-gray">{t("time")}:</p>
-                  <p className="text-end font-semibold text-medium-gray">
-                    {formatTime(bid.placedAt)}
-                  </p>
+              <div key={index} className="flex w-full flex-col items-center">
+                <div
+                  className={`flex w-full flex-col items-center ${userId == bid.bidderId && bid.amount && "rounded-md bg-swamp-300/50 p-2"} text-base`}
+                >
+                  <div className="flex w-full flex-row items-center justify-between">
+                    <p className="font-semibold text-light-gray">
+                      {t("bidder")}:
+                    </p>
+                    <p className="font-semibold text-medium-gray">
+                      {t("bidder")} {bid.bidderLabel}
+                    </p>
+                  </div>
+                  <div className="flex w-full flex-row items-center justify-between">
+                    <p className="font-semibold text-light-gray">
+                      {t("amount")}:
+                    </p>
+                    <p className="font-semibold text-medium-gray">
+                      {bid.amount || bid.limitAmount},-
+                    </p>
+                  </div>
+                  <div className="flex w-full flex-row items-center justify-between">
+                    <p className="font-semibold text-light-gray">
+                      {t("time")}:
+                    </p>
+                    <p className="text-end font-semibold text-medium-gray">
+                      {formatTime(bid.placedAt)}
+                    </p>
+                  </div>
                 </div>
                 {index !== bids.length - 1 && (
                   <div className="my-2 h-[1px] w-full flex-grow bg-light-gray"></div>

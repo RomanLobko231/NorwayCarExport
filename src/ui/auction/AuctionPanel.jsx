@@ -18,6 +18,8 @@ const AuctionPanel = ({
   error,
 }) => {
   const { t } = useTranslation();
+  const userId = sessionStorage.getItem("userId");
+  const userAutoBids = auctionData.autoBids.filter((b) => b.bidderId == userId);
 
   const highestBidAmount = auctionData.highestBid?.amount ?? 0;
   const nextMinBid =
@@ -182,7 +184,14 @@ const AuctionPanel = ({
               )}
             </>
           )}
+          <p className="-mb-4 mt-7 w-full text-center text-sm font-normal italic text-light-gray md:text-base">
+            {t("your_earlier_autobids")}
+          </p>
+          {userAutoBids.length > 0 && <BidderList bidsData={userAutoBids} />}
 
+          <p className="-mb-4 mt-7 w-full text-center text-sm font-normal italic text-light-gray md:text-base">
+            {t("your_bids_marked_color")}
+          </p>
           <BidderList bidsData={auctionData.bids} />
         </div>
         <div className="mt-7 flex w-full flex-row items-center justify-center space-x-4 md:mt-10">

@@ -52,7 +52,7 @@ const MockAuctionsList = () => {
           />
         ))}
       </div>
-      <div className="mt-6 flex flex-col items-center gap-2 py-2 text-center text-lg font-semibold text-light-gray md:flex-row">
+      <div className="mt-6 flex flex-col items-center gap-2 py-2 text-center text-base font-semibold text-light-gray md:flex-row md:text-lg">
         <MdLockOutline className="h-6 w-auto" />
         <h3>{t("login_to_see_more")}</h3>
       </div>

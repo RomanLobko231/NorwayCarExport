@@ -59,7 +59,7 @@ const ContactPage = () => {
             </p>
             <div className="flex flex-row items-center gap-4 rounded-lg border border-dashed border-swamp-500 bg-gradient-to-br from-swamp-100 to-distant-cloud px-4 py-2 text-lg font-semibold text-medium-gray md:text-xl">
               <MdPhone />
-              +4799484994
+              +4745803665
             </div>
           </div>
 

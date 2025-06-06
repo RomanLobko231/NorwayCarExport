@@ -97,5 +97,7 @@
   "save": "Lagre",
   "change_data": "Endre opplysninger",
   "add": "Legg til",
-  "no_auctions_rep": "Representanten har ingen aktive auksjoner akkurat nå"
+  "no_auctions_rep": "Representanten har ingen aktive auksjoner akkurat nå",
+  "your_bids_marked_color": "NB: Budene dine er merket med grønn farge",
+  "your_earlier_autobids": "Dine tidligere autobud"
 }

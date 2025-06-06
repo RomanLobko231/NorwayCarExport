@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const sections = [
   {
     title: "INTRODUCTION",
@@ -61,16 +63,16 @@ const PrivacyPolicyPage = () => {
         </h1>
         <div className="h-[2px] w-[70px] bg-gradient-to-r from-medium-gray to-transparent md:w-[200px]"></div>
       </div>
-      <div className="mb-12 mt-5 whitespace-pre-wrap text-base font-medium text-medium-gray/70 md:text-lg">
+      <div className="mb-12 mt-8 whitespace-pre-wrap text-base font-medium text-medium-gray/70 md:text-lg">
         If you have any questions, concerns, or requests related to this Privacy
         Policy or the way your personal data is handled, please feel free to
         contact us at any time.
         <br />
         <br />
         Our contact information is available at:{" "}
-        <a href="/contact" className="italic text-gunmental underline">
+        <Link to="/contact" className="italic text-gunmental underline">
           norwaycarexport.no/contact
-        </a>
+        </Link>
       </div>
     </div>
   );
