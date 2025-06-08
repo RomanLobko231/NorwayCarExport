@@ -24,7 +24,7 @@ import UserApiService from "../../../api/UserApiService";
 import TextInputField from "../../input/TextInputField";
 import PasswordInputField from "../../input/PasswordInputField";
 import FileInputField from "../../input/FileInputField";
-import ErrorMessage from "../../ErrorMessage";
+import ErrorMessage from "../../message/ErrorMessage";
 import { useTranslation } from "react-i18next";
 
 const BuyerModal = ({ open, setOpen }) => {

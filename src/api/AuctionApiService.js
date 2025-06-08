@@ -21,9 +21,11 @@ export default class AuctionApiService {
     }
   }
 
-  static async getAllAuctionsByStatus(status) {
+  static async getAllAuctionsByStatusPaged(status, page, size) {
     try {
-      const response = await api.get(`/api/v1/auctions?status=${status}`);
+      const response = await api.get(
+        `/api/v1/auctions?status=${status}&page=${page}&size=${size}`,
+      );
       return response;
     } catch (error) {
       console.log(error);
@@ -31,10 +33,10 @@ export default class AuctionApiService {
     }
   }
 
-  static async getAllByCarIdsAndStatus(carIds, status) {
+  static async getAllByCarIdsAndStatusPaged(carIds, status, page, size) {
     try {
       const response = await api.get(
-        `/api/v1/auctions?status=${status}&ids=${carIds}`,
+        `/api/v1/auctions?status=${status}&ids=${carIds}&page=${page}&size=${size}`,
       );
       return response;
     } catch (error) {

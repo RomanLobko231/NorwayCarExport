@@ -93,6 +93,19 @@ export default class UserApiService {
     }
   }
 
+  static async updatePasswordById(password, userId) {
+    try {
+      const response = await api.put(
+        `/api/v1/users/${userId}/update-password`,
+        { password: password },
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
   static async deleteUserById(id) {
     try {
       const response = await api.delete(`/api/v1/users/${id}`);

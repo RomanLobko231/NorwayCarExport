@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import AuctionApiService from "../../../api/AuctionApiService";
 import RepresentativeCarList from "./RepresentativeCarList";
 import SavedAuctionCard from "./SavedAuctionCard";
+import CarListForRepCard from "./CarListForRepCard";
 
 const BuyerRepresentativeCard = ({ rep, deleteRep, updateRep }) => {
   const { t } = useTranslation();
@@ -20,12 +21,6 @@ const BuyerRepresentativeCard = ({ rep, deleteRep, updateRep }) => {
   const [inputDisabled, setInputDisabled] = useState(true);
 
   const [isDelOpen, setIsDelOpen] = useState(false);
-  const [auctionsOpen, setAuctionsOpen] = useState(false);
-
-  const [fetchError, setFetchError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const [auctions, setAuctions] = useState(null);
 
   useEffect(() => {
     setInputDisabled(true);
@@ -48,26 +43,6 @@ const BuyerRepresentativeCard = ({ rep, deleteRep, updateRep }) => {
     e.preventDefault();
     setRepData(rep);
     setInputDisabled(true);
-  };
-
-  const showAuctions = async () => {
-    setAuctionsOpen(true);
-    if (rep.savedCarIds.length <= 0) return;
-    if (auctions?.length > 0) return;
-
-    setIsLoading(true);
-    setFetchError(null);
-    try {
-      const response = await AuctionApiService.getAllByCarIdsAndStatus(
-        rep.savedCarIds,
-        "Aktivt",
-      );
-      setAuctions(response.data);
-    } catch (error) {
-      setFetchError(error);
-    } finally {
-      setIsLoading(false);
-    }
   };
 
   return (
@@ -150,37 +125,7 @@ const BuyerRepresentativeCard = ({ rep, deleteRep, updateRep }) => {
           }}
         />
       </form>
-      <p
-        className="my-1 flex w-auto cursor-pointer border-b-2 border-medium-gray/50 text-center text-lg font-medium text-medium-gray/50 hover:border-medium-gray hover:text-medium-gray"
-        onClick={
-          auctionsOpen
-            ? () => {
-                setAuctionsOpen((prev) => !prev);
-              }
-            : showAuctions
-        }
-      >
-        {auctionsOpen ? t("close_lower_case") : t("see_rep_auctions")}
-      </p>
-      {auctionsOpen && auctions && !fetchError && (
-        <div className="mt-4 flex w-full flex-row flex-wrap justify-center gap-3 rounded-md border-dashed border-gunmental md:border md:bg-distant-cloud md:p-3">
-          {auctions.map((auction) => (
-            <SavedAuctionCard
-              auctionData={auction}
-              key={auction.id}
-              isForCompany={true}
-            />
-          ))}
-        </div>
-      )}
-      {auctionsOpen && rep.savedCarIds <= 0 && (
-        <div className="my-4 flex flex-col">
-          <TbCarOff className="h-12 w-auto opacity-50" color="#888" />
-          <p className="mt-2 text-center text-base font-normal text-light-gray opacity-75 md:text-lg">
-            {t("no_auctions_rep")}
-          </p>
-        </div>
-      )}
+      {repData && <CarListForRepCard representative={repData} />}
     </div>
   );
 };

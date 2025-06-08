@@ -3,12 +3,16 @@ import {
   MdOutlineEmail,
   MdOutlineLocationOn,
   MdOutlineNumbers,
+  MdOutlineOutbox,
   MdOutlinePerson2,
   MdOutlinePhone,
+  MdPassword,
 } from "react-icons/md";
 import { LuMailbox } from "react-icons/lu";
 import TextInputField from "../../input/TextInputField";
 import { useTranslation } from "react-i18next";
+import PasswordInputField from "../../input/PasswordInputField";
+import PasswordChange from "../../input/PasswordChange";
 
 const SellerUserPanel = ({ user, updateUser }) => {
   const { t } = useTranslation("common", "user");
@@ -180,7 +184,7 @@ const SellerUserPanel = ({ user, updateUser }) => {
           </div>
         </div>
         <p
-          className={`mb-3 mt-5 w-auto cursor-pointer border-b md:hidden ${!inputDisabled && "hidden"} border-light-gray text-center text-lg font-normal text-light-gray hover:text-gunmental`}
+          className={`mb-3 mt-5 w-auto cursor-pointer border-b md:hidden ${!inputDisabled && "hidden"} border-light-gray text-center text-lg font-medium text-light-gray hover:text-gunmental`}
           onClick={() => {
             setInputDisabled(false);
           }}
@@ -191,12 +195,12 @@ const SellerUserPanel = ({ user, updateUser }) => {
           className={`flex flex-row items-center md:hidden ${inputDisabled && "hidden"} gap-5`}
         >
           <input
-            className="mb-3 mt-5 inline-block w-auto cursor-pointer border-b border-swamp-500 bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text text-center text-lg font-normal text-transparent hover:border-gunmental hover:text-gunmental"
+            className="mb-3 mt-5 inline-block w-auto cursor-pointer border-b border-swamp-500 bg-gradient-to-b from-gunmental to-swamp-500 bg-clip-text text-center text-lg font-medium text-transparent hover:border-gunmental hover:text-gunmental"
             type="submit"
             value={t("save")}
           ></input>
           <p
-            className="mb-3 mt-5 w-auto cursor-pointer border-b border-danger-red text-center text-lg font-normal text-danger-red"
+            className="mb-3 mt-5 w-auto cursor-pointer border-b border-danger-red text-center text-lg font-medium text-danger-red"
             onClick={() => {
               setUserData(user);
               setInputDisabled(true);
@@ -206,6 +210,7 @@ const SellerUserPanel = ({ user, updateUser }) => {
           </p>
         </div>
       </div>
+      <PasswordChange />
     </form>
   );
 };

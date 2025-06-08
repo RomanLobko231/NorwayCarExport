@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import ImageCarousel from "../carousel/ImageCarousel";
 import { TbCoins } from "react-icons/tb";
-import ErrorMessage from "../ErrorMessage";
+import ErrorMessage from "../message/ErrorMessage";
 import { isDeadlineReached } from "../../utils/dateTimeUtils";
 
 const AuctionPanel = ({
@@ -184,10 +184,14 @@ const AuctionPanel = ({
               )}
             </>
           )}
-          <p className="-mb-4 mt-7 w-full text-center text-sm font-normal italic text-light-gray md:text-base">
-            {t("your_earlier_autobids")}
-          </p>
-          {userAutoBids.length > 0 && <BidderList bidsData={userAutoBids} />}
+          {userAutoBids.length > 0 && (
+            <>
+              <p className="-mb-4 mt-7 w-full text-center text-sm font-normal italic text-light-gray md:text-base">
+                {t("your_earlier_autobids")}
+              </p>
+              <BidderList bidsData={userAutoBids} />
+            </>
+          )}
 
           <p className="-mb-4 mt-7 w-full text-center text-sm font-normal italic text-light-gray md:text-base">
             {t("your_bids_marked_color")}

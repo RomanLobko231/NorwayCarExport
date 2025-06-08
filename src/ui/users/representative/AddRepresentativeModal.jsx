@@ -12,7 +12,7 @@ import PasswordInputField from "../../input/PasswordInputField";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import UserApiService from "../../../api/UserApiService";
-import ErrorMessage from "../../ErrorMessage";
+import ErrorMessage from "../../message/ErrorMessage";
 import { useState } from "react";
 
 const AddRepresentativeModal = ({ open, setOpen, setRepresentatives }) => {

@@ -14,12 +14,13 @@ import {
 import FileInputField from "../../input/FileInputField";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 import { PiSealCheckBold } from "react-icons/pi";
-import ErrorMessage from "../../ErrorMessage";
+import ErrorMessage from "../../message/ErrorMessage";
 import { useTranslation } from "react-i18next";
 import CarApiService from "../../../api/CarApiService";
 import { GiMoneyStack } from "react-icons/gi";
 import { LiaMoneyBillWaveAltSolid } from "react-icons/lia";
 import NumberInputField from "../../input/NumberInputField";
+import ImageInputField from "../../input/ImageInputField";
 
 const SellerModal = ({ open, setOpen }) => {
   const { t } = useTranslation();
@@ -203,10 +204,9 @@ const SellerModal = ({ open, setOpen }) => {
                 <p className="mt-3 text-center text-sm font-light italic text-light-gray md:text-base">
                   {t("upload_photo_if_want")}
                 </p>
-                <FileInputField
-                  files={uploadImages}
-                  fileTypes={["image/jpeg", "image/png"]}
-                  setFiles={setUploadImages}
+                <ImageInputField
+                  images={uploadImages}
+                  setImages={setUploadImages}
                 />
                 {error && <ErrorMessage error={error.message} />}
                 {isLoading ? (

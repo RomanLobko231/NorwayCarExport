@@ -5,7 +5,7 @@ import { RiAddBoxLine } from "react-icons/ri";
 import CarsList from "../../car/CarsList";
 import CarApiService from "../../../api/CarApiService";
 import ErrorDialog from "../../dialog/ErrorDialog";
-import ErrorMessage from "../../ErrorMessage";
+import ErrorMessage from "../../message/ErrorMessage";
 import AuctionsList from "../../auction/AuctionsList";
 import AuctionApiService from "../../../api/AuctionApiService";
 import { TbCarOff } from "react-icons/tb";
@@ -13,6 +13,7 @@ import AuctionCountdown from "../../auction/AuctionCountdown";
 import { useTranslation } from "react-i18next";
 import NumberInputField from "../../input/NumberInputField";
 import SavedAuctionCard from "./SavedAuctionCard";
+import PageArrows from "../../PageArrows";
 
 const AUCTION_STATUSES = ["Aktivt", "Avsluttet"];
 
@@ -28,9 +29,13 @@ const RepresentativeCarList = ({ auctionIds }) => {
   const [isErrorOpen, setIsErrorOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [page, setPage] = useState(0);
+  const [size] = useState(8);
+  const [totalPages, setTotalPages] = useState(0);
+
   useEffect(() => {
     fetchSavedAuctions(auctionIds, auctionFilter);
-  }, [auctionFilter]);
+  }, [auctionFilter, page]);
 
   const updateFilter = (newFilter) => {
     setAuctionFilter(newFilter);
@@ -41,11 +46,14 @@ const RepresentativeCarList = ({ auctionIds }) => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await AuctionApiService.getAllByCarIdsAndStatus(
+      const response = await AuctionApiService.getAllByCarIdsAndStatusPaged(
         ids,
         status,
+        page,
+        size,
       );
-      setAuctions(response.data);
+      setAuctions(response.data.items);
+      setTotalPages(response.data.totalPages);
       setError(null);
     } catch (error) {
       setError(error);
@@ -104,6 +112,7 @@ const RepresentativeCarList = ({ auctionIds }) => {
             ))}
           </div>
         )}
+        <PageArrows page={page} setPage={setPage} totalPages={totalPages} />
       </div>
     </>
   );

@@ -58,7 +58,7 @@ const BuyerRepresentativesList = ({ reps }) => {
 
   return (
     <div
-      className={`mt-5 flex w-full max-w-7xl flex-col items-center rounded-lg border border-light-gray bg-slate-50 p-4 md:p-6`}
+      className={`mt-5 flex w-full max-w-7xl flex-col items-center rounded-lg border border-light-gray bg-slate-50 p-3 md:p-6`}
     >
       <div className="mb-8 flex w-full flex-col flex-wrap items-center justify-start md:flex-row">
         <h1 className="mb-4 text-center text-2xl font-bold text-medium-gray md:mb-0 md:text-3xl">

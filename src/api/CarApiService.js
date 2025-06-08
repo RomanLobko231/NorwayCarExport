@@ -63,9 +63,11 @@ export default class CarApiService {
     }
   }
 
-  static async getCarsByOwnerId(id) {
+  static async getCarsByOwnerIdAndStatusPaged(id, status, page, size) {
     try {
-      const response = await api.get(`/api/v1/cars/by-owner/${id}`);
+      const response = await api.get(
+        `/api/v1/cars?status=${status}&ownerId=${id}&page=${page}&size=${size}`,
+      );
       return response;
     } catch (error) {
       console.log(error);

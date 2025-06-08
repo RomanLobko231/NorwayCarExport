@@ -10,6 +10,7 @@ import {
 import { LuMailbox } from "react-icons/lu";
 import TextInputField from "../../input/TextInputField";
 import { useTranslation } from "react-i18next";
+import PasswordChange from "../../input/PasswordChange";
 
 const CompanyUserPanel = ({ user, updateUser }) => {
   const { t } = useTranslation(["common", "user"]);
@@ -259,6 +260,7 @@ const CompanyUserPanel = ({ user, updateUser }) => {
           </p>
         </div>
       </div>
+      <PasswordChange />
     </form>
   );
 };

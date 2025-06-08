@@ -90,7 +90,10 @@
   "save": "Save",
   "change_data": "Edit information",
   "add": "Add new",
-  "no_auctions_rep": "This user has no active auctions at the moment",
+  "no_auctions_rep": "No auctions yet",
   "your_bids_marked_color": "N.B. Your bids are marked with green color",
-  "your_earlier_autobids": "Your previous auto bids"
+  "your_earlier_autobids": "Your previous auto bids",
+  "register": "Register new user",
+  "change_password": "Change my password",
+  "password_changed_success": "Password was succesfully changed!"
 }

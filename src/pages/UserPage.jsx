@@ -4,7 +4,7 @@ import UserApiService from "../api/UserApiService";
 import CarApiService from "../api/CarApiService";
 import ErrorDialog from "../ui/dialog/ErrorDialog";
 import SellerCarList from "../ui/users/seller/SellerCarList";
-import ErrorMessage from "../ui/ErrorMessage";
+import ErrorMessage from "../ui/message/ErrorMessage";
 import SellerUserPanel from "../ui/users/seller/SellerUserPanel";
 import CompanyUserPanel from "../ui/users/buyer/CompanyUserPanel";
 import { useTranslation } from "react-i18next";

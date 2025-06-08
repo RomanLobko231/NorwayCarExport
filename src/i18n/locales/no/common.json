@@ -97,7 +97,10 @@
   "save": "Lagre",
   "change_data": "Endre opplysninger",
   "add": "Legg til",
-  "no_auctions_rep": "Representanten har ingen aktive auksjoner akkurat nå",
+  "no_auctions_rep": "Ingen auksjoner her ennå",
   "your_bids_marked_color": "NB: Budene dine er merket med grønn farge",
-  "your_earlier_autobids": "Dine tidligere autobud"
+  "your_earlier_autobids": "Dine tidligere autobud",
+  "register": "Registrer ny bruker",
+  "change_password": "Endre passordet mitt",
+  "password_changed_success": "Passordet ble vellykket oppdatert!"
 }

@@ -8,9 +8,9 @@ import {
 import { useState } from "react";
 import TextInputField from "./input/TextInputField";
 import PasswordInputField from "./input/PasswordInputField";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserApiService from "../api/UserApiService";
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "./message/ErrorMessage";
 import { useTranslation } from "react-i18next";
 import { RiArrowUpBoxLine } from "react-icons/ri";
 
@@ -96,10 +96,16 @@ const LoginModal = ({ open, setOpen }) => {
                 initialValue={loginData.password}
                 onChange={handleInputChange}
               />
+              <Link
+                to="/register"
+                className="text-center text-sm font-normal text-light-gray underline hover:text-medium-gray md:text-base"
+              >
+                {t("register")}
+              </Link>
               {error && <ErrorMessage error={error.message} />}
               <button
                 type="submit"
-                className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-5 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 py-2 text-cornsilk hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-lg md:px-7"
+                className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-3 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 py-2 text-cornsilk hover:from-mirage hover:to-gunmental md:space-x-3 md:rounded-lg md:px-7"
               >
                 <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
                   {t("login").toUpperCase()}

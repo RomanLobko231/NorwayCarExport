@@ -17,7 +17,7 @@ import {
 import { LuMailbox } from "react-icons/lu";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 import { PiSealCheckBold } from "react-icons/pi";
-import ErrorMessage from "../../ErrorMessage";
+import ErrorMessage from "../../message/ErrorMessage";
 import TextInputField from "../../input/TextInputField";
 import PasswordInputField from "../../input/PasswordInputField";
 import UserApiService from "../../../api/UserApiService";

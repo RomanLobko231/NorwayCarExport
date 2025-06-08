@@ -37,8 +37,15 @@ const BidderList = ({ bidsData }) => {
         <>
           <div className="mt-7 hidden w-full flex-col items-center gap-2 rounded-md border border-gunmental bg-distant-cloud p-4 md:flex">
             <div className="mb-2 flex w-full flex-row items-center justify-between text-base font-semibold text-light-gray">
-              <p className="w-full text-start">{t("bidders")}</p>
-              <p className="w-full text-center">{t("amount")}</p>
+              {bids.at(0)?.amount && (
+                <p className="w-full text-start">{t("bidders")}</p>
+              )}
+
+              <p
+                className={`w-full ${bids.at(0)?.amount ? "text-center" : "text-start"} `}
+              >
+                {t("amount")}
+              </p>
               <p className="w-full text-end">{t("time")}</p>
             </div>
             {bids.map((bid, index) => (
@@ -49,13 +56,20 @@ const BidderList = ({ bidsData }) => {
                 <div
                   className={`flex w-full flex-row items-center justify-between text-lg ${userId == bid.bidderId && bid.amount && "rounded-md bg-swamp-300/50"} p-2`}
                 >
-                  <p className="w-full text-start font-semibold text-medium-gray">
-                    {t("bidder")} {bid.bidderLabel}
-                  </p>
-                  <p className="w-full text-center font-semibold text-medium-gray">
+                  {bid.amount && (
+                    <p className="w-full text-start font-semibold text-medium-gray">
+                      {t("bidder")} {bid.bidderLabel}
+                    </p>
+                  )}
+
+                  <p
+                    className={`w-full font-semibold ${bid.amount ? "text-center" : "text-start"} text-medium-gray`}
+                  >
                     {bid.amount || bid.limitAmount},-
                   </p>
-                  <p className="w-full text-end font-semibold text-medium-gray">
+                  <p
+                    className={`w-full text-end font-semibold text-medium-gray`}
+                  >
                     {formatTime(bid.placedAt)}
                   </p>
                 </div>
@@ -71,14 +85,17 @@ const BidderList = ({ bidsData }) => {
                 <div
                   className={`flex w-full flex-col items-center ${userId == bid.bidderId && bid.amount && "rounded-md bg-swamp-300/50 p-2"} text-base`}
                 >
-                  <div className="flex w-full flex-row items-center justify-between">
-                    <p className="font-semibold text-light-gray">
-                      {t("bidder")}:
-                    </p>
-                    <p className="font-semibold text-medium-gray">
-                      {t("bidder")} {bid.bidderLabel}
-                    </p>
-                  </div>
+                  {bid.amount && (
+                    <div className="flex w-full flex-row items-center justify-between">
+                      <p className="font-semibold text-light-gray">
+                        {t("bidder")}:
+                      </p>
+                      <p className="font-semibold text-medium-gray">
+                        {t("bidder")} {bid.bidderLabel}
+                      </p>
+                    </div>
+                  )}
+
                   <div className="flex w-full flex-row items-center justify-between">
                     <p className="font-semibold text-light-gray">
                       {t("amount")}:

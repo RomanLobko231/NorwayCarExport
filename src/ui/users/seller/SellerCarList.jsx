@@ -1,43 +1,56 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import OptionsInput from "../../input/OptionsInput";
 import { RiAddBoxLine } from "react-icons/ri";
 import CarsList from "../../car/CarsList";
 import CarApiService from "../../../api/CarApiService";
 import ErrorDialog from "../../dialog/ErrorDialog";
-import ErrorMessage from "../../ErrorMessage";
+import ErrorMessage from "../../message/ErrorMessage";
 import { useTranslation } from "react-i18next";
+import PageArrows from "../../PageArrows";
+
+const CAR_STATUSES = ["Vurdering", "Solgt", "Annet", "Auksjon"];
 
 const SellerCarList = () => {
   const { t } = useTranslation("common", "user");
   const [cars, setCars] = useState([]);
-  const [carFilter, setCarFilter] = useState("");
-  const [filteredCars, setFilteredCars] = useState(cars);
 
   const [error, setError] = useState(null);
   const [isErrorOpen, setIsErrorOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const statusParam = searchParams.get("status") || CAR_STATUSES.at(0);
+  const [carFilter, setCarFilter] = useState(statusParam);
+
+  const [page, setPage] = useState(0);
+  const [size] = useState(8);
+  const [totalPages, setTotalPages] = useState(0);
+
   const params = useParams();
   const navigate = useNavigate();
 
-  const handleFilterChange = (e) => {
-    setCarFilter(e.target.value);
-    const updatedCars = cars.filter((car) => car.status === e.target.value);
-    setFilteredCars(updatedCars);
+  const updateFilter = (newFilter) => {
+    setCarFilter(newFilter);
+    setSearchParams({ status: newFilter });
   };
 
   useEffect(() => {
-    fetchUserCars(params.id);
-  }, []);
+    fetchUserCars(params.id, carFilter);
+  }, [carFilter, page]);
 
-  const fetchUserCars = async (id) => {
+  const fetchUserCars = async (id, status) => {
     setIsLoading(true);
     setError(null);
     try {
-      const cars = await CarApiService.getCarsByOwnerId(id);
-      setCars(cars.data);
-      setFilteredCars(cars.data);
+      const cars = await CarApiService.getCarsByOwnerIdAndStatusPaged(
+        id,
+        status,
+        page,
+        size,
+      );
+      setCars(cars.data.items);
+      setTotalPages(cars.data.totalPages);
       setError(null);
     } catch (error) {
       setError(error);
@@ -52,7 +65,6 @@ const SellerCarList = () => {
     try {
       await CarApiService.deleteCarById(id);
       setCars((prev) => prev.filter((car) => car.id !== id));
-      setFilteredCars((prev) => prev.filter((car) => car.id !== id));
     } catch (error) {
       setError(error);
       setIsErrorOpen(true);
@@ -78,21 +90,24 @@ const SellerCarList = () => {
             {t("user_cars", { ns: "user" })}
           </h1>
           <div className="ml-3 mr-3 hidden h-[14px] border-l-2 border-solid border-gunmental md:ml-4 md:mr-0 md:block md:h-5"></div>
-          <OptionsInput
-            options={["Vurdering", "Auksjon", "Solgt", "Annet"]}
-            optionName="status"
-            initialOption={carFilter}
-            handleInputChange={handleFilterChange}
-          />
-          <p
-            className="mb-1 mt-2 cursor-pointer border-b border-light-gray text-lg font-normal text-light-gray hover:text-gunmental"
-            onClick={() => {
-              setFilteredCars(cars);
-              setCarFilter("");
-            }}
-          >
-            Reset filter
-          </p>
+          <div className="scrollbar-hide ml-3 flex w-full flex-row items-center gap-4 overflow-x-auto whitespace-nowrap p-0 md:w-auto">
+            {CAR_STATUSES.map((filter) => (
+              <h1
+                className={`cursor-pointer rounded-lg border px-4 py-1 text-lg font-medium ${
+                  carFilter === filter
+                    ? "border-gunmental bg-gunmental text-lighthouse"
+                    : "border-medium-gray bg-lighthouse text-gunmental hover:bg-gray-200"
+                }`}
+                onClick={() => {
+                  updateFilter(filter);
+                }}
+                key={filter}
+              >
+                {filter}
+                {carFilter === filter && `: ${cars.length}`}
+              </h1>
+            ))}
+          </div>
           <button
             onClick={() => {
               navigate(`/user/${params.id}/add-car`);
@@ -111,11 +126,12 @@ const SellerCarList = () => {
           <ErrorMessage error={error.message} />
         ) : (
           <CarsList
-            cars={filteredCars}
+            cars={cars}
             onDelete={deleteCarById}
             actionsDisabled={isLoading}
           />
         )}
+        <PageArrows page={page} setPage={setPage} totalPages={totalPages} />
       </div>
     </>
   );

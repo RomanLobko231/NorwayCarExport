@@ -11,19 +11,28 @@ const AllAuctionsPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [auctions, setAuctions] = useState([]);
 
+  const [page, setPage] = useState(0);
+  const [size] = useState(8);
+  const [totalPages, setTotalPages] = useState(0);
+
   useEffect(() => {
     const userId = sessionStorage.getItem("userId");
     if (userId) {
       fetchAll();
     }
-  }, []);
+  }, [page]);
 
   const fetchAll = async () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await AuctionApiService.getAllAuctionsByStatus("Aktivt");
-      setAuctions(response.data);
+      const response = await AuctionApiService.getAllAuctionsByStatusPaged(
+        "Aktivt",
+        page,
+        size,
+      );
+      setAuctions(response.data.items);
+      setTotalPages(response.data.totalPages);
     } catch (error) {
       setError(error);
       setIsErrorOpen(true);

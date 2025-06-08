@@ -6,7 +6,7 @@ import NumberInputField from "../../input/NumberInputField";
 import AuctionCountdown from "../../auction/AuctionCountdown";
 import { MdOutlineBrightnessAuto, MdOutlineOutbox } from "react-icons/md";
 import AuctionApiService from "../../../api/AuctionApiService";
-import ErrorMessage from "../../ErrorMessage";
+import ErrorMessage from "../../message/ErrorMessage";
 import { Link } from "react-router-dom";
 
 const SavedAuctionCard = ({ auctionData, isForCompany }) => {

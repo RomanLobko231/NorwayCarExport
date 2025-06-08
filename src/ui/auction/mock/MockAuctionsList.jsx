@@ -4,9 +4,9 @@ import { MdLockOutline } from "react-icons/md";
 const auctions = [
   {
     carDetails: {
-      makeModel: "Renault Zoe",
-      modelYear: "2018",
-      thumbnailImageUrl: "/zoe_example.jpg",
+      makeModel: "Nissan e-NV200",
+      modelYear: "2015",
+      thumbnailImageUrl: "/car_2.jpg",
     },
     highestBid: {
       amount: 41450,
@@ -15,9 +15,9 @@ const auctions = [
   },
   {
     carDetails: {
-      makeModel: "Toyota",
-      modelYear: "2002",
-      thumbnailImageUrl: "/toyota_example.jpg",
+      makeModel: "Jaguar I-Pace",
+      modelYear: "2022",
+      thumbnailImageUrl: "/car_5.jpg",
     },
     highestBid: {
       amount: 87000,
@@ -28,9 +28,9 @@ const auctions = [
   },
   {
     carDetails: {
-      makeModel: "Ford Duster",
-      modelYear: "2015",
-      thumbnailImageUrl: "/car_right_side.jpg",
+      makeModel: "Toyota Camry Hybrid",
+      modelYear: "2021",
+      thumbnailImageUrl: "/car_3.jpg",
     },
     highestBid: {
       amount: 32450,
