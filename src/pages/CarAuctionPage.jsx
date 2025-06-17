@@ -71,7 +71,7 @@ const CarAuctionPage = () => {
 
   const setupWebSocket = () => {
     const url = process.env.REACT_APP_BACKEND_URL;
-    const socket = new SockJS(`${url}/ws-auction`);
+    const socket = new SockJS(`${url}ws-auction`);
 
     const token = sessionStorage.getItem("token");
 

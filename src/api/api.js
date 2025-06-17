@@ -1,8 +1,6 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
-const PROD_URL = "https://nce-backend-production.up.railway.app/";
-
 const api = axios.create({
   baseURL: process.env.REACT_APP_BACKEND_URL,
 });
