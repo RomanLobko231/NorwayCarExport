@@ -54,19 +54,13 @@ export default function Navbar() {
               className="animate-infiniteScroll flex items-center justify-center md:justify-start [&_li]:mx-8"
             >
               <li>
-                <p className="text-nowrap">
-                  The auction is currently in a development stage. Please check
-                  again in a short period. Thank you!
-                </p>
+                <p className="text-nowrap">{t("auction_launched")}</p>
               </li>
               <li>
                 <GoNorthStar className="text-danger-red" />
               </li>
               <li>
-                <p className="text-nowrap">
-                  The auction is currently in a development stage. Please check
-                  again in a short period. Thank you!
-                </p>
+                <p className="text-nowrap">{t("auction_launched")}</p>
               </li>
               <li>
                 <GoNorthStar className="text-danger-red" />
@@ -77,19 +71,13 @@ export default function Navbar() {
               className="animate-infiniteScroll flex items-center justify-center md:justify-start [&_li]:mx-8"
             >
               <li>
-                <p className="text-nowrap">
-                  The auction is currently in a development stage. Please check
-                  again in a short period. Thank you!
-                </p>
+                <p className="text-nowrap">{t("auction_launched")}</p>
               </li>
               <li>
                 <GoNorthStar className="text-danger-red" />
               </li>
               <li>
-                <p className="text-nowrap">
-                  The auction is currently in a development stage. Please check
-                  again in a short period. Thank you!
-                </p>
+                <p className="text-nowrap">{t("auction_launched")}</p>
               </li>
               <li>
                 <GoNorthStar className="text-danger-red" />
