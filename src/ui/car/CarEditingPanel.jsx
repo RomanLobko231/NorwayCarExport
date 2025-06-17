@@ -137,7 +137,7 @@ const CarEditingPanel = ({ car, saveCar }) => {
           initialValue={carData.engineType}
           onChange={handleInputChange}
         />
-        <NumberInputField
+        <TextInputField
           label={t("engine_volume", { ns: "car" })}
           icon={<MdNumbers className="h-5 w-5" />}
           name="engineVolume"

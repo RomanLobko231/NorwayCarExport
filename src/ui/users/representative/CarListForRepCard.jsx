@@ -11,13 +11,20 @@ const AUCTION_STATUSES = ["Aktivt", "Avsluttet"];
 const CarListForRepCard = ({ representative }) => {
   const { t } = useTranslation();
 
+  const AUCTION_STATUSES = [
+    { label: t("active"), value: "Aktivt" },
+    { label: t("finished"), value: "Avsluttet" },
+  ];
+
   const [auctionsOpen, setAuctionsOpen] = useState(false);
 
   const [fetchError, setFetchError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const [auctions, setAuctions] = useState([]);
-  const [auctionFilter, setAuctionFilter] = useState(AUCTION_STATUSES.at(0));
+  const [auctionFilter, setAuctionFilter] = useState(
+    AUCTION_STATUSES.at(0).value,
+  );
 
   const [page, setPage] = useState(0);
   const [size] = useState(4);
@@ -76,16 +83,16 @@ const CarListForRepCard = ({ representative }) => {
             {AUCTION_STATUSES.map((filter) => (
               <h1
                 className={`cursor-pointer rounded-lg border px-4 py-1 text-lg font-medium ${
-                  auctionFilter === filter
+                  auctionFilter === filter.value
                     ? "border-gunmental bg-gunmental text-lighthouse"
                     : "border-medium-gray bg-lighthouse text-gunmental hover:bg-gray-200"
                 }`}
                 onClick={() => {
-                  updateFilter(filter);
+                  updateFilter(filter.value);
                 }}
-                key={filter}
+                key={filter.value}
               >
-                {filter}
+                {filter.label}
               </h1>
             ))}
           </div>

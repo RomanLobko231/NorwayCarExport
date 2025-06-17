@@ -36,7 +36,7 @@ const Footer = () => {
         </div>
         <hr className="my-3 border-gray-200 sm:mx-auto dark:border-gray-700" />
         <span className="block text-sm text-medium-gray sm:text-center">
-          © 2024{" "}
+          © 2025{" "}
           <a href="/" className="hover:underline">
             NorwayCarExport™
           </a>

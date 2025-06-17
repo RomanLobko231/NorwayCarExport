@@ -48,6 +48,7 @@ const AllAuctionsPage = () => {
           Loading...
         </p>
       )}
+
       {sessionStorage.getItem("userId") ? (
         <AuctionsList auctions={auctions} />
       ) : (

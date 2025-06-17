@@ -4,6 +4,7 @@
   "address": "ADDRESS",
   "organisation": "ORGANISATION",
   "representatives": "REPRESENTATIVES",
-  "account_not_approved": "Your account is not yet approved. It is not possiblt to add new representatives now",
-  "user_cars": "YOUR CARS"
+  "account_not_approved": "Your account is not yet approved. It is not possible to add new representatives now",
+  "user_cars": "YOUR CARS",
+  "only_company_can_change": "Only Company account can change personal details"
 }

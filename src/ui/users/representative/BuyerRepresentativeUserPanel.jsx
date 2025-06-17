@@ -7,7 +7,8 @@ import TextInputField from "../../input/TextInputField";
 import { useTranslation } from "react-i18next";
 
 const BuyerRepresentativeUserPanel = ({ user }) => {
-  const { t } = useTranslation(["user"]);
+  const { t } = useTranslation(["common", "user"]);
+
   return (
     <div
       className={`flex w-full max-w-7xl flex-col items-center rounded-lg border border-light-gray bg-slate-50 p-4 md:px-6`}
@@ -30,7 +31,7 @@ const BuyerRepresentativeUserPanel = ({ user }) => {
         <div className="mt-4 flex w-full flex-col justify-between md:ml-7 md:mt-0 md:gap-3 lg:flex-row">
           <hr className="my-1 hidden h-auto border-[1px] border-l border-dashed border-light-gray/35 lg:block" />
           <TextInputField
-            label="Navn"
+            label={t("name")}
             name="name"
             icon={<MdOutlinePerson2 className="h-6 w-auto" color="#333333" />}
             initialValue={user.name}
@@ -38,7 +39,7 @@ const BuyerRepresentativeUserPanel = ({ user }) => {
             disabled={true}
           />
           <TextInputField
-            label="Mobilnummer"
+            label={t("phone_number")}
             name="phoneNumber"
             icon={<MdOutlinePhone className="h-6 w-auto" color="#333333" />}
             initialValue={user.phoneNumber}
@@ -46,7 +47,7 @@ const BuyerRepresentativeUserPanel = ({ user }) => {
             disabled={true}
           />
           <TextInputField
-            label="Epost"
+            label={t("email")}
             name="email"
             type="email"
             icon={<MdOutlineEmail className="h-6 w-auto" color="#333333" />}
@@ -57,7 +58,7 @@ const BuyerRepresentativeUserPanel = ({ user }) => {
         </div>
       </div>
       <p className="mt-3 text-center text-sm font-normal italic text-light-gray md:text-base">
-        {t("only_company_can_change")}
+        {t("only_company_can_change", { ns: "user" })}
       </p>
     </div>
   );

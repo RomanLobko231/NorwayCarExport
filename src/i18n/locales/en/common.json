@@ -95,5 +95,12 @@
   "your_earlier_autobids": "Your previous auto bids",
   "register": "Register new user",
   "change_password": "Change my password",
-  "password_changed_success": "Password was succesfully changed!"
+  "password_changed_success": "Password was succesfully changed!",
+  "active": "Active",
+  "finished": "Finished",
+  "in_review": "In Review",
+  "sold": "Sold",
+  "other": "Other",
+  "on_auction": "On Auction",
+  "sure_to_place_autobid": "Are you sure you want to place this autobid?"
 }

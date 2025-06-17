@@ -102,5 +102,12 @@
   "your_earlier_autobids": "Dine tidligere autobud",
   "register": "Registrer ny bruker",
   "change_password": "Endre passordet mitt",
-  "password_changed_success": "Passordet ble vellykket oppdatert!"
+  "password_changed_success": "Passordet ble vellykket oppdatert!",
+  "active": "Aktiv",
+  "finished": "Avsluttet",
+  "in_review": "I Vurdering",
+  "sold": "Solgt",
+  "other": "Annet",
+  "on_auction": "Auksjon",
+  "sure_to_place_autobid": "Er du sikker på at du vil legge til dette autobudet?"
 }

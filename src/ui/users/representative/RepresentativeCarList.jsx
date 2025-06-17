@@ -15,12 +15,17 @@ import NumberInputField from "../../input/NumberInputField";
 import SavedAuctionCard from "./SavedAuctionCard";
 import PageArrows from "../../PageArrows";
 
-const AUCTION_STATUSES = ["Aktivt", "Avsluttet"];
-
 const RepresentativeCarList = ({ auctionIds }) => {
   const { t } = useTranslation();
+
+  const AUCTION_STATUSES = [
+    { label: t("active"), value: "Aktivt" },
+    { label: t("finished"), value: "Avsluttet" },
+  ];
+
   const [searchParams, setSearchParams] = useSearchParams();
-  const statusParam = searchParams.get("status") || AUCTION_STATUSES.at(0);
+  const statusParam =
+    searchParams.get("status") || AUCTION_STATUSES.at(0).value;
 
   const [auctions, setAuctions] = useState([]);
   const [auctionFilter, setAuctionFilter] = useState(statusParam);
@@ -43,6 +48,8 @@ const RepresentativeCarList = ({ auctionIds }) => {
   };
 
   const fetchSavedAuctions = async (ids, status) => {
+    if (ids.length <= 0) return;
+
     setIsLoading(true);
     setError(null);
     try {
@@ -83,16 +90,16 @@ const RepresentativeCarList = ({ auctionIds }) => {
             {AUCTION_STATUSES.map((filter) => (
               <h1
                 className={`cursor-pointer rounded-lg border px-4 py-1 text-lg font-medium ${
-                  auctionFilter === filter
+                  auctionFilter == filter.value
                     ? "border-gunmental bg-gunmental text-lighthouse"
                     : "border-medium-gray bg-lighthouse text-gunmental hover:bg-gray-200"
                 }`}
                 onClick={() => {
-                  updateFilter(filter);
+                  updateFilter(filter.value);
                 }}
-                key={filter}
+                key={filter.value}
               >
-                {filter}
+                {filter.label}
               </h1>
             ))}
           </div>

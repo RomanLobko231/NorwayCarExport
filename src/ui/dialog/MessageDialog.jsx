@@ -32,7 +32,7 @@ const MessageDialog = ({ isOpen, setIsOpen, onFunc, message }) => {
               {t("close_lower_case")}
             </button>
             <button
-              className="card_shadow text group mb-2 mt-5 flex flex-row items-center rounded-lg border border-medium-gray bg-lighthouse px-4 pb-1 pt-1 text-xl font-semibold text-danger-red hover:bg-danger-red hover:text-lighthouse"
+              className="card_shadow text group mb-2 mt-5 flex flex-row items-center rounded-lg border border-medium-gray bg-lighthouse px-4 pb-1 pt-1 text-xl font-semibold text-gunmental hover:bg-gunmental hover:text-lighthouse"
               onClick={() => {
                 onFunc();
                 setIsOpen(false);

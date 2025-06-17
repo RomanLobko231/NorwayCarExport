@@ -9,8 +9,6 @@ import ErrorMessage from "../../message/ErrorMessage";
 import { useTranslation } from "react-i18next";
 import PageArrows from "../../PageArrows";
 
-const CAR_STATUSES = ["Vurdering", "Solgt", "Annet", "Auksjon"];
-
 const SellerCarList = () => {
   const { t } = useTranslation("common", "user");
   const [cars, setCars] = useState([]);
@@ -19,8 +17,15 @@ const SellerCarList = () => {
   const [isErrorOpen, setIsErrorOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const CAR_STATUSES = [
+    { label: t("in_review"), value: "Vurdering" },
+    { label: t("sold"), value: "Solgt" },
+    { label: t("on_auction"), value: "Auksjon" },
+    { label: t("other"), value: "Annet" },
+  ];
+
   const [searchParams, setSearchParams] = useSearchParams();
-  const statusParam = searchParams.get("status") || CAR_STATUSES.at(0);
+  const statusParam = searchParams.get("status") || CAR_STATUSES.at(0).value;
   const [carFilter, setCarFilter] = useState(statusParam);
 
   const [page, setPage] = useState(0);
@@ -94,17 +99,16 @@ const SellerCarList = () => {
             {CAR_STATUSES.map((filter) => (
               <h1
                 className={`cursor-pointer rounded-lg border px-4 py-1 text-lg font-medium ${
-                  carFilter === filter
+                  carFilter == filter.value
                     ? "border-gunmental bg-gunmental text-lighthouse"
                     : "border-medium-gray bg-lighthouse text-gunmental hover:bg-gray-200"
                 }`}
                 onClick={() => {
-                  updateFilter(filter);
+                  updateFilter(filter.value);
                 }}
-                key={filter}
+                key={filter.value}
               >
-                {filter}
-                {carFilter === filter && `: ${cars.length}`}
+                {filter.label}
               </h1>
             ))}
           </div>

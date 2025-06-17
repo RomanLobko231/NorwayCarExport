@@ -27,6 +27,7 @@ api.interceptors.request.use(
 
       if (decoded.exp < currentTime) {
         sessionStorage.removeItem("token");
+        sessionStorage.removeItem("userId");
       } else {
         config.headers.Authorization = `Bearer ${token}`;
       }

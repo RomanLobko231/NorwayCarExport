@@ -9,6 +9,7 @@ import ImageCarousel from "../carousel/ImageCarousel";
 import { TbCoins } from "react-icons/tb";
 import ErrorMessage from "../message/ErrorMessage";
 import { isDeadlineReached } from "../../utils/dateTimeUtils";
+import MessageDialog from "../dialog/MessageDialog";
 
 const AuctionPanel = ({
   auctionData,
@@ -32,6 +33,8 @@ const AuctionPanel = ({
   const [isAutoBidOpen, setIsAutoBidOpen] = useState(false);
 
   const [bidError, setBidError] = useState(error);
+
+  const [bidDialogOpen, setBidDialogOpen] = useState(false);
 
   const validateBid = (bid) => {
     if (bid < nextMinBid || bid < auctionData.startingPrice) {
@@ -162,10 +165,7 @@ const AuctionPanel = ({
                     />
                     <button
                       onClick={() => {
-                        if (validateBid(autoBid)) {
-                          placeAutoBid(autoBid);
-                          setBidError(null);
-                        }
+                        setBidDialogOpen((prev) => !prev);
                       }}
                       className="buttonsh disabled:button_shadow_clickhover:button_shadow_hover active:button_shadow_click group mb-2 flex w-full cursor-pointer flex-row items-center justify-center space-x-2 rounded-lg border border-medium-gray bg-lighthouse px-6 py-2 text-medium-gray hover:bg-medium-gray hover:text-lighthouse disabled:opacity-35 disabled:hover:bg-lighthouse disabled:hover:text-medium-gray sm:h-[50px] sm:w-auto md:space-x-2"
                       disabled={isAuctionDisabled()}
@@ -207,6 +207,17 @@ const AuctionPanel = ({
         </div>
         <CarSpecifications carData={carData} />
       </div>
+      <MessageDialog
+        isOpen={bidDialogOpen}
+        setIsOpen={setBidDialogOpen}
+        message={t("sure_to_place_autobid")}
+        onFunc={() => {
+          if (validateBid(autoBid)) {
+            placeAutoBid(autoBid);
+            setBidError(null);
+          }
+        }}
+      />
     </div>
   );
 };
