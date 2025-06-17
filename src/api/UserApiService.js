@@ -39,7 +39,7 @@ export default class UserApiService {
         data.append("organisationLicences", licence);
       });
 
-      const response = api.post("api/v1/users/register-buyer", data);
+      const response = api.post("/api/v1/users/register-buyer", data);
       return response;
     } catch (error) {
       console.log(error);
@@ -50,7 +50,7 @@ export default class UserApiService {
   static async registerBuyerRepresentative(representativeData) {
     try {
       const response = api.post(
-        "api/v1/users/register-representative",
+        "/api/v1/users/register-representative",
         representativeData,
       );
       return response;
