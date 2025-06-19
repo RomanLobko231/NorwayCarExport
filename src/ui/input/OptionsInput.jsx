@@ -1,7 +1,7 @@
 const OptionsInput = ({ options, initialOption, updateOption }) => {
   return (
     <div className="md:scrollbar-hide w-full overflow-x-auto whitespace-nowrap p-0 md:w-auto md:p-4">
-      <div className="flex gap-3">
+      <div className="mb-2 flex gap-3 md:mb-0">
         {options.map((option) => (
           <label
             key={option.value}

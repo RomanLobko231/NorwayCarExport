@@ -98,7 +98,7 @@ const SellerCarList = () => {
           <div className="md:scrollbar-hide ml-3 flex w-full flex-row items-center gap-4 overflow-x-auto whitespace-nowrap p-0 md:w-auto">
             {CAR_STATUSES.map((filter) => (
               <h1
-                className={`cursor-pointer rounded-lg border px-4 py-1 text-lg font-medium ${
+                className={`mb-2 cursor-pointer rounded-lg border px-4 py-1 text-lg font-medium md:mb-0 ${
                   carFilter == filter.value
                     ? "border-gunmental bg-gunmental text-lighthouse"
                     : "border-medium-gray bg-lighthouse text-gunmental hover:bg-gray-200"
