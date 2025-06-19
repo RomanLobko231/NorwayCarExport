@@ -110,12 +110,23 @@ const UserPage = () => {
               <SellerCarList />
             </>
           )}
-          <p
-            className="mb-1 mt-7 flex w-auto cursor-pointer border-b-2 border-danger-red/50 text-center text-lg font-medium text-danger-red/50 hover:border-danger-red hover:text-danger-red"
-            onClick={() => setDeleteUserOpen(true)}
-          >
-            {t("delete_user")}
-          </p>
+          <div className="flex w-full flex-col items-center justify-center gap-2 md:flex-row md:gap-7">
+            <p
+              className="mb-1 mt-7 flex w-auto cursor-pointer border-b-2 border-medium-gray/75 text-center text-lg font-medium text-medium-gray/75 hover:border-medium-gray hover:text-medium-gray"
+              onClick={() => {
+                sessionStorage.clear();
+                navigate("/");
+              }}
+            >
+              {t("log_out")}
+            </p>
+            <p
+              className="mb-1 mt-7 flex w-auto cursor-pointer border-b-2 border-danger-red/50 text-center text-lg font-medium text-danger-red/50 hover:border-danger-red hover:text-danger-red"
+              onClick={() => setDeleteUserOpen(true)}
+            >
+              {t("delete_user")}
+            </p>
+          </div>
         </div>
       )}
       <MessageDialog

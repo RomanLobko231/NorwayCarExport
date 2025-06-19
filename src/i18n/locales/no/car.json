@@ -17,5 +17,11 @@
   "bodywork": "Karosseri",
   "number_of_doors": "Dørantall",
   "number_of_seats": "Seteantall",
-  "color": "Farge"
+  "color": "Farge",
+  "rear_drive": "Bakhjulstrekk",
+  "front_drive": "Framhjulstrekk",
+  "all_drive": "Firehjulstrekk",
+  "other": "Annet",
+  "manual": "Manuell",
+  "automatic": "Automat"
 }

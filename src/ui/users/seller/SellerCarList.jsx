@@ -95,7 +95,7 @@ const SellerCarList = () => {
             {t("user_cars", { ns: "user" })}
           </h1>
           <div className="ml-3 mr-3 hidden h-[14px] border-l-2 border-solid border-gunmental md:ml-4 md:mr-0 md:block md:h-5"></div>
-          <div className="scrollbar-hide ml-3 flex w-full flex-row items-center gap-4 overflow-x-auto whitespace-nowrap p-0 md:w-auto">
+          <div className="md:scrollbar-hide ml-3 flex w-full flex-row items-center gap-4 overflow-x-auto whitespace-nowrap p-0 md:w-auto">
             {CAR_STATUSES.map((filter) => (
               <h1
                 className={`cursor-pointer rounded-lg border px-4 py-1 text-lg font-medium ${

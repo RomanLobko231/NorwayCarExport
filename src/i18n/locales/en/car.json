@@ -17,5 +17,11 @@
   "bodywork": "Bodywork",
   "number_of_doors": "Number of Doors",
   "number_of_seats": "Number of Seats",
-  "color": "Color"
+  "color": "Color",
+  "rear_drive": "Rear-wheel drive",
+  "front_drive": "Front-wheel drive",
+  "all_drive": "Four-wheel drive",
+  "other": "Other",
+  "manual": "Manual",
+  "automatic": "Automatic"
 }

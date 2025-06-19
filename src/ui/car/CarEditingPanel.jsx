@@ -25,18 +25,38 @@ const CarEditingPanel = ({ car, saveCar }) => {
   const [uploadImages, setUploadImages] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const OPERATING_MODES = [
-    "Bakhjulstrekk",
-    "Framhjulstrekk",
-    "Firehjulstrekk",
-    "Annet",
+    { label: t("rear_drive", { ns: "car" }), value: "Bakhjulstrekk" },
+    { label: t("front_drive", { ns: "car" }), value: "Framhjulstrekk" },
+    { label: t("all_drive", { ns: "car" }), value: "Firehjulstrekk" },
+    { label: t("other", { ns: "car" }), value: "Annet" },
   ];
-  const GEARBOX_TYPES = ["Manuell", "Automat", "Annet"];
+  const GEARBOX_TYPES = [
+    { label: t("manual", { ns: "car" }), value: "Manuell" },
+    { label: t("automatic", { ns: "car" }), value: "Automat" },
+    { label: t("other", { ns: "car" }), value: "Annet" },
+  ];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setCarData((prevData) => ({
       ...prevData,
       [name]: value,
+    }));
+  };
+
+  const updateOperatingMode = (e) => {
+    const { value } = e.target;
+    setCarData((prevData) => ({
+      ...prevData,
+      operatingMode: value,
+    }));
+  };
+
+  const updateGearboxType = (e) => {
+    const { value } = e.target;
+    setCarData((prevData) => ({
+      ...prevData,
+      gearboxType: value,
     }));
   };
 
@@ -150,18 +170,28 @@ const CarEditingPanel = ({ car, saveCar }) => {
           </p>
           <OptionsInput
             options={OPERATING_MODES}
-            initialOption={carData.operatingMode}
-            optionName={"operatingMode"}
-            handleInputChange={handleInputChange}
+            initialOption={
+              carData.operatingMode
+                ? OPERATING_MODES.filter(
+                    (o) => o.value == carData.operatingMode,
+                  ).at(0)
+                : OPERATING_MODES.at(0)
+            }
+            updateOption={updateOperatingMode}
           />
           <p className="mb-2 mt-4 text-base font-medium text-light-gray md:mb-0">
             {t("gearbox_type", { ns: "car" })}
           </p>
           <OptionsInput
             options={GEARBOX_TYPES}
-            initialOption={carData.gearboxType}
-            optionName={"gearboxType"}
-            handleInputChange={handleInputChange}
+            initialOption={
+              carData.gearboxType
+                ? GEARBOX_TYPES.filter(
+                    (o) => o.value == carData.gearboxType,
+                  ).at(0)
+                : GEARBOX_TYPES.at(0)
+            }
+            updateOption={updateGearboxType}
           />
         </div>
         <NumberInputField
