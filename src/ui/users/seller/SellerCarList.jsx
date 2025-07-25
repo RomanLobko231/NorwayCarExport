@@ -119,7 +119,7 @@ const SellerCarList = () => {
             className="buttonsh hover:button_shadow_hover active:button_shadow_click group mt-4 flex flex-row items-center space-x-2 rounded-lg bg-gradient-to-br from-mirage to-swamp-500 px-6 py-2 hover:from-mirage hover:to-gunmental md:ml-auto md:mt-0 md:space-x-2 md:rounded-lg"
           >
             <span className="text-xl font-semibold leading-4 text-cornsilk group-hover:text-lighthouse md:text-2xl">
-              {t("add").toUpperCase()}{" "}
+              {t("add").toUpperCase()}
             </span>
             <div className="h-[16px] border-l-2 border-solid border-cornsilk group-hover:border-lighthouse md:h-[18px]"></div>
             <RiAddBoxLine className="h-6 w-auto" color="#FEFAF0" />

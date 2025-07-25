@@ -75,7 +75,7 @@ const CarEditingPanel = ({ car, saveCar }) => {
   };
 
   return (
-    <div className="flex w-full max-w-7xl flex-col items-center justify-center py-20">
+    <div className="flex w-full max-w-7xl flex-col items-center justify-center py-20 md:py-24">
       <div className="px-4">
         <ImageCarousel
           images={carData.imagePaths}
@@ -241,9 +241,9 @@ const CarEditingPanel = ({ car, saveCar }) => {
           <textarea
             id="add_info"
             className="block min-h-48 w-full rounded-lg border border-medium-gray bg-white px-5 py-4 ps-11 text-base font-medium text-medium-gray md:ps-14 md:text-lg"
-            placeholder={t("additional_info", {
+            placeholder={t("additional_info_lower_case", {
               ns: "car",
-            }).toLowerCase()}
+            })}
             name={"additionalInformation"}
             value={carData.additionalInformation || ""}
             onChange={handleInputChange}
