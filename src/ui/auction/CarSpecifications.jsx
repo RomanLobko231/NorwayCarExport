@@ -23,7 +23,7 @@ import { IoMdColorFill } from "react-icons/io";
 import { useTranslation } from "react-i18next";
 
 const CarSpecifications = ({ carData }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common", "car");
   return (
     <div className="mt-5 flex w-full flex-col items-center rounded-lg border border-dashed border-medium-gray bg-gradient-to-br from-swamp-100 to-lighthouse p-4">
       <div className="flex w-full flex-col items-center gap-2 rounded-md border border-gunmental bg-distant-cloud p-4">
@@ -34,34 +34,34 @@ const CarSpecifications = ({ carData }) => {
           <div className="flex w-full flex-col gap-[0.35rem]">
             <SpecificationItem
               icon={<TbCarGarage />}
-              type={"Make"}
+              type={t("make", { ns: "car" })}
               value={carData.make}
             />
             <SpecificationItem
               icon={<TbCar />}
-              type={"Model"}
+              type={t("model", { ns: "car" })}
               value={carData.model}
             />
             <SpecificationItem
               icon={<TbCalendarPin />}
-              type={"Registrered"}
+              type={t("registered", { ns: "car" })}
               value={carData.firstTimeRegisteredInNorway
                 .replaceAll("-", ".")
                 .substring(0, 9)}
             />
             <SpecificationItem
               icon={<TbCalendarCheck />}
-              type={"EU-approved"}
+              type={t("next_eu_control", { ns: "car" })}
               value={carData.nextEUControl.replaceAll("-", ".").substring(0, 9)}
             />
             <SpecificationItem
               icon={<BiTachometer />}
-              type={"Kilometers"}
+              type={t("kilometers", { ns: "car" })}
               value={carData.kilometers}
             />
             <SpecificationItem
               icon={<MdNumbers />}
-              type={"Reg.number"}
+              type={t("registration_number", { ns: "car" })}
               value={carData.registrationNumber}
             />
             <SpecificationItem
@@ -72,7 +72,7 @@ const CarSpecifications = ({ carData }) => {
                   <MdOutlineLocalGasStation />
                 )
               }
-              type={"Fuel"}
+              type={t("fuel", { ns: "car" })}
               value={carData.engineType}
             />
           </div>
@@ -80,17 +80,17 @@ const CarSpecifications = ({ carData }) => {
           <div className="flex w-full flex-col gap-[0.35rem]">
             <SpecificationItem
               icon={<TbEngine />}
-              type={"Volume"}
+              type={t("engine_volume", { ns: "car" })}
               value={carData.engineVolume}
             />
             <SpecificationItem
               icon={<TbWeight />}
-              type={"Weight"}
+              type={t("weight", { ns: "car" })}
               value={carData.weight}
             />
             <SpecificationItem
               icon={<TbCar />}
-              type={"Bodywork"}
+              type={t("bodywork", { ns: "car" })}
               value={carData.bodywork}
             />
             <SpecificationItem
@@ -101,22 +101,22 @@ const CarSpecifications = ({ carData }) => {
                   <TbAutomaticGearbox />
                 )
               }
-              type={"Gearbox"}
+              type={t("gearbox_type", { ns: "car" })}
               value={carData.gearboxType}
             />
             <SpecificationItem
               icon={<MdAirlineSeatReclineNormal />}
-              type={"Seats"}
+              type={t("number_of_seats", { ns: "car" })}
               value={carData.numberOfSeats}
             />
             <SpecificationItem
               icon={<TbNumber />}
-              type={"Doors"}
+              type={t("number_of_doors", { ns: "car" })}
               value={carData.numberOfDoors}
             />
             <SpecificationItem
               icon={<IoMdColorFill />}
-              type={"Color"}
+              type={t("color", { ns: "car" })}
               value={carData.color}
             />
           </div>
